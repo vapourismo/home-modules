@@ -1,0 +1,11 @@
+cmd - 1 [
+    "wezterm" ~
+    * : open -a /Applications/WezTerm.app; skhd -k 'cmd - 1'
+]
+
+cmd - 2 [
+    "wezterm" ~
+    * : open -a /Applications/WezTerm.app; skhd -k 'cmd - 2'
+]
+
+cmd - 3 : open -a /Applications/Brave\ Browser.app

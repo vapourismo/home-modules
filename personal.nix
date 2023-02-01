@@ -1,6 +1,7 @@
 {config, ...}: {
   imports = [
     ./helix.nix
+    ./skhd.nix
   ];
 
   home = {
