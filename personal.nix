@@ -4,6 +4,7 @@
     ./skhd.nix
     ./wezterm.nix
     ./git.nix
+    ./nixpkgs.nix
   ];
 
   home = {
