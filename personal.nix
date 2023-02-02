@@ -2,6 +2,7 @@
   imports = [
     ./helix.nix
     ./skhd.nix
+    ./wezterm.nix
   ];
 
   home = {

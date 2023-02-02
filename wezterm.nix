@@ -1,0 +1,82 @@
+{...}: {
+  programs.wezterm = {
+    enable = true;
+    extraConfig = ''
+      local wezterm = require('wezterm')
+
+      return {
+        font = wezterm.font('Iosevka Term SS02'),
+        font_size = 13,
+
+        enable_tab_bar = false,
+
+        exit_behavior = "Close",
+
+        check_for_updates = true,
+
+        colors = {
+          background = '#111111',
+          foreground = '#EFEFEF',
+          cursor_bg = 'white',
+          cursor_border = 'white',
+
+          ansi = {'#2E3436', '#CC0000', '#4E9A06', '#C4A000', '#3465A4', '#75507B', '#06989A', '#D3D7CF'},
+          brights = {'#555753', '#EF2929', '#8AE234', '#FCE94F', '#729FCF', '#AD7FA8', '#34E2E2', '#EEEEEC'},
+
+          visual_bell = '#FF0000'
+        },
+
+        window_padding = {
+          left = 0,
+          right = 0,
+          top = 0,
+          bottom = 0,
+        },
+
+        use_ime = true,
+
+        quick_select_patterns = {
+          "[^\\s(){}\\[\\]]{6,64}",
+        },
+
+        leader = { mods = 'CTRL', key = 'a' },
+
+        keys = {
+          {mods = 'LEADER|CTRL', key = 'a', action = wezterm.action.SendString '\x01'},
+          {mods = "LEADER", key = "h", action = wezterm.action({ActivatePaneDirection = "Left"})},
+          {mods = "CMD", key = "h", action = wezterm.action({ActivatePaneDirection = "Left"})},
+          {mods = "LEADER", key = "j", action = wezterm.action({ActivatePaneDirection = "Down"})},
+          {mods = "CMD", key = "j", action = wezterm.action({ActivatePaneDirection = "Down"})},
+          {mods = "LEADER", key = "k", action = wezterm.action({ActivatePaneDirection = "Up"})},
+          {mods = "CMD", key = "k", action = wezterm.action({ActivatePaneDirection = "Up"})},
+          {mods = "LEADER", key = "l", action = wezterm.action({ActivatePaneDirection = "Right"})},
+          {mods = "CMD", key = "l", action = wezterm.action({ActivatePaneDirection = "Right"})},
+          {mods = "LEADER|SHIFT", key = "h", action = wezterm.action({AdjustPaneSize = {"Left", 1}})},
+          {mods = "CMD|SHIFT", key = "h", action = wezterm.action({AdjustPaneSize = {"Left", 1}})},
+          {mods = "LEADER|SHIFT", key = "j", action = wezterm.action({AdjustPaneSize = {"Down", 1}})},
+          {mods = "CMD|SHIFT", key = "j", action = wezterm.action({AdjustPaneSize = {"Down", 1}})},
+          {mods = "LEADER|SHIFT", key = "k", action = wezterm.action({AdjustPaneSize = {"Up", 1}})},
+          {mods = "CMD|SHIFT", key = "k", action = wezterm.action({AdjustPaneSize = {"Up", 1}})},
+          {mods = "LEADER|SHIFT", key = "l", action = wezterm.action({AdjustPaneSize = {"Right", 1}})},
+          {mods = "CMD|SHIFT", key = "l", action = wezterm.action({AdjustPaneSize = {"Right", 1}})},
+          {mods = "LEADER", key = "v", action = wezterm.action({SplitHorizontal = {domain = "CurrentPaneDomain"}})},
+          {mods = "LEADER", key = "s", action = wezterm.action({SplitVertical = {domain = "CurrentPaneDomain"}})},
+          {mods = 'LEADER', key = 'c', action = wezterm.action.SpawnTab('CurrentPaneDomain')},
+          {mods = 'LEADER', key = 'p', action = wezterm.action.ActivateTabRelative(-1) },
+          {mods = 'LEADER', key = 'n', action = wezterm.action.ActivateTabRelative(1) },
+          {mods = 'LEADER', key = '1', action = wezterm.action.ActivateTab(0) },
+          {mods = 'LEADER', key = '2', action = wezterm.action.ActivateTab(1) },
+          {mods = 'LEADER', key = '3', action = wezterm.action.ActivateTab(2) },
+          {mods = 'LEADER', key = '4', action = wezterm.action.ActivateTab(3) },
+          {mods = 'LEADER', key = '5', action = wezterm.action.ActivateTab(4) },
+          {mods = 'LEADER', key = '6', action = wezterm.action.ActivateTab(5) },
+          {mods = 'LEADER', key = '7', action = wezterm.action.ActivateTab(6) },
+          {mods = 'LEADER', key = '8', action = wezterm.action.ActivateTab(7) },
+          {mods = 'LEADER', key = '9', action = wezterm.action.ActivateTab(8) },
+          {mods = 'LEADER', key = '0', action = wezterm.action.ActivateTab(9) },
+          {mods = "CMD", key = "s", action = "QuickSelect"}
+        }
+      }
+    '';
+  };
+}
