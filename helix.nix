@@ -1,15 +1,26 @@
 {
+  config,
+  lib,
   pkgs,
   specialArgs,
   ...
 }: {
-  programs.helix = {
+  options.ole.editor = {
+    rulers = lib.mkOption {
+      type = lib.types.listOf lib.types.numbers.positive;
+      default = [100 120];
+    };
+  };
+
+  config.programs.helix = {
     enable = true;
     package = specialArgs.inputs.helix.packages.${pkgs.system}.default;
+
     settings = {
       theme = "ole";
+
       editor = {
-        rulers = [100 120];
+        rulers = config.ole.editor.rulers;
         bufferline = "always";
         cursorline = true;
         auto-save = true;
