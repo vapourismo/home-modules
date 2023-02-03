@@ -1,8 +1,11 @@
-{...}: {
-  programs.git = {
+{
+  config,
+  lib,
+  ...
+}: {
+  config.programs.git = {
     enable = true;
     userName = "Ole Krüger";
-    userEmail = "ole@vprsm.de";
     aliases = {
       s = "status -s";
       c = "commit -v";
