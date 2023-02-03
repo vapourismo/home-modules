@@ -22,6 +22,7 @@
       editor = {
         rulers = config.ole.editor.rulers;
         bufferline = "always";
+        bufferline-alignment = "center";
         cursorline = true;
         auto-save = true;
         auto-format = true;
