@@ -1,14 +1,19 @@
-{...}: {
-  programs.wezterm = {
+{
+  config,
+  lib,
+  ...
+}: {
+  config.programs.wezterm = {
     enable = true;
     extraConfig = ''
       local wezterm = require('wezterm')
 
       return {
-        font = wezterm.font('Iosevka Term SS02'),
+        font = wezterm.font('${config.ole.terminalFont}'),
         font_size = 13,
 
         enable_tab_bar = false,
+        use_fancy_tab_bar = false,
 
         exit_behavior = "Close",
 
@@ -25,6 +30,9 @@
 
           visual_bell = '#FF0000'
         },
+
+        underline_thickness = 2,
+        underline_position = -4,
 
         window_padding = {
           left = 0,
@@ -78,5 +86,12 @@
         }
       }
     '';
+  };
+
+  options.ole = {
+    terminalFont = lib.mkOption {
+      type = lib.types.str;
+      default = "Iosevka Term SS02";
+    };
   };
 }
