@@ -54,14 +54,14 @@
           C-s = ":w";
         };
         normal = {
+          C-j = ["goto_next_paragraph" "collapse_selection"];
+          C-k = ["goto_prev_paragraph" "collapse_selection"];
           C-s = ":w";
-          C-j = "goto_next_diag";
-          C-k = "goto_prev_diag";
           C-h = "move_prev_word_start";
           C-l = "move_next_word_end";
           g = {
-            j = ["goto_next_paragraph" "collapse_selection"];
-            k = ["goto_prev_paragraph" "collapse_selection"];
+            j = "goto_next_diag";
+            k = "goto_prev_diag";
           };
           space = {
             c = ":bc";
