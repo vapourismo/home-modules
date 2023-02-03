@@ -48,14 +48,15 @@
           };
         };
       };
+
       keys = {
         insert = {
           C-s = ":w";
         };
         normal = {
           C-s = ":w";
-          C-j = ["goto_next_paragraph" "collapse_selection"];
-          C-k = ["goto_prev_paragraph" "collapse_selection"];
+          C-j = "goto_next_diag";
+          C-k = "goto_prev_diag";
           C-h = "move_prev_word_start";
           C-l = "move_next_word_end";
           g = {
@@ -80,6 +81,7 @@
         };
       };
     };
+
     languages = [
       {
         name = "ocaml";
@@ -95,6 +97,7 @@
         config.nil.formatting.command = ["alejandra"];
       }
     ];
+
     themes = {
       ole = {
         "ui.background" = {
