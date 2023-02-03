@@ -13,15 +13,29 @@
     home-manager,
     ...
   } @ inputs: {
-    homeConfigurations.personal = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+    homeConfigurations = {
+      personal = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."aarch64-darwin";
 
-      modules = [
-        ./personal.nix
-      ];
+        modules = [
+          ./personal.nix
+        ];
 
-      extraSpecialArgs = {
-        inherit inputs;
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+      };
+
+      work = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+
+        modules = [
+          ./work.nix
+        ];
+
+        extraSpecialArgs = {
+          inherit inputs;
+        };
       };
     };
   };
