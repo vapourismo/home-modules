@@ -1,11 +1,20 @@
-{...}: {
+{
+  pkgs,
+  specialArgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
 
     oh-my-zsh = {
       enable = true;
 
-      custom = "$HOME/.oh-my-zsh-custom";
+      custom = builtins.toString (pkgs.runCommand "omz-custom" {} ''
+        mkdir -p $out/plugins
+        cp -rv ${./omz-custom}/* $out
+        ln -sv ${specialArgs.inputs.omz-nix-shell-plugin} $out/plugins/nix-shell
+      '');
+
       theme = "ole";
       plugins = ["git" "nix-shell"];
 

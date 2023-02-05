@@ -6,6 +6,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix.url = "github:vapourismo/helix";
+    omz-nix-shell-plugin = {
+      url = "github:chisui/zsh-nix-shell";
+      flake = false;
+    };
   };
 
   outputs = {
