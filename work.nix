@@ -15,7 +15,8 @@
   };
 
   ole = {
-    terminalFont = "Iosevka SS02";
+    terminal.font = "Iosevka SS02";
+    terminal.fontSize = 14;
     browserApp = ''/Applications/Google\ Chrome.app'';
     hasSlack = true;
     editor.rulers = [80 100];

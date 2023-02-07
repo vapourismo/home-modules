@@ -3,14 +3,26 @@
   lib,
   ...
 }: {
+  options.ole.terminal = {
+    font = lib.mkOption {
+      type = lib.types.str;
+      default = "Iosevka Term SS02";
+    };
+
+    fontSize = lib.mkOption {
+      type = lib.types.numbers.positive;
+      default = 13;
+    };
+  };
+
   config.programs.wezterm = {
     enable = true;
     extraConfig = ''
       local wezterm = require('wezterm')
 
       return {
-        font = wezterm.font('${config.ole.terminalFont}'),
-        font_size = 13,
+        font = wezterm.font('${config.ole.terminal.font}'),
+        font_size = ${builtins.toString config.ole.terminal.fontSize},
 
         enable_tab_bar = false,
         use_fancy_tab_bar = false,
@@ -86,12 +98,5 @@
         }
       }
     '';
-  };
-
-  options.ole = {
-    terminalFont = lib.mkOption {
-      type = lib.types.str;
-      default = "Iosevka Term SS02";
-    };
   };
 }
