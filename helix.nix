@@ -193,7 +193,10 @@
         "string" = "#88A04A";
         "function" = "#6699CC";
         "constructor" = "#6699CC";
-        "keyword" = "#B14744";
+        "keyword" = {
+          fg = "#B14744";
+          modifiers = ["bold"];
+        };
         "operator" = "#B14744";
         "type" = "#D69876";
         "keyword.storage.modifier" = "#A5346D";
