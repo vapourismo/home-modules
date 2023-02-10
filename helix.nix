@@ -117,7 +117,9 @@
           fg = "accent1";
           underline = {style = "line";};
         };
-        "ui.gutter" = {};
+        "ui.gutter" = {
+          bg = "contrast3";
+        };
         "ui.gutter.selected" = {};
         "ui.linenr" = "accent2";
         "ui.linenr.selected" = "accent1";
