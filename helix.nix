@@ -72,6 +72,10 @@
               c = ":config-open";
             };
           };
+          A-h = "jump_view_left";
+          A-l = "jump_view_right";
+          A-j = "jump_view_down";
+          A-k = "jump_view_up";
         };
         select = {
           C-j = "goto_next_paragraph";
