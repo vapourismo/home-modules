@@ -55,6 +55,8 @@
 
         use_ime = true,
 
+        audible_bell = "Disabled",
+
         quick_select_patterns = {
           "[^\\s(){}\\[\\]]{6,64}",
         },
