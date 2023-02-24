@@ -1,6 +1,8 @@
 {
   config,
   lib,
+  pkgs,
+  specialArgs,
   ...
 }: {
   options.ole.terminal = {
@@ -17,6 +19,26 @@
 
   config.programs.wezterm = {
     enable = true;
+
+    package = let
+      src = pkgs.fetchFromGitHub {
+        owner = "wez";
+        repo = "wezterm";
+        rev = "e6ffeaf28573c26299e3de9f0b007d1a8f6d9466";
+        fetchSubmodules = true;
+        sha256 = "sha256-DVk/t7ZQKEILn1rnSKYmOtljQ1wXLw8TIiwEpSqoOnw=";
+      };
+    in
+      pkgs.wezterm.overrideAttrs (old: {
+        version = "hm-flake";
+        inherit src;
+
+        cargoDeps = old.cargoDeps.overrideAttrs (_: {
+          inherit src;
+          outputHash = "sha256-7qEUKskW/sdKC+/X9WnLHxgpubX7w0/ochbiMqSANR8=";
+        });
+      });
+
     extraConfig = ''
       local wezterm = require('wezterm')
 
