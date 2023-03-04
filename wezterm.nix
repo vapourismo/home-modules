@@ -33,6 +33,8 @@
         version = "hm-flake";
         inherit src;
 
+        patches = [];
+
         cargoDeps = old.cargoDeps.overrideAttrs (_: {
           inherit src;
           outputHash = "sha256-7qEUKskW/sdKC+/X9WnLHxgpubX7w0/ochbiMqSANR8=";
