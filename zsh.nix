@@ -6,6 +6,21 @@
   programs.zsh = {
     enable = true;
 
+    initExtra = ''
+      # env vars
+      export LESS=-FRX
+      export EDITOR=hx
+      export MAKEFLAGS=-j12
+      export DUNE_CACHE=enabled
+
+      # aliases
+      alias ls='ls --color=auto'
+      alias ll='ls --color=auto -lhF'
+      alias grep='grep --color=auto'
+      alias g=git
+      alias s=stg
+    '';
+
     oh-my-zsh = {
       enable = true;
 
@@ -17,21 +32,6 @@
 
       theme = "ole";
       plugins = ["git" "nix-shell"];
-
-      extraConfig = ''
-        # env vars
-        export LESS=-FRX
-        export EDITOR=hx
-        export MAKEFLAGS=-j12
-        export DUNE_CACHE=enabled
-
-        # aliases
-        alias ls='ls --color=auto'
-        alias ll='ll --color=auto'
-        alias grep='grep --color=auto'
-        alias g=git
-        alias s=stg
-      '';
     };
   };
 }
