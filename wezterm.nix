@@ -24,22 +24,37 @@
       src = pkgs.fetchFromGitHub {
         owner = "wez";
         repo = "wezterm";
-        rev = "e6ffeaf28573c26299e3de9f0b007d1a8f6d9466";
+        rev = "20230320-124340-559cb7b0";
         fetchSubmodules = true;
-        sha256 = "sha256-DVk/t7ZQKEILn1rnSKYmOtljQ1wXLw8TIiwEpSqoOnw=";
+        sha256 = "sha256-u9lOK4DV9NM3CUYjMTovCY4XF5Xxg4V+rQwIjioqTec=";
       };
     in
-      pkgs.wezterm.overrideAttrs (old: {
-        version = "hm-flake";
-        inherit src;
-
-        patches = [];
-
-        cargoDeps = old.cargoDeps.overrideAttrs (_: {
-          inherit src;
-          outputHash = "sha256-7qEUKskW/sdKC+/X9WnLHxgpubX7w0/ochbiMqSANR8=";
-        });
-      });
+      pkgs.wezterm.override {
+        rustPlatform =
+          pkgs.rustPlatform
+          // {
+            buildRustPackage = args:
+              pkgs.rustPlatform.buildRustPackage (
+                if args.pname == "wezterm"
+                then
+                  builtins.removeAttrs args ["cargoHash" "cargoSha256" "cargoLock"]
+                  // {
+                    inherit src;
+                    version = "hm-flake";
+                    patches = [];
+                    cargoLock = {
+                      lockFile = src + /Cargo.lock;
+                      outputHashes = {
+                        "image-0.24.5" = "sha256-fTajVwm88OInqCPZerWcSAm1ga46ansQ3EzAmbT58Js=";
+                        "libssh-rs-0.1.5" = "sha256-gxT9mZ+whotZhEoj783aQPlQPqQXd8gQL3zZglMYC1k=";
+                        "xcb-imdkit-0.2.0" = "sha256-QOT9HLlA26DVPUF4ViKH2ckexUsu45KZMdJwoUhW+hA=";
+                      };
+                    };
+                  }
+                else args
+              );
+          };
+      };
 
     extraConfig = ''
       local wezterm = require('wezterm')
