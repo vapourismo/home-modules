@@ -21,17 +21,17 @@
     packages = [pkgs.skhd];
 
     file.".skhdrc" = let
-      wezterm = "${config.programs.wezterm.package}/bin/wezterm";
+      wezterm = "${config.programs.wezterm.package}/Applications/WezTerm.app";
     in {
       text = ''
         cmd - 1 [
             "wezterm" ~
-            * : ${wezterm}
+            * : open -a ${wezterm}
         ]
 
         cmd - 2 [
             "wezterm" ~
-            * : ${wezterm}
+            * : open -a ${wezterm}
         ]
 
         cmd - 3 : open -a ${config.ole.browserApp}
