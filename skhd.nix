@@ -20,16 +20,18 @@
   config.home = {
     packages = [pkgs.skhd];
 
-    file.".skhdrc" = {
+    file.".skhdrc" = let
+      wezterm = "${config.programs.wezterm.package}/bin/wezterm";
+    in {
       text = ''
         cmd - 1 [
             "wezterm" ~
-            * : open -a /Applications/WezTerm.app
+            * : ${wezterm}
         ]
 
         cmd - 2 [
             "wezterm" ~
-            * : open -a /Applications/WezTerm.app
+            * : ${wezterm}
         ]
 
         cmd - 3 : open -a ${config.ole.browserApp}
