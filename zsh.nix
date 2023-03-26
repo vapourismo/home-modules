@@ -31,9 +31,6 @@
         alias grep='grep --color=auto'
         alias g=git
         alias s=stg
-
-        # direnv
-        eval "$(direnv hook zsh)"
       '';
     };
   };

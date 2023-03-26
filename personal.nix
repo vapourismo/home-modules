@@ -6,6 +6,7 @@
     ./git.nix
     ./nixpkgs.nix
     ./zsh.nix
+    ./direnv.nix
   ];
 
   home = {
