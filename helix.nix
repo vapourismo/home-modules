@@ -101,6 +101,10 @@
         auto-format = true;
         config.nil.formatting.command = ["alejandra"];
       }
+      {
+        name = "toml";
+        auto-format = true;
+      }
     ];
 
     themes = {
