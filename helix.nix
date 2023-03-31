@@ -173,6 +173,7 @@
         "ui.cursorline.secondary" = {bg = "contrast5";};
         "ui.bufferline" = {bg = "contrast3";};
         "ui.bufferline.active" = {bg = "accent2";};
+        "ui.virtual.inlay-hint" = "gray";
         "warning" = "yellow";
         "error" = "red";
         "info" = "blue";
