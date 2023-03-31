@@ -48,6 +48,9 @@
             select = "SELECT";
           };
         };
+        lsp = {
+          display-inlay-hints = true;
+        };
       };
 
       keys = {
