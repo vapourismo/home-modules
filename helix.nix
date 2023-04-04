@@ -179,24 +179,32 @@
         "info" = "blue";
         "hint" = "blue";
         "diagnostic.hint" = {
+          fg = "white";
+          bg = "contrast5";
           underline = {
             color = "blue";
             style = "curl";
           };
         };
         "diagnostic.info" = {
+          fg = "white";
+          bg = "contrast5";
           underline = {
             color = "blue";
             style = "curl";
           };
         };
         "diagnostic.warning" = {
+          fg = "white";
+          bg = "contrast5";
           underline = {
             color = "yellow";
             style = "curl";
           };
         };
         "diagnostic.error" = {
+          fg = "white";
+          bg = "contrast5";
           underline = {
             color = "red";
             style = "curl";
