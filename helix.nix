@@ -179,7 +179,6 @@
         "info" = "blue";
         "hint" = "blue";
         "diagnostic.hint" = {
-          fg = "white";
           bg = "contrast5";
           underline = {
             color = "blue";
@@ -187,7 +186,6 @@
           };
         };
         "diagnostic.info" = {
-          fg = "white";
           bg = "contrast5";
           underline = {
             color = "blue";
@@ -195,7 +193,6 @@
           };
         };
         "diagnostic.warning" = {
-          fg = "white";
           bg = "contrast5";
           underline = {
             color = "yellow";
@@ -203,7 +200,6 @@
           };
         };
         "diagnostic.error" = {
-          fg = "white";
           bg = "contrast5";
           underline = {
             color = "red";
