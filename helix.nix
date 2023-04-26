@@ -108,6 +108,14 @@
         name = "toml";
         auto-format = true;
       }
+      {
+        name = "json";
+        auto-format = true;
+        language-server = {
+          command = "vscode-json-languageserver";
+          args = ["--stdio"];
+        };
+      }
     ];
 
     themes = {
