@@ -45,7 +45,6 @@
                       lockFile = src + /Cargo.lock;
                       outputHashes = {
                         "image-0.24.5" = "sha256-fTajVwm88OInqCPZerWcSAm1ga46ansQ3EzAmbT58Js=";
-                        # "libssh-rs-0.1.5" = "sha256-gxT9mZ+whotZhEoj783aQPlQPqQXd8gQL3zZglMYC1k=";
                         "xcb-imdkit-0.2.0" = "sha256-QOT9HLlA26DVPUF4ViKH2ckexUsu45KZMdJwoUhW+hA=";
                       };
                     };
