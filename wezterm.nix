@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  specialArgs,
   ...
 }: {
   options.ole.terminal = {
@@ -21,12 +20,13 @@
     enable = true;
 
     package = let
+      version = "20230408-112425-69ae8472";
       src = pkgs.fetchFromGitHub {
         owner = "wez";
         repo = "wezterm";
-        rev = "20230320-124340-559cb7b0";
+        rev = version;
         fetchSubmodules = true;
-        sha256 = "sha256-u9lOK4DV9NM3CUYjMTovCY4XF5Xxg4V+rQwIjioqTec=";
+        sha256 = "Uk6I/JtSkGCQGG95DDD1hsu40X00/k5d44WP3OJ+rn4=";
       };
     in
       pkgs.wezterm.override {
@@ -39,14 +39,13 @@
                 then
                   builtins.removeAttrs args ["cargoHash" "cargoSha256" "cargoLock"]
                   // {
-                    inherit src;
-                    version = "hm-flake";
+                    inherit src version;
                     patches = [];
                     cargoLock = {
                       lockFile = src + /Cargo.lock;
                       outputHashes = {
                         "image-0.24.5" = "sha256-fTajVwm88OInqCPZerWcSAm1ga46ansQ3EzAmbT58Js=";
-                        "libssh-rs-0.1.5" = "sha256-gxT9mZ+whotZhEoj783aQPlQPqQXd8gQL3zZglMYC1k=";
+                        # "libssh-rs-0.1.5" = "sha256-gxT9mZ+whotZhEoj783aQPlQPqQXd8gQL3zZglMYC1k=";
                         "xcb-imdkit-0.2.0" = "sha256-QOT9HLlA26DVPUF4ViKH2ckexUsu45KZMdJwoUhW+hA=";
                       };
                     };
