@@ -3,6 +3,10 @@
   specialArgs,
   ...
 }: {
+  home.packages = [
+    specialArgs.inputs.atuin.packages.${pkgs.system}.default
+  ];
+
   programs.zsh = {
     enable = true;
 
@@ -19,6 +23,9 @@
       alias grep='grep --color=auto'
       alias g=git
       alias s=stg
+
+      # atuin
+      eval "$(atuin init zsh)"
     '';
 
     oh-my-zsh = {
