@@ -17,7 +17,7 @@
     package = specialArgs.inputs.helix.packages.${pkgs.system}.default;
 
     settings = {
-      theme = "ole";
+      theme = "ayu_evolve";
 
       editor = {
         rulers = config.ole.editor.rulers;
