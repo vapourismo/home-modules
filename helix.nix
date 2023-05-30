@@ -51,6 +51,9 @@
         lsp = {
           display-inlay-hints = true;
         };
+        file-picker = {
+          hidden = false;
+        };
       };
 
       keys = {
