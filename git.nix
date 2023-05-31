@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{...}: {
   config.programs.git = {
     enable = true;
     userName = "Ole Krüger";
@@ -21,9 +17,9 @@
     };
     extraConfig = {
       stgit.alias = {
-        rip = "stg refresh -i -p";
-        ls = "stg series";
-        s = "stg status";
+        rip = "refresh -i -p";
+        ls = "series";
+        s = "status";
       };
       diff.algorithm = "patience";
       core.editor = "/Users/ole/.nix-profile/bin/hx";
