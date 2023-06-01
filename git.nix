@@ -18,7 +18,7 @@
     extraConfig = {
       stgit.alias = {
         rip = "refresh -i -p";
-        ls = "series";
+        ls = "series -r";
         s = "status";
       };
       diff.algorithm = "patience";
