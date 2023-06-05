@@ -26,6 +26,9 @@
 
       # atuin
       eval "$(atuin init zsh)"
+
+      # Extend PATH
+      export PATH="$PATH:$HOME/.local/bin"
     '';
 
     oh-my-zsh = {
