@@ -17,7 +17,7 @@
     package = specialArgs.inputs.helix.packages.${pkgs.system}.default;
 
     settings = {
-      theme = "ayu_evolve";
+      theme = "ayu_ole";
 
       editor = {
         rulers = config.ole.editor.rulers;
@@ -122,6 +122,10 @@
     ];
 
     themes = {
+      ayu_ole = {
+        inherits = "ayu_evolve";
+      };
+
       ole = {
         "ui.background" = {
           fg = "contrast2";
