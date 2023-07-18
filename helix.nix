@@ -124,6 +124,7 @@
     themes = {
       ayu_ole = {
         inherits = "ayu_evolve";
+        "ui.virtual.inlay-hint" = "gray";
       };
 
       ole = {
