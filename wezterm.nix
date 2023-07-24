@@ -20,13 +20,13 @@
     enable = true;
 
     package = let
-      version = "20230408-112425-69ae8472";
+      version = "20230712-072601-f4abf8fd";
       src = pkgs.fetchFromGitHub {
         owner = "wez";
         repo = "wezterm";
         rev = version;
         fetchSubmodules = true;
-        sha256 = "Uk6I/JtSkGCQGG95DDD1hsu40X00/k5d44WP3OJ+rn4=";
+        sha256 = "B6AakLbTWIN123qAMQk/vFN83HHNRSNkqicNRU1GaCc=";
       };
     in
       pkgs.wezterm.override {
@@ -45,7 +45,8 @@
                       lockFile = src + /Cargo.lock;
                       outputHashes = {
                         "image-0.24.5" = "sha256-fTajVwm88OInqCPZerWcSAm1ga46ansQ3EzAmbT58Js=";
-                        "xcb-imdkit-0.2.0" = "sha256-QOT9HLlA26DVPUF4ViKH2ckexUsu45KZMdJwoUhW+hA=";
+                        "xcb-imdkit-0.2.0" = "sha256-L+NKD0rsCk9bFABQF4FZi9YoqBHr4VAZeKAWgsaAegw=";
+                        "xcb-1.2.1" = "sha256-zkuW5ATix3WXBAj2hzum1MJ5JTX3+uVQ01R1vL6F1rY=";
                       };
                     };
                   }
