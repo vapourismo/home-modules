@@ -18,7 +18,7 @@
   ole = {
     terminal.font = "Iosevka SS02";
     terminal.fontSize = 14;
-    browserApp = ''/Applications/Google\ Chrome.app'';
+    browserApp = ''/Applications/Brave\ Browser.app'';
     hasSlack = true;
     editor.rulers = [80 100];
   };
