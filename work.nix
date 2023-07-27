@@ -16,7 +16,7 @@
   };
 
   ole = {
-    terminal.font = "Iosevka SS02";
+    terminal.font = "Iosevka Ole";
     terminal.fontSize = 14;
     browserApp = ''/Applications/Brave\ Browser.app'';
     hasSlack = true;
