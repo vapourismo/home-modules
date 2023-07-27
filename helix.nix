@@ -125,6 +125,9 @@
       ayu_ole = {
         inherits = "ayu_evolve";
         "ui.virtual.inlay-hint" = "gray";
+        palette = {
+          foreground = "#ffffff";
+        };
       };
 
       ole = {
