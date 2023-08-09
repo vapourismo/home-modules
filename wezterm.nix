@@ -69,17 +69,7 @@
 
         check_for_updates = true,
 
-        colors = {
-          background = '#111111',
-          foreground = '#EFEFEF',
-          cursor_bg = 'white',
-          cursor_border = 'white',
-
-          ansi = {'#2E3436', '#CC0000', '#4E9A06', '#C4A000', '#3465A4', '#75507B', '#06989A', '#D3D7CF'},
-          brights = {'#555753', '#EF2929', '#8AE234', '#FCE94F', '#729FCF', '#AD7FA8', '#34E2E2', '#EEEEEC'},
-
-          visual_bell = '#FF0000'
-        },
+        color_scheme = 'ayu',
 
         underline_thickness = 2,
         underline_position = -4,
