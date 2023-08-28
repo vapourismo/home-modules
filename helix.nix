@@ -119,6 +119,10 @@
           args = ["--stdio"];
         };
       }
+      {
+        name = "haskell";
+        auto-format = true;
+      }
     ];
 
     themes = {
