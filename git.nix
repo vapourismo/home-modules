@@ -19,7 +19,7 @@
       stgit.alias = {
         rip = "refresh -i -p";
         ls = "series -r";
-        s = "status";
+        s = "!stg status";
       };
       diff.algorithm = "patience";
       core.editor = "/Users/ole/.nix-profile/bin/hx";
