@@ -14,10 +14,13 @@
       g = "grep -n";
       rbi = "rebase -i";
       prb = "pull --rebase";
+      f = "fetch";
     };
     extraConfig = {
       stgit.alias = {
         rip = "refresh -i -p";
+        r = "refresh";
+        remaster = "!git fetch origin && stg rebase -m origin/master && stg clean";
         ls = "series -r";
         s = "!stg status";
       };
