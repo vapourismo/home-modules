@@ -93,7 +93,7 @@
       };
     };
 
-    languages = [
+    languages.language = [
       {
         name = "ocaml";
         auto-format = true;
@@ -122,6 +122,7 @@
       {
         name = "haskell";
         auto-format = true;
+        config.haskell.formattingProvider = "fourmolu";
       }
     ];
 

@@ -3,8 +3,16 @@
   specialArgs,
   ...
 }: {
-  home.packages = [
-    specialArgs.inputs.atuin.packages.${pkgs.system}.default
+  home.packages = let
+    atuin = specialArgs.inputs.atuin.packages.${pkgs.system}.default.overrideAttrs (old: {
+      buildInputs =
+        (old.buildInputs or [])
+        ++ [
+          pkgs.darwin.apple_sdk.frameworks.AppKit
+        ];
+    });
+  in [
+    atuin
   ];
 
   programs.zsh = {
