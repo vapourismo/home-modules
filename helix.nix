@@ -93,38 +93,44 @@
       };
     };
 
-    languages.language = [
-      {
-        name = "ocaml";
-        auto-format = true;
-      }
-      {
-        name = "ocaml-interface";
-        auto-format = true;
-      }
-      {
-        name = "nix";
-        auto-format = true;
-        config.nil.formatting.command = ["alejandra"];
-      }
-      {
-        name = "toml";
-        auto-format = true;
-      }
-      {
-        name = "json";
-        auto-format = true;
-        language-server = {
-          command = "vscode-json-languageserver";
-          args = ["--stdio"];
+    languages = {
+      language-server = {
+        nil = {
+          config.nil.formatting.command = ["alejandra"];
         };
-      }
-      {
-        name = "haskell";
-        auto-format = true;
-        config.haskell.formattingProvider = "fourmolu";
-      }
-    ];
+
+        haskell-language-server = {
+          config.haskell.formattingProvider = "fourmolu";
+        };
+      };
+
+      language = [
+        {
+          name = "ocaml";
+          auto-format = true;
+        }
+        {
+          name = "ocaml-interface";
+          auto-format = true;
+        }
+        {
+          name = "nix";
+          auto-format = true;
+        }
+        {
+          name = "toml";
+          auto-format = true;
+        }
+        {
+          name = "json";
+          auto-format = true;
+        }
+        {
+          name = "haskell";
+          auto-format = true;
+        }
+      ];
+    };
 
     themes = {
       ayu_ole = {
