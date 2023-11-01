@@ -91,6 +91,11 @@
 
         color_scheme = 'ayu',
 
+        inactive_pane_hsb = {
+          saturation = 0.7,
+          brightness = 0.8,
+        },
+
         underline_thickness = 2,
         underline_position = -4,
 
