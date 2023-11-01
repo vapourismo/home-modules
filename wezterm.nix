@@ -83,6 +83,8 @@
         enable_tab_bar = false,
         use_fancy_tab_bar = false,
 
+        native_macos_fullscreen_mode = true,
+
         exit_behavior = "Close",
 
         check_for_updates = true,
