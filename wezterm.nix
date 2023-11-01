@@ -87,7 +87,7 @@
 
         exit_behavior = "Close",
 
-        check_for_updates = true,
+        check_for_updates = false,
 
         color_scheme = 'ayu',
 
