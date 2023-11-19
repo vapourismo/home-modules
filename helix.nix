@@ -129,6 +129,22 @@
           name = "haskell";
           auto-format = true;
         }
+        {
+          name = "typescript";
+          auto-format = true;
+        }
+        {
+          name = "tsx";
+          auto-format = true;
+        }
+        {
+          name = "javascript";
+          auto-format = true;
+        }
+        {
+          name = "jsx";
+          auto-format = true;
+        }
       ];
     };
 
