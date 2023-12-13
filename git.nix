@@ -21,7 +21,7 @@
         rip = "refresh -i -p";
         r = "refresh";
         remaster = "!git fetch origin && stg rebase -m origin/master && stg clean";
-        ls = "series -r";
+        ls = "series -rId";
         s = "!stg status";
       };
       diff.algorithm = "patience";
