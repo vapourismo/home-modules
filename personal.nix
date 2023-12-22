@@ -13,6 +13,8 @@
     ./direnv.nix
   ];
 
+  ole.browserApp = "/Applications/Arc.app";
+
   home = {
     username = "ole";
     homeDirectory = "/Users/${config.home.username}";
