@@ -18,8 +18,8 @@
   ole = {
     terminal.font = "Iosevka Ole";
     terminal.fontSize = 14;
-    browserApp = ''/Applications/Brave\ Browser.app'';
-    hasSlack = true;
+    slot3 = "/Applications/Arc.app";
+    slot4 = "/Applications/Slack.app";
     editor.rulers = [80 100];
   };
 }

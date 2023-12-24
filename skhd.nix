@@ -5,15 +5,24 @@
   ...
 }: {
   options.ole = {
-    browserApp = lib.mkOption {
-      type = lib.types.str;
-
-      default = ''/Applications/Brave\ Browser.app'';
+    slot3 = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
     };
 
-    hasSlack = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
+    slot4 = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+    };
+
+    slot5 = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+    };
+
+    slot6 = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
     };
   };
 
@@ -35,9 +44,13 @@
             * : open -a ${weztermApp} && ${weztermCli} cli activate-tab --tab-index 1
         ]
 
-        cmd - 3 : open -a ${config.ole.browserApp}
+        ${lib.optionalString (lib.isString config.ole.slot3) "cmd - 3 : open -a ${config.ole.slot3}"}
 
-        ${lib.optionalString config.ole.hasSlack "cmd - 4 : open -a /Applications/Slack.app"}
+        ${lib.optionalString (lib.isString config.ole.slot4) "cmd - 4 : open -a ${config.ole.slot4}"}
+
+        ${lib.optionalString (lib.isString config.ole.slot5) "cmd - 5 : open -a ${config.ole.slot5}"}
+
+        ${lib.optionalString (lib.isString config.ole.slot6) "cmd - 6 : open -a ${config.ole.slot6}"}
       '';
 
       onChange = ''

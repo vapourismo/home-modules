@@ -13,7 +13,10 @@
     ./direnv.nix
   ];
 
-  ole.browserApp = "/Applications/Arc.app";
+  ole = {
+    slot3 = "/Applications/Arc.app";
+    slot4 = "/Applications/WorkFlowy.app";
+  };
 
   home = {
     username = "ole";
