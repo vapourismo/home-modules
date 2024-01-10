@@ -103,6 +103,10 @@
         haskell-language-server = {
           config.haskell.formattingProvider = "fourmolu";
         };
+
+        rust-analyzer = {
+          config.check.command = "clippy";
+        };
       };
 
       language = [
