@@ -62,7 +62,7 @@
         if appearance:find("Dark") then
           return "ayu"
         else
-          return "ayu_light"
+          return "Everforest Light (Gogh)"
         end
       end
 
