@@ -17,7 +17,7 @@
     package = specialArgs.inputs.helix.packages.${pkgs.system}.default;
 
     settings = {
-      theme = "ayu_ole";
+      theme = "catppuccin_mocha";
 
       editor = {
         rulers = config.ole.editor.rulers;
