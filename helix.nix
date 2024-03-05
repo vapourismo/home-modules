@@ -54,7 +54,7 @@
         file-picker = {
           hidden = false;
         };
-        gutters.layout = ["diagnostics" "line-numbers" "spacer"];
+        gutters.layout = ["diagnostics" "spacer" "line-numbers" "spacer"];
       };
 
       keys = {
