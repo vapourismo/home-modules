@@ -151,6 +151,17 @@
           name = "jsx";
           auto-format = true;
         }
+        {
+          name = "starlark";
+          file-types = [
+            "bzl"
+            "bazel"
+            "star"
+            {glob = "BUCK";}
+            {glob = "BUILD";}
+            {glob = "BUILD.*";}
+          ];
+        }
       ];
     };
 
