@@ -23,6 +23,7 @@
         remaster = "!git fetch origin && stg rebase -m origin/master && stg clean";
         ls = "series -rId";
         s = "!stg status";
+        sfp = "!${./sfp.sh}";
       };
       diff.algorithm = "patience";
       core.editor = "/Users/ole/.nix-profile/bin/hx";
