@@ -16,8 +16,6 @@
   };
 
   ole = {
-    terminal.font = "Iosevka Ole";
-    terminal.fontSize = 14;
     slot3 = "/Applications/Arc.app";
     slot4 = "/Applications/Slack.app";
     editor.rulers = [80 100];
