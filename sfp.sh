@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Make sure failures don't slip in silently
+set -e
+
 toplevel="$(git rev-parse --show-toplevel)"
 branch="$(git branch --show-current)"
 master="$(git symbolic-ref --short refs/remotes/origin/HEAD)"
