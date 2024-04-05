@@ -16,6 +16,8 @@
     packages = with pkgs; [
       bash
       pinentry
+      nil
+      alejandra
     ];
   };
 
