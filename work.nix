@@ -11,17 +11,13 @@
     ./nixpkgs.nix
     ./zsh.nix
     ./direnv.nix
+    ./common-packages.nix
   ];
 
   home = {
     username = "ole";
     homeDirectory = "/Users/${config.home.username}";
     stateVersion = "23.05";
-    packages = with pkgs; [
-      pinentry
-      nil
-      alejandra
-    ];
   };
 
   ole = {

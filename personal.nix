@@ -11,6 +11,7 @@
     ./nixpkgs.nix
     ./zsh.nix
     ./direnv.nix
+    ./common-packages.nix
   ];
 
   ole = {
