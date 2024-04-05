@@ -14,6 +14,10 @@ patches=()
 
 args="${@}"
 
+if [[ -z "$args" ]]; then
+  args="-0"
+fi
+
 for arg in $($stg series -P $args); do
   patches+=("$arg")
 done
