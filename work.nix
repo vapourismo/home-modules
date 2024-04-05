@@ -1,4 +1,8 @@
-{config, pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./helix.nix
     ./skhd.nix
@@ -14,7 +18,6 @@
     homeDirectory = "/Users/${config.home.username}";
     stateVersion = "23.05";
     packages = with pkgs; [
-      bash
       pinentry
       nil
       alejandra
