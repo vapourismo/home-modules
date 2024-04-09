@@ -3,5 +3,10 @@
     pinentry
     nil
     alejandra
+    ripgrep
+    tree
+    jq
+    coreutils
+    calc
   ];
 }
