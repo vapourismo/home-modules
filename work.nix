@@ -21,7 +21,7 @@
   };
 
   ole = {
-    slot3 = "/Applications/Arc.app";
+    slot3 = "/Applications/Brave Browser.app";
     slot4 = "/Applications/Slack.app";
     editor.rulers = [80 100];
   };
