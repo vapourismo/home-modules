@@ -44,13 +44,13 @@
             * : open -a ${weztermApp} && ${weztermCli} cli activate-tab --tab-index 1
         ]
 
-        ${lib.optionalString (lib.isString config.ole.slot3) "cmd - 3 : open -a ${config.ole.slot3}"}
+        ${lib.optionalString (lib.isString config.ole.slot3) "cmd - 3 : open -a ${lib.strings.escapeShellArg config.ole.slot3}"}
 
-        ${lib.optionalString (lib.isString config.ole.slot4) "cmd - 4 : open -a ${config.ole.slot4}"}
+        ${lib.optionalString (lib.isString config.ole.slot4) "cmd - 4 : open -a ${lib.strings.escapeShellArg config.ole.slot4}"}
 
-        ${lib.optionalString (lib.isString config.ole.slot5) "cmd - 5 : open -a ${config.ole.slot5}"}
+        ${lib.optionalString (lib.isString config.ole.slot5) "cmd - 5 : open -a ${lib.strings.escapeShellArg config.ole.slot5}"}
 
-        ${lib.optionalString (lib.isString config.ole.slot6) "cmd - 6 : open -a ${config.ole.slot6}"}
+        ${lib.optionalString (lib.isString config.ole.slot6) "cmd - 6 : open -a ${lib.strings.escapeShellArg config.ole.slot6}"}
       '';
 
       onChange = ''
