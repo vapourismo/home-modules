@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   config.programs.git = {
     enable = true;
     userName = "Ole Krüger";
@@ -25,7 +25,10 @@
         s = "!stg status";
         sfp = "!${./sfp.sh}";
       };
-      diff.algorithm = "patience";
+      diff = {
+        algorithm = "patience";
+        external = "difft";
+      };
       core.editor = "/Users/ole/.nix-profile/bin/hx";
     };
   };

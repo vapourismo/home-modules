@@ -8,5 +8,6 @@
     jq
     coreutils
     calc
+    difftastic
   ];
 }
