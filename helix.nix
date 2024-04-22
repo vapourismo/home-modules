@@ -27,6 +27,7 @@
         auto-save = true;
         auto-format = true;
         color-modes = true;
+        completion-timeout = 0;
         idle-timeout = 0;
         indent-guides = {
           render = true;
