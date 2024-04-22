@@ -26,7 +26,7 @@ push_args=()
 
 for patch in "${patches[@]}"; do
   ref=$($stg id $patch)
-  chain_ref=$($unstacked chain --base=$master --use-merge-base --sign $ref)
+  chain_ref=$($unstacked chain --base=$master --use-merge-base --sign $ref --forceful)
   push_args+=("$chain_ref:refs/heads/ole@$patch")
 done
 
