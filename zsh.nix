@@ -23,7 +23,6 @@
       export LESS=-FRX
       export EDITOR=hx
       export MAKEFLAGS=-j12
-      export DUNE_CACHE=enabled
 
       # aliases
       alias ls='ls --color=auto'
