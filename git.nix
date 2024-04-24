@@ -17,13 +17,16 @@
       f = "fetch";
     };
     extraConfig = {
-      stgit.alias = {
-        rip = "refresh -i -p";
-        r = "refresh";
-        remaster = "!git fetch origin && stg rebase -m origin/master && stg clean";
-        ls = "series -rId";
-        s = "!stg status";
-        sfp = "!${./sfp.sh}";
+      stgit = {
+        alias = {
+          rip = "refresh -i -p";
+          r = "refresh";
+          remaster = "!git fetch origin && stg rebase -m origin/master && stg clean";
+          ls = "series -rId";
+          s = "!stg status";
+          sfp = "!${./sfp.sh}";
+        };
+        diff-opts = "--ext-diff";
       };
       diff = {
         algorithm = "patience";
