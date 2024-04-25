@@ -35,4 +35,4 @@ prompt_stg() {
 	[[ -n "$top" ]] && echo "%K{white}%F{black} stg %f%k%K{green}%F{white} $top %f%k "
 }
 
-export PROMPT=$'\n$(prompt_nix_shell)$(prompt_git_branch)$(prompt_stg_patch)%K{white}%F{black} dir %f%k%K{magenta}%F{white} %~ %f%k \n%F{green}\u03BB%f '
+export PROMPT=$'\n%K{white}%F{black} id %f%k%F{black}%K{cyan} %n@%m %f%k $(prompt_nix_shell)$(prompt_git_branch)$(prompt_stg_patch)%K{white}%F{black} dir %f%k%K{magenta}%F{white} %~ %f%k \n%F{green}\u03BB%f '
