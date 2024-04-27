@@ -23,16 +23,11 @@ prompt_git_branch() {
 
 prompt_stg_patch() {
 	patch=$(stg top 2> /dev/null)
-	[[ -n "$patch" ]] && echo -n "%K{white}%F{black} stg %f%k%K{green}%F{black} $patch %f%k "
+	[[ -n "$patch" ]] && echo -n "%K{white}%F{black} stg %f%k%K{green}%F{black} $patch %f%k " || prompt_git_branch
 }
 
 prompt_nix_shell() {
 	[[ -n "$IN_NIX_SHELL" ]] && echo -n "%K{white}%F{black} nix %f%k%K{yellow}%F{black} $name %f%k "
 }
 
-prompt_stg() {
-	top=$(stg top 2> /dev/null)
-	[[ -n "$top" ]] && echo "%K{white}%F{black} stg %f%k%K{green}%F{white} $top %f%k "
-}
-
-export PROMPT=$'\n%K{white}%F{black} id %f%k%F{black}%K{cyan} %n@%m %f%k $(prompt_nix_shell)$(prompt_git_branch)$(prompt_stg_patch)%K{white}%F{black} dir %f%k%K{magenta}%F{white} %~ %f%k \n%F{green}\u03BB%f '
+export PROMPT=$'\n%K{white}%F{black} id %f%k%F{black}%K{cyan} %n@%m %f%k $(prompt_nix_shell)$(prompt_stg_patch)%K{white}%F{black} dir %f%k%K{magenta}%F{white} %~ %f%k \n%F{green}\u03BB%f '
