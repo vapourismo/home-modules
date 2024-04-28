@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   specialArgs,
   ...
 }: {
@@ -7,9 +8,7 @@
     atuin = specialArgs.inputs.atuin.packages.${pkgs.system}.default.overrideAttrs (old: {
       buildInputs =
         (old.buildInputs or [])
-        ++ [
-          pkgs.darwin.apple_sdk.frameworks.AppKit
-        ];
+        ++ lib.optional pkgs.stdenv.isDarwin pkgs.darwin.apple_sdk.frameworks.AppKit;
     });
   in [
     atuin
