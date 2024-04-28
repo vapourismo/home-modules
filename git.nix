@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{config, ...}: {
   config.programs.git = {
     enable = true;
     userName = "Ole Krüger";
@@ -32,7 +32,7 @@
         algorithm = "patience";
         external = "difft";
       };
-      core.editor = "/Users/ole/.nix-profile/bin/hx";
+      core.editor = "${config.home.homeDirectory}/.nix-profile/bin/hx";
     };
   };
 }
