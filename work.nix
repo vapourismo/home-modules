@@ -12,6 +12,7 @@
     ./zsh.nix
     ./direnv.nix
     ./common-packages.nix
+    ./darwin-defaults.nix
   ];
 
   home = {
