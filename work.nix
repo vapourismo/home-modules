@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./helix.nix
     ./skhd.nix
@@ -13,6 +9,7 @@
     ./direnv.nix
     ./common-packages.nix
     ./darwin-defaults.nix
+    ./jujutsu.nix
   ];
 
   home = {

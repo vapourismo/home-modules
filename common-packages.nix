@@ -9,5 +9,7 @@
     coreutils
     calc
     difftastic
+    watchman
+    wget
   ];
 }
