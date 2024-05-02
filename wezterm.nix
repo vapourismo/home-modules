@@ -111,7 +111,7 @@
         audible_bell = "Disabled",
 
         quick_select_patterns = {
-          "[^\\s(){}\\[\\]]{6,64}",
+          "[^\\s(){}\\[\\]]{4,64}",
         },
 
         leader = { mods = 'CTRL', key = 'a' },
