@@ -1,9 +1,23 @@
 {
+  config,
+  lib,
   pkgs,
   specialArgs,
   ...
 }: {
-  programs.jujutsu = {
+  options.ole.jj = {
+    gpgSignKey = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+    };
+
+    sshSignKey = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+    };
+  };
+
+  config.programs.jujutsu = {
     enable = true;
     package = specialArgs.inputs.jujutsu.packages.${pkgs.system}.default;
     settings = {
@@ -16,9 +30,17 @@
       ui.diff-editor = ":builtin";
       ui.graph.style = "square";
 
-      signing.sign-all = true;
-      signing.backend = "gpg";
-      signing.key = "51462186765EF78CA1560BF192FC24B5225314A9";
+      signing =
+        lib.optionalAttrs (lib.isString config.ole.jj.sshSignKey) {
+          sign-all = true;
+          backend = "ssh";
+          key = config.ole.jj.sshSignKey;
+        }
+        // lib.optionalAttrs (lib.isString config.ole.jj.gpgSignKey) {
+          sign-all = true;
+          backend = "gpg";
+          key = config.ole.jj.gpgSignKey;
+        };
 
       templates = {
         log = "change_comfortable";
