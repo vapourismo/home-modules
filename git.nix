@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   config.programs.git = {
     enable = true;
     userName = "Ole Krüger";
@@ -32,7 +36,15 @@
         algorithm = "patience";
         external = "difft";
       };
-      core.editor = "${config.home.homeDirectory}/.nix-profile/bin/hx";
+      core = {
+        editor = "${config.home.homeDirectory}/.nix-profile/bin/hx";
+        excludesFile = let
+          file = pkgs.writeText "ignore" ''
+            .envrc
+          '';
+        in
+          builtins.toString file;
+      };
     };
   };
 }
