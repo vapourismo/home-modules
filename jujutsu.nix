@@ -27,7 +27,6 @@
       template-aliases = {
         "format_short_id(id)" = "id.shortest()";
         "format_timestamp(timestamp)" = "timestamp.ago()";
-        # "format_short_signature(signature)" = "coalesce(signature.name(), email_placeholder)";
 
         change_compact = ''
           if(root,
@@ -63,7 +62,7 @@
       aliases = {
         ls = ["log" "-r" "summary()"];
         br = ["branch"];
-        remaster = ["rebase" "-d" "master@origin"];
+        retrunk = ["rebase" "-d" "trunk()"];
       };
 
       revsets = {
