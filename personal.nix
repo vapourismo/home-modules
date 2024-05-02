@@ -13,6 +13,7 @@
     ./direnv.nix
     ./common-packages.nix
     ./darwin-defaults.nix
+    ./jujutsu.nix
   ];
 
   ole = {
