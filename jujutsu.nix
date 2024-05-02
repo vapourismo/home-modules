@@ -15,6 +15,11 @@
       type = lib.types.nullOr lib.types.str;
       default = null;
     };
+
+    email = lib.mkOption {
+      type = lib.types.str;
+      default = "git@ole.lol";
+    };
   };
 
   config.programs.jujutsu = {
@@ -24,6 +29,7 @@
       core.fsmonitor = "watchman";
 
       user.name = "Ole Krüger";
+      user.email = config.ole.jj.email;
 
       ui.default-command = ["log" "-r" "current_work()"];
       ui.diff.tool = ["difft" "--color=always" "$left" "$right"];
