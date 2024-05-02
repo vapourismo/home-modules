@@ -39,7 +39,7 @@
         "on_top_trunk(x)" = "trunk()..x";
         "current_work()" = "roots(on_top_trunk(@))::";
         "trunk_merge_base()" = "roots(on_top_trunk(branches()))-";
-        "summary()" = "on_top_trunk(branches()):: | trunk_merge_base() | trunk()";
+        "summary()" = "on_top_trunk(branches()):: | trunk_merge_base() | trunk() | current_work()";
       };
     };
   };
