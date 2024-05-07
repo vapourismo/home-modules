@@ -99,6 +99,8 @@
         ls = ["log" "-r" "summary()"];
         br = ["branch"];
         retrunk = ["rebase" "-d" "trunk()"];
+        si = ["squash" "-i"];
+        sito = ["squash" "-i" "--into"];
       };
 
       revsets = {
