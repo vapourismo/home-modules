@@ -16,6 +16,8 @@
     enable = true;
     package = specialArgs.inputs.helix.packages.${pkgs.system}.default;
 
+    defaultEditor = true;
+
     settings = {
       theme = "catppuccin_mocha";
 
