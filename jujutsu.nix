@@ -52,7 +52,7 @@
         log = "change_comfortable";
         log_node = ''
           coalesce(
-            if(!self, "?"),
+            if(!self, "🮀"),
             if(current_working_copy, "@"),
             if(root, "┴"),
             if(immutable, "●", "○"),
