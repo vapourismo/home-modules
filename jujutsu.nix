@@ -99,6 +99,7 @@
         ls = ["log" "-r" "summary()"];
         br = ["branch"];
         retrunk = ["rebase" "-d" "trunk()"];
+        s = ["squash"];
         si = ["squash" "-i"];
         sito = ["squash" "-i" "--into"];
       };
