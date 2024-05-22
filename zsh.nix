@@ -29,6 +29,7 @@
       alias grep='grep --color=auto'
       alias g=git
       alias s=stg
+      alias c=cargo
 
       # atuin
       eval "$(atuin init zsh)"
