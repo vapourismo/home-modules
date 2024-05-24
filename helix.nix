@@ -22,6 +22,7 @@
       theme = "catppuccin_mocha";
 
       editor = {
+        true-color = true;
         rulers = config.ole.editor.rulers;
         bufferline = "always";
         bufferline-alignment = "center";
