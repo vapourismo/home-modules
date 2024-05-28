@@ -23,7 +23,7 @@
     slot4 = "/Applications/Slack.app";
     editor.rulers = [80 100];
     jj = {
-      gpgSignKey = "51462186765EF78CA1560BF192FC24B5225314A9";
+      gpgSignKey = "E2EF5D72A6FA996563FD44059F593788E8F596AC";
       email = "ole.kruger@trili.tech";
     };
   };
