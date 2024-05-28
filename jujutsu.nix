@@ -98,7 +98,7 @@
       aliases = {
         ls = ["log" "-r" "summary()"];
         br = ["branch"];
-        retrunk = ["rebase" "-d" "trunk()"];
+        retrunk = ["rebase" "--skip-empty" "-d" "trunk()"];
         sq = ["squash"];
         sqto = ["squash" "--into"];
         si = ["squash" "-i"];
