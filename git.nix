@@ -41,6 +41,10 @@
         excludesFile = let
           file = pkgs.writeText "ignore" ''
             .envrc
+            .helix
+            .direnv
+            _build
+            target
           '';
         in
           builtins.toString file;
