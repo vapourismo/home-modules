@@ -99,6 +99,7 @@
         ls = ["log" "-r" "summary()"];
         br = ["branch"];
         retrunk = ["rebase" "--skip-empty" "-d" "trunk()"];
+        retrunk-all = ["rebase" "--skip-empty" "-d" "trunk()" "-b" "all:summary()"];
         sq = ["squash"];
         sqto = ["squash" "--into"];
         si = ["squash" "-i"];
