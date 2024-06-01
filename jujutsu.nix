@@ -104,6 +104,7 @@
         sqto = ["squash" "--into"];
         si = ["squash" "-i"];
         sito = ["squash" "-i" "--into"];
+        wc = ["new" "all:my_heads()"];
       };
 
       revsets = {
@@ -114,6 +115,7 @@
         "on_top_trunk(x)" = "trunk()..x";
         "current_work()" = "roots(on_top_trunk(@))::";
         "summary()" = "on_top_trunk(branches()):: | current_work()";
+        "my_heads()" = "heads(branches())";
       };
     };
   };
