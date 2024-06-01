@@ -113,7 +113,7 @@
       revset-aliases = {
         "on_top_trunk(x)" = "trunk()..x";
         "current_work()" = "roots(on_top_trunk(@))::";
-        "summary()" = "on_top_trunk(mine()):: | current_work()";
+        "summary()" = "on_top_trunk(branches()):: | current_work()";
       };
     };
   };
