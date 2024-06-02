@@ -69,6 +69,11 @@ require("lazy").setup({
       })
     end
   },
+
+  {
+    "mrcjkb/rustaceanvim",
+    lazy = false,
+  }
 })
 
 -- Keys
