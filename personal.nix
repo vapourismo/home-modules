@@ -14,6 +14,7 @@
     ./common-packages.nix
     ./darwin-defaults.nix
     ./jujutsu.nix
+    ./neovim.nix
   ];
 
   ole = {
