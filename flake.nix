@@ -12,6 +12,10 @@
     };
     atuin.url = "github:ellie/atuin";
     jujutsu.url = "github:martinvonz/jj";
+    nvim-lazy = {
+      url = "github:folke/lazy.nvim";
+      flake = false;
+    };
   };
 
   outputs = {

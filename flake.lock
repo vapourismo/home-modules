@@ -233,6 +233,22 @@
         "type": "github"
       }
     },
+    "nvim-lazy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717332800,
+        "narHash": "sha256-Duq2hb1b63jSdZYS7WdH6Y87sF66Psg0HmwzUAc1ztM=",
+        "owner": "folke",
+        "repo": "lazy.nvim",
+        "rev": "b0ba3f9399bf48c86abaa4db1a40bd0b681d5018",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "lazy.nvim",
+        "type": "github"
+      }
+    },
     "omz-nix-shell-plugin": {
       "flake": false,
       "locked": {
@@ -256,6 +272,7 @@
         "home-manager": "home-manager",
         "jujutsu": "jujutsu",
         "nixpkgs": "nixpkgs_4",
+        "nvim-lazy": "nvim-lazy",
         "omz-nix-shell-plugin": "omz-nix-shell-plugin"
       }
     },
