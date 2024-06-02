@@ -4,6 +4,7 @@ local data_dir = vim.fn.stdpath("data")
 -- Config
 vim.opt.termguicolors = true
 vim.opt.number = true
+vim.opt.compatible = false
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
