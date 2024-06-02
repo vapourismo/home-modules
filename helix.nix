@@ -112,6 +112,10 @@
         rust-analyzer = {
           config.check.command = "clippy";
         };
+
+        lua-language-server = {
+          config.Lua.hint.arrayIndex = "Disable";
+        };
       };
 
       language = [
@@ -153,6 +157,10 @@
         }
         {
           name = "jsx";
+          auto-format = true;
+        }
+        {
+          name = "lua";
           auto-format = true;
         }
         {
