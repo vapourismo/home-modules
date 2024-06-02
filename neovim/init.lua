@@ -73,3 +73,4 @@ require("lazy").setup({
 -- Keys
 vim.keymap.set("", "<Space><Space>q", "<cmd>qa<cr>")
 vim.keymap.set("", "<C-s>", "<cmd>write<cr>")
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
