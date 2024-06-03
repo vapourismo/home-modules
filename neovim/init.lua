@@ -5,6 +5,7 @@ local data_dir = vim.fn.stdpath("data")
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.compatible = false
+vim.opt.tabstop = 4
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
@@ -13,81 +14,110 @@ vim.g.loaded_netrwPlugin = 1
 -- Lazy plugin manager
 vim.opt.rtp:prepend(data_dir .. "/lazy/lazy.nvim")
 require("lazy").setup({
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    lazy = false,
-    config = function()
-      vim.cmd.colorscheme("catppuccin-mocha")
-    end,
-  },
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		lazy = false,
+		config = function()
+			vim.cmd.colorscheme("catppuccin-mocha")
+		end,
+	},
 
-  {
-    "nvim-tree/nvim-tree.lua",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup({})
-    end,
-    enabled = false
-  },
+	{
+		"nvim-tree/nvim-tree.lua",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup({})
+		end,
+		enabled = false
+	},
 
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sharkdp/fd",
-    },
-    config = function()
-      local builtin = require('telescope.builtin')
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"sharkdp/fd",
+		},
+		config = function()
+			local builtin = require('telescope.builtin')
 
-      vim.keymap.set("n", "<Space>f", builtin.find_files)
-      vim.keymap.set("n", "<Space>/", builtin.live_grep)
-      vim.keymap.set("n", "<Space>b", builtin.buffers)
-    end
-  },
+			vim.keymap.set("n", "<Space>f", builtin.find_files)
+			vim.keymap.set("n", "<Space>/", builtin.live_grep)
+			vim.keymap.set("n", "<Space>b", builtin.buffers)
+		end
+	},
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+	},
 
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    config = function()
-      require("ibl").setup({
-        indent = {
-          char = "▏"
-        },
-        scope = {
-          enabled = false
-        }
-      })
-    end
-  },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		config = function()
+			require("ibl").setup({
+				indent = {
+					char = "▏"
+				},
+				scope = {
+					enabled = false
+				}
+			})
+		end
+	},
 
-  {
-    "mrcjkb/rustaceanvim",
-    lazy = false,
-  },
+	{
+		"mrcjkb/rustaceanvim",
+		lazy = false,
+	},
 
-  {
-    "folke/flash.nvim",
-    lazy = false,
-    config = function()
-      local flash = require("flash")
+	{
+		"folke/flash.nvim",
+		lazy = false,
+		config = function()
+			local flash = require("flash")
 
-      vim.keymap.set("", "<Space>j", function() flash.jump() end)
-    end
-  },
+			vim.keymap.set("", "<Space>j", function() flash.jump() end)
+		end,
+	},
+
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			local bufferline = require("bufferline")
+			bufferline.setup({
+				options = {
+					style_preset = bufferline.style_preset.minimal,
+					show_buffer_icons = false,
+					show_close_icon = false,
+					show_buffer_close_icons = false,
+				}
+			})
+		end,
+		enabled = false,
+	},
+
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			local lspconfig = require("lspconfig")
+
+			lspconfig.rust_analyzer.setup({})
+			lspconfig.lua_ls.setup({})
+		end
+	}
 })
 
 -- Keys
 vim.keymap.set("", "<Space><Space>q", "<cmd>qa<cr>")
+vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
+vim.keymap.set("", "<Space>c", "<cmd>bd<cr>")
 vim.keymap.set("", "<C-s>", "<cmd>write<cr>")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("v", "v", function() end)
@@ -100,9 +130,13 @@ vim.keymap.set("", "gh", "0")
 vim.keymap.set("", "gs", "_")
 vim.keymap.set("", "gd", vim.lsp.buf.definition)
 vim.keymap.set("", "gD", vim.lsp.buf.declaration)
-vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
+vim.keymap.set("", "bh", "<cmd>bprev<cr>")
+vim.keymap.set("", "bl", "<cmd>bnext<cr>")
 
 -- Autocmds
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  callback = function() vim.lsp.buf.format() end
+	callback = function()
+		vim.lsp.buf.format()
+		vim.diagnostic.show()
+	end
 })
