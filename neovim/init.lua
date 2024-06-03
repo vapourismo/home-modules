@@ -32,6 +32,7 @@ require("lazy").setup({
     config = function()
       require("nvim-tree").setup({})
     end,
+    enabled = false
   },
 
   {
@@ -43,16 +44,15 @@ require("lazy").setup({
     config = function()
       local builtin = require('telescope.builtin')
 
-      vim.keymap.set("n", "<Space>ff", builtin.find_files)
-      vim.keymap.set("n", "<Space>fg", builtin.live_grep)
-      vim.keymap.set("n", "<Space>fb", builtin.buffers)
-      vim.keymap.set("n", "<Space>fh", builtin.help_tags)
+      vim.keymap.set("n", "<Space>f", builtin.find_files)
+      vim.keymap.set("n", "<Space>/", builtin.live_grep)
+      vim.keymap.set("n", "<Space>b", builtin.buffers)
     end
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate"
+    build = ":TSUpdate",
   },
 
   {
@@ -73,10 +73,36 @@ require("lazy").setup({
   {
     "mrcjkb/rustaceanvim",
     lazy = false,
-  }
+  },
+
+  {
+    "folke/flash.nvim",
+    lazy = false,
+    config = function()
+      local flash = require("flash")
+
+      vim.keymap.set("", "<Space>j", function() flash.jump() end)
+    end
+  },
 })
 
 -- Keys
 vim.keymap.set("", "<Space><Space>q", "<cmd>qa<cr>")
 vim.keymap.set("", "<C-s>", "<cmd>write<cr>")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+vim.keymap.set("v", "v", function() end)
+vim.keymap.set("", "<C-l>", "w")
+vim.keymap.set("", "<C-h>", "b")
+vim.keymap.set("", "<C-j>", "}")
+vim.keymap.set("", "<C-k>", "{")
+vim.keymap.set("", "gl", "$")
+vim.keymap.set("", "gh", "0")
+vim.keymap.set("", "gs", "_")
+vim.keymap.set("", "gd", vim.lsp.buf.definition)
+vim.keymap.set("", "gD", vim.lsp.buf.declaration)
+vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
+
+-- Autocmds
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  callback = function() vim.lsp.buf.format() end
+})
