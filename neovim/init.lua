@@ -50,6 +50,10 @@ require("lazy").setup({
 			vim.keymap.set("n", "<Space>f", builtin.find_files)
 			vim.keymap.set("n", "<Space>/", builtin.live_grep)
 			vim.keymap.set("n", "<Space>b", builtin.buffers)
+			vim.keymap.set("n", "<Space>s", builtin.lsp_document_symbols)
+			vim.keymap.set("n", "<Space>S", builtin.lsp_dynamic_workspace_symbols)
+			vim.keymap.set("n", "<Space>D", builtin.diagnostics)
+			vim.keymap.set("n", "gr", builtin.lsp_references)
 		end
 	},
 
@@ -196,6 +200,6 @@ vim.keymap.set("", "bl", "<cmd>bnext<cr>")
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	callback = function()
 		vim.lsp.buf.format()
-		vim.diagnostic.show()
+		-- This doesn't work universally: vim.diagnostic.show()
 	end
 })
