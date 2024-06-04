@@ -43,7 +43,7 @@ require("lazy").setup({
 			"sharkdp/fd",
 		},
 		config = function()
-			local builtin = require('telescope.builtin')
+			local builtin = require("telescope.builtin")
 
 			vim.keymap.set("n", "<Space>f", builtin.find_files)
 			vim.keymap.set("n", "<Space>/", builtin.live_grep)
@@ -74,6 +74,7 @@ require("lazy").setup({
 	{
 		"mrcjkb/rustaceanvim",
 		lazy = false,
+		enabled = false,
 	},
 
 	{
@@ -111,7 +112,51 @@ require("lazy").setup({
 			lspconfig.rust_analyzer.setup({})
 			lspconfig.lua_ls.setup({})
 		end
-	}
+	},
+
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+		},
+		config = function()
+			local cmp = require("cmp")
+
+			cmp.setup({
+				mapping = cmp.mapping.preset.insert({
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<Esc>"] = cmp.mapping.abort(),
+					["<Tab>"] = cmp.mapping.confirm({ select = true }),
+				}),
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+				}, {
+					{ name = "buffer" },
+				})
+			})
+
+			cmp.setup.cmdline({ "/", "?" }, {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = {
+					{ name = "buffer" }
+				}
+			})
+
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" }
+				}, {
+					{ name = "cmdline" }
+				}),
+				matching = { disallow_symbol_nonprefix_matching = false }
+			})
+		end
+	},
 })
 
 -- Keys
@@ -125,8 +170,10 @@ vim.keymap.set("", "<C-l>", "w")
 vim.keymap.set("", "<C-h>", "b")
 vim.keymap.set("", "<C-j>", "}")
 vim.keymap.set("", "<C-k>", "{")
-vim.keymap.set("", "gl", "$")
+vim.keymap.set("", "c", "s")
+vim.keymap.set("", "C", "S")
 vim.keymap.set("", "gh", "0")
+vim.keymap.set("", "gl", "$")
 vim.keymap.set("", "gs", "_")
 vim.keymap.set("", "gd", vim.lsp.buf.definition)
 vim.keymap.set("", "gD", vim.lsp.buf.declaration)
