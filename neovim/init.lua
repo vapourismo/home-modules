@@ -45,6 +45,8 @@ require("lazy").setup({
 			"sharkdp/fd",
 		},
 		config = function()
+			require("telescope").setup({})
+
 			local builtin = require("telescope.builtin")
 
 			vim.keymap.set("n", "<Space>f", builtin.find_files)
@@ -170,6 +172,17 @@ require("lazy").setup({
 				matching = { disallow_symbol_nonprefix_matching = false }
 			})
 		end,
+	},
+
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("lualine").setup({
+				options = {
+					icons_enabled = false
+				}
+			})
+		end
 	},
 })
 
