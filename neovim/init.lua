@@ -6,6 +6,7 @@ vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.compatible = false
 vim.opt.tabstop = 4
+vim.opt.guicursor = "n-sm-v-ve:block,c-ci-i:ver25,cr-r-o:hor20"
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
