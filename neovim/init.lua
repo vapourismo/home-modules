@@ -198,6 +198,8 @@ vim.keymap.set("", "gl", "$")
 vim.keymap.set("", "gs", "_")
 vim.keymap.set("", "gd", vim.lsp.buf.definition)
 vim.keymap.set("", "gD", vim.lsp.buf.declaration)
+vim.keymap.set("", "gj", vim.diagnostic.goto_next)
+vim.keymap.set("", "gk", vim.diagnostic.goto_prev)
 vim.keymap.set("", "bh", "<cmd>bprev<cr>")
 vim.keymap.set("", "bl", "<cmd>bnext<cr>")
 
