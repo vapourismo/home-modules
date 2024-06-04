@@ -20,7 +20,7 @@
     initExtra = ''
       # env vars
       export LESS=-FRX
-      export EDITOR=hx
+      export EDITOR=nvim
       export MAKEFLAGS=-j12
 
       # aliases

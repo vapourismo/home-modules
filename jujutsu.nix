@@ -35,6 +35,7 @@
       ui.diff.tool = ["difft" "--color=always" "$left" "$right"];
       ui.diff-editor = ":builtin";
       ui.graph.style = "square";
+	  ui.editor = "nvim";
 
       signing =
         lib.optionalAttrs (lib.isString config.ole.jj.sshSignKey) {

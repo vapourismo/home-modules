@@ -37,7 +37,7 @@
         external = "difft";
       };
       core = {
-        editor = "${config.home.homeDirectory}/.nix-profile/bin/hx";
+        editor = "nvim";
         excludesFile = let
           file = pkgs.writeText "ignore" ''
             .envrc
