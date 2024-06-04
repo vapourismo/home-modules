@@ -149,6 +149,7 @@ require("lazy").setup({
 					["<Tab>"] = cmp.mapping.confirm({ select = true }),
 				}),
 				sources = cmp.config.sources({
+					{ name = "copilot" },
 					{ name = "nvim_lsp" },
 				}, {
 					{ name = "buffer" },
@@ -184,6 +185,25 @@ require("lazy").setup({
 			})
 		end
 	},
+
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
+		end,
+	},
+
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup({})
+		end
+	}
 })
 
 -- Keys
