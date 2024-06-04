@@ -45,6 +45,7 @@
             .direnv
             _build
             target
+            .luarc.json
           '';
         in
           builtins.toString file;
