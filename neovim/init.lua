@@ -234,8 +234,10 @@ vim.keymap.set("", "gd", vim.lsp.buf.definition)
 vim.keymap.set("", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("", "gj", vim.diagnostic.goto_next)
 vim.keymap.set("", "gk", vim.diagnostic.goto_prev)
-vim.keymap.set("", "bh", "<cmd>bprev<cr>")
+vim.keymap.set("", "bj", "<cmd>bnext<cr>")
 vim.keymap.set("", "bl", "<cmd>bnext<cr>")
+vim.keymap.set("", "bk", "<cmd>bprev<cr>")
+vim.keymap.set("", "bh", "<cmd>bprev<cr>")
 
 -- Autocmds
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
