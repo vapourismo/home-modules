@@ -35,7 +35,7 @@
       ui.diff.tool = ["difft" "--color=always" "$left" "$right"];
       ui.diff-editor = ":builtin";
       ui.graph.style = "square";
-	  ui.editor = "nvim";
+      ui.editor = "nvim";
 
       signing =
         lib.optionalAttrs (lib.isString config.ole.jj.sshSignKey) {
@@ -50,7 +50,7 @@
         };
 
       templates = {
-        log = "change_comfortable";
+        log = "change_compact";
         log_node = ''
           coalesce(
             if(!self, "🮀"),
