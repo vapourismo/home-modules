@@ -122,7 +122,13 @@ require("lazy").setup({
 
 			lspconfig.rust_analyzer.setup({})
 			lspconfig.lua_ls.setup({})
-			lspconfig.nil_ls.setup({})
+			lspconfig.nil_ls.setup({
+				settings = {
+					["nil"] = {
+						formatting = { command = { "alejandra" } }
+					}
+				}
+			})
 		end
 	},
 
