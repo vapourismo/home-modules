@@ -135,6 +135,7 @@ require("lazy").setup({
 					}
 				}
 			})
+			lspconfig.taplo.setup({})
 		end
 	},
 
