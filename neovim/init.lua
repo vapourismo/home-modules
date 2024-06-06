@@ -147,7 +147,7 @@ require("lazy").setup({
 			cmp.setup({
 				mapping = cmp.mapping.preset.insert({
 					["<C-Space>"] = cmp.mapping.complete(),
-					-- ["<Esc>"] = cmp.mapping.abort(),
+					["<Enter>"] = cmp.mapping.confirm({ select = true }),
 					["<Tab>"] = cmp.mapping.confirm({ select = true }),
 				}),
 				sources = cmp.config.sources({
