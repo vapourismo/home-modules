@@ -279,3 +279,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 		-- This doesn't work universally: vim.diagnostic.show()
 	end
 })
+
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+	callback = function()
+		vim.cmd("setlocal nonumber")
+	end
+})
