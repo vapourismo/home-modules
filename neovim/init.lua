@@ -205,7 +205,11 @@ require("lazy").setup({
 		config = function()
 			require("copilot_cmp").setup({})
 		end
-	}
+	},
+
+	{
+		"famiu/bufdelete.nvim"
+	},
 })
 
 -- Keys
@@ -213,7 +217,7 @@ vim.keymap.set("", "<Space><Space>q", "<cmd>qa<cr>")
 vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
 vim.keymap.set("", "<Space>a", vim.lsp.buf.code_action)
 vim.keymap.set("", "<Space>r", vim.lsp.buf.rename)
-vim.keymap.set("", "<Space>c", "<cmd>bd<cr>")
+vim.keymap.set("", "<Space>c", "<cmd>:Bdelete<cr>")
 vim.keymap.set("", "<Space>y", '"+y')
 vim.keymap.set("", "<Space>p", '"+p')
 vim.keymap.set("", "<Space>P", '"+P')
@@ -240,6 +244,7 @@ vim.keymap.set("", "bj", "<cmd>bnext<cr>")
 vim.keymap.set("", "bl", "<cmd>tabnext<cr>")
 vim.keymap.set("", "bk", "<cmd>bprev<cr>")
 vim.keymap.set("", "bh", "<cmd>tabprev<cr>")
+vim.keymap.set("", "bq", "<cmd>:Bdelete<cr>")
 vim.keymap.set("", "<M-l>", "<C-w>l")
 vim.keymap.set("", "<M-j>", "<C-w>j")
 vim.keymap.set("", "<M-k>", "<C-w>k")
