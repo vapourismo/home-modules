@@ -240,6 +240,18 @@ vim.keymap.set("", "bj", "<cmd>bnext<cr>")
 vim.keymap.set("", "bl", "<cmd>tabnext<cr>")
 vim.keymap.set("", "bk", "<cmd>bprev<cr>")
 vim.keymap.set("", "bh", "<cmd>tabprev<cr>")
+vim.keymap.set("", "<M-l>", "<C-w>l")
+vim.keymap.set("", "<M-j>", "<C-w>j")
+vim.keymap.set("", "<M-k>", "<C-w>k")
+vim.keymap.set("", "<M-h>", "<C-w>h")
+vim.keymap.set("i", "<M-l>", "<C-o><C-w>l<Esc>")
+vim.keymap.set("i", "<M-j>", "<C-o><C-w>j<Esc>")
+vim.keymap.set("i", "<M-k>", "<C-o><C-w>k<Esc>")
+vim.keymap.set("i", "<M-h>", "<C-o><C-w>h<Esc>")
+vim.keymap.set("", "<M-L>", "<cmd>vertical resize +1<cr>")
+vim.keymap.set("", "<M-J>", "<cmd>resize +1<cr>")
+vim.keymap.set("", "<M-K>", "<cmd>resize -1<cr>")
+vim.keymap.set("", "<M-H>", "<cmd>vertical resize -1<cr>")
 
 -- Autocmds
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
