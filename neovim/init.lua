@@ -221,7 +221,10 @@ require("lazy").setup({
 })
 
 -- Keys
-vim.keymap.set("", "<Space><Space>q", "<cmd>qa<cr>")
+vim.keymap.set("", "<Space><Space>q", function()
+	vim.cmd("mksession ~/.nvim-last-session")
+	vim.cmd("qa")
+end)
 vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
 vim.keymap.set("", "<Space>a", vim.lsp.buf.code_action)
 vim.keymap.set("", "<Space>r", vim.lsp.buf.rename)
