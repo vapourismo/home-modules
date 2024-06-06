@@ -136,6 +136,7 @@ require("lazy").setup({
 				}
 			})
 			lspconfig.taplo.setup({})
+			lspconfig.ocamllsp.setup({})
 		end
 	},
 
