@@ -37,7 +37,7 @@
         external = "difft";
       };
       core = {
-        editor = "nvim";
+        editor = "nvr --remote-wait";
         excludesFile = let
           file = pkgs.writeText "ignore" ''
             .envrc

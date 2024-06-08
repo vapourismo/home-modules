@@ -1,4 +1,8 @@
-{specialArgs, ...}: {
+{
+  specialArgs,
+  pkgs,
+  ...
+}: {
   programs.neovim = {
     enable = true;
 
@@ -7,6 +11,14 @@
 
     withNodeJs = true;
   };
+
+  home.packages = [
+    pkgs.neovim-remote
+  ];
+
+  programs.zsh.initExtra = ''
+    alias nvim='nvim --listen /tmp/nvimsocket'
+  '';
 
   home.file = {
     ".config/nvim" = {
