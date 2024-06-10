@@ -12,8 +12,6 @@
     htop
     jq
     nil
-    nil
-    nix
     nixos-rebuild
     pinentry
     ripgrep

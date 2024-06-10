@@ -35,7 +35,6 @@
       tree
       ripgrep
       gnupg
-      nix
       taskwarrior
       taskwarrior-tui
     ];
