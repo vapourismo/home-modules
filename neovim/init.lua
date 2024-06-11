@@ -167,17 +167,38 @@ require("lazy").setup({
 			local cmp = require("cmp")
 
 			cmp.setup({
+				preselect = cmp.PreselectMode.None,
 				mapping = cmp.mapping.preset.insert({
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<Enter>"] = cmp.mapping.confirm({ select = true }),
-					["<Tab>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping.select_next_item({
+						behavior = cmp.SelectBehavior.Insert
+					}),
+					["<C-j>"] = cmp.mapping.select_next_item({
+						behavior = cmp.SelectBehavior.Insert
+					}),
+					["<C-n>"] = cmp.mapping.select_next_item({
+						behavior = cmp.SelectBehavior.Insert
+					}),
+					["<S-Tab>"] = cmp.mapping.select_prev_item({
+						behavior = cmp.SelectBehavior.Insert
+					}),
+					["<C-k>"] = cmp.mapping.select_prev_item({
+						behavior = cmp.SelectBehavior.Insert
+					}),
+					["<C-p>"] = cmp.mapping.select_prev_item({
+						behavior = cmp.SelectBehavior.Insert
+					}),
 				}),
-				sources = cmp.config.sources({
-					{ name = "copilot" },
-					{ name = "nvim_lsp" },
-				}, {
-					{ name = "buffer" },
-				})
+				sources = cmp.config.sources(
+					{
+						{ name = "copilot" },
+						{ name = "nvim_lsp" },
+					},
+					{
+						{ name = "buffer" },
+					}
+				),
 			})
 
 			cmp.setup.cmdline({ "/", "?" }, {
