@@ -12,8 +12,9 @@
     withNodeJs = true;
   };
 
-  home.packages = [
-    pkgs.neovim-remote
+  home.packages = with pkgs; [
+    neovim-remote
+    lua-language-server
   ];
 
   programs.zsh.initExtra = ''
