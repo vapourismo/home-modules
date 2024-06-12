@@ -8,6 +8,9 @@ vim.opt.compatible = false
 vim.opt.tabstop = 4
 vim.opt.guicursor = "n-sm-v-ve:block,c-ci-i:ver25,cr-r-o:hor20"
 vim.opt.colorcolumn = "100,120"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
