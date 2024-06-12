@@ -140,7 +140,8 @@ require("lazy").setup({
 			lspconfig.rust_analyzer.setup({
 				settings = {
 					["rust-analyzer"] = {
-						check = { command = "clippy" }
+						check = { command = "clippy" },
+						cargo = { features = "all" }
 					}
 				}
 			})
