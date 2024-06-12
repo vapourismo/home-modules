@@ -244,6 +244,14 @@ require("lazy").setup({
 					lualine_y = { "diagnostics" },
 					lualine_z = { file_name, "location" }
 				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = {},
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = { file_name, "location" }
+				},
 			})
 		end
 	},
