@@ -226,10 +226,24 @@ require("lazy").setup({
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
-			require("lualine").setup({
+			local lualine = require("lualine")
+
+			local function file_name()
+				return vim.fn.expand("%")
+			end
+
+			lualine.setup({
 				options = {
 					icons_enabled = false
-				}
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff" },
+					lualine_c = {},
+					lualine_x = {},
+					lualine_y = { "diagnostics" },
+					lualine_z = { file_name, "location" }
+				},
 			})
 		end
 	},
