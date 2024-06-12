@@ -279,6 +279,14 @@ require("lazy").setup({
 	{
 		"famiu/bufdelete.nvim"
 	},
+
+	{
+		"aznhe21/actions-preview.nvim",
+		config = function()
+			local actions_preview = require("actions-preview")
+			vim.keymap.set("", "<Space>a", actions_preview.code_actions)
+		end,
+	},
 })
 
 -- Keys
@@ -287,7 +295,6 @@ vim.keymap.set("", "<Space><Space>q", function()
 	vim.cmd("qa")
 end)
 vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
-vim.keymap.set("", "<Space>a", vim.lsp.buf.code_action)
 vim.keymap.set("", "<Space>r", vim.lsp.buf.rename)
 vim.keymap.set("", "<Space>c", "<cmd>:Bdelete<cr>")
 vim.keymap.set("", "<Space>y", '"+y')
