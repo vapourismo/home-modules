@@ -25,6 +25,18 @@ require("lazy").setup({
 		priority = 1000,
 		lazy = false,
 		config = function()
+			local catppuccin = require("catppuccin")
+			catppuccin.setup({
+				integrations = {
+					native_lsp = {
+						enabled = true,
+						inlay_hints = {
+							background = false,
+						},
+					},
+				}
+			})
+
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
@@ -138,6 +150,7 @@ require("lazy").setup({
 			local lspconfig = require("lspconfig")
 
 			lspconfig.rust_analyzer.setup({
+				inlay_hints = { enabled = true },
 				settings = {
 					["rust-analyzer"] = {
 						check = { command = "clippy" },
@@ -345,6 +358,12 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	callback = function()
 		vim.lsp.buf.format()
 		-- This doesn't work universally: vim.diagnostic.show()
+	end
+})
+
+vim.api.nvim_create_autocmd({ "LspAttach" }, {
+	callback = function()
+		vim.lsp.inlay_hint.enable(true)
 	end
 })
 
