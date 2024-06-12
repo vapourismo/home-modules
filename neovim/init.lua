@@ -229,7 +229,7 @@ require("lazy").setup({
 			local lualine = require("lualine")
 
 			local function file_name()
-				return vim.fn.expand("%")
+				return vim.fn.expand("%:.")
 			end
 
 			lualine.setup({
