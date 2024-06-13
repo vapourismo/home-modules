@@ -188,7 +188,9 @@ require("lazy").setup({
 				preselect = cmp.PreselectMode.None,
 				mapping = cmp.mapping.preset.insert({
 					["<C-Space>"] = cmp.mapping.complete(),
-					["<Enter>"] = cmp.mapping.confirm({ select = true }),
+					["<Enter>"] = cmp.mapping.confirm({
+						select = false
+					}),
 					["<Tab>"] = cmp.mapping.select_next_item({
 						behavior = cmp.SelectBehavior.Insert
 					}),
