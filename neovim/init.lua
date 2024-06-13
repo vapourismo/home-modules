@@ -154,7 +154,8 @@ require("lazy").setup({
 				settings = {
 					["rust-analyzer"] = {
 						check = { command = "clippy" },
-						cargo = { features = "all" }
+						cargo = { features = "all" },
+						imports = { granularity = { enforce = true } },
 					}
 				}
 			})
