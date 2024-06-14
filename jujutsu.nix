@@ -120,6 +120,9 @@
         "current_work()" = "roots(on_top_trunk(@))::";
         "summary()" = "on_top_trunk(branches()):: | current_work()";
         "my_heads()" = "heads(branches())";
+        "next_branch(x)" = "heads(x:: & branches())";
+        "prev_branch(x)" = "heads(::x & branches())";
+        "branch_contents(x)" = "prev_branch(x-)..next_branch(x)";
       };
     };
   };
