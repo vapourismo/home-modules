@@ -37,6 +37,8 @@
       ui.graph.style = "square";
       ui.editor = "nvim";
 
+      git.protect-local-branches = true;
+
       signing =
         lib.optionalAttrs (lib.isString config.ole.jj.sshSignKey) {
           sign-all = true;

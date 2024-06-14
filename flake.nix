@@ -11,7 +11,7 @@
       flake = false;
     };
     atuin.url = "github:ellie/atuin";
-    jujutsu.url = "github:martinvonz/jj";
+    jujutsu.url = "github:vapourismo/jj";
     nvim-lazy = {
       url = "github:folke/lazy.nvim";
       flake = false;
