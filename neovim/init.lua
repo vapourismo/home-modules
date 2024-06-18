@@ -212,7 +212,6 @@ require("lazy").setup({
 				}),
 				sources = cmp.config.sources(
 					{
-						{ name = "copilot" },
 						{ name = "nvim_lsp" },
 					},
 					{
@@ -279,7 +278,10 @@ require("lazy").setup({
 		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
-				suggestion = { enabled = false },
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+				},
 				panel = { enabled = false },
 			})
 		end,
@@ -289,7 +291,8 @@ require("lazy").setup({
 		"zbirenbaum/copilot-cmp",
 		config = function()
 			require("copilot_cmp").setup({})
-		end
+		end,
+		enabled = false,
 	},
 
 	{
