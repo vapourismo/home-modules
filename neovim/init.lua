@@ -55,6 +55,7 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"sharkdp/fd",
+			"BurntSushi/ripgrep",
 		},
 		config = function()
 			local actions = require("telescope.actions")
