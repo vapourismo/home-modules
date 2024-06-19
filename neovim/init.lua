@@ -241,6 +241,7 @@ require("lazy").setup({
 
 	{
 		"nvim-lualine/lualine.nvim",
+		dependencies = { "arkav/lualine-lsp-progress" },
 		config = function()
 			local lualine = require("lualine")
 
@@ -255,7 +256,7 @@ require("lazy").setup({
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff" },
-					lualine_c = {},
+					lualine_c = { "lsp_progress" },
 					lualine_x = {},
 					lualine_y = { "diagnostics" },
 					lualine_z = { file_name, "location" }
