@@ -83,6 +83,8 @@ require("lazy").setup({
 			vim.keymap.set("n", "<Space>S", builtin.lsp_dynamic_workspace_symbols)
 			vim.keymap.set("n", "<Space>D", builtin.diagnostics)
 			vim.keymap.set("n", "gr", builtin.lsp_references)
+			vim.keymap.set("n", "gd", builtin.lsp_definitions)
+			vim.keymap.set("n", "gt", builtin.lsp_type_definitions)
 		end
 	},
 
@@ -335,7 +337,6 @@ vim.keymap.set("", "C", "S")
 vim.keymap.set("", "gh", "0")
 vim.keymap.set("", "gl", "g_")
 vim.keymap.set("", "gs", "_")
-vim.keymap.set("", "gd", vim.lsp.buf.definition)
 vim.keymap.set("", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("", "gj", vim.diagnostic.goto_next)
 vim.keymap.set("", "gk", vim.diagnostic.goto_prev)
