@@ -13,13 +13,8 @@
   };
 
   home.packages = with pkgs; [
-    neovim-remote
     lua-language-server
   ];
-
-  programs.zsh.initExtra = ''
-    alias nvim='nvim --listen /tmp/nvimsocket'
-  '';
 
   home.file = {
     ".config/nvim" = {
