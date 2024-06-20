@@ -42,6 +42,15 @@ require("lazy").setup({
 	},
 
 	{
+		"nvim-tree/nvim-tree.lua",
+		lazy = false,
+		config = function()
+			require("nvim-tree").setup({})
+		end,
+		enabled = false
+	},
+
+	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -107,6 +116,12 @@ require("lazy").setup({
 	},
 
 	{
+		"mrcjkb/rustaceanvim",
+		lazy = false,
+		enabled = false,
+	},
+
+	{
 		"folke/flash.nvim",
 		lazy = false,
 		config = function()
@@ -114,6 +129,22 @@ require("lazy").setup({
 
 			vim.keymap.set("", "<Space>j", function() flash.jump() end)
 		end,
+	},
+
+	{
+		"akinsho/bufferline.nvim",
+		config = function()
+			local bufferline = require("bufferline")
+			bufferline.setup({
+				options = {
+					style_preset = bufferline.style_preset.minimal,
+					show_buffer_icons = false,
+					show_close_icon = false,
+					show_buffer_close_icons = false,
+				}
+			})
+		end,
+		enabled = false,
 	},
 
 	{
@@ -258,6 +289,14 @@ require("lazy").setup({
 				panel = { enabled = false },
 			})
 		end,
+	},
+
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup({})
+		end,
+		enabled = false,
 	},
 
 	{
