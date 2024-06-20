@@ -1,6 +1,5 @@
 {config, ...}: {
   imports = [
-    ./helix.nix
     ./skhd.nix
     ./wezterm.nix
     ./git.nix

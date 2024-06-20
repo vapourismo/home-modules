@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   config.programs.git = {
     enable = true;
     userName = "Ole Krüger";
@@ -41,7 +37,6 @@
         excludesFile = let
           file = pkgs.writeText "ignore" ''
             .envrc
-            .helix
             .direnv
             _build
             target

@@ -4,13 +4,13 @@
   ...
 }: {
   imports = [
-    ./helix.nix
     ./wezterm.nix
     ./git.nix
     ./nixpkgs.nix
     ./zsh.nix
     ./direnv.nix
     ./common-packages.nix
+    ./neovim.nix
   ];
 
   home = {
