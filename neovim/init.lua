@@ -271,6 +271,35 @@ require("lazy").setup({
 			vim.keymap.set("", "<Space>a", actions_preview.code_actions)
 		end,
 	},
+
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000,
+		config = true,
+	},
+
+	{
+		"nvim-neorg/neorg",
+		dependencies = {
+			"vhyrro/luarocks.nvim"
+		},
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {},
+					["core.concealer"] = {},
+					["core.dirman"] = {
+						config = {
+							workspaces = {
+								main = "~/Neorg",
+							},
+							default_workspace = "main",
+						},
+					},
+				},
+			})
+		end,
+	}
 })
 
 -- Keys

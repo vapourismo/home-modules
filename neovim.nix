@@ -14,6 +14,8 @@
 
   home.packages = with pkgs; [
     lua-language-server
+    luajit
+    luarocks
   ];
 
   home.file = {
