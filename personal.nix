@@ -10,6 +10,7 @@
     ./darwin-defaults.nix
     ./jujutsu.nix
     ./neovim.nix
+    ./cargo.nix
   ];
 
   ole = {
