@@ -16,6 +16,11 @@ vim.opt.foldenable = false
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Configure diagnostics
+vim.diagnostic.config({
+	virtual_text = false
+})
+
 -- Lazy plugin manager
 vim.opt.rtp:prepend(data_dir .. "/lazy/lazy.nvim")
 require("lazy").setup({
