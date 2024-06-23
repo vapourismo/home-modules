@@ -34,6 +34,10 @@ require("lazy").setup({
 							background = false,
 						},
 					},
+				},
+				no_italic = true,
+				styles = {
+					comments = { "bold" }
 				}
 			})
 
