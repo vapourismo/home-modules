@@ -11,6 +11,7 @@ vim.opt.colorcolumn = "100,120"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
+vim.opt.wrap = false
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
