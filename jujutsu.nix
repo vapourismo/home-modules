@@ -118,8 +118,10 @@
         "top" = "heads(@-:: ~ @)";
         "on_top_trunk(x)" = "trunk()..x";
         "current_work()" = "roots(on_top_trunk(@))::";
-        "summary()" = "on_top_trunk(branches()):: | current_work()";
-        "my_heads()" = "heads(branches())";
+        "my_branch_work()" = "on_top_trunk(branches())::";
+        "my_anon_work()" = "latest(..trunk(), 500):: & mine() & mutable()";
+        "summary()" = "my_branch_work() | my_anon_work() | current_work()";
+        "my_heads()" = "heads(summary())";
         "next_branch(x)" = "heads(x:: & branches())";
         "prev_branch(x)" = "heads(::x & branches())";
         "branch_contents(x)" = "prev_branch(x-)..next_branch(x)";
