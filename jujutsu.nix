@@ -34,7 +34,7 @@
       ui.default-command = ["log" "-r" "current_work()"];
       ui.diff.tool = ["difft" "--color=always" "$left" "$right"];
       ui.diff-editor = ":builtin";
-      ui.graph.style = "square";
+      ui.graph.style = "curved";
       ui.editor = "nvim";
 
       git.protect-local-branches = true;
