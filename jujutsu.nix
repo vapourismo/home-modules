@@ -108,6 +108,8 @@
         si = ["squash" "-i"];
         sito = ["squash" "-i" "--into"];
         wc = ["new" "all:my_heads()"];
+        push = ["git" "push" "-r" "all:current_work()"];
+        push-all = ["git" "push" "--all"];
       };
 
       revsets = {
