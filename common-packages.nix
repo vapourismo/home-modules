@@ -17,7 +17,7 @@ with pkgs; {
       nixos-rebuild
       ripgrep
       stgit
-      taskwarrior
+      taskwarrior3
       taskwarrior-tui
       tree
       vim
