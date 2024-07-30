@@ -79,7 +79,6 @@
                   branches,
                   tags,
                   working_copies,
-                  git_head,
                   format_short_commit_id(commit_id),
                   format_timestamp(committer.timestamp()),
                   format_short_signature(author),
