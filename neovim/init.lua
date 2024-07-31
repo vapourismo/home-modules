@@ -19,7 +19,8 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Configure diagnostics
 vim.diagnostic.config({
-	virtual_text = false
+	virtual_text = false,
+	severity_sort = true,
 })
 
 -- Lazy plugin manager
