@@ -12,6 +12,9 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 vim.opt.wrap = false
+vim.opt.signcolumn = "yes"
+
+vim.go.ignorecase = true
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
@@ -123,7 +126,14 @@ require("lazy").setup({
 		config = function()
 			local flash = require("flash")
 
-			vim.keymap.set("", "<Space>j", function() flash.jump() end)
+			vim.keymap.set("", "<Space>j", function()
+				flash.jump({
+					search = {
+						mode = "fuzzy"
+					}
+				})
+			end)
+			vim.keymap.set("", "mt", function() flash.treesitter() end)
 		end,
 	},
 
