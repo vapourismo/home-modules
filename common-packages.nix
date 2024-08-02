@@ -37,6 +37,8 @@ in {
       vim
       watchman
       wget
+      fd
+      tree-sitter
     ]
     ++ lib.optional stdenv.isDarwin pinentry_mac;
 }
