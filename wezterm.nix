@@ -81,7 +81,7 @@
         font_size = ${builtins.toString config.ole.terminal.fontSize},
 
         enable_tab_bar = true,
-        use_fancy_tab_bar = true,
+        use_fancy_tab_bar = false,
 
         native_macos_fullscreen_mode = true,
 
