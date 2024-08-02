@@ -7,12 +7,12 @@
   options.ole = {
     slot1 = lib.mkOption {
       type = lib.types.str;
-      default = "~/Applications/Neovide.app";
+      default = "${config.home.homeDirectory}/Applications/Neovide.app";
     };
 
     slot2 = lib.mkOption {
       type = lib.types.str;
-      default = "~/.nix-profile/Applications/WezTerm.app";
+      default = "${config.home.homeDirectory}/.nix-profile/Applications/WezTerm.app";
     };
 
     slot3 = lib.mkOption {
