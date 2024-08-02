@@ -36,6 +36,15 @@ if vim.g.neovide then
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_fullscreen = true
 	vim.g.neovide_input_macos_option_key_is_meta = "only_left"
+
+	vim.keymap.set("", "<D-l>", "<C-w>l")
+	vim.keymap.set("", "<D-j>", "<C-w>j")
+	vim.keymap.set("", "<D-k>", "<C-w>k")
+	vim.keymap.set("", "<D-h>", "<C-w>h")
+	vim.keymap.set("", "<D-L>", "<cmd>vertical resize +1<cr>")
+	vim.keymap.set("", "<D-J>", "<cmd>resize +1<cr>")
+	vim.keymap.set("", "<D-K>", "<cmd>resize -1<cr>")
+	vim.keymap.set("", "<D-H>", "<cmd>vertical resize -1<cr>")
 end
 
 -- Lazy plugin manager
