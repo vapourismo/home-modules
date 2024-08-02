@@ -27,6 +27,17 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
+-- Neovide
+if vim.g.neovide then
+	vim.o.guifont = "Iosevka Term SS02:h13"
+	vim.g.neovide_scroll_animation_length = 0.05
+	vim.g.neovide_position_animation_length = 0.1
+	vim.g.neovide_cursor_animation_length = 0
+	vim.g.neovide_hide_mouse_when_typing = true
+	vim.g.neovide_fullscreen = true
+	vim.g.neovide_input_macos_option_key_is_meta = "only_left"
+end
+
 -- Lazy plugin manager
 vim.opt.rtp:prepend(data_dir .. "/lazy/lazy.nvim")
 require("lazy").setup({
