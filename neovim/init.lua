@@ -13,6 +13,7 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 vim.opt.wrap = false
 vim.opt.signcolumn = "yes"
+vim.opt.cursorline = true
 
 vim.go.ignorecase = true
 
