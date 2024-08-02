@@ -14,7 +14,6 @@
 
   home.packages = with pkgs; [
     lua-language-server
-    neovide
   ];
 
   home.file = {
