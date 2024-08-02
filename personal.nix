@@ -14,6 +14,7 @@
   ];
 
   ole = {
+    slot1 = "~/.nix-profile/Applications/WezTerm.app";
     slot3 = "/Applications/Arc.app";
     slot4 = "/Applications/Todoist.app";
     jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";

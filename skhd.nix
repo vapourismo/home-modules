@@ -5,6 +5,16 @@
   ...
 }: {
   options.ole = {
+    slot1 = lib.mkOption {
+      type = lib.types.str;
+      default = "~/Applications/Neovide.app";
+    };
+
+    slot2 = lib.mkOption {
+      type = lib.types.str;
+      default = "~/.nix-profile/Applications/WezTerm.app";
+    };
+
     slot3 = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
       default = null;
@@ -29,20 +39,11 @@
   config.home = {
     packages = [pkgs.skhd];
 
-    file.".skhdrc" = let
-      weztermApp = "${config.programs.wezterm.package}/Applications/WezTerm.app";
-      weztermCli = "${config.programs.wezterm.package}/bin/wezterm";
-    in {
+    file.".skhdrc" = {
       text = ''
-        cmd - 1 [
-            "wezterm" ~
-            * : open -a ${weztermApp} && ${weztermCli} cli activate-tab --tab-index 0
-        ]
+        cmd - 1 : open -a ${lib.strings.escapeShellArg config.ole.slot1}
 
-        cmd - 2 [
-            "wezterm" ~
-            * : open -a ${weztermApp} && ${weztermCli} cli activate-tab --tab-index 1
-        ]
+        cmd - 2 : open -a ${lib.strings.escapeShellArg config.ole.slot2}
 
         ${lib.optionalString (lib.isString config.ole.slot3) "cmd - 3 : open -a ${lib.strings.escapeShellArg config.ole.slot3}"}
 
