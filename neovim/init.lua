@@ -147,14 +147,18 @@ require("lazy").setup({
 		config = function()
 			local flash = require("flash")
 
+			flash.setup({
+				search = {
+					multi_window = false
+				}
+			})
+
 			vim.keymap.set("", "<Space>j", function()
-				flash.jump({
-					search = {
-						mode = "fuzzy"
-					}
-				})
+				flash.jump({ search = { mode = "fuzzy" } })
 			end)
-			vim.keymap.set("", "mt", function() flash.treesitter() end)
+			vim.keymap.set("", "mt", function()
+				flash.treesitter()
+			end)
 		end,
 	},
 
