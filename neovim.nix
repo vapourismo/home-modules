@@ -14,7 +14,12 @@
 
   home.packages = with pkgs; [
     lua-language-server
+    neovim-remote
   ];
+
+  home.sessionVariables = {
+    EDITOR = "nvr --remote-wait-silent";
+  };
 
   home.file = {
     ".config/nvim" = {

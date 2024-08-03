@@ -35,7 +35,6 @@
       ui.diff.tool = ["difft" "--color=always" "$left" "$right"];
       ui.diff-editor = ":builtin";
       ui.graph.style = "curved";
-      ui.editor = "nvim";
 
       git.protect-local-branches = true;
 

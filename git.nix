@@ -33,7 +33,6 @@
         external = "difft";
       };
       core = {
-        editor = "nvim";
         excludesFile = let
           file = pkgs.writeText "ignore" ''
             .envrc
