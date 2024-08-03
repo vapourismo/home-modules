@@ -400,3 +400,10 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 		vim.cmd.wincmd("=")
 	end
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "gitcommit", "gitrebase", "gitconfig" },
+	callback = function()
+		vim.cmd("set bufhidden=delete")
+	end
+})
