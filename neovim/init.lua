@@ -109,10 +109,14 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 			"sharkdp/fd",
 			"BurntSushi/ripgrep",
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
 		config = function()
+			local telescope = require("telescope")
 			local actions = require("telescope.actions")
-			require("telescope").setup({
+			local builtin = require("telescope.builtin")
+
+			telescope.setup({
 				defaults = {
 					mappings = {
 						i = {
@@ -127,7 +131,7 @@ require("lazy").setup({
 				}
 			})
 
-			local builtin = require("telescope.builtin")
+			telescope.load_extension("fzf")
 
 			vim.keymap.set("n", "<Space>f", builtin.find_files)
 			vim.keymap.set("n", "<Space>/", builtin.live_grep)
