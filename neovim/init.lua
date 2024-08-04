@@ -350,9 +350,12 @@ require("lazy").setup({
 				line = function(line)
 					local tabs = line.tabs().foreach(function(tab)
 						local style = tab.is_current() and "TabLineSel" or "TabLine"
+						local style_bg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(style)), "bg#")
+
 						return {
 							line.sep("", style, "TabLineFill"),
 							tab.number(),
+							{ "", hl = { fg = "#333333", bg = style_bg } },
 							tab.name(),
 							line.sep("", style, "TabLineFill"),
 							hl = style,
