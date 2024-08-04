@@ -370,6 +370,16 @@ require("lazy").setup({
 	},
 })
 
+-- Terminal mode
+vim.keymap.set("t", "<D-Esc>", "<C-\\><C-n>", { remap = false })
+
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+	callback = function()
+		vim.cmd.setlocal("nonumber")
+		vim.cmd.setlocal("signcolumn=no")
+	end
+})
+
 -- Keys
 vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
 vim.keymap.set("", "<Space>r", vim.lsp.buf.rename)
@@ -377,8 +387,6 @@ vim.keymap.set("", "<Space>y", '"+y')
 vim.keymap.set("", "<Space>p", '"+p')
 vim.keymap.set("", "<Space>P", '"+P')
 vim.keymap.set("", "<C-s>", "<cmd>write<cr>")
-vim.keymap.set("t", "<D-Esc>", "<Esc>", { remap = false })
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("v", "v", function() end)
 vim.keymap.set("n", "<Esc>", function()
 	vim.cmd.noh()
@@ -439,12 +447,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
 	callback = function()
 		vim.lsp.inlay_hint.enable(true)
-	end
-})
-
-vim.api.nvim_create_autocmd({ "TermOpen" }, {
-	callback = function()
-		vim.cmd("setlocal nonumber")
 	end
 })
 
