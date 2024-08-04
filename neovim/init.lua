@@ -48,6 +48,15 @@ if vim.g.neovide then
 	vim.keymap.set("", "<D-J>", "<cmd>resize +1<cr>")
 	vim.keymap.set("", "<D-K>", "<cmd>resize -1<cr>")
 	vim.keymap.set("", "<D-H>", "<cmd>vertical resize -1<cr>")
+	vim.keymap.set("", "<M-1>", "<cmd>1tabnext<cr>")
+	vim.keymap.set("", "<M-2>", "<cmd>2tabnext<cr>")
+	vim.keymap.set("", "<M-3>", "<cmd>3tabnext<cr>")
+	vim.keymap.set("", "<M-4>", "<cmd>4tabnext<cr>")
+	vim.keymap.set("", "<M-5>", "<cmd>5tabnext<cr>")
+	vim.keymap.set("", "<M-6>", "<cmd>6tabnext<cr>")
+	vim.keymap.set("", "<M-7>", "<cmd>7tabnext<cr>")
+	vim.keymap.set("", "<M-8>", "<cmd>8tabnext<cr>")
+	vim.keymap.set("", "<M-9>", "<cmd>9tabnext<cr>")
 
 	vim.api.nvim_create_user_command("SaveSession", "mksession! ~/.neovide-last-session", {})
 	vim.api.nvim_create_user_command("LoadLastSession", "source ~/.neovide-last-session", {})
@@ -56,6 +65,15 @@ if vim.g.neovide then
 		vim.cmd("SaveSession")
 		vim.cmd("qa")
 	end)
+else
+	vim.keymap.set("", "<M-l>", "<C-w>l")
+	vim.keymap.set("", "<M-j>", "<C-w>j")
+	vim.keymap.set("", "<M-k>", "<C-w>k")
+	vim.keymap.set("", "<M-h>", "<C-w>h")
+	vim.keymap.set("", "<M-L>", "<cmd>vertical resize +1<cr>")
+	vim.keymap.set("", "<M-J>", "<cmd>resize +1<cr>")
+	vim.keymap.set("", "<M-K>", "<cmd>resize -1<cr>")
+	vim.keymap.set("", "<M-H>", "<cmd>vertical resize -1<cr>")
 end
 
 -- Lazy plugin manager
@@ -330,6 +348,15 @@ require("lazy").setup({
 			vim.keymap.set("", "<Space>a", actions_preview.code_actions)
 		end,
 	},
+
+	{
+		"nanozuki/tabby.nvim",
+		config = function()
+			local tabby = require("tabby")
+			tabby.setup({
+			})
+		end
+	},
 })
 
 -- Keys
@@ -367,18 +394,15 @@ vim.keymap.set("", "tl", "<cmd>tabnext<cr>")
 vim.keymap.set("", "th", "<cmd>tabprevious<cr>")
 vim.keymap.set("", "tn", "<cmd>tabnew<cr>")
 vim.keymap.set("", "tq", "<cmd>tabclose<cr>")
-vim.keymap.set("", "<M-l>", "<C-w>l")
-vim.keymap.set("", "<M-j>", "<C-w>j")
-vim.keymap.set("", "<M-k>", "<C-w>k")
-vim.keymap.set("", "<M-h>", "<C-w>h")
-vim.keymap.set("i", "<M-l>", "<C-o><C-w>l<Esc>")
-vim.keymap.set("i", "<M-j>", "<C-o><C-w>j<Esc>")
-vim.keymap.set("i", "<M-k>", "<C-o><C-w>k<Esc>")
-vim.keymap.set("i", "<M-h>", "<C-o><C-w>h<Esc>")
-vim.keymap.set("", "<M-L>", "<cmd>vertical resize +1<cr>")
-vim.keymap.set("", "<M-J>", "<cmd>resize +1<cr>")
-vim.keymap.set("", "<M-K>", "<cmd>resize -1<cr>")
-vim.keymap.set("", "<M-H>", "<cmd>vertical resize -1<cr>")
+vim.keymap.set("", "t1", "<cmd>1tabnext<cr>")
+vim.keymap.set("", "t2", "<cmd>2tabnext<cr>")
+vim.keymap.set("", "t3", "<cmd>3tabnext<cr>")
+vim.keymap.set("", "t4", "<cmd>4tabnext<cr>")
+vim.keymap.set("", "t5", "<cmd>5tabnext<cr>")
+vim.keymap.set("", "t6", "<cmd>6tabnext<cr>")
+vim.keymap.set("", "t7", "<cmd>7tabnext<cr>")
+vim.keymap.set("", "t8", "<cmd>8tabnext<cr>")
+vim.keymap.set("", "t9", "<cmd>9tabnext<cr>")
 
 -- Autocmds
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
