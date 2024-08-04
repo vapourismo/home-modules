@@ -16,6 +16,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 vim.opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
 vim.go.ignorecase = true
+vim.o.showtabline = 2
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
@@ -48,15 +49,6 @@ if vim.g.neovide then
 	vim.keymap.set("", "<D-J>", "<cmd>resize +1<cr>")
 	vim.keymap.set("", "<D-K>", "<cmd>resize -1<cr>")
 	vim.keymap.set("", "<D-H>", "<cmd>vertical resize -1<cr>")
-	vim.keymap.set("", "<M-1>", "<cmd>1tabnext<cr>")
-	vim.keymap.set("", "<M-2>", "<cmd>2tabnext<cr>")
-	vim.keymap.set("", "<M-3>", "<cmd>3tabnext<cr>")
-	vim.keymap.set("", "<M-4>", "<cmd>4tabnext<cr>")
-	vim.keymap.set("", "<M-5>", "<cmd>5tabnext<cr>")
-	vim.keymap.set("", "<M-6>", "<cmd>6tabnext<cr>")
-	vim.keymap.set("", "<M-7>", "<cmd>7tabnext<cr>")
-	vim.keymap.set("", "<M-8>", "<cmd>8tabnext<cr>")
-	vim.keymap.set("", "<M-9>", "<cmd>9tabnext<cr>")
 
 	vim.api.nvim_create_user_command("SaveSession", "mksession! ~/.neovide-last-session", {})
 	vim.api.nvim_create_user_command("LoadLastSession", "source ~/.neovide-last-session", {})
@@ -357,6 +349,24 @@ require("lazy").setup({
 		config = function()
 			local tabby = require("tabby")
 			tabby.setup({
+				line = function(line)
+					local tabs = line.tabs().foreach(function(tab)
+						local style = tab.is_current() and "TabLineSel" or "TabLine"
+						return {
+							line.sep("", style, "TabLineFill"),
+							tab.number(),
+							tab.name(),
+							line.sep("", style, "TabLineFill"),
+							hl = style,
+							margin = " ",
+						}
+					end)
+					return {
+						line.spacer(),
+						tabs,
+						line.spacer(),
+					}
+				end
 			})
 		end
 	},
@@ -406,6 +416,15 @@ vim.keymap.set("", "t6", "<cmd>6tabnext<cr>")
 vim.keymap.set("", "t7", "<cmd>7tabnext<cr>")
 vim.keymap.set("", "t8", "<cmd>8tabnext<cr>")
 vim.keymap.set("", "t9", "<cmd>9tabnext<cr>")
+vim.keymap.set("", "<M-1>", "<cmd>1tabnext<cr>")
+vim.keymap.set("", "<M-2>", "<cmd>2tabnext<cr>")
+vim.keymap.set("", "<M-3>", "<cmd>3tabnext<cr>")
+vim.keymap.set("", "<M-4>", "<cmd>4tabnext<cr>")
+vim.keymap.set("", "<M-5>", "<cmd>5tabnext<cr>")
+vim.keymap.set("", "<M-6>", "<cmd>6tabnext<cr>")
+vim.keymap.set("", "<M-7>", "<cmd>7tabnext<cr>")
+vim.keymap.set("", "<M-8>", "<cmd>8tabnext<cr>")
+vim.keymap.set("", "<M-9>", "<cmd>9tabnext<cr>")
 vim.keymap.set("", "<Space><Space>q", function()
 	vim.cmd("SaveSession")
 	vim.cmd("qa")
