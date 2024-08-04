@@ -28,6 +28,12 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
+-- Helper function to map keys in normal, visual, terminal and insert mode
+local function map_nvti(key, mapping)
+	vim.keymap.set("", key, mapping, { remap = false })
+	vim.keymap.set({ "t", "i" }, key, "<C-\\><C-N>" .. mapping, { remap = false })
+end
+
 -- Neovide
 if vim.g.neovide then
 	vim.o.guifont = "Iosevka Term SS02:h13"
@@ -40,31 +46,23 @@ if vim.g.neovide then
 
 	vim.fn.serverstart("/tmp/nvimsocket")
 	vim.env.EDITOR = "nvr -cc split --remote-wait"
-
-	vim.keymap.set("", "<D-l>", "<C-w>l")
-	vim.keymap.set("", "<D-j>", "<C-w>j")
-	vim.keymap.set("", "<D-k>", "<C-w>k")
-	vim.keymap.set("", "<D-h>", "<C-w>h")
-	vim.keymap.set("", "<D-L>", "<cmd>vertical resize +1<cr>")
-	vim.keymap.set("", "<D-J>", "<cmd>resize +1<cr>")
-	vim.keymap.set("", "<D-K>", "<cmd>resize -1<cr>")
-	vim.keymap.set("", "<D-H>", "<cmd>vertical resize -1<cr>")
-
-	vim.api.nvim_create_user_command("SaveSession", "mksession! ~/.neovide-last-session", {})
-	vim.api.nvim_create_user_command("LoadLastSession", "source ~/.neovide-last-session", {})
-else
-	vim.keymap.set("", "<M-l>", "<C-w>l")
-	vim.keymap.set("", "<M-j>", "<C-w>j")
-	vim.keymap.set("", "<M-k>", "<C-w>k")
-	vim.keymap.set("", "<M-h>", "<C-w>h")
-	vim.keymap.set("", "<M-L>", "<cmd>vertical resize +1<cr>")
-	vim.keymap.set("", "<M-J>", "<cmd>resize +1<cr>")
-	vim.keymap.set("", "<M-K>", "<cmd>resize -1<cr>")
-	vim.keymap.set("", "<M-H>", "<cmd>vertical resize -1<cr>")
-
-	vim.api.nvim_create_user_command("SaveSession", "mksession! ~/.nvim-last-session", {})
-	vim.api.nvim_create_user_command("LoadLastSession", "source ~/.nvim-last-session", {})
 end
+
+-- Window motions
+local window_motion_modifier = vim.g.neovide and "D" or "M"
+map_nvti("<" .. window_motion_modifier .. "-l>", "<C-w>l")
+map_nvti("<" .. window_motion_modifier .. "-j>", "<C-w>j")
+map_nvti("<" .. window_motion_modifier .. "-k>", "<C-w>k")
+map_nvti("<" .. window_motion_modifier .. "-h>", "<C-w>h")
+map_nvti("<" .. window_motion_modifier .. "-L>", "<cmd>vertical resize +1<cr>")
+map_nvti("<" .. window_motion_modifier .. "-J>", "<cmd>resize +1<cr>")
+map_nvti("<" .. window_motion_modifier .. "-K>", "<cmd>resize -1<cr>")
+map_nvti("<" .. window_motion_modifier .. "-H>", "<cmd>vertical resize -1<cr>")
+
+-- Session management
+local session_file = vim.g.neovide and "~/.neovide-last-session" or "~/.nvim-last-session"
+vim.api.nvim_create_user_command("SaveSession", "mksession! " .. session_file, {})
+vim.api.nvim_create_user_command("LoadLastSession", "source " .. session_file, {})
 
 -- Lazy plugin manager
 vim.opt.rtp:prepend(data_dir .. "/lazy/lazy.nvim")
@@ -379,7 +377,7 @@ vim.keymap.set("", "<Space>y", '"+y')
 vim.keymap.set("", "<Space>p", '"+p')
 vim.keymap.set("", "<Space>P", '"+P')
 vim.keymap.set("", "<C-s>", "<cmd>write<cr>")
-vim.keymap.set("t", "<D-Esc>", "<Esc>", { noremap = true })
+vim.keymap.set("t", "<D-Esc>", "<Esc>", { remap = false })
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("v", "v", function() end)
 vim.keymap.set("n", "<Esc>", function()
@@ -416,15 +414,15 @@ vim.keymap.set("", "t6", "<cmd>6tabnext<cr>")
 vim.keymap.set("", "t7", "<cmd>7tabnext<cr>")
 vim.keymap.set("", "t8", "<cmd>8tabnext<cr>")
 vim.keymap.set("", "t9", "<cmd>9tabnext<cr>")
-vim.keymap.set("", "<M-1>", "<cmd>1tabnext<cr>")
-vim.keymap.set("", "<M-2>", "<cmd>2tabnext<cr>")
-vim.keymap.set("", "<M-3>", "<cmd>3tabnext<cr>")
-vim.keymap.set("", "<M-4>", "<cmd>4tabnext<cr>")
-vim.keymap.set("", "<M-5>", "<cmd>5tabnext<cr>")
-vim.keymap.set("", "<M-6>", "<cmd>6tabnext<cr>")
-vim.keymap.set("", "<M-7>", "<cmd>7tabnext<cr>")
-vim.keymap.set("", "<M-8>", "<cmd>8tabnext<cr>")
-vim.keymap.set("", "<M-9>", "<cmd>9tabnext<cr>")
+map_nvti("<M-1>", "<cmd>1tabnext<cr>")
+map_nvti("<M-2>", "<cmd>2tabnext<cr>")
+map_nvti("<M-3>", "<cmd>3tabnext<cr>")
+map_nvti("<M-4>", "<cmd>4tabnext<cr>")
+map_nvti("<M-5>", "<cmd>5tabnext<cr>")
+map_nvti("<M-6>", "<cmd>6tabnext<cr>")
+map_nvti("<M-7>", "<cmd>7tabnext<cr>")
+map_nvti("<M-8>", "<cmd>8tabnext<cr>")
+map_nvti("<M-9>", "<cmd>9tabnext<cr>")
 vim.keymap.set("", "<Space><Space>q", function()
 	vim.cmd("SaveSession")
 	vim.cmd("qa")
