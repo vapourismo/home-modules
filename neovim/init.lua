@@ -49,8 +49,11 @@ if vim.g.neovide then
 	vim.keymap.set("", "<D-K>", "<cmd>resize -1<cr>")
 	vim.keymap.set("", "<D-H>", "<cmd>vertical resize -1<cr>")
 
+	vim.api.nvim_create_user_command("SaveSession", "mksession! ~/.neovide-last-session", {})
+	vim.api.nvim_create_user_command("LoadLastSession", "source ~/.neovide-last-session", {})
+
 	vim.keymap.set("", "<Space><Space>q", function()
-		vim.cmd("mksession! ~/.neovide-last-session")
+		vim.cmd("SaveSession")
 		vim.cmd("qa")
 	end)
 end
