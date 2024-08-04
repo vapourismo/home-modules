@@ -14,7 +14,7 @@ vim.opt.foldenable = false
 vim.opt.wrap = false
 vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
-
+vim.opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
 vim.go.ignorecase = true
 
 -- Disable netrw
@@ -48,6 +48,11 @@ if vim.g.neovide then
 	vim.keymap.set("", "<D-J>", "<cmd>resize +1<cr>")
 	vim.keymap.set("", "<D-K>", "<cmd>resize -1<cr>")
 	vim.keymap.set("", "<D-H>", "<cmd>vertical resize -1<cr>")
+
+	vim.keymap.set("", "<Space><Space>q", function()
+		vim.cmd("mksession! ~/.neovide-last-session")
+		vim.cmd("qa")
+	end)
 end
 
 -- Lazy plugin manager
@@ -325,10 +330,6 @@ require("lazy").setup({
 })
 
 -- Keys
-vim.keymap.set("", "<Space><Space>q", function()
-	vim.cmd("mksession! ~/.nvim-last-session")
-	vim.cmd("qa")
-end)
 vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
 vim.keymap.set("", "<Space>r", vim.lsp.buf.rename)
 vim.keymap.set("", "<Space>y", '"+y')
