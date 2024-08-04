@@ -407,3 +407,23 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.cmd("set bufhidden=delete")
 	end
 })
+
+vim.api.nvim_create_user_command("DirenvLoad", function(_args)
+	vim.system(
+		{ "direnv", "exec", "/", "direnv", "export", "json" },
+		{ text = true },
+		vim.schedule_wrap(function(result)
+			if result.code ~= 0 then
+				vim.notify("Failed to load direnv:\n" .. result.stderr, vim.log.levels.ERROR)
+				return
+			end
+
+			local env = vim.fn.json_decode(result.stdout)
+			for key, value in pairs(env) do
+				vim.env[key] = value
+			end
+
+			vim.notify("Loaded direnv variables", vim.log.levels.INFO)
+		end)
+	)
+end, {})
