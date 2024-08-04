@@ -9,7 +9,6 @@
       url = "github:chisui/zsh-nix-shell";
       flake = false;
     };
-    atuin.url = "github:ellie/atuin";
     jujutsu.url = "github:vapourismo/jj";
     nvim-lazy = {
       url = "github:folke/lazy.nvim";

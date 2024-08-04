@@ -1,18 +1,15 @@
 {
   pkgs,
-  lib,
   specialArgs,
   ...
 }: {
-  home.packages = let
-    atuin = specialArgs.inputs.atuin.packages.${pkgs.system}.default.overrideAttrs (old: {
-      buildInputs =
-        (old.buildInputs or [])
-        ++ lib.optional pkgs.stdenv.isDarwin pkgs.darwin.apple_sdk.frameworks.AppKit;
-    });
-  in [
-    atuin
-  ];
+  programs.atuin = {
+    enable = true;
+    settings = {
+      enter_accept = true;
+      style = "compact";
+    };
+  };
 
   programs.zsh = {
     enable = true;
@@ -29,9 +26,6 @@
       alias g=git
       alias s=stg
       alias c=cargo
-
-      # atuin
-      eval "$(atuin init zsh)"
 
       # Extend PATH
       export PATH="$PATH:$HOME/.local/bin"
