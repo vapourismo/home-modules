@@ -60,11 +60,6 @@ if vim.g.neovide then
 
 	vim.api.nvim_create_user_command("SaveSession", "mksession! ~/.neovide-last-session", {})
 	vim.api.nvim_create_user_command("LoadLastSession", "source ~/.neovide-last-session", {})
-
-	vim.keymap.set("", "<Space><Space>q", function()
-		vim.cmd("SaveSession")
-		vim.cmd("qa")
-	end)
 else
 	vim.keymap.set("", "<M-l>", "<C-w>l")
 	vim.keymap.set("", "<M-j>", "<C-w>j")
@@ -74,6 +69,9 @@ else
 	vim.keymap.set("", "<M-J>", "<cmd>resize +1<cr>")
 	vim.keymap.set("", "<M-K>", "<cmd>resize -1<cr>")
 	vim.keymap.set("", "<M-H>", "<cmd>vertical resize -1<cr>")
+
+	vim.api.nvim_create_user_command("SaveSession", "mksession! ~/.nvim-last-session", {})
+	vim.api.nvim_create_user_command("LoadLastSession", "source ~/.nvim-last-session", {})
 end
 
 -- Lazy plugin manager
@@ -403,6 +401,10 @@ vim.keymap.set("", "t6", "<cmd>6tabnext<cr>")
 vim.keymap.set("", "t7", "<cmd>7tabnext<cr>")
 vim.keymap.set("", "t8", "<cmd>8tabnext<cr>")
 vim.keymap.set("", "t9", "<cmd>9tabnext<cr>")
+vim.keymap.set("", "<Space><Space>q", function()
+	vim.cmd("SaveSession")
+	vim.cmd("qa")
+end)
 
 -- Autocmds
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
