@@ -80,7 +80,7 @@
         font = wezterm.font('${config.ole.terminal.font}'),
         font_size = ${builtins.toString config.ole.terminal.fontSize},
 
-        enable_tab_bar = true,
+        enable_tab_bar = false,
         use_fancy_tab_bar = false,
 
         native_macos_fullscreen_mode = true,
