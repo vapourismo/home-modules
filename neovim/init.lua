@@ -513,7 +513,13 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "gitcommit", "gitrebase", "gitconfig", "addp-hunk-edit.diff" },
+	pattern = {
+		"gitcommit",
+		"gitrebase",
+		"gitconfig",
+		"addp-hunk-edit.diff",
+		"jj",
+	},
 	callback = function()
 		vim.cmd("set bufhidden=delete")
 	end
