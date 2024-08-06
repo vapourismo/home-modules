@@ -424,7 +424,8 @@ require("lazy").setup({
 })
 
 -- Terminal mode
-vim.keymap.set("t", "<D-Esc>", "<C-\\><C-n>", { remap = false })
+vim.keymap.set("t", "<D-Esc>", "<Esc>", { remap = false })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { remap = false })
 
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
 	callback = function()
@@ -542,10 +543,3 @@ vim.api.nvim_create_user_command("DirenvLoad", function(_args)
 		end)
 	)
 end, {})
-
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-	pattern = { "term://*" },
-	callback = function()
-		vim.cmd.startinsert()
-	end
-})
