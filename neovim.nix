@@ -18,7 +18,7 @@
   ];
 
   home.sessionVariables = {
-    EDITOR = "nvr --remote-wait-silent";
+    EDITOR = "nvim";
   };
 
   home.file = {
