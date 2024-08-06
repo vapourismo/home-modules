@@ -86,16 +86,17 @@ if vim.g.neovide then
 	vim.env.EDITOR = "nvr -cc split --remote-wait"
 end
 
+local neovide_leader_modified = vim.g.neovide and "D" or "M"
+
 -- Window motions
-local window_motion_modifier = vim.g.neovide and "D" or "M"
-map_nvti("<" .. window_motion_modifier .. "-l>", "<C-w>l")
-map_nvti("<" .. window_motion_modifier .. "-j>", "<C-w>j")
-map_nvti("<" .. window_motion_modifier .. "-k>", "<C-w>k")
-map_nvti("<" .. window_motion_modifier .. "-h>", "<C-w>h")
-map_nvti("<" .. window_motion_modifier .. "-L>", "<cmd>vertical resize +1<cr>")
-map_nvti("<" .. window_motion_modifier .. "-J>", "<cmd>resize +1<cr>")
-map_nvti("<" .. window_motion_modifier .. "-K>", "<cmd>resize -1<cr>")
-map_nvti("<" .. window_motion_modifier .. "-H>", "<cmd>vertical resize -1<cr>")
+map_nvti("<" .. neovide_leader_modified .. "-l>", "<C-w>l")
+map_nvti("<" .. neovide_leader_modified .. "-j>", "<C-w>j")
+map_nvti("<" .. neovide_leader_modified .. "-k>", "<C-w>k")
+map_nvti("<" .. neovide_leader_modified .. "-h>", "<C-w>h")
+map_nvti("<" .. neovide_leader_modified .. "-L>", "<cmd>vertical resize +1<cr>")
+map_nvti("<" .. neovide_leader_modified .. "-J>", "<cmd>resize +1<cr>")
+map_nvti("<" .. neovide_leader_modified .. "-K>", "<cmd>resize -1<cr>")
+map_nvti("<" .. neovide_leader_modified .. "-H>", "<cmd>vertical resize -1<cr>")
 
 -- Session management
 local session_file = vim.g.neovide and "~/.neovide-last-session" or "~/.nvim-last-session"
@@ -441,6 +442,7 @@ vim.keymap.set("", "<Space>y", '"+y')
 vim.keymap.set("", "<Space>p", '"+p')
 vim.keymap.set("", "<Space>P", '"+P')
 vim.keymap.set("", "<C-s>", "<cmd>write<cr>")
+map_nvti("<" .. neovide_leader_modified .. "-p>", ":")
 vim.keymap.set("v", "v", function() end)
 vim.keymap.set("n", "<Esc>", function()
 	vim.cmd.noh()
