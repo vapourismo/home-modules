@@ -536,3 +536,10 @@ vim.api.nvim_create_user_command("DirenvLoad", function(_args)
 		end)
 	)
 end, {})
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = { "term://*" },
+	callback = function()
+		vim.cmd.startinsert()
+	end
+})
