@@ -397,8 +397,6 @@ require("lazy").setup({
 						return {
 							line.sep("", style, "TabLineFill"),
 							tab.number(),
-							{ "", hl = { fg = "#333333", bg = style_bg } },
-							tab.name(),
 							line.sep("", style, "TabLineFill"),
 							hl = style,
 							margin = " ",
