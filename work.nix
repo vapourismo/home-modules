@@ -11,6 +11,7 @@
     ./jujutsu.nix
     ./neovim.nix
     ./cargo.nix
+    ./taskwarrior.nix
   ];
 
   home = {
