@@ -217,6 +217,17 @@ require("lazy").setup({
 			vim.keymap.set("", "<Space>j", function()
 				flash.jump({ search = { mode = "fuzzy" } })
 			end)
+			vim.keymap.set("", "<Space>w", function()
+				flash.jump({
+					pattern = "",
+					search = {
+						mode = function(pattern)
+							return ([[\<%s\w*\>]]):format(pattern), ([[\<%s]]):format(pattern)
+						end,
+					},
+					jump = { pos = "range" },
+				})
+			end)
 			vim.keymap.set("", "mt", function()
 				flash.treesitter()
 			end)
