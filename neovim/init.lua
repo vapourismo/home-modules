@@ -432,6 +432,23 @@ require("lazy").setup({
 			"rcarriga/nvim-notify",
 		}
 	},
+
+	{
+		"smoka7/multicursors.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"nvimtools/hydra.nvim",
+		},
+		opts = {},
+		cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+		keys = {
+			{ mode = { "n", "v" }, "mm", "<cmd>MCunderCursor<cr>" },
+			{ mode = "n",          "md", "<cmd>MCstart<cr>" },
+			{ mode = "v",          "md", "<cmd>MCvisual<cr>" },
+			{ mode = "n",          "mf", "<cmd>MCpattern<cr>" },
+			{ mode = "v",          "mf", "<cmd>MCvisualPattern<cr>" },
+		},
+	},
 })
 
 -- Terminal mode
