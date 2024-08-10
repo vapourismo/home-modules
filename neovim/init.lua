@@ -113,6 +113,7 @@ require("lazy").setup({
 		lazy = false,
 		config = function()
 			local catppuccin = require("catppuccin")
+
 			catppuccin.setup({
 				integrations = {
 					native_lsp = {
@@ -449,6 +450,20 @@ require("lazy").setup({
 			{ mode = "v",          "mf", "<cmd>MCvisualPattern<cr>" },
 		},
 	},
+
+	{
+		"f-person/auto-dark-mode.nvim",
+		dependencies = { "catppuccin/nvim" },
+		opts = {
+			update_interval = 10000,
+			set_dark_mode = function()
+				vim.cmd.colorscheme("catppuccin-mocha")
+			end,
+			set_light_mode = function()
+				vim.cmd.colorscheme("catppuccin-latte")
+			end,
+		},
+	}
 })
 
 -- Terminal mode
