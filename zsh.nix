@@ -26,6 +26,7 @@
       alias g=git
       alias s=stg
       alias c=cargo
+      alias t=task
 
       # Extend PATH
       export PATH="$PATH:$HOME/.local/bin"
