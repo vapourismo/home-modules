@@ -231,7 +231,9 @@ require("lazy").setup({
 				})
 			end)
 			vim.keymap.set("", "mt", function()
-				flash.treesitter()
+				flash.treesitter({
+					label = { rainbow = { enabled = true } }
+				})
 			end)
 		end,
 	},
