@@ -404,10 +404,6 @@ require("lazy").setup({
 				line = function(line)
 					local tabs = line.tabs().foreach(function(tab)
 						local style = tab.is_current() and "TabLineSel" or "TabLine"
-						local style_bg = vim.fn.synIDattr(
-							vim.fn.synIDtrans(vim.fn.hlID(style)),
-							"bg#"
-						)
 
 						return {
 							line.sep("", style, "TabLineFill"),
@@ -554,7 +550,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end
 })
 
-vim.api.nvim_create_user_command("DirenvLoad", function(_args)
+vim.api.nvim_create_user_command("DirenvLoad", function()
 	vim.system(
 		{ "direnv", "exec", "/", "direnv", "export", "json" },
 		{ text = true },
