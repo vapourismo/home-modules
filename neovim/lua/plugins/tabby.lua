@@ -1,26 +1,23 @@
 return {
 	"nanozuki/tabby.nvim",
-	config = function()
-		local tabby = require("tabby")
-		tabby.setup({
-			line = function(line)
-				local tabs = line.tabs().foreach(function(tab)
-					local style = tab.is_current() and "TabLineSel" or "TabLine"
+	opts = {
+		line = function(line)
+			local tabs = line.tabs().foreach(function(tab)
+				local style = tab.is_current() and "TabLineSel" or "TabLine"
 
-					return {
-						line.sep("", style, "TabLineFill"),
-						tab.number(),
-						line.sep("", style, "TabLineFill"),
-						hl = style,
-						margin = " ",
-					}
-				end)
 				return {
-					line.spacer(),
-					tabs,
-					line.spacer(),
+					line.sep("", style, "TabLineFill"),
+					tab.number(),
+					line.sep("", style, "TabLineFill"),
+					hl = style,
+					margin = " ",
 				}
-			end
-		})
-	end
+			end)
+			return {
+				line.spacer(),
+				tabs,
+				line.spacer(),
+			}
+		end
+	}
 }
