@@ -1,20 +1,15 @@
--- Config
+-- Options
 vim.opt.number = true
 vim.opt.compatible = false
 vim.opt.tabstop = 4
 vim.opt.guicursor = "n-sm-v-ve:block,c-ci-i:ver25,cr-r-o:hor20"
-vim.opt.colorcolumn = "100,120"
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
+vim.opt.colorcolumn = { 100, 120 }
 vim.opt.wrap = false
 vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
-vim.opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
-vim.go.ignorecase = true
-vim.o.showtabline = 2
-
--- Terminal colors
+vim.opt.sessionoptions = { "curdir", "folds", "globals", "help", "tabpages", "terminal", "winsize" }
+vim.opt.ignorecase = true
+vim.opt.showtabline = 2
 vim.opt.termguicolors = true
 
 -- Disable netrw
@@ -29,7 +24,7 @@ vim.diagnostic.config({
 
 -- Neovide
 if vim.g.neovide then
-	vim.o.guifont = "Iosevka Term SS02:h13"
+	vim.opt.guifont = "Iosevka Term SS02:h13"
 	vim.g.neovide_scroll_animation_length = 0.05
 	vim.g.neovide_position_animation_length = 0.1
 	vim.g.neovide_cursor_animation_length = 0
