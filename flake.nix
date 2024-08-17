@@ -10,10 +10,6 @@
       flake = false;
     };
     jujutsu.url = "github:vapourismo/jj";
-    nvim-lazy = {
-      url = "github:folke/lazy.nvim";
-      flake = false;
-    };
   };
 
   outputs = {

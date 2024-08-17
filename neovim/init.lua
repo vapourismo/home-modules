@@ -11,6 +11,4 @@ require("config.usercmds")
 require("config.autocmds")
 
 -- Lazy plugin manager
-local data_dir = vim.fn.stdpath("data")
-vim.opt.rtp:prepend(data_dir .. "/lazy/lazy.nvim")
-require("lazy").setup("plugins")
+require("config.lazy")
