@@ -11,7 +11,6 @@
     ./jujutsu.nix
     ./neovim.nix
     ./cargo.nix
-    ./taskwarrior.nix
   ];
 
   ole = {
