@@ -8,6 +8,7 @@ end
 local neovide_leader_modified = vim.g.neovide and "D" or "M"
 
 -- Window motions
+vim.keymap.set("", "w", "<C-w>")
 map_nvti("<" .. neovide_leader_modified .. "-l>", "<C-w>l")
 map_nvti("<" .. neovide_leader_modified .. "-j>", "<C-w>j")
 map_nvti("<" .. neovide_leader_modified .. "-k>", "<C-w>k")
@@ -17,40 +18,65 @@ map_nvti("<" .. neovide_leader_modified .. "-J>", "<cmd>resize +1<cr>")
 map_nvti("<" .. neovide_leader_modified .. "-K>", "<cmd>resize -1<cr>")
 map_nvti("<" .. neovide_leader_modified .. "-H>", "<cmd>vertical resize -1<cr>")
 
--- Terminal mode
+-- Escape in terminal mode
 vim.keymap.set("t", "<D-Esc>", "<Esc>", { remap = false })
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { remap = false })
 
--- Other
-vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
-vim.keymap.set("", "<Space>r", vim.lsp.buf.rename)
-vim.keymap.set("", "<Space>y", '"+y')
-vim.keymap.set("", "<Space>p", '"+p')
-vim.keymap.set("", "<Space>P", '"+P')
-vim.keymap.set("", "<C-s>", "<cmd>update<cr>")
-map_nvti("<" .. neovide_leader_modified .. "-p>", ":")
-vim.keymap.set("v", "v", function() end)
+-- Clear highlights on Escape in normal mode
 vim.keymap.set("n", "<Esc>", function()
 	vim.cmd.noh()
 end)
+
+-- Convenient file saving
+vim.keymap.set("", "<C-s>", "<cmd>update<cr>")
+
+-- Common command palette
+map_nvti("<" .. neovide_leader_modified .. "-p>", ":")
+
+-- LSP actions
+vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
+vim.keymap.set("", "<Space>r", vim.lsp.buf.rename)
+vim.keymap.set("", "gD", vim.lsp.buf.declaration)
+vim.keymap.set("", "gj", vim.diagnostic.goto_next)
+vim.keymap.set("", "gk", vim.diagnostic.goto_prev)
+
+-- System clipboard
+vim.keymap.set("", "<Space>y", '"+y')
+vim.keymap.set("", "<Space>p", '"+p')
+vim.keymap.set("", "<Space>P", '"+P')
+
+-- Save session and exit
+vim.keymap.set("", "<Space><Space>q", function()
+	vim.cmd("SaveSession")
+	vim.cmd("qa")
+end)
+
+-- Fix annoying visual mode exit
+vim.keymap.set("v", "v", function() end)
+
+-- Cursor movements
 vim.keymap.set("", "<C-l>", "e")
 vim.keymap.set("", "<C-h>", "b")
 vim.keymap.set("", "<C-j>", "}")
 vim.keymap.set("", "<C-k>", "{")
-vim.keymap.set("", "c", "s")
-vim.keymap.set("", "C", "S")
-vim.keymap.set("", "U", "<C-r>")
 vim.keymap.set("", "gh", "0")
 vim.keymap.set("", "gl", "g_")
 vim.keymap.set("", "gs", "_")
-vim.keymap.set("", "gD", vim.lsp.buf.declaration)
-vim.keymap.set("", "gj", vim.diagnostic.goto_next)
-vim.keymap.set("", "gk", vim.diagnostic.goto_prev)
+
+-- Fix change selection
+vim.keymap.set("", "c", "s")
+vim.keymap.set("", "C", "S")
+
+-- Redo
+vim.keymap.set("", "U", "<C-r>")
+
+-- Buffer selection
 vim.keymap.set("", "bj", "<cmd>bprev<cr>")
 vim.keymap.set("", "bk", "<cmd>bnext<cr>")
 vim.keymap.set("", "bq", "<cmd>Bdelete<cr>")
 vim.keymap.set("", "bn", "<cmd>enew<cr>")
-vim.keymap.set("", "w", "<C-w>")
+
+-- Tab selection
 vim.keymap.set("", "tl", "<cmd>tabnext<cr>")
 vim.keymap.set("", "th", "<cmd>tabprevious<cr>")
 vim.keymap.set("", "tn", "<cmd>tabnew<cr>")
@@ -73,7 +99,3 @@ map_nvti("<M-6>", "<cmd>6tabnext<cr>")
 map_nvti("<M-7>", "<cmd>7tabnext<cr>")
 map_nvti("<M-8>", "<cmd>8tabnext<cr>")
 map_nvti("<M-9>", "<cmd>9tabnext<cr>")
-vim.keymap.set("", "<Space><Space>q", function()
-	vim.cmd("SaveSession")
-	vim.cmd("qa")
-end)
