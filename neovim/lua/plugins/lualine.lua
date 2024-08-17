@@ -7,7 +7,15 @@ return {
 	dependencies = { "arkav/lualine-lsp-progress" },
 	opts = {
 		options = {
-			icons_enabled = false
+			icons_enabled = false,
+			component_separators = {
+				left = "",
+				right = ""
+			},
+			section_separators = {
+				left = "",
+				right = ""
+			},
 		},
 		sections = {
 			lualine_a = { "mode" },
