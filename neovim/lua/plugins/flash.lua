@@ -11,7 +11,7 @@ return {
 		})
 
 		vim.keymap.set("", "<Space>j", function()
-			flash.jump({ search = { mode = "fuzzy" } })
+			flash.jump()
 		end)
 		vim.keymap.set("", "<Space>w", function()
 			flash.jump({
