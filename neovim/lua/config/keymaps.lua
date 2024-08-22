@@ -44,6 +44,8 @@ vim.keymap.set("", "gk", vim.diagnostic.goto_prev)
 vim.keymap.set("", "<Space>y", '"+y')
 vim.keymap.set("", "<Space>p", '"+p')
 vim.keymap.set("", "<Space>P", '"+P')
+map_nvti("<D-c>", '"+y')
+map_nvti("<D-v>", '"+P')
 
 -- Save session and exit
 vim.keymap.set("", "<Space><Space>q", function()
