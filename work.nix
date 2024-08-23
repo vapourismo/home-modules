@@ -21,6 +21,7 @@
   };
 
   ole = {
+    slot2 = config.ole.slot1;
     slot3 = "/Applications/Brave Browser.app";
     slot4 = "/Applications/Slack.app";
     slot5 = "/Applications/Linear.app";
