@@ -1,16 +1,3 @@
--- Session management
-local session_file = vim.g.neovide and "~/.neovide-last-session" or "~/.nvim-last-session"
-
-vim.api.nvim_create_user_command("SaveSession", function()
-	vim.cmd.ScopeSaveState()
-	vim.cmd.mksession({ session_file, bang = true })
-end, {})
-
-vim.api.nvim_create_user_command("LoadLastSession", function()
-	vim.cmd.source(session_file)
-	vim.cmd.ScopeLoadState()
-end, {})
-
 -- Direnv Support
 vim.api.nvim_create_user_command("DirenvLoad", function()
 	vim.system(

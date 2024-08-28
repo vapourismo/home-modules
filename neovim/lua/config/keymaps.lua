@@ -48,12 +48,6 @@ vim.keymap.set("", "<D-c>", '"+y', { remap = false })
 vim.keymap.set("", "<D-v>", '"+P', { remap = false })
 vim.keymap.set({ "t", "i" }, "<D-v>", '<C-\\><C-N>"+pi', { remap = false })
 
--- Save session and exit
-vim.keymap.set("", "<Space><Space>q", function()
-	vim.cmd("SaveSession")
-	vim.cmd("qa")
-end)
-
 -- Fix annoying visual mode exit
 vim.keymap.set("v", "v", function() end)
 
