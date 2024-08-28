@@ -56,9 +56,6 @@
         '';
 
         onChange = ''
-          ${pkgs.skhd}/bin/skhd --stop-service
-          ${pkgs.skhd}/bin/skhd --uninstall-service
-          ${pkgs.skhd}/bin/skhd --install-service
           ${pkgs.skhd}/bin/skhd --restart-service
         '';
       };
