@@ -4,7 +4,6 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 		vim.cmd.setlocal("nonumber")
 		vim.cmd.setlocal("norelativenumber")
 		vim.cmd.setlocal("signcolumn=no")
-		vim.cmd.startinsert()
 	end,
 })
 
@@ -40,14 +39,5 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	},
 	callback = function()
 		vim.cmd("set bufhidden=delete")
-	end,
-})
-
--- Start in insert mode when navigating to a terminal buffer
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-	callback = function()
-		if vim.bo.buftype == "terminal" then
-			vim.cmd.startinsert()
-		end
 	end,
 })
