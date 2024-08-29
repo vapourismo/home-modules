@@ -99,3 +99,8 @@ map_nvti("<M-6>", "<cmd>6tabnext<cr>")
 map_nvti("<M-7>", "<cmd>7tabnext<cr>")
 map_nvti("<M-8>", "<cmd>8tabnext<cr>")
 map_nvti("<M-9>", "<cmd>9tabnext<cr>")
+
+if vim.g.neovide then
+	map_nvti("<M-l>", "<cmd>tabnext<cr>")
+	map_nvti("<M-h>", "<cmd>tabprevious<cr>")
+end
