@@ -73,6 +73,9 @@ vim.keymap.set("", "bk", "<cmd>bnext<cr>")
 vim.keymap.set("", "bq", "<cmd>Bdelete<cr>")
 vim.keymap.set("", "bn", "<cmd>enew<cr>")
 
+-- Terminal creation
+vim.keymap.set("", "bt", "<cmd>terminal<cr>")
+
 -- Tab selection
 vim.keymap.set("", "tl", "<cmd>tabnext<cr>")
 vim.keymap.set("", "th", "<cmd>tabprevious<cr>")
