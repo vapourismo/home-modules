@@ -4,6 +4,7 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 		vim.cmd.setlocal("nonumber")
 		vim.cmd.setlocal("norelativenumber")
 		vim.cmd.setlocal("signcolumn=no")
+		vim.cmd.startinsert()
 	end,
 })
 
