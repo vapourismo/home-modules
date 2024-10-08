@@ -75,7 +75,7 @@
                   format_short_change_id_with_hidden_and_divergent_info(self),
                   if(empty, label("empty", "(empty)")),
                   if(conflict, label("conflict", "conflict")),
-                  branches,
+                  bookmarks,
                   tags,
                   working_copies,
                   format_short_commit_id(commit_id),
@@ -98,7 +98,7 @@
 
       aliases = {
         ls = ["log" "-r" "summary()"];
-        br = ["branch"];
+        bo = ["bookmark"];
         retrunk = ["rebase" "--skip-emptied" "-d" "trunk()"];
         retrunk-all = ["rebase" "--skip-emptied" "-d" "trunk()" "-b" "all:summary()"];
         sq = ["squash"];
@@ -119,12 +119,12 @@
         "top" = "heads(@-:: ~ @)";
         "on_top_trunk(x)" = "trunk()..x";
         "current_work()" = "roots(on_top_trunk(@))::";
-        "my_branch_work()" = "on_top_trunk(branches())::";
+        "my_branch_work()" = "on_top_trunk(bookmarks())::";
         "my_anon_work()" = "on_top_trunk(latest(..trunk(), 500):: & mine() & mutable())";
         "summary()" = "my_branch_work() | my_anon_work() | current_work()";
         "my_heads()" = "heads(summary())";
-        "next_branch(x)" = "heads(x:: & branches())";
-        "prev_branch(x)" = "heads(::x & branches())";
+        "next_branch(x)" = "heads(x:: & bookmarks())";
+        "prev_branch(x)" = "heads(::x & bookmarks())";
         "branch_contents(x)" = "prev_branch(x-)..next_branch(x)";
       };
     };
