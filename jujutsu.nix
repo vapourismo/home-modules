@@ -107,7 +107,7 @@
         sito = ["squash" "-i" "--into"];
         wc = ["new" "all:my_heads()"];
         fetch = ["git" "fetch"];
-        push = ["git" "push" "-r" "all:current_work()"];
+        push = ["git" "push" "-r" "all:current_work() ~ conflict()"];
         push-all = ["git" "push" "--all"];
       };
 
