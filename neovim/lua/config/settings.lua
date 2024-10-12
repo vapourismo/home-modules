@@ -13,6 +13,13 @@ vim.opt.showtabline = 2
 vim.opt.termguicolors = true
 vim.opt.relativenumber = true
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
+vim.opt.foldcolumn = "auto:9"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
