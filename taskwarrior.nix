@@ -15,7 +15,7 @@
 
     cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_: {
       inherit src;
-      outputHash = "sha256-WE/3lmgZg9qztaMopB8IiUz/MzFNqk4uYCShsNYFCBw=";
+      outputHash = "sha256-L+hYYKXSOG4XYdexLMG3wdA7st+A9Wk9muzipSNjxrA=";
     });
 
     doCheck = false;
@@ -54,4 +54,3 @@ in {
     taskwarrior-tui-fixed
   ];
 }
-
