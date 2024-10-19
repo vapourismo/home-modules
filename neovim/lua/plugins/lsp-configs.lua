@@ -25,5 +25,6 @@ return {
 		lspconfig.ocamllsp.setup({})
 		lspconfig.pylsp.setup({})
 		lspconfig.gopls.setup({})
+		lspconfig.openscad_lsp.setup({})
 	end
 }
