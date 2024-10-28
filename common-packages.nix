@@ -23,6 +23,7 @@ with pkgs; {
       wget
       fd
       tree-sitter
+      fzf
     ]
     ++ lib.optional stdenv.isDarwin pinentry_mac;
 }

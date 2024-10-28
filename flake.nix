@@ -10,6 +10,10 @@
       flake = false;
     };
     jujutsu.url = "github:vapourismo/jj";
+    tim-janik-tools = {
+      url = "github:tim-janik/tools";
+      flake = false;
+    };
   };
 
   outputs = {
