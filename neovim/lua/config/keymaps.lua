@@ -104,3 +104,6 @@ if vim.g.neovide then
 	map_nvti("<M-l>", "<cmd>tabnext<cr>")
 	map_nvti("<M-h>", "<cmd>tabprevious<cr>")
 end
+
+-- JJ helper in Terminal mode
+vim.keymap.set("t", "<M-j><M-j>", "<C-\\><C-O><cmd>PickJJ<cr>")
