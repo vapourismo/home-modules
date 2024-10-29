@@ -41,3 +41,16 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.cmd("set bufhidden=delete")
 	end,
 })
+
+-- Remote control server
+vim.api.nvim_create_autocmd({ "UIEnter" }, {
+	callback = function()
+		vim.fn.serverstart("/tmp/nvimsocket")
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "VimLeave" }, {
+	callback = function()
+		vim.fn.serverstop("/tmp/nvimsocket")
+	end,
+})

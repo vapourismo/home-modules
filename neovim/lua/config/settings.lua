@@ -40,6 +40,5 @@ if vim.g.neovide then
 	vim.g.neovide_fullscreen = true
 	vim.g.neovide_input_macos_option_key_is_meta = "only_left"
 
-	vim.fn.serverstart("/tmp/nvimsocket")
 	vim.env.EDITOR = "nvr -cc split --remote-wait"
 end
