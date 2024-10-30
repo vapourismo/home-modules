@@ -50,6 +50,7 @@ vim.api.nvim_create_user_command("PickJJ", function()
 		function(choice)
 			if choice ~= nil then
 				vim.paste({ choice.id }, -1)
+				vim.cmd.startinsert()
 			end
 		end)
 end, {})
