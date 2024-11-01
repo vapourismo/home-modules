@@ -21,7 +21,7 @@ end, {})
 
 vim.api.nvim_create_user_command("PickJJ", function()
 	local jj_proc = io.popen(
-		[[jj log -r 'summary() ~ empty()' --no-graph -T 'change_id.shortest() ++ ":\t" ++ if(description, description.first_line(), label(if(empty, "empty"), description_placeholder)) ++ "\n"']]
+		[[jj log -r 'summary()' --no-graph -T 'change_id.shortest() ++ ":\t" ++ if(description, description.first_line(), label(if(empty, "empty"), description_placeholder)) ++ "\n"']]
 	)
 
 	if jj_proc == nil then
