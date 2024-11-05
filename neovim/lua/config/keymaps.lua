@@ -28,7 +28,11 @@ vim.keymap.set("n", "<Esc>", function()
 end)
 
 -- Convenient file saving
-vim.keymap.set("", "<C-s>", "<cmd>update<cr>")
+vim.keymap.set("", "<C-s>", "<cmd>update<cr>", { remap = false })
+vim.keymap.set("i", "<C-s>", function()
+	vim.cmd.update()
+	vim.cmd.startinsert()
+end, { remap = false })
 
 -- Common command palette
 map_nvti("<" .. neovide_leader_modified .. "-p>", ":")
