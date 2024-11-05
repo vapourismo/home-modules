@@ -52,6 +52,7 @@ vim.keymap.set("", "<D-c>", '"+y', { remap = false })
 vim.keymap.set("", "<D-v>", '"+P', { remap = false })
 vim.keymap.set({ "t", "i" }, "<D-v>", '<C-\\><C-N>"+pi', { remap = false })
 vim.keymap.set("v", "p", "P", { remap = false })
+vim.keymap.set("", "x", '"_x', { remap = false })
 
 -- Fix annoying visual mode exit
 vim.keymap.set("v", "v", function() end)
