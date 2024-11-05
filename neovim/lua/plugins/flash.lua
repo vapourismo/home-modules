@@ -19,26 +19,18 @@ return {
 						    ([[\<%s]]):format(pattern)
 					end,
 				},
+				jump = {
+					autojump = true,
+				},
 				label = {
 					uppercase = false,
-					after = false,
 					before = true,
+					after = false,
 					style = "overlay",
 				},
 			})
 		end)
-		vim.keymap.set("", "<Space>w", function()
-			flash.jump({
-				pattern = "",
-				search = {
-					mode = function(pattern)
-						return ([[\<%s\w*\>]]):format(pattern),
-						    ([[\<%s]]):format(pattern)
-					end,
-				},
-				jump = { pos = "range" },
-			})
-		end)
+
 		vim.keymap.set("", "mt", function()
 			flash.treesitter({
 				label = { rainbow = { enabled = true } }
