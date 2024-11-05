@@ -44,13 +44,14 @@ vim.keymap.set("", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("", "gj", vim.diagnostic.goto_next)
 vim.keymap.set("", "gk", vim.diagnostic.goto_prev)
 
--- System clipboard
+-- Clipboards
 vim.keymap.set("", "<Space>y", '"+y')
 vim.keymap.set("", "<Space>p", '"+p')
 vim.keymap.set("", "<Space>P", '"+P')
 vim.keymap.set("", "<D-c>", '"+y', { remap = false })
 vim.keymap.set("", "<D-v>", '"+P', { remap = false })
 vim.keymap.set({ "t", "i" }, "<D-v>", '<C-\\><C-N>"+pi', { remap = false })
+vim.keymap.set("v", "p", "P", { remap = false })
 
 -- Fix annoying visual mode exit
 vim.keymap.set("v", "v", function() end)
