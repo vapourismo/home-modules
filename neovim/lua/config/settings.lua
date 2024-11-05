@@ -11,7 +11,7 @@ vim.opt.sessionoptions = { "curdir", "folds", "globals", "help", "tabpages", "te
 vim.opt.ignorecase = true
 vim.opt.showtabline = 2
 vim.opt.termguicolors = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
