@@ -40,6 +40,7 @@
             _build
             target
             .luarc.json
+            .aider.*
           '';
         in
           builtins.toString file;

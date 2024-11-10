@@ -113,3 +113,6 @@ end
 
 -- JJ helper in Terminal mode
 vim.keymap.set("t", "<M-j><M-j>", "<C-\\><C-O><cmd>PickJJ<cr>")
+
+-- Launch Aider
+vim.keymap.set("", "<Space>l", function() AiderOpen() end)
