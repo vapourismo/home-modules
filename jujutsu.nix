@@ -108,7 +108,7 @@
           sito = ["squash" "-i" "--into"];
           wc = ["new" "all:my_heads()"];
           fetch = ["git" "fetch"];
-          push = ["git" "push" "-r" "all:current_work() ~ conflicts()"];
+          push = ["git" "push" "-r" "all:current_work_ext() ~ conflicts()"];
           push-all = ["git" "push" "--all"];
         };
 
@@ -119,10 +119,11 @@
         revset-aliases = {
           "top" = "heads(@-:: ~ @)";
           "on_top_trunk(x)" = "trunk()..x";
-          "current_work()" = "roots(on_top_trunk(@))::";
+          "current_work()" = "on_top_trunk(@)";
+          "current_work_ext()" = "roots(on_top_trunk(@))::";
           "my_branch_work()" = "(on_top_trunk(bookmarks()) | bookmarks())::";
           "my_anon_work()" = "on_top_trunk(latest(..trunk(), 500):: & mine() & mutable())";
-          "summary()" = "my_branch_work() | my_anon_work() | current_work()";
+          "summary()" = "my_branch_work() | my_anon_work() | current_work_ext()";
           "my_heads()" = "heads(summary())";
           "next_branch(x)" = "heads(x:: & bookmarks())";
           "prev_branch(x)" = "heads(::x & bookmarks())";
