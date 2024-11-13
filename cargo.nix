@@ -19,6 +19,8 @@
         [alias]
         b = "build"
         bat = ["build", "--all-targets"]
+        baf = ["build", "--all-features"]
+        bataf = ["build", "--all-targets", "--all-features"]
         t = "test"
       ''
       + lib.optionalString config.ole.sccache ''
