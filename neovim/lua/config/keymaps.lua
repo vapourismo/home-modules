@@ -66,6 +66,10 @@ vim.keymap.set("", "gh", "0")
 vim.keymap.set("", "gl", "g_")
 vim.keymap.set("", "gs", "_")
 
+-- Indentation
+vim.keymap.set("v", "<Tab>", ">gv")
+vim.keymap.set("v", "<S-Tab>", "<gv")
+
 -- Fix change selection
 vim.keymap.set("", "c", "s")
 vim.keymap.set("", "C", "S")
