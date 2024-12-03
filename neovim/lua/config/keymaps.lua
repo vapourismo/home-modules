@@ -28,9 +28,9 @@ vim.keymap.set("n", "<Esc>", function()
 end)
 
 -- Convenient file saving
-vim.keymap.set("", "<C-s>", "<cmd>update<cr>", { remap = false })
+vim.keymap.set("", "<C-s>", "<cmd>write<cr>", { remap = false })
 vim.keymap.set("i", "<C-s>", function()
-	vim.cmd.update()
+	vim.cmd.write()
 	vim.cmd.startinsert()
 end, { remap = false })
 
