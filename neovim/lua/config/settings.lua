@@ -32,7 +32,7 @@ vim.diagnostic.config({
 
 -- Neovide
 if vim.g.neovide then
-	vim.opt.guifont = "Iosevka Term SS02:h13"
+	vim.opt.guifont = "IosevkaTermSS02 Nerd Font:h13"
 	vim.g.neovide_scroll_animation_length = 0.05
 	vim.g.neovide_position_animation_length = 0.1
 	vim.g.neovide_cursor_animation_length = 0
