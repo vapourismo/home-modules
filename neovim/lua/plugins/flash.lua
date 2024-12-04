@@ -11,13 +11,10 @@ return {
 		})
 
 		vim.keymap.set("", "<Space>j", function()
-			flash.jump({
-				pattern = "",
+			require("flash").jump({
+				labels = "hjklionmasdfqwec",
 				search = {
-					mode = function(pattern)
-						return ([[\<%s\w*\>]]):format(pattern),
-						    ([[\<%s]]):format(pattern)
-					end,
+					mode = "fuzzy",
 				},
 				jump = {
 					autojump = true,
@@ -26,28 +23,6 @@ return {
 					uppercase = false,
 					before = true,
 					after = false,
-					style = "overlay",
-				},
-			})
-		end)
-
-		vim.keymap.set("", "<Space>J", function()
-			flash.jump({
-				pattern = "",
-				search = {
-					mode = function(pattern)
-						return ([[\<%s\w*\>]]):format(pattern),
-						    ([[\<%s]]):format(pattern)
-					end,
-				},
-				jump = {
-					autojump = true,
-					pos = "end",
-				},
-				label = {
-					uppercase = false,
-					before = false,
-					after = true,
 					style = "overlay",
 				},
 			})
