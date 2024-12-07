@@ -16,18 +16,8 @@ pwd_bg_color() {
 	bg_color "$(pwd)"
 }
 
-prompt_git_branch() {
-	branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
-	[[ -n "$branch" ]] && echo -n "%K{white}%F{black} git %f%k%K{blue}%F{white} $branch %f%k "
-}
-
-prompt_stg_patch() {
-	patch=$(stg top 2> /dev/null)
-	[[ -n "$patch" ]] && echo -n "%K{white}%F{black} stg %f%k%K{green}%F{black} $patch %f%k " || prompt_git_branch
-}
-
 prompt_nix_shell() {
 	[[ -n "$IN_NIX_SHELL" ]] && echo -n "%K{white}%F{black} nix %f%k%K{yellow}%F{black} $name %f%k "
 }
 
-export PROMPT=$'\n%K{white}%F{black} id %f%k%F{white}%K{#14b3a0} %n@%m %f%k $(prompt_nix_shell)$(prompt_stg_patch)%K{white}%F{black} dir %f%k%K{magenta}%F{white} %~ %f%k \n%F{green}\u03BB%f '
+export PROMPT=$'\n%K{white}%F{black} id %f%k%F{white}%K{#14b3a0} %n@%m %f%k $(prompt_nix_shell)%K{white}%F{black} dir %f%k%K{magenta}%F{white} %~ %f%k \n%F{green}\u03BB%f '
