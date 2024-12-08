@@ -13,6 +13,10 @@ return {
 		},
 		opts = {
 			suppressed_dirs = { "~", "~/Workspaces", "~/Downloads", "/" },
+			cwd_change_handling = true,
+			lsp_stop_on_restore = true,
+			pre_save_cmds = { "ScopeSaveState" },
+			post_restore_cmds = { "ScopeLoadState" },
 		}
 	}
 }
