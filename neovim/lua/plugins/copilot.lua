@@ -34,14 +34,4 @@ return {
 		},
 		enabled = false
 	},
-
-	{
-		"joshuavial/aider.nvim",
-		config = {
-			default_bindings = false,
-			keymaps = {
-				["<Space>l"] = "AiderOpen()"
-			}
-		},
-	}
 }

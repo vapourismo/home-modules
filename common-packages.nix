@@ -24,7 +24,6 @@ with pkgs; {
       fd
       tree-sitter
       fzf
-      aider-chat
     ]
     ++ lib.optional stdenv.isDarwin pinentry_mac;
 }
