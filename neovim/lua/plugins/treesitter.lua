@@ -21,6 +21,9 @@ return {
 				multiwindow = true
 			})
 
+			-- Configure highlights
+			vim.cmd("hi TreesitterContextBottom cterm=NONE gui=NONE")
+
 			-- When you switch between buffers, the context window disappears. This brings it back
 			-- when you enter the buffer again.
 			vim.api.nvim_create_autocmd({ "BufEnter" }, {
