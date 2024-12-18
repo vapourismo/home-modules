@@ -14,8 +14,18 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		opts = {
-			multiwindow = true,
-		}
+		config = function()
+			local context = require("treesitter-context")
+
+			context.setup({
+				multiwindow = true
+			})
+
+			-- When you switch between buffers, the context window disappears. This brings it back
+			-- when you enter the buffer again.
+			vim.api.nvim_create_autocmd({ "BufEnter" }, {
+				callback = "TSContextEnable"
+			})
+		end
 	}
 }
