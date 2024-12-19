@@ -85,8 +85,8 @@ vim.keymap.set("", "bn", "<cmd>enew<cr>")
 
 -- Terminal creation
 vim.keymap.set("", "bt", "<cmd>terminal<cr>")
-map_nvti("<C-§>", "<cmd>ToggleTerm direction=horizontal name=generic-floaty<cr>")
-map_nvti("<" .. neovide_leader_modified .. "-§>", "<cmd>ToggleTerm direction=float name=generic-floaty<cr>")
+map_nvti("<C-§>", "<cmd>ToggleTerm direction=horizontal name=Horzy<cr>")
+map_nvti("<M-§>", "<cmd>ToggleTerm direction=float name=Floaty<cr>")
 
 -- Tab selection
 vim.keymap.set("", "tl", "<cmd>tabnext<cr>")
