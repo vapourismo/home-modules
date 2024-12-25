@@ -29,7 +29,7 @@
       alias t=task
 
       # Extend PATH
-      export PATH="$PATH:$HOME/.local/bin"
+      export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
     '';
 
     oh-my-zsh = {
