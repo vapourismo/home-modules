@@ -110,8 +110,7 @@
         "home-manager": "home-manager",
         "jujutsu": "jujutsu",
         "nixpkgs": "nixpkgs_2",
-        "omz-nix-shell-plugin": "omz-nix-shell-plugin",
-        "tim-janik-tools": "tim-janik-tools"
+        "omz-nix-shell-plugin": "omz-nix-shell-plugin"
       }
     },
     "rust-overlay": {
@@ -147,22 +146,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "tim-janik-tools": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1730130233,
-        "narHash": "sha256-i2wDwhYYlCJLYnvn+Xou8WfIQQkQ/Jh4+cvz1lVxJK4=",
-        "owner": "tim-janik",
-        "repo": "tools",
-        "rev": "ef9609acfe43506ab9f481c5b7bb0f1aa63ca52b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tim-janik",
-        "repo": "tools",
         "type": "github"
       }
     }

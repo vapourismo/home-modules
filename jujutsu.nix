@@ -130,11 +130,5 @@
         };
       };
     };
-
-    zsh = {
-      initExtra = ''
-        alias jjfzf="${specialArgs.inputs.tim-janik-tools}/jj-fzf/jj-fzf"
-      '';
-    };
   };
 }
