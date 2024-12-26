@@ -1,7 +1,6 @@
 {config, ...}: {
   imports = [
     ./skhd.nix
-    ./wezterm.nix
     ./git.nix
     ./nixpkgs.nix
     ./zsh.nix
