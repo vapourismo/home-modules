@@ -28,8 +28,12 @@
       alias c=cargo
       alias t=task
 
-      # Extend PATH
+      # extend PATH
       export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+
+      # put /usr/bin last in PATH
+      path=(''${path[@]:#/usr/bin})
+      path+=(/usr/bin)
     '';
 
     oh-my-zsh = {
