@@ -42,7 +42,7 @@
       '');
 
       theme = "ole";
-      plugins = ["git" "nix-shell"];
+      plugins = ["nix-shell"];
     };
   };
 }
