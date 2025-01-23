@@ -130,5 +130,9 @@
         };
       };
     };
+
+    zsh.initExtra = ''
+      source <(${config.programs.jujutsu.package}/bin/jj util completion zsh)
+    '';
   };
 }
