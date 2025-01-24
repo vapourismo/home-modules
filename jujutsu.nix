@@ -100,16 +100,34 @@
         aliases = {
           ls = ["log" "-r" "summary()"];
           bo = ["bookmark"];
-          retrunk = ["rebase" "--skip-emptied" "-d" "trunk()"];
-          retrunk-all = ["rebase" "--skip-emptied" "-d" "trunk()" "-b" "all:summary()"];
+          r = ["rebase" "--skip-emptied" "-d" "trunk()"];
+          ra = ["rebase" "--skip-emptied" "-d" "trunk()" "-b" "all:summary()"];
           sq = ["squash"];
-          sqto = ["squash" "--into"];
           si = ["squash" "-i"];
-          sito = ["squash" "-i" "--into"];
-          wc = ["new" "all:my_heads()"];
-          fetch = ["git" "fetch"];
-          push = ["git" "push" "-r" "all:current_work() ~ conflicts()"];
-          push-all = ["git" "push" "--all"];
+          f = ["git" "fetch"];
+          p = ["git" "push" "-r" "all:current_work() ~ conflicts()"];
+          pn = ["pa" "--allow-new"];
+          pa = ["git" "push" "--all"];
+          co = [
+            "util"
+            "exec"
+            "--"
+            "bash"
+            "-c"
+            ''
+              jj new "'$0'@origin"
+            ''
+          ];
+          gc = [
+            "util"
+            "exec"
+            "--"
+            "bash"
+            "-c"
+            ''
+              eval "$(jj bo l -r 'immutable()' -T '"jj bo d " ++ name ++ ";"')"
+            ''
+          ];
         };
 
         revsets = {
