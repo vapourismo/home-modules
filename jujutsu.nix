@@ -150,6 +150,7 @@
     };
 
     zsh.initExtra = ''
+      alias j=jj
       source <(${config.programs.jujutsu.package}/bin/jj util completion zsh)
     '';
   };
