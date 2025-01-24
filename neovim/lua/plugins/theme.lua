@@ -12,6 +12,7 @@ return {
 						background = false,
 					},
 				},
+				treesitter_context = false,
 			},
 			no_italic = true,
 			styles = {
