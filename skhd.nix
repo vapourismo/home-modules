@@ -53,6 +53,26 @@
           ${lib.optionalString (lib.isString config.ole.slot5) "cmd - 5 : open -a ${lib.strings.escapeShellArg config.ole.slot5}"}
 
           ${lib.optionalString (lib.isString config.ole.slot6) "cmd - 6 : open -a ${lib.strings.escapeShellArg config.ole.slot6}"}
+
+          cmd - j [
+            "Slack" : skhd -k down
+            *       ~
+          ]
+
+          cmd - k [
+            "Slack" : skhd -k up
+            *       ~
+          ]
+
+          cmd - h [
+            "Brave Browser" : skhd -k 'ctrl + shift - tab'
+            *               ~
+          ]
+
+          cmd - l [
+            "Brave Browser" : skhd -k 'ctrl - tab'
+            *               ~
+          ]
         '';
 
         onChange = ''
