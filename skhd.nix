@@ -63,16 +63,6 @@
             "Slack" : skhd -k up
             *       ~
           ]
-
-          cmd - h [
-            "Brave Browser" : skhd -k 'ctrl + shift - tab'
-            *               ~
-          ]
-
-          cmd - l [
-            "Brave Browser" : skhd -k 'ctrl - tab'
-            *               ~
-          ]
         '';
 
         onChange = ''
