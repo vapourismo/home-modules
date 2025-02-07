@@ -8,6 +8,7 @@ return {
 				return {
 					line.sep("", style, "TabLineFill"),
 					tab.number(),
+					tab.name(),
 					line.sep("", style, "TabLineFill"),
 					hl = style,
 					margin = " ",
