@@ -106,7 +106,7 @@
           si = ["squash" "-i"];
           f = ["git" "fetch"];
           p = ["git" "push" "-r" "all:current_work() ~ conflicts()"];
-          pn = ["pa" "--allow-new"];
+          pn = ["p" "--allow-new"];
           pa = ["git" "push" "--all"];
           co = [
             "util"
