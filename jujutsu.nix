@@ -102,8 +102,8 @@
           bo = ["bookmark"];
           r = ["rebase" "--skip-emptied" "-d" "trunk()"];
           ra = ["rebase" "--skip-emptied" "-d" "trunk()" "-b" "all:summary()"];
-          sq = ["squash"];
-          si = ["squash" "-i"];
+          sq = ["squash" "--use-destination-message" "--keep-emptied"];
+          si = ["sq" "-i"];
           f = ["git" "fetch"];
           p = ["git" "push" "-r" "all:current_work() ~ conflicts()"];
           pn = ["p" "--allow-new"];
