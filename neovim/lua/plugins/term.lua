@@ -1,5 +1,4 @@
-return
-{
+return {
 	"akinsho/toggleterm.nvim",
 	config = function()
 		local toggleterm = require("toggleterm")

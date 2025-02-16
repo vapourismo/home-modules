@@ -22,6 +22,10 @@ map_nvti("<" .. neovide_leader_modified .. "-H>", "<cmd>vertical resize -1<cr>")
 vim.keymap.set("t", "<D-Esc>", "<Esc>", { remap = false })
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { remap = false })
 
+-- Prevent terminal from sending escape sequence for some combinations
+vim.keymap.set("t", "<S-Space>", "<Space>")
+vim.keymap.set("t", "<S-Enter>", "<Enter>")
+
 -- Clear highlights on Escape in normal mode
 vim.keymap.set("n", "<Esc>", function()
 	vim.cmd.noh()
