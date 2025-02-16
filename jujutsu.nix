@@ -25,7 +25,9 @@
   config.programs = {
     jujutsu = {
       enable = true;
-      package = specialArgs.inputs.jujutsu.packages.${pkgs.system}.default;
+      package = specialArgs.inputs.jujutsu.packages.${pkgs.system}.default.overrideAttrs {
+        doCheck = false;
+      };
       settings = {
         core.fsmonitor = "watchman";
 

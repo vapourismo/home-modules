@@ -34,8 +34,6 @@
       tree
       ripgrep
       gnupg
-      taskwarrior
-      taskwarrior-tui
     ];
   };
 }
