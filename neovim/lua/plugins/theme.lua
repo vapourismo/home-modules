@@ -93,7 +93,6 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
-		},
-		enabled = false
+		}
 	}
 }
