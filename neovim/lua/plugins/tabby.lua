@@ -5,17 +5,25 @@ return {
 		local api = require("tabby.module.api")
 		tabby.setup({
 			line = function(line)
-				local tabs = line.tabs().foreach(function(tab)
-					local style = tab.is_current() and "TabLineSel" or "TabLine"
-					return {
-						line.sep("", style, "TabLineFill"),
-						tab.number(),
-						tab.name(),
-						line.sep("", style, "TabLineFill"),
-						hl = style,
-						margin = " ",
-					}
-				end)
+				local tabs = line.tabs().foreach(
+					function(tab)
+						local suffix = tab.is_current() and "Sel" or ""
+
+						local number_section = {
+							" ",
+							tab.number(),
+							" ",
+							hl = "TabLineNum" .. suffix
+						}
+
+						local name = tab.name()
+						local name_section = { " ", tab.name(), " ", hl = "TabLineName" .. suffix }
+						local name_section = name ~= "" and name_section or {}
+
+						return { number_section, name_section }
+					end,
+					{ margin = " " }
+				)
 				return {
 					line.spacer(),
 					tabs,

@@ -17,7 +17,15 @@ return {
 			no_italic = true,
 			styles = {
 				comments = { "bold" }
-			}
+			},
+			custom_highlights = function(colors)
+				return {
+					TabLineNum = { fg = colors.base, bg = colors.surface1 },
+					TabLineName = { fg = colors.base, bg = colors.surface0 },
+					TabLineNumSel = { fg = colors.crust, bg = colors.maroon },
+					TabLineNameSel = { fg = colors.crust, bg = colors.rosewater },
+				}
+			end
 		},
 	},
 
