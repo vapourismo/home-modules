@@ -22,8 +22,8 @@ return {
 				return {
 					TabLineNum = { fg = colors.base, bg = colors.surface1 },
 					TabLineName = { fg = colors.base, bg = colors.surface0 },
-					TabLineNumSel = { fg = colors.crust, bg = colors.maroon },
-					TabLineNameSel = { fg = colors.crust, bg = colors.rosewater },
+					TabLineNumSel = { fg = colors.crust, bg = colors.maroon, style = { "bold" } },
+					TabLineNameSel = { fg = colors.crust, bg = colors.rosewater, style = { "bold" } },
 				}
 			end
 		},
