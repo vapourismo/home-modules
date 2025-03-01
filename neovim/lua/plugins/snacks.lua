@@ -84,8 +84,12 @@ return {
 			function() Snacks.picker.lsp_workspace_symbols() end
 		},
 		{
-			"<Space>D",
+			"<Space>d",
 			function() Snacks.picker.diagnostics_buffer() end
+		},
+		{
+			"<Space>D",
+			function() Snacks.picker.diagnostics() end
 		},
 		{
 			"<Space>l",
