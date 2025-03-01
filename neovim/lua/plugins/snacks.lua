@@ -8,6 +8,10 @@ return {
 				files = {
 					enabled = false
 				}
+			},
+			projects = {
+				dev = { "~/Workspaces" },
+				patterns = { ".jj", ".git", "_darcs", ".hg", ".bzr", ".svn", "package.json", "Cargo.lock", "Makefile" },
 			}
 		},
 		zen = {
@@ -58,6 +62,10 @@ return {
 		{
 			"<Space>f",
 			function() Snacks.picker.files() end
+		},
+		{
+			"<Space>F",
+			function() Snacks.picker.projects() end
 		},
 		{
 			"<Space>/",
