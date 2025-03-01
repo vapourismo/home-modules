@@ -15,6 +15,18 @@ return {
 			zen = {
 				width = 140
 			},
+			terminal = {
+				keys = {
+					term_normal = {
+						"<esc>",
+						function(self)
+							vim.cmd("stopinsert")
+						end,
+						mode = "t",
+						expr = true,
+					},
+				},
+			}
 		}
 	},
 	keys = {
