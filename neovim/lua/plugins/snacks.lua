@@ -5,7 +5,7 @@ return {
 	opts = {},
 	keys = {
 		{ "<Space>z", function() Snacks.zen() end },
-		{ "<C-;>",    function() Snacks.terminal(vim.o.shell) end, mode = { "n", "t", "v" } },
-		{ "<C-\\>",   function() Snacks.terminal() end,            mode = { "n", "t", "v" } },
+		{ "<C-;>",    function() Snacks.terminal(vim.o.shell, { cwd = vim.fn.getcwd(-1, 0) }) end, mode = { "n", "t", "v" } },
+		{ "<C-\\>",   function() Snacks.terminal(nil, { cwd = vim.fn.getcwd(-1, 0) }) end,         mode = { "n", "t", "v" } },
 	},
 }
