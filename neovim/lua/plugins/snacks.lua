@@ -3,6 +3,13 @@ return {
 	priority = 1000,
 	lazy = false,
 	opts = {
+		picker = {
+			icons = {
+				files = {
+					enabled = false
+				}
+			}
+		},
 		zen = {
 			toggles = {
 				dim = false
