@@ -56,6 +56,10 @@ return {
 			mode = { "n", "t", "v" }
 		},
 		{
+			"<Space>=",
+			function() Snacks.picker.pickers() end
+		},
+		{
 			"<Space>e",
 			function() Snacks.picker.explorer() end
 		},
