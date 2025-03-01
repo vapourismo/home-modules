@@ -42,7 +42,7 @@ return {
 			function() Snacks.zen() end
 		},
 		{
-			"<C-;>",
+			"<D-p>",
 			function()
 				Snacks.terminal(
 					vim.o.shell,
@@ -57,12 +57,14 @@ return {
 			mode = { "n", "t", "v" }
 		},
 		{
-			"<C-\\>",
+			"<D-§>",
 			function()
-				Snacks.terminal(
-					nil,
+				Snacks.terminal(nil,
 					{
-						cwd = vim.fn.getcwd(-1, 0)
+						cwd = vim.fn.getcwd(-1, 0),
+						win = {
+							max_height = 30,
+						},
 					}
 				)
 			end,

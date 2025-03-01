@@ -38,9 +38,6 @@ vim.keymap.set("i", "<C-s>", function()
 	vim.cmd.startinsert()
 end, { remap = false })
 
--- Common command palette
-map_nvti("<" .. neovide_leader_modified .. "-p>", ":")
-
 -- LSP actions
 vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
 vim.keymap.set("", "<Space>r", vim.lsp.buf.rename)
@@ -86,11 +83,6 @@ vim.keymap.set("", "bj", "<cmd>bprev<cr>")
 vim.keymap.set("", "bk", "<cmd>bnext<cr>")
 vim.keymap.set("", "bq", "<cmd>Bdelete<cr>")
 vim.keymap.set("", "bn", "<cmd>enew<cr>")
-
--- Terminal creation
-vim.keymap.set("", "bt", "<cmd>terminal<cr>")
-map_nvti("<C-§>", "<cmd>ToggleTerm direction=horizontal size=30 name=Horzy<cr>")
-map_nvti("<M-§>", "<cmd>ToggleTerm direction=float name=Floaty<cr>")
 
 -- Tab selection
 vim.keymap.set("", "tl", "<cmd>tabnext<cr>")
