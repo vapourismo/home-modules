@@ -43,12 +43,29 @@ return {
 		},
 		{
 			"<C-;>",
-			function() Snacks.terminal(vim.o.shell, { cwd = vim.fn.getcwd(-1, 0) }) end,
+			function()
+				Snacks.terminal(
+					vim.o.shell,
+					{
+						cwd = vim.fn.getcwd(-1, 0),
+						win = {
+							max_width = 220
+						},
+					}
+				)
+			end,
 			mode = { "n", "t", "v" }
 		},
 		{
 			"<C-\\>",
-			function() Snacks.terminal(nil, { cwd = vim.fn.getcwd(-1, 0) }) end,
+			function()
+				Snacks.terminal(
+					nil,
+					{
+						cwd = vim.fn.getcwd(-1, 0)
+					}
+				)
+			end,
 			mode = { "n", "t", "v" }
 		},
 		{
