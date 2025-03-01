@@ -9,10 +9,6 @@ return {
 					enabled = false
 				}
 			},
-			projects = {
-				dev = { "~/Workspaces" },
-				patterns = { ".jj", ".git", "_darcs", ".hg", ".bzr", ".svn", "package.json", "Cargo.lock", "Makefile" },
-			}
 		},
 		zen = {
 			toggles = {
@@ -65,11 +61,31 @@ return {
 		},
 		{
 			"<Space>f",
-			function() Snacks.picker.files() end
+			function() Snacks.picker.files({ layout = "vscode" }) end
 		},
 		{
 			"<Space>F",
-			function() Snacks.picker.projects() end
+			function()
+				Snacks.picker.projects({
+					dev = { "~/Workspaces" },
+					patterns = {
+						".jj",
+						".git",
+						"_darcs",
+						".hg",
+						".bzr",
+						".svn",
+						"package.json",
+						"Cargo.lock",
+						"Makefile"
+					},
+					layout = "vscode",
+					confirm = function(picker, item)
+						picker:close()
+						Snacks.picker.actions.tcd(picker, item)
+					end
+				})
+			end
 		},
 		{
 			"<Space>/",
