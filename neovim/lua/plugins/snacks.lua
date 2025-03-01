@@ -105,11 +105,19 @@ return {
 		},
 		{
 			"<Space>d",
-			function() Snacks.picker.diagnostics_buffer() end
+			function()
+				Snacks.picker.diagnostics_buffer({
+					layout = "bottom"
+				})
+			end
 		},
 		{
 			"<Space>D",
-			function() Snacks.picker.diagnostics() end
+			function()
+				Snacks.picker.diagnostics({
+					layout = "bottom"
+				})
+			end
 		},
 		{
 			"<Space>l",
