@@ -75,3 +75,13 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 		vim.wo.cursorline = false
 	end,
 })
+
+-- Terminals, especially floating ones, might take a while to activate without this
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "snacks_terminal" },
+	callback = function(ev)
+		local bufnr = ev.buf
+		vim.api.nvim_buf_set_option(bufnr, "foldmethod", "manual")
+		vim.api.nvim_buf_set_option(bufnr, "foldtext", "foldtext()")
+	end,
+})
