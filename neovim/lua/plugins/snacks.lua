@@ -49,7 +49,11 @@ return {
 					{
 						cwd = vim.fn.getcwd(-1, 0),
 						win = {
-							max_width = 220
+							max_width = 220,
+							wo = {
+								foldmethod = "manual",
+								foldtext = "foldtext()",
+							}
 						},
 					}
 				)
@@ -64,6 +68,10 @@ return {
 						cwd = vim.fn.getcwd(-1, 0),
 						win = {
 							max_height = 30,
+							wo = {
+								foldmethod = "manual",
+								foldtext = "foldtext()",
+							}
 						},
 					}
 				)
