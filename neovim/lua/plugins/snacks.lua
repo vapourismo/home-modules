@@ -91,30 +91,6 @@ return {
 			function() Snacks.picker.files({ layout = "vscode" }) end
 		},
 		{
-			"<Space>F",
-			function()
-				Snacks.picker.projects({
-					dev = { "~/Workspaces" },
-					patterns = {
-						".jj",
-						".git",
-						"_darcs",
-						".hg",
-						".bzr",
-						".svn",
-						"package.json",
-						"Cargo.lock",
-						"Makefile"
-					},
-					layout = "vscode",
-					confirm = function(picker, item)
-						picker:close()
-						Snacks.picker.actions.tcd(picker, item)
-					end
-				})
-			end
-		},
-		{
 			"<Space>/",
 			function() Snacks.picker.grep() end
 		},
