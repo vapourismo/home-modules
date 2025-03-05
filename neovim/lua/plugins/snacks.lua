@@ -26,7 +26,7 @@ return {
 				keys = {
 					term_normal = {
 						"<esc>",
-						function(self)
+						function()
 							vim.cmd("stopinsert")
 						end,
 						mode = "t",
