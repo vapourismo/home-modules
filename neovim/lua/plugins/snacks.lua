@@ -58,7 +58,7 @@ return {
 					}
 				)
 			end,
-			mode = { "n", "t", "v" }
+			mode = { "n", "t", "v", "i" }
 		},
 		{
 			"<D-§>",
@@ -76,7 +76,7 @@ return {
 					}
 				)
 			end,
-			mode = { "n", "t", "v" }
+			mode = { "n", "t", "v", "i" }
 		},
 		{
 			"<Space>=",
