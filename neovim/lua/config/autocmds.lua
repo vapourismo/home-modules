@@ -75,3 +75,16 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 		vim.wo.cursorline = false
 	end,
 })
+
+-- Close terminal windows on leave if requested
+vim.api.nvim_create_autocmd({ "WinLeave" }, {
+	pattern = "term://*",
+	callback = function(ev)
+		for _, win in pairs(Snacks.terminal.list()) do
+			local close_this = win.opts and win.opts.w and win.opts.w.close_on_leave
+			if win.buf == ev.buf and close_this then
+				win:hide()
+			end
+		end
+	end,
+})

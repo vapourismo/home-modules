@@ -53,7 +53,10 @@ return {
 							wo = {
 								foldmethod = "manual",
 								foldtext = "foldtext()",
-							}
+							},
+							w = {
+								close_on_leave = true
+							},
 						},
 					}
 				)
