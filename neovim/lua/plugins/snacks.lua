@@ -82,6 +82,28 @@ return {
 			mode = { "n", "t", "v", "i" }
 		},
 		{
+			"<Space>c",
+			function()
+				Snacks.terminal(
+					"claude",
+					{
+						cwd = vim.fn.getcwd(-1, 0),
+						win = {
+							max_width = 220,
+							wo = {
+								foldmethod = "manual",
+								foldtext = "foldtext()",
+							},
+							w = {
+								close_on_leave = true
+							},
+						},
+					}
+				)
+			end,
+			mode = { "n", "v" }
+		},
+		{
 			"<Space>=",
 			function() Snacks.picker.pickers() end
 		},
