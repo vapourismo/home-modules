@@ -7,12 +7,11 @@ vim.api.nvim_create_user_command("DirenvLoad", function()
 		notification = vim.notify(msg, level, { title = notification_title, replace = notification })
 	end
 
+	notify("Loading direnv ...", vim.log.levels.INFO)
 	vim.system(
 		{ "direnv", "exec", "/", "direnv", "export", "json" },
 		{ text = true },
 		vim.schedule_wrap(function(result)
-			notify("Loading direnv", vim.log.levels.INFO)
-
 			if result.code ~= 0 then
 				notify("Failed to load direnv:\n" .. result.stderr, vim.log.levels.ERROR)
 				return
@@ -22,8 +21,6 @@ vim.api.nvim_create_user_command("DirenvLoad", function()
 				notify("No direnv set up", vim.log.levels.ERROR)
 				return
 			end
-
-			vim.print(result.stdout)
 
 			local env = vim.fn.json_decode(result.stdout)
 			for key, value in pairs(env) do
