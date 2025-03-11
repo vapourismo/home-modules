@@ -11,19 +11,25 @@ return {
 		})
 
 		vim.keymap.set("", "<Space>j", function()
-			require("flash").jump({
+			flash.jump({
 				labels = "hjklionmasdfqwec",
-				search = {
-					mode = "fuzzy",
-				},
-				jump = {
-					autojump = false,
-				},
 				label = {
 					uppercase = false,
 					before = true,
 					after = false,
 					style = "overlay",
+				},
+				pattern = ".",
+				search = {
+					mode = function(pattern)
+						if pattern:sub(1, 1) == "." then
+							pattern = pattern:sub(2)
+						end
+						return ([[\<%s\w*\>]]):format(pattern), ([[\<%s]]):format(pattern)
+					end,
+				},
+				jump = {
+					autojump = false,
 				},
 			})
 		end)
