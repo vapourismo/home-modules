@@ -17,7 +17,7 @@ return {
 					mode = "fuzzy",
 				},
 				jump = {
-					autojump = true,
+					autojump = false,
 				},
 				label = {
 					uppercase = false,
