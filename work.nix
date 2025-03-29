@@ -19,7 +19,7 @@
   };
 
   ole = {
-    slot2 = "/Applications/Orion.app";
+    slot2 = config.ole.slot1;
     slot3 = "/Applications/Orion.app";
     slot4 = "/Applications/Slack.app";
     slot5 = "/Applications/Linear.app";
