@@ -19,8 +19,8 @@
   };
 
   ole = {
-    slot2 = "/Applications/Brave Browser.app";
-    slot3 = "/Applications/Brave Browser.app";
+    slot2 = "/Applications/Orion.app";
+    slot3 = "/Applications/Orion.app";
     slot4 = "/Applications/Slack.app";
     slot5 = "/Applications/Linear.app";
     jj = {
