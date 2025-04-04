@@ -44,6 +44,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		"gitconfig",
 		"addp-hunk-edit.diff",
 		"jj",
+		"jjdescription",
 	},
 	callback = function()
 		vim.cmd("set bufhidden=delete")
