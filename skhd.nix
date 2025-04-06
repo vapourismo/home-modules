@@ -42,9 +42,9 @@
 
       file.".skhdrc" = {
         text = ''
-          cmd - 1 : open -a ${lib.strings.escapeShellArg config.ole.slot1}
+          ${lib.optionalString (lib.isString config.ole.slot1) "cmd - 1 : open -a ${lib.strings.escapeShellArg config.ole.slot1}"}
 
-          cmd - 2 : open -a ${lib.strings.escapeShellArg config.ole.slot2}
+          ${lib.optionalString (lib.isString config.ole.slot2) "cmd - 2 : open -a ${lib.strings.escapeShellArg config.ole.slot2}"}
 
           ${lib.optionalString (lib.isString config.ole.slot3) "cmd - 3 : open -a ${lib.strings.escapeShellArg config.ole.slot3}"}
 
