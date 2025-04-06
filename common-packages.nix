@@ -22,6 +22,7 @@ with pkgs; {
       fd
       tree-sitter
       fzf
+      lua-language-server
     ]
     ++ lib.optional stdenv.isDarwin pinentry_mac;
 }
