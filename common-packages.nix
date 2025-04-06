@@ -14,9 +14,7 @@ with pkgs; {
       htop
       jq
       nil
-      nixos-rebuild
       ripgrep
-      stgit
       tree
       vim
       watchman
