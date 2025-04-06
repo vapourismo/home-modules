@@ -5,23 +5,24 @@ with pkgs; {
       alejandra
       bash
       calc
+      claude-code
       coreutils
       curl
       difftastic
+      fd
+      fzf
       gh
       glab
       gnupg
       htop
       jq
+      lua-language-server
       nil
       ripgrep
       tree
+      tree-sitter
       vim
       wget
-      fd
-      tree-sitter
-      fzf
-      lua-language-server
     ]
     ++ lib.optional stdenv.isDarwin pinentry_mac;
 }
