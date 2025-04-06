@@ -17,7 +17,6 @@ with pkgs; {
       ripgrep
       tree
       vim
-      watchman
       wget
       fd
       tree-sitter
