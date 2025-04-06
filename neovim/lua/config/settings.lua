@@ -13,7 +13,7 @@ vim.opt.ignorecase = true
 vim.opt.showtabline = 2
 vim.opt.termguicolors = true
 vim.opt.relativenumber = false
-vim.opt.scrolloff = 20
+vim.opt.scrolloff = 10
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
