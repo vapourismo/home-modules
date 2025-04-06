@@ -48,14 +48,15 @@
 
       signing =
         lib.optionalAttrs (lib.isString config.ole.jj.sshSignKey) {
-          sign-all = true;
           backend = "ssh";
           key = config.ole.jj.sshSignKey;
         }
         // lib.optionalAttrs (lib.isString config.ole.jj.gpgSignKey) {
-          sign-all = true;
           backend = "gpg";
           key = config.ole.jj.gpgSignKey;
+        }
+        // {
+          behavior = "own";
         };
 
       templates = {
