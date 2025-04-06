@@ -29,7 +29,8 @@
       alias t=task
 
       # extend PATH
-      export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+      path+=($HOME/.local/bin)
+      path+=($HOME/.cargo/bin)
 
       # put /usr/bin last in PATH
       path=(''${path[@]:#/usr/bin})
