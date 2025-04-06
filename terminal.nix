@@ -1,8 +1,19 @@
 {
   pkgs,
+  lib,
   specialArgs,
+  config,
   ...
 }: {
+  home.packages =
+    # Bash on MacOS is too old for Nix shells to work properly
+    lib.optional pkgs.stdenv.isDarwin pkgs.bash;
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = config.programs.zsh.enable;
+  };
+
   programs.atuin = {
     enable = true;
     settings = {

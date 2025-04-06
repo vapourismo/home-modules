@@ -6,8 +6,7 @@
   imports = [
     ./git.nix
     ./nixpkgs.nix
-    ./zsh.nix
-    ./direnv.nix
+    ./terminal.nix
     ./common-packages.nix
     ./neovim.nix
   ];

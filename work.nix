@@ -3,8 +3,7 @@
     ./skhd.nix
     ./git.nix
     ./nixpkgs.nix
-    ./zsh.nix
-    ./direnv.nix
+    ./terminal.nix
     ./common-packages.nix
     ./darwin-defaults.nix
     ./jujutsu.nix
