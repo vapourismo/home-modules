@@ -136,6 +136,14 @@
             eval "$(jj bo l -r 'immutable()' -T '"jj bo d " ++ name ++ ";"')"
           ''
         ];
+        mb = [
+          "bookmark"
+          "move"
+          "-f"
+          "prev_branch(@)"
+          "-t"
+          "heads(..@ ~ empty())"
+        ];
       };
 
       revsets = {
