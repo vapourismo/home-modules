@@ -24,20 +24,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"stevearc/dressing.nvim",
-			{
-				"MeanderingProgrammer/render-markdown.nvim",
-				dependencies = {
-					"echasnovski/mini.nvim",
-					"nvim-treesitter/nvim-treesitter"
-				},
-				ft = { "Avante", "markdown" },
-				opts = {
-					file_types = { "Avante", "markdown" },
-					heading = {
-						position = "inline",
-					},
-				},
-			},
+			"MeanderingProgrammer/render-markdown.nvim",
 		},
 		event = "VeryLazy",
 		lazy = false,
