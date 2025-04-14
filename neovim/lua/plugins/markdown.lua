@@ -7,7 +7,25 @@ return {
 	opts = {
 		file_types = { "Avante", "markdown" },
 		heading = {
-			position = "inline",
+			sign = false,
+			position = "overlay",
+			icons = { "█ ", "██ ", "███ ", "████ ", "█████ ", "██████ " },
+			width = "full",
+		},
+		code = {
+			sign = false,
+			style = "normal",
+		},
+		checkbox = {
+			unchecked = {
+				icon = "",
+			},
+			checked = {
+				icon = "",
+			},
+		},
+		quote = {
+			icon = "▏",
 		},
 	},
 }
