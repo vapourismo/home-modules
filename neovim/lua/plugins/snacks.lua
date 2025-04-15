@@ -1,18 +1,3 @@
-local function bottom_term()
-	Snacks.terminal(nil,
-		{
-			cwd = vim.fn.getcwd(-1, 0),
-			win = {
-				max_height = 30,
-				wo = {
-					foldmethod = "manual",
-					foldtext = "foldtext()",
-				}
-			},
-		}
-	)
-end
-
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -79,13 +64,21 @@ return {
 			mode = { "n", "t", "v", "i" }
 		},
 		{
-			"<D-Esc>",
-			bottom_term,
-			mode = { "n", "t", "v", "i" }
-		},
-		{
 			"<D-§>",
-			bottom_term,
+			function()
+				Snacks.terminal(nil,
+					{
+						cwd = vim.fn.getcwd(-1, 0),
+						win = {
+							max_height = 30,
+							wo = {
+								foldmethod = "manual",
+								foldtext = "foldtext()",
+							}
+						},
+					}
+				)
+			end,
 			mode = { "n", "t", "v", "i" }
 		},
 		{
