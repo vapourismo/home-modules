@@ -142,7 +142,7 @@
           "-f"
           "prev_branch(@)"
           "-t"
-          "heads(..@ ~ empty())"
+          "heads(..@ ~ empty() ~ description(exact:''))"
         ];
       };
 
