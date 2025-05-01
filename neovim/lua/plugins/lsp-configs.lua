@@ -7,8 +7,7 @@ return {
 			inlay_hints = { enabled = true },
 			settings = {
 				["rust-analyzer"] = {
-					check = { command = "clippy", features = "all" },
-					cargo = { features = "all" },
+					check = { command = "clippy" },
 					imports = { granularity = { enforce = true } },
 				}
 			},
