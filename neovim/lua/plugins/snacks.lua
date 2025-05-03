@@ -1,3 +1,8 @@
+local terminals = {
+	floating = nil,
+	bottom = nil,
+}
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -44,7 +49,7 @@ return {
 		{
 			"<D-p>",
 			function()
-				Snacks.terminal(
+				terminals.floating = Snacks.terminal(
 					vim.o.shell,
 					{
 						cwd = vim.fn.getcwd(-1, 0),
@@ -66,7 +71,15 @@ return {
 		{
 			"<D-§>",
 			function()
-				Snacks.terminal(nil,
+				if terminals.bottom
+				    and not terminals.bottom.closed
+				    and terminals.bottom.win ~= vim.api.nvim_get_current_win()
+				then
+					terminals.bottom:focus()
+					return
+				end
+
+				terminals.bottom = Snacks.terminal(nil,
 					{
 						cwd = vim.fn.getcwd(-1, 0),
 						win = {
