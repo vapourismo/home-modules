@@ -102,13 +102,13 @@ return {
 					{
 						cwd = vim.fn.getcwd(-1, 0),
 						win = {
-							max_width = 220,
+							position = "right",
 							wo = {
 								foldmethod = "manual",
 								foldtext = "foldtext()",
 							},
 							w = {
-								close_on_leave = true
+								close_on_leave = false
 							},
 						},
 					}
