@@ -31,8 +31,13 @@ return {
 				keys = {
 					term_normal = {
 						"<esc>",
-						function()
-							vim.cmd("stopinsert")
+						function(self)
+							local opts = self.opts.w
+							if opts.ole_captive then
+								return "<esc>"
+							else
+								vim.cmd("stopinsert")
+							end
 						end,
 						mode = "t",
 						expr = true,
@@ -45,6 +50,29 @@ return {
 		{
 			"<Space>z",
 			function() Snacks.zen() end
+		},
+		{
+			"<D-S-P>",
+			function()
+				Snacks.terminal(
+					"ssh ole.kruger@35.240.71.238 -t .nix-profile/bin/nvim",
+					{
+						cwd = "/",
+						win = {
+							max_width = 150,
+							wo = {
+								foldmethod = "manual",
+								foldtext = "foldtext()",
+							},
+							w = {
+								close_on_leave = true,
+								ole_captive = true,
+							},
+						},
+					}
+				)
+			end,
+			mode = { "n", "t", "v", "i" }
 		},
 		{
 			"<D-p>",
