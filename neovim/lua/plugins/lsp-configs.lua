@@ -5,6 +5,15 @@ return {
 
 		lspconfig.rust_analyzer.setup({
 			inlay_hints = { enabled = true },
+			capabilities = {
+				textDocument = {
+					completion = {
+						completionItem = {
+							snippetSupport = false
+						}
+					}
+				}
+			},
 			settings = {
 				["rust-analyzer"] = {
 					check = { command = "clippy" },
