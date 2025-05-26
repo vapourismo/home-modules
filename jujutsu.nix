@@ -165,7 +165,7 @@
     };
   };
 
-  config.programs.zsh.initExtra = ''
+  config.programs.zsh.initContent = ''
     alias J=jj
     alias j=jj
     source <(${config.programs.jujutsu.package}/bin/jj util completion zsh)

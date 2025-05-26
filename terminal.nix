@@ -25,7 +25,7 @@
   programs.zsh = {
     enable = true;
 
-    initExtra = ''
+    initContent = ''
       # env vars
       export LESS=-FRX
       export MAKEFLAGS=-j12
