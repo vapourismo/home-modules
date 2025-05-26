@@ -51,7 +51,7 @@ return {
 		lspconfig.gopls.setup({})
 		lspconfig.openscad_lsp.setup({})
 		lspconfig.buck2.setup({
-			cmd = { vim.fn.expand("$HOME/.cargo/bin/buck2"), "lsp" }
+			cmd = { "buckle", "lsp" }
 		})
 	end
 }
