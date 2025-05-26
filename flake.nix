@@ -10,6 +10,7 @@
       flake = false;
     };
     jujutsu.url = "github:vapourismo/jj";
+    jjui.url = "github:idursun/jjui/v0.8.8";
   };
 
   outputs = {
