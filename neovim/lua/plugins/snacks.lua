@@ -52,6 +52,29 @@ return {
 			function() Snacks.zen() end
 		},
 		{
+			"<D-S-J>",
+			function()
+				Snacks.terminal(
+					"jjui -r 'summary()'",
+					{
+						cwd = vim.fn.getcwd(-1, 0),
+						win = {
+							max_width = 220,
+							wo = {
+								foldmethod = "manual",
+								foldtext = "foldtext()",
+							},
+							w = {
+								close_on_leave = true,
+								ole_captive = true,
+							},
+						},
+					}
+				)
+			end,
+			mode = { "n", "t", "v", "i" }
+		},
+		{
 			"<D-S-P>",
 			function()
 				Snacks.terminal(
