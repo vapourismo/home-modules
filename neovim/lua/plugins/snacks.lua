@@ -1,5 +1,4 @@
 local terminals = {
-	floating = nil,
 	bottom = nil,
 }
 
@@ -100,7 +99,7 @@ return {
 		{
 			"<D-p>",
 			function()
-				terminals.floating = Snacks.terminal(
+				Snacks.terminal(
 					vim.o.shell,
 					{
 						cwd = vim.fn.getcwd(-1, 0),
