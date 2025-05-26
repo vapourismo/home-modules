@@ -32,8 +32,8 @@ return {
 					term_normal = {
 						"<esc>",
 						function(self)
-							local opts = self.opts.w
-							if opts.ole_captive then
+							local opts = self.opts and self.opts.w
+							if opts and opts.ole_captive then
 								return "<esc>"
 							else
 								vim.cmd("stopinsert")
