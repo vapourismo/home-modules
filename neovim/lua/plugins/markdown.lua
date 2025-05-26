@@ -27,5 +27,8 @@ return {
 		quote = {
 			icon = "▏",
 		},
+		pipe_table = {
+			style = "normal",
+		}
 	},
 }
