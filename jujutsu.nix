@@ -41,7 +41,7 @@
       user.email = config.ole.jj.email;
 
       ui.default-command = ["log" "-r" "current_work()"];
-      ui.diff.tool = ["difft" "--color=always" "$left" "$right"];
+      ui.diff-formatter = ["difft" "--color=always" "$left" "$right"];
       ui.diff-editor = ":builtin";
       ui.graph.style = "curved";
 
