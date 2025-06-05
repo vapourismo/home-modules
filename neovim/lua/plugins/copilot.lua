@@ -61,6 +61,6 @@ return {
 			},
 			provider = "claude",
 		},
-		tag = "v0.0.23",
+		enabled = false,
 	},
 }
