@@ -9,7 +9,7 @@
       url = "github:chisui/zsh-nix-shell";
       flake = false;
     };
-    jujutsu.url = "github:vapourismo/jj";
+    jujutsu.url = "github:jj-vcs/jj/v0.30.0";
     jjui.url = "github:idursun/jjui/v0.8.8";
   };
 
