@@ -1,9 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	config = function()
-		local lspconfig = require("lspconfig")
-
-		lspconfig.rust_analyzer.setup({
+		vim.lsp.config("rust_analyzer", {
 			cmd = { "nix", "run", "--refresh", "nixpkgs#rust-analyzer", "--" },
 			inlay_hints = { enabled = true },
 			capabilities = {
@@ -38,21 +36,27 @@ return {
 				)
 			end,
 		})
-		lspconfig.lua_ls.setup({})
-		lspconfig.nil_ls.setup({
+		vim.lsp.enable("rust_analyzer")
+
+		vim.lsp.config("nil_ls", {
 			settings = {
 				["nil"] = {
 					formatting = { command = { "alejandra" } }
 				}
 			}
 		})
-		lspconfig.taplo.setup({})
-		lspconfig.ocamllsp.setup({})
-		lspconfig.pylsp.setup({})
-		lspconfig.gopls.setup({})
-		lspconfig.openscad_lsp.setup({})
-		lspconfig.buck2.setup({
+		vim.lsp.enable("nil_ls")
+
+		vim.lsp.config("buck2", {
 			cmd = { "buckle", "lsp" }
 		})
+		vim.lsp.enable("buck2")
+
+		vim.lsp.enable("lua_ls")
+		vim.lsp.enable("taplo")
+		vim.lsp.enable("ocamllsp")
+		vim.lsp.enable("pylsp")
+		vim.lsp.enable("gopls")
+		vim.lsp.enable("openscad_lsp")
 	end
 }
