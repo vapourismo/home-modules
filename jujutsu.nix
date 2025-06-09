@@ -36,6 +36,7 @@
 
     settings = {
       core.fsmonitor = "watchman";
+      core.watchman.register-snapshot-trigger = true;
 
       user.name = config.programs.git.userName;
       user.email = config.ole.jj.email;
