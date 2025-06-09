@@ -4,6 +4,7 @@ return {
 		local lspconfig = require("lspconfig")
 
 		lspconfig.rust_analyzer.setup({
+			cmd = { "nix", "run", "--refresh", "nixpkgs#rust-analyzer", "--" },
 			inlay_hints = { enabled = true },
 			capabilities = {
 				textDocument = {
