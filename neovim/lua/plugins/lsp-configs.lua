@@ -1,6 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	config = function()
+		local default_ra_before_init = vim.lsp.config["rust_analyzer"].before_init
 		vim.lsp.config("rust_analyzer", {
 			cmd = { "nix", "run", "--refresh", "nixpkgs#rust-analyzer", "--" },
 			inlay_hints = { enabled = true },
@@ -19,9 +20,15 @@ return {
 					imports = { granularity = { enforce = true } },
 				}
 			},
-			on_new_config = function(new_config, new_root_dir)
-				local ra_config_file = io.open(new_root_dir .. "/.rust-analyzer.json", "r")
+			before_init = function(params, config)
+				local ra_config_path = config.root_dir .. "/.rust-analyzer.json"
+				local ra_config_file = io.open(ra_config_path, "r")
 				if not ra_config_file then
+					vim.notify(
+						"Using default rust-analyzer config",
+						vim.log.levels.INFO
+					)
+
 					return
 				end
 
@@ -29,11 +36,18 @@ return {
 				ra_config_file:close()
 				ra_config = vim.json.decode(ra_config)
 
-				new_config.settings["rust-analyzer"] = vim.tbl_deep_extend(
+				vim.notify(
+					"Using additional rust-analyzer config from " .. ra_config_path,
+					vim.log.levels.INFO
+				)
+
+				config.settings["rust-analyzer"] = vim.tbl_deep_extend(
 					"force",
-					new_config.settings["rust-analyzer"],
+					config.settings["rust-analyzer"],
 					ra_config
 				)
+
+				default_ra_before_init(params, config)
 			end,
 		})
 		vim.lsp.enable("rust_analyzer")
