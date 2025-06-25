@@ -187,14 +187,6 @@ return {
 			function() Snacks.picker.buffers() end
 		},
 		{
-			"<Space>s",
-			function() Snacks.picker.lsp_symbols() end
-		},
-		{
-			"<Space>S",
-			function() Snacks.picker.lsp_workspace_symbols() end
-		},
-		{
 			"<Space>d",
 			function()
 				Snacks.picker.diagnostics_buffer({

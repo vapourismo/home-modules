@@ -29,5 +29,7 @@ return {
 		telescope.load_extension("fzf")
 
 		vim.keymap.set("n", "<Space>B", function() vim.cmd("Telescope scope buffers") end)
+		vim.keymap.set("n", "<Space>s", builtin.lsp_document_symbols)
+		vim.keymap.set("n", "<Space>S", builtin.lsp_dynamic_workspace_symbols)
 	end
 }
