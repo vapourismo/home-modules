@@ -3,9 +3,9 @@ return {
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter"
 	},
-	ft = { "Avante", "markdown" },
+	ft = { "markdown" },
 	opts = {
-		file_types = { "Avante", "markdown" },
+		file_types = { "markdown" },
 		heading = {
 			sign = false,
 			position = "overlay",
