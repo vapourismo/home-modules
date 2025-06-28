@@ -148,7 +148,7 @@ return {
 			"<Space>c",
 			function()
 				Snacks.terminal(
-					"claude",
+					"~/.claude/local/claude",
 					{
 						cwd = vim.fn.getcwd(-1, 0),
 						win = {

@@ -5,7 +5,6 @@ with pkgs; {
       alejandra
       bash
       calc
-      claude-code
       coreutils
       curl
       difftastic

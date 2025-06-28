@@ -42,6 +42,7 @@
       # extend PATH
       path+=($HOME/.local/bin)
       path+=($HOME/.cargo/bin)
+      path+=($HOME/.claude/local)
 
       # put /usr/bin last in PATH
       path=(''${path[@]:#/usr/bin})
