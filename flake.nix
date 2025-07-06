@@ -9,8 +9,8 @@
       url = "github:chisui/zsh-nix-shell";
       flake = false;
     };
-    jujutsu.url = "github:jj-vcs/jj/v0.30.0";
-    jjui.url = "github:idursun/jjui/v0.8.8";
+    jujutsu.url = "github:jj-vcs/jj/v0.31.0";
+    jjui.url = "github:idursun/jjui/v0.8.12";
   };
 
   outputs = {
