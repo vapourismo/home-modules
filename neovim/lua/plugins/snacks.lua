@@ -203,6 +203,21 @@ return {
 			end
 		},
 		{
+			"<Space>s",
+			function()
+				Snacks.picker.lsp_symbols({
+					tree = false,
+					filter = { default = true },
+				})
+			end
+		},
+		{
+			"<Space>S",
+			function()
+				Snacks.picker.lsp_workspace_symbols()
+			end
+		},
+		{
 			"<Space>l",
 			function() Snacks.picker.lines() end
 		},
