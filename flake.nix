@@ -11,6 +11,7 @@
     };
     jujutsu.url = "github:jj-vcs/jj/v0.31.0";
     jjui.url = "github:idursun/jjui/v0.8.12";
+    mergiraf.url = "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.11.0";
   };
 
   outputs = {
@@ -30,6 +31,7 @@
       nixpkgs = import ./nixpkgs.nix;
       skhd = import ./skhd.nix;
       terminal = import ./terminal.nix;
+      mergiraf = import ./mergiraf.nix;
     };
 
     homeConfigurations = {
@@ -47,6 +49,7 @@
           self.homeModules.nixpkgs
           self.homeModules.skhd
           self.homeModules.terminal
+          self.homeModules.mergiraf
 
           {
             home = {
@@ -80,6 +83,7 @@
           self.homeModules.nixpkgs
           self.homeModules.skhd
           self.homeModules.terminal
+          self.homeModules.mergiraf
 
           {
             home = {
