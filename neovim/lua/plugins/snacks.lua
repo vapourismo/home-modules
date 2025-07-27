@@ -77,7 +77,7 @@ return {
 			"<D-S-P>",
 			function()
 				Snacks.terminal(
-					"ssh ole.kruger@35.240.71.238 -t .nix-profile/bin/nvim",
+					"ssh ole.kruger@35.240.71.238 -t bash -l nvim",
 					{
 						cwd = "/",
 						win = {
