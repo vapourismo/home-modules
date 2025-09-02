@@ -17,6 +17,7 @@ return {
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		opts = {
 			multiwindow = true
-		}
-	}
+		},
+		enabled = false,
+	},
 }
