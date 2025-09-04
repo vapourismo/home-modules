@@ -3,9 +3,9 @@ return {
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter"
 	},
-	ft = { "markdown" },
+	ft = { "markdown", "codecompanion" },
 	opts = {
-		file_types = { "markdown" },
+		file_types = { "markdown", "codecompanion" },
 		heading = {
 			sign = false,
 			position = "overlay",
