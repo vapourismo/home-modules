@@ -26,7 +26,8 @@ return {
 					local ra_config_file = io.open(ra_config_path, "r")
 					if not ra_config_file then
 						vim.notify(
-							"Using default rust-analyzer config",
+							"Using default rust-analyzer config (" ..
+							ra_config_path .. " not found)",
 							vim.log.levels.INFO
 						)
 
