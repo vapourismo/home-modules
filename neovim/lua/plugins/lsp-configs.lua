@@ -4,7 +4,7 @@ return {
 		config = function()
 			local default_ra_before_init = vim.lsp.config["rust_analyzer"].before_init
 			vim.lsp.config("rust_analyzer", {
-				cmd = { "nix", "run", "--refresh", "github:NixOS/nixpkgs#rust-analyzer", "--" },
+				cmd = { "nix", "run", "github:NixOS/nixpkgs#rust-analyzer", "--" },
 				inlay_hints = { enabled = true },
 				capabilities = {
 					textDocument = {
