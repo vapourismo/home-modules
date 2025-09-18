@@ -1,5 +1,3 @@
-{...}: {
-  programs.jrnl = {
-    enable = true;
-  };
+{pkgs, ...}: {
+  home.packages = [pkgs.jrnl];
 }
