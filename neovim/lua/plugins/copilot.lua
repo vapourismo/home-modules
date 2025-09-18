@@ -48,4 +48,5 @@ return {
 			"echasnovski/mini.diff",
 		},
 	},
+	enabled = false,
 }
