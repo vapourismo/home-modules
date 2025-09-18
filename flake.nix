@@ -32,6 +32,7 @@
       skhd = import ./skhd.nix;
       terminal = import ./terminal.nix;
       mergiraf = import ./mergiraf.nix;
+      jrnl = import ./jrnl.nix;
     };
 
     homeConfigurations = {
@@ -84,6 +85,7 @@
           self.homeModules.skhd
           self.homeModules.terminal
           self.homeModules.mergiraf
+          self.homeModules.jrnl
 
           {
             home = {

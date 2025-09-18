@@ -1,0 +1,5 @@
+{...}: {
+  programs.jrnl = {
+    enable = true;
+  };
+}
