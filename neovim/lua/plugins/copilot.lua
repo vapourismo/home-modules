@@ -47,6 +47,6 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"echasnovski/mini.diff",
 		},
+		enabled = false,
 	},
-	enabled = false,
 }
