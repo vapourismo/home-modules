@@ -6,8 +6,14 @@ return {
 			diff.setup({
 				-- Disabled by default
 				source = diff.gen_source.none(),
+
+				mappings = {
+					-- Disable default key mappings that conflict with mine
+					apply = "",
+					reset = "",
+					textobject = "",
+				},
 			})
 		end,
 	}
 }
-
