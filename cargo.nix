@@ -25,7 +25,7 @@
         cat = ["check", "--all-targets"]
         caf = ["check", "--all-features"]
         cataf = ["check", "--all-targets", "--all-features"]
-        t = "test"
+        t = ["nextest", "run"]
       ''
       + lib.optionalString config.ole.sccache ''
         [build]
