@@ -35,8 +35,8 @@
     };
 
     settings = {
-      fsmonitor.backend = "watchman";
-      fsmonitor.watchman.register-snapshot-trigger = true;
+      fsmonitor.backend = "none";
+      fsmonitor.watchman.register-snapshot-trigger = false;
 
       user.name = config.programs.git.userName;
       user.email = config.ole.jj.email;
