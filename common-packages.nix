@@ -20,6 +20,8 @@ with pkgs; {
       ripgrep
       tree
       tree-sitter
+      typos
+      typos-lsp
       vim
       wget
     ]

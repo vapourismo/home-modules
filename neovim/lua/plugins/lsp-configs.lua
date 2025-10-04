@@ -74,6 +74,7 @@ return {
 			vim.lsp.enable("pylsp")
 			vim.lsp.enable("gopls")
 			vim.lsp.enable("openscad_lsp")
+			vim.lsp.enable("typos_lsp")
 		end,
 	},
 
