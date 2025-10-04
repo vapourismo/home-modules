@@ -24,6 +24,7 @@ return {
 					left = "",
 					right = ""
 				},
+				theme = "catppuccin",
 			},
 			sections = {
 				lualine_a = { "mode" },
