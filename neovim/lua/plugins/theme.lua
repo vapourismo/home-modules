@@ -5,7 +5,7 @@ return {
 		priority = 1000,
 		lazy = false,
 		opts = {
-			flavourr = "mocha",
+			flavour = "mocha",
 			integrations = {
 				native_lsp = {
 					enabled = true,
@@ -22,7 +22,7 @@ return {
 			no_italic = true,
 			styles = {
 				comments = {},
-				keywords = { "bold" },
+				keywords = {},
 				types = {},
 			},
 			custom_highlights = function(colors)
