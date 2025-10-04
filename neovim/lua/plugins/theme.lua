@@ -23,6 +23,7 @@ return {
 			styles = {
 				comments = {},
 				keywords = { "bold" },
+				types = {},
 			},
 			custom_highlights = function(colors)
 				return {
@@ -30,6 +31,7 @@ return {
 					TabLineName = { fg = colors.base, bg = colors.surface0 },
 					TabLineNumSel = { fg = colors.crust, bg = colors.maroon, style = { "bold" } },
 					TabLineNameSel = { fg = colors.crust, bg = colors.rosewater, style = { "bold" } },
+					Include = { style = {} },
 				}
 			end
 		},
