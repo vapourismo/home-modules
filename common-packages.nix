@@ -2,7 +2,7 @@
 with pkgs; {
   home.packages =
     [
-      alejandra
+      nixfmt
       bash
       calc
       coreutils
