@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   targets.darwin.defaults.NSGlobalDomain = {
     # Delay until keys are repeated
     InitialKeyRepeat = 10;

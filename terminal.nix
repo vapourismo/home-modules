@@ -4,7 +4,8 @@
   specialArgs,
   config,
   ...
-}: {
+}:
+{
   home.packages =
     # Bash on MacOS is too old for Nix shells to work properly
     lib.optional pkgs.stdenv.isDarwin pkgs.bash;
@@ -52,14 +53,16 @@
     oh-my-zsh = {
       enable = true;
 
-      custom = builtins.toString (pkgs.runCommand "omz-custom" {} ''
-        mkdir -p $out/plugins
-        cp -rv ${./omz-custom}/* $out
-        ln -sv ${specialArgs.inputs.omz-nix-shell-plugin} $out/plugins/nix-shell
-      '');
+      custom = builtins.toString (
+        pkgs.runCommand "omz-custom" { } ''
+          mkdir -p $out/plugins
+          cp -rv ${./omz-custom}/* $out
+          ln -sv ${specialArgs.inputs.omz-nix-shell-plugin} $out/plugins/nix-shell
+        ''
+      );
 
       theme = "ole";
-      plugins = ["nix-shell"];
+      plugins = [ "nix-shell" ];
     };
   };
 }

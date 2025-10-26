@@ -4,7 +4,8 @@
   pkgs,
   specialArgs,
   ...
-}: {
+}:
+{
   options.ole.jj = {
     gpgSignKey = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
@@ -41,8 +42,17 @@
       user.name = config.programs.git.userName;
       user.email = config.ole.jj.email;
 
-      ui.default-command = ["log" "-r" "current_work()"];
-      ui.diff-formatter = ["difft" "--color=always" "$left" "$right"];
+      ui.default-command = [
+        "log"
+        "-r"
+        "current_work()"
+      ];
+      ui.diff-formatter = [
+        "difft"
+        "--color=always"
+        "$left"
+        "$right"
+      ];
       ui.diff-editor = ":builtin";
       ui.graph.style = "curved";
 
@@ -108,16 +118,54 @@
       };
 
       aliases = {
-        ls = ["log" "-r" "summary()"];
-        bo = ["bookmark"];
-        r = ["rebase" "--skip-emptied" "-d" "trunk()"];
-        ra = ["rebase" "--skip-emptied" "-d" "trunk()" "-b" "summary()"];
-        sq = ["squash" "--use-destination-message" "--keep-emptied"];
-        si = ["sq" "-i"];
-        f = ["git" "fetch"];
-        p = ["git" "push" "-r" "current_work() ~ conflicts()"];
-        pn = ["p" "--allow-new"];
-        pa = ["git" "push" "--all"];
+        ls = [
+          "log"
+          "-r"
+          "summary()"
+        ];
+        bo = [ "bookmark" ];
+        r = [
+          "rebase"
+          "--skip-emptied"
+          "-d"
+          "trunk()"
+        ];
+        ra = [
+          "rebase"
+          "--skip-emptied"
+          "-d"
+          "trunk()"
+          "-b"
+          "summary()"
+        ];
+        sq = [
+          "squash"
+          "--use-destination-message"
+          "--keep-emptied"
+        ];
+        si = [
+          "sq"
+          "-i"
+        ];
+        f = [
+          "git"
+          "fetch"
+        ];
+        p = [
+          "git"
+          "push"
+          "-r"
+          "current_work() ~ conflicts()"
+        ];
+        pn = [
+          "p"
+          "--allow-new"
+        ];
+        pa = [
+          "git"
+          "push"
+          "--all"
+        ];
         co = [
           "util"
           "exec"

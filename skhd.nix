@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.ole = {
     slot1 = lib.mkOption {
       type = lib.types.str;
@@ -38,7 +39,7 @@
 
   config = {
     home = {
-      packages = [pkgs.skhd];
+      packages = [ pkgs.skhd ];
 
       file.".skhdrc" = {
         text = ''

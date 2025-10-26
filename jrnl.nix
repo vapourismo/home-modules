@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.jrnl];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.jrnl ];
 }

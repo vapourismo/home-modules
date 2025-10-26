@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   config.programs.git = {
     enable = true;
     userName = "Ole Krüger";
@@ -25,16 +26,17 @@
       };
 
       core = {
-        excludesFile = let
-          file = pkgs.writeText "ignore" ''
-            .envrc
-            .direnv
-            _build
-            target
-            .luarc.json
-            .aider.*
-          '';
-        in
+        excludesFile =
+          let
+            file = pkgs.writeText "ignore" ''
+              .envrc
+              .direnv
+              _build
+              target
+              .luarc.json
+              .aider.*
+            '';
+          in
           builtins.toString file;
       };
     };
