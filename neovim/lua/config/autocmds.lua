@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 	end,
 })
 
--- Automaticaly equalise window sizes when the terminal is resized
+-- Automatically equalise window sizes when the terminal is resized
 vim.api.nvim_create_autocmd({ "VimResized", "WinNew", "WinResized" }, {
 	callback = function()
 		vim.cmd.wincmd("=")
