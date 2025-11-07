@@ -40,6 +40,7 @@ end, { remap = false })
 
 -- LSP actions
 vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
+vim.keymap.set("", "<Space>K", vim.diagnostic.open_float)
 vim.keymap.set("", "<Space>r", vim.lsp.buf.rename)
 vim.keymap.set("", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("", "gj", vim.diagnostic.goto_next)
