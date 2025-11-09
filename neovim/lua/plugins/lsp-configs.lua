@@ -19,6 +19,7 @@ return {
 					["rust-analyzer"] = {
 						check = { command = "clippy" },
 						imports = { granularity = { enforce = true } },
+						cargo = { targetDir = true },
 					}
 				},
 				before_init = function(params, config)
