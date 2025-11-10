@@ -3,10 +3,9 @@ return {
 		"pwntester/octo.nvim",
 		cmd = "Octo",
 		opts = {
-			-- or "fzf-lua" or "snacks"
-			picker = "telescope",
-			-- bare Octo command opens picker of commands
+			picker = "snacks",
 			enable_builtin = true,
+			mappings_disable_default = false,
 		},
 		keys = {
 			{ "<Space>O", "<cmd>Octo<cr>" },
