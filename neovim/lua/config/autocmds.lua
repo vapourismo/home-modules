@@ -89,3 +89,11 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 		end
 	end,
 })
+
+-- Automatically reload the environment when changing directories
+vim.api.nvim_create_autocmd({ "DirChanged" }, {
+	pattern = { "global", "window", "tabpage" },
+	callback = function()
+		vim.cmd("DirenvLoad")
+	end
+})
