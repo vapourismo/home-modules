@@ -3,7 +3,7 @@ return {
 		"pwntester/octo.nvim",
 		cmd = "Octo",
 		opts = {
-			picker = "snacks",
+			picker = "telescope",
 			enable_builtin = true,
 			mappings_disable_default = false,
 		},
