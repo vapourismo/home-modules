@@ -88,12 +88,12 @@
               concat(
                 separate(" ",
                   format_short_change_id_with_hidden_and_divergent_info(self),
+                  format_short_commit_id(commit_id),
                   if(empty, label("empty", "(empty)")),
                   if(conflict, label("conflict", "conflict")),
                   bookmarks,
                   tags,
                   working_copies,
-                  format_short_commit_id(commit_id),
                   format_short_signature(author),
                 ) ++ "\n",
                 separate(" ",
