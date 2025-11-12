@@ -80,7 +80,6 @@
 
       template-aliases = {
         "format_short_id(id)" = "id.shortest()";
-        "format_timestamp(timestamp)" = "timestamp.ago()";
 
         change_compact = ''
           if(root,
@@ -95,7 +94,6 @@
                   tags,
                   working_copies,
                   format_short_commit_id(commit_id),
-                  format_timestamp(committer.timestamp()),
                   format_short_signature(author),
                 ) ++ "\n",
                 separate(" ",
