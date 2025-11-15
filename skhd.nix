@@ -8,7 +8,7 @@
   options.ole = {
     slot1 = lib.mkOption {
       type = lib.types.str;
-      default = "${pkgs.neovide}/Applications/Neovide.app";
+      default = "${config.programs.neovide.package}/Applications/Neovide.app";
     };
 
     slot2 = lib.mkOption {

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -20,5 +20,9 @@
       source = ./neovim;
       recursive = true;
     };
+  };
+
+  programs.neovide = lib.optionalAttrs pkgs.stdenv.isDarwin {
+    enable = true;
   };
 }

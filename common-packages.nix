@@ -30,6 +30,5 @@ with pkgs;
   ]
   ++ lib.optionals stdenv.isDarwin [
     pinentry_mac
-    neovide
   ];
 }
