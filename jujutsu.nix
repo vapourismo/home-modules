@@ -23,11 +23,6 @@
     };
   };
 
-  config.home.packages = [
-    pkgs.watchman
-    specialArgs.inputs.jjui.packages.${pkgs.system}.default
-  ];
-
   config.programs.jujutsu = {
     enable = true;
 
