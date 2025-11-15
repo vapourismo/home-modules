@@ -40,6 +40,11 @@ return {
 	{
 		"f-person/auto-dark-mode.nvim",
 		dependencies = { "catppuccin/nvim" },
+		config = function(plugin, opts)
+			opts.set_dark_mode()
+			local this = require("auto-dark-mode")
+			this.setup(opts)
+		end,
 		opts = {
 			update_interval = 10000,
 			set_dark_mode = function()
@@ -82,6 +87,7 @@ return {
 				vim.g.terminal_color_14 = "#83C092"
 				vim.g.terminal_color_15 = "#D3C6AA"
 			end,
+			fallback = "dark",
 		},
 	},
 
