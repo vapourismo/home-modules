@@ -74,6 +74,36 @@
           };
         };
 
+        dev1 = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+
+          modules = [
+            self.homeModules.cargo
+            self.homeModules.common-packages
+            self.homeModules.git
+            self.homeModules.home
+            self.homeModules.jujutsu
+            self.homeModules.neovim
+            self.homeModules.nixpkgs
+            self.homeModules.terminal
+            self.homeModules.mergiraf
+
+            {
+              home = {
+                username = "ole";
+              };
+
+              ole = {
+                sccache = true;
+              };
+            }
+          ];
+
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+        };
+
         work = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."aarch64-darwin";
 
@@ -115,7 +145,6 @@
           };
         };
       };
-
     }
     // flake-utils.lib.eachDefaultSystem (system: {
       formatter = nixpkgs.legacyPackages.${system}.nixfmt-tree;
