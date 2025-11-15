@@ -36,9 +36,7 @@
       alias ll='ls --color=auto -lhF'
       alias grep='grep --color=auto'
       alias g=git
-      alias s=stg
       alias c=cargo
-      alias t=task
 
       # extend PATH
       path+=($HOME/.local/bin)
