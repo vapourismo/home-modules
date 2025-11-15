@@ -91,6 +91,7 @@
             {
               home = {
                 username = "ole";
+                stateVersion = "25.05";
               };
 
               ole = {

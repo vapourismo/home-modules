@@ -24,6 +24,9 @@ with pkgs;
     typos-lsp
     vim
     wget
+    gnumake
+    fzf
+    stdenv.cc
   ]
   ++ lib.optional stdenv.isDarwin pinentry_mac;
 }
