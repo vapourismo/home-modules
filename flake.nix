@@ -11,7 +11,7 @@
     };
     jujutsu.url = "github:jj-vcs/jj/v0.35.0";
     jjui.url = "github:idursun/jjui/v0.8.12";
-    mergiraf.url = "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.11.0";
+    mergiraf.url = "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.16.1";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
