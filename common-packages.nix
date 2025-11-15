@@ -28,5 +28,8 @@ with pkgs;
     fzf
     stdenv.cc
   ]
-  ++ lib.optional stdenv.isDarwin pinentry_mac;
+  ++ lib.optionals stdenv.isDarwin [
+    pinentry_mac
+    neovide
+  ];
 }
