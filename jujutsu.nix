@@ -81,6 +81,13 @@
       template-aliases = {
         "format_short_id(id)" = "id.shortest()";
 
+        "format_short_stat(stat)" = ''
+          concat(
+            label("diff added", "+" ++ stat.total_added()),
+            label("diff removed", "-" ++ stat.total_removed()),
+          )
+        '';
+
         change_compact = ''
           if(root,
             format_root_commit(self),
@@ -95,6 +102,7 @@
                   tags,
                   working_copies,
                   format_short_signature(author),
+                  format_short_stat(self.diff().stat()),
                 ) ++ "\n",
                 separate(" ",
                   if(description,
