@@ -1,8 +1,8 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     omz-nix-shell-plugin = {
@@ -10,18 +10,12 @@
       flake = false;
     };
     jujutsu.url = "github:jj-vcs/jj/v0.35.0";
-    mergiraf.url = "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.16.1";
+    mergiraf.url =
+      "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.16.1";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      flake-utils,
-      ...
-    }@inputs:
+  outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
     {
       homeModules = {
         cargo = import ./cargo.nix;
@@ -63,14 +57,13 @@
 
               ole = {
                 slot3 = "/Applications/Brave Browser.app";
-                jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
+                jj.sshSignKey =
+                  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
               };
             }
           ];
 
-          extraSpecialArgs = {
-            inherit inputs;
-          };
+          extraSpecialArgs = { inherit inputs; };
         };
 
         dev1 = home-manager.lib.homeManagerConfiguration {
@@ -93,15 +86,11 @@
                 stateVersion = "25.05";
               };
 
-              ole = {
-                sccache = true;
-              };
+              ole = { sccache = true; };
             }
           ];
 
-          extraSpecialArgs = {
-            inherit inputs;
-          };
+          extraSpecialArgs = { inherit inputs; };
         };
 
         work = home-manager.lib.homeManagerConfiguration {
@@ -140,13 +129,9 @@
             }
           ];
 
-          extraSpecialArgs = {
-            inherit inputs;
-          };
+          extraSpecialArgs = { inherit inputs; };
         };
       };
-    }
-    // flake-utils.lib.eachDefaultSystem (system: {
-      formatter = nixpkgs.legacyPackages.${system}.nixfmt-tree;
-    });
+    } // flake-utils.lib.eachDefaultSystem
+    (system: { formatter = nixpkgs.legacyPackages.${system}.nixfmt-tree; });
 }
