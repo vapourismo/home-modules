@@ -115,9 +115,6 @@ if vim.g.neovide then
 	map_nvti("<M-h>", "<cmd>tabprevious<cr>")
 end
 
--- JJ helper in Terminal mode
-vim.keymap.set("t", "<M-j><M-j>", "<C-\\><C-O><cmd>PickJJ<cr>")
-
 -- Navigate quickfix list
 vim.keymap.set("", "<Space>.", "<cmd>cnext<cr>zz")
 vim.keymap.set("", "<Space>,", "<cmd>cprevious<cr>zz")
