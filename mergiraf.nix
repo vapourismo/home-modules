@@ -6,6 +6,6 @@
 {
   programs.mergiraf = {
     enable = true;
-    package = specialArgs.inputs.mergiraf.packages.${pkgs.system}.mergiraf;
+    package = specialArgs.inputs.mergiraf.packages.${pkgs.stdenv.hostPlatform.system}.mergiraf;
   };
 }

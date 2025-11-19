@@ -26,9 +26,11 @@
   config.programs.jujutsu = {
     enable = true;
 
-    package = specialArgs.inputs.jujutsu.packages.${pkgs.system}.default.overrideAttrs {
-      doCheck = false;
-    };
+    package =
+      specialArgs.inputs.jujutsu.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs
+        {
+          doCheck = false;
+        };
 
     settings = {
       fsmonitor.backend = "none";
