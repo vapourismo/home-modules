@@ -13,7 +13,7 @@
 
     slot2 = lib.mkOption {
       type = lib.types.str;
-      default = "${config.home.homeDirectory}/.nix-profile/Applications/WezTerm.app";
+      default = "/Applications/Obsidian.app";
     };
 
     slot3 = lib.mkOption {
