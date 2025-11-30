@@ -1,14 +1,13 @@
 -- Helper function to map keys in normal, visual, terminal and insert mode
 local function map_nvti(key, mapping)
-	vim.keymap.set("", key, mapping, { remap = false })
-	vim.keymap.set({ "t", "i" }, key, "<C-\\><C-N>" .. mapping, { remap = false })
+  vim.keymap.set("", key, mapping, { remap = false })
+  vim.keymap.set({ "t", "i" }, key, "<C-\\><C-N>" .. mapping, { remap = false })
 end
 
 -- Are we in Neovide?
 local neovide_leader_modified = vim.g.neovide and "D" or "M"
 
 -- Window motions
-vim.keymap.set("", "w", "<C-w>")
 map_nvti("<" .. neovide_leader_modified .. "-l>", "<C-w>l")
 map_nvti("<" .. neovide_leader_modified .. "-j>", "<C-w>j")
 map_nvti("<" .. neovide_leader_modified .. "-k>", "<C-w>k")
@@ -28,14 +27,14 @@ vim.keymap.set("t", "<S-Enter>", "<Enter>")
 
 -- Clear highlights on Escape in normal mode
 vim.keymap.set("n", "<Esc>", function()
-	vim.cmd.noh()
+  vim.cmd.noh()
 end)
 
 -- Convenient file saving
 vim.keymap.set("", "<C-s>", "<cmd>write<cr>", { remap = false })
 vim.keymap.set("i", "<C-s>", function()
-	vim.cmd.write()
-	vim.cmd.startinsert()
+  vim.cmd.write()
+  vim.cmd.startinsert()
 end, { remap = false })
 
 -- LSP actions
@@ -111,8 +110,8 @@ map_nvti("<M-8>", "<cmd>8tabnext<cr>")
 map_nvti("<M-9>", "<cmd>9tabnext<cr>")
 
 if vim.g.neovide then
-	map_nvti("<M-l>", "<cmd>tabnext<cr>")
-	map_nvti("<M-h>", "<cmd>tabprevious<cr>")
+  map_nvti("<M-l>", "<cmd>tabnext<cr>")
+  map_nvti("<M-h>", "<cmd>tabprevious<cr>")
 end
 
 -- Navigate quickfix list
