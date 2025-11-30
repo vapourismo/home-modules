@@ -10,12 +10,18 @@
       flake = false;
     };
     jujutsu.url = "github:jj-vcs/jj/v0.35.0";
-    mergiraf.url =
-      "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.16.1";
+    mergiraf.url = "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.16.1";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      flake-utils,
+      ...
+    }@inputs:
     {
       homeModules = {
         cargo = import ./cargo.nix;
@@ -57,8 +63,7 @@
 
               ole = {
                 slot3 = "/Applications/Brave Browser.app";
-                jj.sshSignKey =
-                  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
+                jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
               };
             }
           ];
@@ -86,7 +91,9 @@
                 stateVersion = "25.05";
               };
 
-              ole = { sccache = true; };
+              ole = {
+                sccache = true;
+              };
             }
           ];
 
@@ -117,6 +124,7 @@
               };
 
               ole = {
+                slot2 = "/Applications/Sunsama.app";
                 slot3 = "/Applications/Brave Browser.app";
                 slot4 = "/Applications/Slack.app";
                 slot5 = "/Applications/Linear.app";
@@ -132,6 +140,8 @@
           extraSpecialArgs = { inherit inputs; };
         };
       };
-    } // flake-utils.lib.eachDefaultSystem
-    (system: { formatter = nixpkgs.legacyPackages.${system}.nixfmt-tree; });
+    }
+    // flake-utils.lib.eachDefaultSystem (system: {
+      formatter = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+    });
 }
