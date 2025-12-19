@@ -179,16 +179,6 @@
             jj new "'$0'@origin"
           ''
         ];
-        gc = [
-          "util"
-          "exec"
-          "--"
-          "bash"
-          "-c"
-          ''
-            eval "$(jj bo l -r 'immutable()' -T '"jj bo d " ++ name ++ ";"')"
-          ''
-        ];
         mb = [
           "bookmark"
           "move"
