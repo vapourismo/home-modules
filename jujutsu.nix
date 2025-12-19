@@ -207,7 +207,7 @@
         "top" = "heads(@-:: ~ @)";
         "on_top_trunk(x)" = "trunk()..x";
         "current_work()" = "roots(on_top_trunk(@))::";
-        "my_branch_work()" = "(on_top_trunk(bookmarks()) | bookmarks())::";
+        "my_branch_work()" = "(on_top_trunk(bookmarks() ~ trunk()))::";
         "my_anon_work()" = "on_top_trunk(latest(..trunk(), 500):: & mine() & mutable())";
         "summary()" = "my_branch_work() | my_anon_work() | current_work()";
         "my_heads()" = "heads(summary())";
