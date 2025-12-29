@@ -169,6 +169,12 @@
           "push"
           "--all"
         ];
+        pc = [
+          "git"
+          "push"
+          "-c"
+          "summary() ~ empty() ~ description(regex:'^wip:')"
+        ];
         co = [
           "util"
           "exec"
