@@ -31,5 +31,9 @@
       [build]
       rustc-wrapper = "${pkgs.sccache}/bin/sccache"
     '';
+
+    sessionVariables = {
+      SCCACHE_CACHE_SIZE = "50G";
+    };
   };
 }
