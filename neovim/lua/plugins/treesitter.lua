@@ -1,12 +1,12 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	opts = {
-		indent = {
-			enable = true
-		},
-		highlight = {
-			enable = true
-		},
-	}
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  opts = {
+    indent = {
+      enable = true
+    },
+    highlight = {
+      enable = true
+    },
+  }
 }

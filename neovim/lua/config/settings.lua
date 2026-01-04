@@ -27,26 +27,26 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Configure diagnostics
 vim.diagnostic.config({
-	virtual_text = false,
-	severity_sort = true,
+  virtual_text = false,
+  severity_sort = true,
 })
 
 -- Neovide
 if vim.g.neovide then
-	function set_font(scale)
-		local size = math.ceil(13 * scale)
-		vim.opt.guifont = "IosevkaTermSS02 Nerd Font:h" .. size
-	end
+  function set_font(scale)
+    local size = math.ceil(13 * scale)
+    vim.opt.guifont = "IosevkaTermSS02 Nerd Font:h" .. size
+  end
 
-	set_font(1)
+  set_font(1)
 
-	vim.g.neovide_scroll_animation_length = 0.05
-	vim.g.neovide_position_animation_length = 0.1
-	vim.g.neovide_cursor_animation_length = 0
-	vim.g.neovide_hide_mouse_when_typing = true
-	vim.g.neovide_fullscreen = true
-	vim.g.neovide_input_macos_option_key_is_meta = "only_left"
-	vim.g.neovide_floating_shadow = false
+  vim.g.neovide_scroll_animation_length = 0.05
+  vim.g.neovide_position_animation_length = 0.1
+  vim.g.neovide_cursor_animation_length = 0
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_fullscreen = true
+  vim.g.neovide_input_macos_option_key_is_meta = "only_left"
+  vim.g.neovide_floating_shadow = false
 
-	vim.env.EDITOR = "nvr -cc split --remote-wait"
+  vim.env.EDITOR = "nvr -cc split --remote-wait"
 end
