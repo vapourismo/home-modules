@@ -81,8 +81,8 @@ vim.keymap.set("", "U", "<C-r>")
 -- Buffer selection
 vim.keymap.set("", "bj", "<cmd>bprev<cr>")
 vim.keymap.set("", "bk", "<cmd>bnext<cr>")
-vim.keymap.set("", "bq", "<cmd>bw<cr>")
-vim.keymap.set("", "bQ", "<cmd>bufdo :Bdelete<cr>")
+vim.keymap.set("", "bq", "<cmd>enew | bd #<cr>")
+vim.keymap.set("", "bQ", "<cmd>%bd<cr>")
 vim.keymap.set("", "bn", "<cmd>enew<cr>")
 
 -- Tab selection
