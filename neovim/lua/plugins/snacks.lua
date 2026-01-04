@@ -133,6 +133,15 @@ return {
 			function() Snacks.picker.files({ layout = "vscode" }) end
 		},
 		{
+			"<Space>F",
+			function()
+				Snacks.picker.projects({
+					dev = { "~/Workspaces" },
+					patterns = { ".jj", ".git" },
+				})
+			end
+		},
+		{
 			"<Space>/",
 			function() Snacks.picker.grep() end
 		},
