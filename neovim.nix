@@ -12,7 +12,7 @@
   ];
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "/usr/local/bin/zed -w";
   };
 
   home.file = {
