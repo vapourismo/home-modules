@@ -124,7 +124,7 @@
               };
 
               ole = {
-                slot2 = "/Applications/Sunsama.app";
+                slot1 = "/Applications/Zed.app";
                 slot3 = "/Applications/Brave Browser.app";
                 slot4 = "/Applications/Slack.app";
                 slot5 = "/Applications/Linear.app";
