@@ -16,7 +16,7 @@ with pkgs;
     htop
     jq
     lua-language-server
-    nil
+    nixd
     ripgrep
     tree
     tree-sitter
