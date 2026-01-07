@@ -160,10 +160,6 @@
           "-r"
           "current_work() ~ conflicts()"
         ];
-        pn = [
-          "p"
-          "--allow-new"
-        ];
         pa = [
           "git"
           "push"
@@ -173,7 +169,13 @@
           "git"
           "push"
           "-c"
-          "summary() ~ empty() ~ description(regex:'^wip:')"
+          "current_work() ~ empty() ~ conflicts() ~ description(regex:'^wip:')"
+        ];
+        pca = [
+          "git"
+          "push"
+          "-c"
+          "summary() ~ empty() ~ conflicts() ~ description(regex:'^wip:')"
         ];
         co = [
           "util"
