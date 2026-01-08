@@ -11,10 +11,6 @@
     neovim-remote
   ];
 
-  home.sessionVariables = {
-    EDITOR = "/usr/local/bin/zed -w";
-  };
-
   home.file = {
     ".config/nvim" = {
       source = ./neovim;
