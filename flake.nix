@@ -55,6 +55,7 @@
             self.homeModules.skhd
             self.homeModules.terminal
             self.homeModules.mergiraf
+            self.homeModules.zed
 
             {
               home = {
@@ -63,6 +64,7 @@
               };
 
               ole = {
+                slot1 = "/Applications/Zed.app";
                 slot3 = "/Applications/Brave Browser.app";
                 jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
               };
