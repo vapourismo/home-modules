@@ -22,13 +22,13 @@ in
 {
   options.ole = {
     slot1 = lib.mkOption {
-      type = lib.types.str;
-      default = "${config.programs.neovide.package}/Applications/Neovide.app";
+      type = lib.types.nullOr lib.types.str;
+      default = null;
     };
 
     slot2 = lib.mkOption {
-      type = lib.types.str;
-      default = "/Applications/Obsidian.app";
+      type = lib.types.nullOr lib.types.str;
+      default = null;
     };
 
     slot3 = lib.mkOption {
