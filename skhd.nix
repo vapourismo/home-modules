@@ -4,6 +4,21 @@
   pkgs,
   ...
 }:
+let
+  skhd = pkgs.stdenv.mkDerivation {
+    pname = "skhd";
+    version = "0.0.17";
+    src = pkgs.fetchurl {
+      url = "https://github.com/jackielii/skhd.zig/releases/download/v0.0.17/skhd-arm64-macos.tar.gz";
+      sha256 = "d65bef42850e0b1a6eb34ecbe4ab06d65df4188f8b3fe2a4bcb190375d8a161b";
+    };
+    sourceRoot = ".";
+    installPhase = ''
+      mkdir -p $out/bin
+      cp skhd-arm64-macos $out/bin/skhd
+    '';
+  };
+in
 {
   options.ole = {
     slot1 = lib.mkOption {
@@ -39,7 +54,7 @@
 
   config = {
     home = {
-      packages = [ pkgs.skhd ];
+      packages = [ skhd ];
 
       file.".skhdrc" = {
         text = ''
