@@ -3,7 +3,8 @@
   rounded_selection = true;
   restore_on_startup = "last_session";
   centered_layout = {
-    left_padding = 0.2;
+    left_padding = 0.3;
+    right_padding = 0.3;
   };
   gutter = {
     min_line_number_digits = 1;
@@ -84,7 +85,11 @@
   autosave = "on_focus_change";
   base_keymap = "VSCode";
   buffer_font_family = "Iosevka Term SS02";
-  theme = "Catppuccin Mocha - No Italics";
+  theme = {
+    mode = "system";
+    light = "Catppuccin Latte - No Italics";
+    dark = "Catppuccin Mocha - No Italics";
+  };
   telemetry = {
     diagnostics = false;
     metrics = false;
@@ -93,6 +98,7 @@
   ui_font_size = 16;
   buffer_font_size = 13.0;
   load_direnv = "direct";
+  vertical_scroll_margin = 15;
   wrap_guides = [
     100
     120
