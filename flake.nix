@@ -36,6 +36,7 @@
         terminal = import ./terminal.nix;
         mergiraf = import ./mergiraf.nix;
         jrnl = import ./jrnl.nix;
+        zed = import ./zed.nix;
       };
 
       homeConfigurations = {
@@ -116,6 +117,7 @@
             self.homeModules.terminal
             self.homeModules.mergiraf
             self.homeModules.jrnl
+            self.homeModules.zed
 
             {
               home = {
