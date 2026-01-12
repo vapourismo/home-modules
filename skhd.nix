@@ -72,7 +72,7 @@ in
         '';
 
         onChange = ''
-          ${pkgs.skhd}/bin/skhd --restart-service
+          ${skhd}/bin/skhd --restart-service
         '';
       };
     };
