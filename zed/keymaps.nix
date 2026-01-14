@@ -32,4 +32,12 @@
       "space /" = "pane::DeploySearch";
     };
   }
+  {
+    context = "Editor";
+    bindings = {
+      "alt-l" = "editor::AcceptEditPrediction";
+      "alt-L" = "editor::AcceptNextWordEditPrediction";
+      "alt-j" = "editor::AcceptNextLineEditPrediction";
+    };
+  }
 ]
