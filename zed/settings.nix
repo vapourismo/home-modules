@@ -58,7 +58,7 @@
   tab_bar = {
     show_nav_history_buttons = false;
     show_tab_bar_buttons = false;
-    show = true;
+    show = false;
   };
   git = {
     path_style = "file_name_first";
