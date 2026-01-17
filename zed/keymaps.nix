@@ -33,7 +33,7 @@
     };
   }
   {
-    context = "CommandPalette > Editor";
+    context = "(CommandPalette > Editor) || (Picker > Editor)";
     bindings = {
       "ctrl-j" = "menu::SelectNext";
       "ctrl-k" = "menu::SelectPrevious";
