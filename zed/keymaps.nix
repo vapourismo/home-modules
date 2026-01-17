@@ -18,6 +18,28 @@
     };
   }
   {
+    context = "Editor";
+    bindings = {
+      "alt-l" = "editor::AcceptEditPrediction";
+      "alt-L" = "editor::AcceptNextWordEditPrediction";
+      "alt-j" = "editor::AcceptNextLineEditPrediction";
+    };
+  }
+  {
+    context = "Editor && (showing_code_actions || showing_completions)";
+    bindings = {
+      "ctrl-j" = "editor::ContextMenuNext";
+      "ctrl-k" = "editor::ContextMenuPrevious";
+    };
+  }
+  {
+    context = "CommandPalette > Editor";
+    bindings = {
+      "ctrl-j" = "menu::SelectNext";
+      "ctrl-k" = "menu::SelectPrevious";
+    };
+  }
+  {
     context = "(Workspace && !Editor && !Terminal) || (VimControl && vim_mode != insert)";
     bindings = {
       "U" = "editor::Redo";
@@ -30,14 +52,6 @@
       "space f" = "file_finder::Toggle";
       "space F" = "projects::OpenRecent";
       "space /" = "pane::DeploySearch";
-    };
-  }
-  {
-    context = "Editor";
-    bindings = {
-      "alt-l" = "editor::AcceptEditPrediction";
-      "alt-L" = "editor::AcceptNextWordEditPrediction";
-      "alt-j" = "editor::AcceptNextLineEditPrediction";
     };
   }
 ]
