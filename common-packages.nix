@@ -2,7 +2,7 @@
 with pkgs;
 {
   home.packages = [
-    nixfmt-rfc-style
+    nixfmt
     bash
     calc
     coreutils
