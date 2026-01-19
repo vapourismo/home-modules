@@ -55,7 +55,6 @@
             self.homeModules.skhd
             self.homeModules.terminal
             self.homeModules.mergiraf
-            self.homeModules.zed
 
             (
               { config, ... }:
@@ -122,7 +121,6 @@
             self.homeModules.terminal
             self.homeModules.mergiraf
             self.homeModules.jrnl
-            self.homeModules.zed
 
             (
               { config, ... }:
