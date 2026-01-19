@@ -16,6 +16,7 @@ with pkgs;
     htop
     jq
     lua-language-server
+    vscode-json-languageserver
     nil
     nixd
     ripgrep
