@@ -138,6 +138,15 @@ return {
 				Snacks.picker.projects({
 					dev = { "~/Workspaces" },
 					patterns = { ".jj", ".git" },
+					confirm = {
+						function(_, _)
+							Snacks.bufdelete.all()
+						end,
+						"tcd",
+						function(picker, _)
+							picker:close()
+						end
+					},
 				})
 			end
 		},
