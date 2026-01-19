@@ -1,7 +1,7 @@
 -- Helper function to map keys in normal, visual, terminal and insert mode
 local function map_nvti(key, mapping)
-  vim.keymap.set("", key, mapping, { remap = false })
-  vim.keymap.set({ "t", "i" }, key, "<C-\\><C-N>" .. mapping, { remap = false })
+	vim.keymap.set("", key, mapping, { remap = false })
+	vim.keymap.set({ "t", "i" }, key, "<C-\\><C-N>" .. mapping, { remap = false })
 end
 
 -- Are we in Neovide?
@@ -27,14 +27,14 @@ vim.keymap.set("t", "<S-Enter>", "<Enter>")
 
 -- Clear highlights on Escape in normal mode
 vim.keymap.set("n", "<Esc>", function()
-  vim.cmd.noh()
+	vim.cmd.noh()
 end)
 
 -- Convenient file saving
 vim.keymap.set("", "<C-s>", "<cmd>write<cr>", { remap = false })
 vim.keymap.set("i", "<C-s>", function()
-  vim.cmd.write()
-  vim.cmd.startinsert()
+	vim.cmd.write()
+	vim.cmd.startinsert()
 end, { remap = false })
 
 -- LSP actions
@@ -81,8 +81,8 @@ vim.keymap.set("", "U", "<C-r>")
 -- Buffer selection
 vim.keymap.set("", "bj", "<cmd>bprev<cr>")
 vim.keymap.set("", "bk", "<cmd>bnext<cr>")
-vim.keymap.set("", "bq", "<cmd>enew | bd #<cr>")
-vim.keymap.set("", "bQ", "<cmd>%bd<cr>")
+vim.keymap.set("", "bq", function() Snacks.bufdelete() end)
+vim.keymap.set("", "bQ", function() Snacks.bufdelete.all() end)
 vim.keymap.set("", "bn", "<cmd>enew<cr>")
 
 -- Tab selection
@@ -110,8 +110,8 @@ map_nvti("<M-8>", "<cmd>8tabnext<cr>")
 map_nvti("<M-9>", "<cmd>9tabnext<cr>")
 
 if vim.g.neovide then
-  map_nvti("<M-l>", "<cmd>tabnext<cr>")
-  map_nvti("<M-h>", "<cmd>tabprevious<cr>")
+	map_nvti("<M-l>", "<cmd>tabnext<cr>")
+	map_nvti("<M-h>", "<cmd>tabprevious<cr>")
 end
 
 -- Navigate quickfix list
