@@ -102,7 +102,7 @@ return {
 			"<Space>c",
 			function()
 				Snacks.terminal(
-					"claude --dangerously-skip-permissions",
+					"claude",
 					{
 						cwd = vim.fn.getcwd(-1, 0),
 						win = {
