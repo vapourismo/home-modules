@@ -102,7 +102,7 @@ return {
 			"<Space>c",
 			function()
 				Snacks.terminal(
-					"claude",
+					"opencode",
 					{
 						cwd = vim.fn.getcwd(-1, 0),
 						win = {
