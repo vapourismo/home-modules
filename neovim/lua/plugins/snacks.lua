@@ -99,28 +99,6 @@ return {
 			mode = { "n", "t", "v", "i" }
 		},
 		{
-			"<Space>c",
-			function()
-				Snacks.terminal(
-					"opencode",
-					{
-						cwd = vim.fn.getcwd(-1, 0),
-						win = {
-							position = "right",
-							wo = {
-								foldmethod = "manual",
-								foldtext = "foldtext()",
-							},
-							w = {
-								close_on_leave = false
-							},
-						},
-					}
-				)
-			end,
-			mode = { "n", "v" }
-		},
-		{
 			"<Space>=",
 			function() Snacks.picker.pickers() end
 		},
