@@ -34,6 +34,7 @@
       # aliases
       alias ls='ls --color=auto'
       alias ll='ls --color=auto -lhF'
+      alias tree='tree --gitignore'
       alias grep='grep --color=auto'
       alias g=git
       alias c=cargo
@@ -51,7 +52,7 @@
     oh-my-zsh = {
       enable = true;
 
-      custom = builtins.toString (
+      custom = toString (
         pkgs.runCommand "omz-custom" { } ''
           mkdir -p $out/plugins
           cp -rv ${./omz-custom}/* $out
