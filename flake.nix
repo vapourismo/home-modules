@@ -37,6 +37,7 @@
         mergiraf = import ./mergiraf.nix;
         jrnl = import ./jrnl.nix;
         zed = import ./zed.nix;
+        radicle = import ./radicle.nix;
       };
 
       homeConfigurations = {
@@ -55,6 +56,7 @@
             self.homeModules.skhd
             self.homeModules.terminal
             self.homeModules.mergiraf
+            self.homeModules.radicle
 
             (
               { config, ... }:
