@@ -27,6 +27,12 @@
     enable = true;
 
     initContent = ''
+      # Make matcher fuzzy
+      zstyle ':completion:*' matcher-list "" \
+        'm:{a-z\-}={A-Z\_}' \
+        'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+        'r:|?=** m:{a-z\-}={A-Z\_}'
+
       # env vars
       export LESS=-FRX
       export MAKEFLAGS=-j12
