@@ -52,6 +52,12 @@
       "space f" = "file_finder::Toggle";
       "space F" = "projects::OpenRecent";
       "space /" = "pane::DeploySearch";
+      "space r" = "editor::Rename";
+      "g l" = "vim::EndOfLineDownward";
+      "g s" = "vim::StartOfLineDownward";
+      "g j" = "editor::GoToDiagnostic";
+      "g k" = "editor::GoToPreviousDiagnostic";
+      "g h" = "vim::StartOfLine";
     };
   }
 ]

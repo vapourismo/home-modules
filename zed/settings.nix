@@ -72,7 +72,7 @@
   };
   indent_guides = {
     background_coloring = "disabled";
-    coloring = "indent_aware";
+    coloring = "fixed";
     line_width = 1;
   };
   preferred_line_length = 100;
