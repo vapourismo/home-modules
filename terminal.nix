@@ -57,11 +57,15 @@
           mkdir -p $out/plugins
           cp -rv ${./omz-custom}/* $out
           ln -sv ${specialArgs.inputs.omz-nix-shell-plugin} $out/plugins/nix-shell
+          ln -sv ${specialArgs.inputs.omz-autocomplete-plugin} $out/plugins/zsh-autocomplete
         ''
       );
 
       theme = "ole";
-      plugins = [ "nix-shell" ];
+      plugins = [
+        "nix-shell"
+        "zsh-autocomplete"
+      ];
     };
   };
 }

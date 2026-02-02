@@ -196,6 +196,22 @@
         "type": "github"
       }
     },
+    "omz-autocomplete-plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765295438,
+        "narHash": "sha256-998rYEyYD67XleSDbqvnQptRrGuG2N2AgFvTpFWvoV8=",
+        "owner": "marlonrichert",
+        "repo": "zsh-autocomplete",
+        "rev": "bbba73ebdc7c01323e09d4d518e51e2d6847ccc2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marlonrichert",
+        "repo": "zsh-autocomplete",
+        "type": "github"
+      }
+    },
     "omz-nix-shell-plugin": {
       "flake": false,
       "locked": {
@@ -219,6 +235,7 @@
         "jujutsu": "jujutsu",
         "mergiraf": "mergiraf",
         "nixpkgs": "nixpkgs_3",
+        "omz-autocomplete-plugin": "omz-autocomplete-plugin",
         "omz-nix-shell-plugin": "omz-nix-shell-plugin"
       }
     },
