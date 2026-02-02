@@ -58,6 +58,8 @@
       "g j" = "editor::GoToDiagnostic";
       "g k" = "editor::GoToPreviousDiagnostic";
       "g h" = "vim::StartOfLine";
+      "b q" = "pane::CloseActiveItem";
+      "b Q" = "workspace::CloseAllItemsAndPanes";
     };
   }
 ]
