@@ -1,4 +1,14 @@
 {
+  buffer_line_height = {
+    custom = 1.4;
+  };
+  git_panel = {
+    tree_view = true;
+  };
+  edit_predictions = {
+    provider = "zed";
+    mode = "eager";
+  };
   icon_theme = "Catppuccin Mocha";
   rounded_selection = true;
   restore_on_startup = "last_session";
@@ -121,7 +131,6 @@
     "terminal.ansi.bright_cyan" = "#c7fffd";
     "terminal.ansi.bright_white" = "#ffffff";
   };
-  buffer_line_height = "standard";
   lsp = {
     rust-analyzer = {
       initialization_options = {
