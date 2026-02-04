@@ -61,22 +61,20 @@
             self.homeModules.terminal
             self.homeModules.mergiraf
             self.homeModules.radicle
+            self.homeModules.zed
 
-            (
-              { config, ... }:
-              {
-                home = {
-                  username = "ole";
-                  stateVersion = "23.05";
-                };
+            {
+              home = {
+                username = "ole";
+                stateVersion = "23.05";
+              };
 
-                ole = {
-                  slot1 = "${config.programs.neovide.package}/Applications/Neovide.app";
-                  slot3 = "/Applications/Brave Browser.app";
-                  jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
-                };
-              }
-            )
+              ole = {
+                slot1 = "/Applications/Zed.app";
+                slot3 = "/Applications/Brave Browser.app";
+                jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
+              };
+            }
           ];
 
           extraSpecialArgs = { inherit inputs; };
