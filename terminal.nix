@@ -17,10 +17,29 @@
 
   programs.atuin = {
     enable = true;
+    enableZshIntegration = config.programs.zsh.enable;
     settings = {
       enter_accept = true;
       style = "compact";
     };
+  };
+
+  home.shell = {
+    enableZshIntegration = config.programs.zsh.enable;
+  };
+
+  home.shellAliases = {
+    ls = "ls --color=auto";
+    ll = "ls --color=auto -lhF";
+    tree = "tree --gitignore";
+    grep = "grep --color=auto";
+    g = "git";
+    c = "cargo";
+  };
+
+  home.sessionVariables = {
+    LESS = "-FRX";
+    MAKEFLAGS = "-j12";
   };
 
   programs.zsh = {
@@ -32,18 +51,6 @@
         'm:{a-z\-}={A-Z\_}' \
         'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
         'r:|?=** m:{a-z\-}={A-Z\_}'
-
-      # env vars
-      export LESS=-FRX
-      export MAKEFLAGS=-j12
-
-      # aliases
-      alias ls='ls --color=auto'
-      alias ll='ls --color=auto -lhF'
-      alias tree='tree --gitignore'
-      alias grep='grep --color=auto'
-      alias g=git
-      alias c=cargo
 
       # extend PATH
       path+=($HOME/.local/bin)
