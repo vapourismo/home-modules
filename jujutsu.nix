@@ -228,11 +228,6 @@
     };
   };
 
-  config.home.shellAliases = {
-    J = "jj";
-    j = "jj";
-  };
-
   config.programs.zsh.initContent = ''
     source <(COMPLETE=zsh ${config.programs.jujutsu.package}/bin/jj)
   '';

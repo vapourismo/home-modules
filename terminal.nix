@@ -13,11 +13,13 @@
   programs.direnv = {
     enable = true;
     enableZshIntegration = config.programs.zsh.enable;
+    enableFishIntegration = config.programs.fish.enable;
   };
 
   programs.atuin = {
     enable = true;
     enableZshIntegration = config.programs.zsh.enable;
+    enableFishIntegration = config.programs.fish.enable;
     settings = {
       enter_accept = true;
       style = "compact";
@@ -25,7 +27,7 @@
   };
 
   home.shell = {
-    enableZshIntegration = config.programs.zsh.enable;
+    enableShellIntegration = true;
   };
 
   home.shellAliases = {
@@ -40,6 +42,49 @@
   home.sessionVariables = {
     LESS = "-FRX";
     MAKEFLAGS = "-j12";
+  };
+
+  programs.fish = {
+    enable = true;
+    shellInit = ''
+      fish_vi_key_bindings
+
+      bind -M default ctrl-h backward-word
+      bind -M default ctrl-l forward-word-end
+      bind -M insert ctrl-h backward-word
+      bind -M insert ctrl-l forward-word
+      bind -M visual ctrl-h backward-word
+      bind -M visual ctrl-l forward-word-end
+
+      function fish_mode_prompt
+      end
+
+      function fish_prompt
+        echo -n (set_color -b white black) "id" (set_color -b 14b3a0 white) (whoami)@(hostname -s) (set_color normal)
+        echo -n " "
+
+        echo -n (set_color -b white black) "dir" (set_color -b magenta white) (prompt_pwd) (set_color normal)
+        echo -n " "
+
+        if test "$status" -ne 0
+          echo -n (set_color -b white black) "code" (set_color -b red white) $status (set_color normal)
+          echo -n " "
+        end
+
+        if test -n "$IN_NIX_SHELL"
+          echo -n (set_color -b white black) "nix" (set_color -b yellow black) "$name" (set_color normal)
+          echo -n " "
+        end
+
+        echo -ne "\nλ "
+      end
+
+      set -U fish_greeting
+
+      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+        source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+      end
+    '';
   };
 
   programs.zsh = {
