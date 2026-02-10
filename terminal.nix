@@ -60,7 +60,7 @@
       end
 
       function fish_prompt
-        echo -n (set_color -b white black) "id" (set_color -b 14b3a0 white) (whoami)@(hostname -s) (set_color normal)
+        echo -ne "\n"(set_color -b white black) "id" (set_color -b 14b3a0 white) (whoami)@(hostname -s) (set_color normal)
         echo -n " "
 
         echo -n (set_color -b white black) "dir" (set_color -b magenta white) (prompt_pwd) (set_color normal)
