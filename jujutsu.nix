@@ -207,6 +207,22 @@
           "-t"
           "heads(..@ ~ empty() ~ description(exact:''))"
         ];
+        diffz = [
+          "diff"
+          "--tool"
+          "zed"
+        ];
+      };
+
+      merge-tools.zed = {
+        program = "zed";
+        diff-args = [
+          "--wait"
+          "--new"
+          "--diff"
+          "$left"
+          "$right"
+        ];
       };
 
       revsets = {
