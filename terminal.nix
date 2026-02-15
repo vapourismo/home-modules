@@ -84,6 +84,11 @@
       if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
         source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
       end
+
+      # extend PATH
+      fish_add_path "$HOME/.local/bin"
+      fish_add_path "$HOME/.cargo/bin"
+      fish_add_path "$HOME/.claude/local"
     '';
   };
 
