@@ -47,15 +47,6 @@
   programs.fish = {
     enable = true;
     shellInit = ''
-      fish_vi_key_bindings
-
-      bind -M default ctrl-h backward-word
-      bind -M default ctrl-l forward-word-end
-      bind -M insert ctrl-h backward-word
-      bind -M insert ctrl-l forward-word
-      bind -M visual ctrl-h backward-word
-      bind -M visual ctrl-l forward-word-end
-
       function fish_mode_prompt
       end
 
