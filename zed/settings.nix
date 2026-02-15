@@ -58,7 +58,7 @@
       breadcrumbs = false;
     };
     env = {
-      EDITOR = "zed -w";
+      EDITOR = "/usr/local/bin/zed -w";
     };
   };
   zoomed_padding = true;
