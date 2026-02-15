@@ -16,6 +16,7 @@
     jujutsu.url = "github:jj-vcs/jj/v0.37.0";
     mergiraf.url = "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.16.1";
     flake-utils.url = "github:numtide/flake-utils";
+    zed.url = "github:vapourismo/zed";
   };
 
   outputs =
@@ -63,18 +64,21 @@
             self.homeModules.radicle
             self.homeModules.zed
 
-            {
-              home = {
-                username = "ole";
-                stateVersion = "23.05";
-              };
+            (
+              { config, ... }:
+              {
+                home = {
+                  username = "ole";
+                  stateVersion = "23.05";
+                };
 
-              ole = {
-                slot1 = "/Applications/Zed.app";
-                slot3 = "/Applications/Brave Browser.app";
-                jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
-              };
-            }
+                ole = {
+                  slot1 = "${config.programs.zed-editor.package}/Applications/Zed Nightly.app";
+                  slot3 = "/Applications/Brave Browser.app";
+                  jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
+                };
+              }
+            )
           ];
 
           extraSpecialArgs = { inherit inputs; };

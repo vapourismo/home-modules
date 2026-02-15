@@ -32,6 +32,14 @@
       enabled = false;
     };
   };
+  toolbar = {
+    agent_review = false;
+    code_actions = false;
+    quick_actions = false;
+    selections_menu = false;
+    breadcrumbs = true;
+    height = 20;
+  };
   terminal = {
     shell = "system";
     dock = "bottom";
