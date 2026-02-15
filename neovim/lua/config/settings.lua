@@ -12,7 +12,7 @@ vim.opt.showtabline = 2
 vim.opt.termguicolors = true
 vim.opt.relativenumber = false
 vim.opt.scrolloff = 10
-vim.opt.autoload = true
+vim.opt.autoread = true
 
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
