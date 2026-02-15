@@ -1,4 +1,14 @@
 {
+  title_bar = {
+    show_user_menu = true;
+    show_project_items = true;
+    show_branch_name = true;
+    show_branch_icon = true;
+  };
+  go_to_definition_fallback = "none";
+  calls = {
+    mute_on_join = true;
+  };
   buffer_line_height = {
     custom = 1.4;
   };
@@ -23,6 +33,7 @@
   lsp_document_colors = "inlay";
   completions = {
     words_min_length = 2;
+    words = "fallback";
   };
   relative_line_numbers = "enabled";
   hover_popover_enabled = false;
@@ -47,7 +58,7 @@
       breadcrumbs = false;
     };
     env = {
-      EDITOR = "/usr/local/bin/zed -w";
+      EDITOR = "zed -w";
     };
   };
   zoomed_padding = true;
