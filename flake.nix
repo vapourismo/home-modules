@@ -131,25 +131,27 @@
             self.homeModules.jrnl
             self.homeModules.zed
 
-            {
-              home = {
-                username = "ole";
-                stateVersion = "23.05";
-              };
-
-              ole = {
-                slot1 = "/Applications/Zed.app";
-                slot3 = "/Applications/Brave Browser.app";
-                slot4 = "/Applications/Slack.app";
-                slot5 = "/Applications/Linear.app";
-                jj = {
-                  gpgSignKey = "E2EF5D72A6FA996563FD44059F593788E8F596AC";
-                  email = "ole.kruger@trili.tech";
+            (
+              { config, ... }:
+              {
+                home = {
+                  username = "ole";
+                  stateVersion = "23.05";
                 };
-                sccache = false;
-              };
-            }
 
+                ole = {
+                  slot1 = "${config.programs.zed-editor.package}/Applications/Zed Nightly.app";
+                  slot3 = "/Applications/Brave Browser.app";
+                  slot4 = "/Applications/Slack.app";
+                  slot5 = "/Applications/Linear.app";
+                  jj = {
+                    gpgSignKey = "E2EF5D72A6FA996563FD44059F593788E8F596AC";
+                    email = "ole.kruger@trili.tech";
+                  };
+                  sccache = false;
+                };
+              }
+            )
           ];
 
           extraSpecialArgs = { inherit inputs; };
