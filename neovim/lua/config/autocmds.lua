@@ -24,13 +24,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 })
 
--- Enable inlay hints for LSP
-vim.api.nvim_create_autocmd({ "LspAttach" }, {
-    callback = function()
-        vim.lsp.inlay_hint.enable(true)
-    end,
-})
-
 -- Automatically equalise window sizes when the terminal is resized
 vim.api.nvim_create_autocmd({ "VimResized", "WinNew", "WinResized" }, {
     callback = function()
