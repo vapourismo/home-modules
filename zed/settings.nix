@@ -97,7 +97,7 @@
   };
   inlay_hints = {
     show_background = true;
-    enabled = true;
+    enabled = false;
   };
   indent_guides = {
     background_coloring = "disabled";
