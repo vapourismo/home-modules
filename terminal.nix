@@ -51,14 +51,16 @@
       end
 
       function fish_prompt
+        set -l last_status $status
+
         echo -ne "\n"(set_color -b white black) "id" (set_color -b 14b3a0 white) (whoami)@(hostname -s) (set_color normal)
         echo -n " "
 
         echo -n (set_color -b white black) "dir" (set_color -b magenta white) (prompt_pwd) (set_color normal)
         echo -n " "
 
-        if test "$status" -ne 0
-          echo -n (set_color -b white black) "code" (set_color -b red white) $status (set_color normal)
+        if test "$last_status" -ne 0
+          echo -n (set_color -b white black) "code" (set_color -b red white) $last_status (set_color normal)
           echo -n " "
         end
 
