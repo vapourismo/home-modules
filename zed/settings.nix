@@ -1,10 +1,16 @@
 {
+  semantic_tokens = "combined";
   title_bar = {
+    show = false;
+    show_menus = true;
     show_user_menu = true;
+    show_onboarding_banner = true;
+    show_sign_in = true;
     show_project_items = true;
     show_branch_name = true;
     show_branch_icon = true;
   };
+  minimum_contrast_for_highlights = 45.0;
   go_to_definition_fallback = "none";
   calls = {
     mute_on_join = true;
@@ -14,6 +20,36 @@
   };
   git_panel = {
     tree_view = true;
+  };
+  agent_servers = {
+    opencode = {
+      default_model = "openai/gpt-5.3-codex";
+      favorite_models = [
+        "openai/gpt-5.3-codex"
+      ];
+      type = "registry";
+    };
+    codex = {
+      default_config_options = {
+        model = "gpt-5.3-codex";
+        reasoning_effort = "high";
+        mode = "auto";
+      };
+      default_model = "gpt-5.3-codex/high";
+      favorite_models = [
+        "gpt-5.3-codex/high"
+        "gpt-5.3-codex/xhigh"
+      ];
+      default_mode = "auto";
+    };
+    claude = {
+      default_model = "default";
+      default_mode = "acceptEdits";
+    };
+  };
+  agent = {
+    use_modifier_to_send = true;
+    enable_feedback = false;
   };
   edit_predictions = {
     provider = "zed";
@@ -37,7 +73,6 @@
   };
   relative_line_numbers = "enabled";
   hover_popover_enabled = false;
-  auto_signature_help = false;
   diagnostics = {
     inline = {
       enabled = false;
@@ -111,9 +146,11 @@
   sticky_scroll = {
     enabled = true;
   };
+  auto_signature_help = true;
   autosave = "on_focus_change";
   base_keymap = "VSCode";
   buffer_font_family = "Iosevka Term SS02";
+  buffer_font_weight = 400.0;
   theme = {
     mode = "system";
     light = "Catppuccin Latte - No Italics";
