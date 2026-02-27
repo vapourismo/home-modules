@@ -22,25 +22,35 @@ return {
             "folke/snacks.nvim",
         },
         config = function()
-            vim.g.opencode_opts = {
-                provider = {
-                    enabled = "snacks",
-                    snacks = {
-                        auto_close = true,
-                        win = {
-                            wo = {
-                                foldmethod = "manual",
-                                foldtext = "foldtext()",
-                            },
-                            w = {
-                                close_on_leave = false
-                            },
-                        },
-                    }
-                }
+            local opecode_terminal_opts = {
+                auto_close = true,
+                win = {
+                    position = "right",
+                    wo = {
+                        foldmethod = "manual",
+                        foldtext = "foldtext()",
+                    },
+                    w = {
+                        close_on_leave = false
+                    },
+                },
             }
 
-            vim.o.autoread = true
+            local snacks_terminal = require("snacks.terminal")
+
+            vim.g.opencode_opts = {
+                server = {
+                    start = function()
+                        snacks_terminal.open("opencode --port", opecode_terminal_opts)
+                    end,
+                    stop = function()
+                        snacks_terminal.get("opencode --port", opecode_terminal_opts):close()
+                    end,
+                    toggle = function()
+                        snacks_terminal.toggle("opencode --port", opecode_terminal_opts)
+                    end,
+                },
+            }
 
             vim.keymap.set(
                 "",
