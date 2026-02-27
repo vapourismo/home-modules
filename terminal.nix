@@ -95,6 +95,21 @@
       fish_add_path "$HOME/.local/bin"
       fish_add_path "$HOME/.cargo/bin"
       fish_add_path "$HOME/.claude/local"
+
+      # move system PATHs to the end
+      function move_path_to_back -a path 
+        if set -l index (contains -i "$path" $PATH)
+          set -e PATH[$index]
+          set -a PATH "$path"
+        else
+          echo No
+        end
+      end
+
+      move_path_to_back /usr/bin
+      move_path_to_back /usr/sbin
+      move_path_to_back /sbin
+      move_path_to_back /bin
     '';
   };
 
