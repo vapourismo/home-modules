@@ -44,12 +44,6 @@
         "-r"
         "current_work()"
       ];
-      ui.diff-formatter = [
-        "difft"
-        "--color=always"
-        "$left"
-        "$right"
-      ];
       ui.diff-editor = ":builtin";
       ui.graph.style = "curved";
 

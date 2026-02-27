@@ -16,6 +16,38 @@
         "type": "github"
       }
     },
+    "catppuccin-bat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1751237777,
+        "narHash": "sha256-lJapSgRVENTrbmpVyn+UQabC9fpV1G1e+CdlJ090uvg=",
+        "owner": "catppuccin",
+        "repo": "bat",
+        "rev": "6810349b28055dce54076712fc05fc68da4b8ec0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "bat",
+        "type": "github"
+      }
+    },
+    "catppuccin-delta": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760466394,
+        "narHash": "sha256-NjqqB/BHqduiNWKeksiRZUMfjRUodJlsVu1yaEIZRsM=",
+        "owner": "catppuccin",
+        "repo": "delta",
+        "rev": "74b47a345638a2f19b3e5bdb9d7e4984066f9ac7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "delta",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1756705356,
@@ -294,6 +326,8 @@
     },
     "root": {
       "inputs": {
+        "catppuccin-bat": "catppuccin-bat",
+        "catppuccin-delta": "catppuccin-delta",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "jujutsu": "jujutsu",
