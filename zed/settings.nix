@@ -146,7 +146,7 @@
   sticky_scroll = {
     enabled = true;
   };
-  auto_signature_help = true;
+  auto_signature_help = false;
   autosave = "on_focus_change";
   base_keymap = "VSCode";
   buffer_font_family = "Iosevka Term SS02";
