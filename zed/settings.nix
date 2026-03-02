@@ -41,6 +41,10 @@
         "gpt-5.3-codex/xhigh"
       ];
       default_mode = "auto";
+      env = {
+        RUSTC_WRAPPER = "";
+        CARGO_TERM_QUIET = "true";
+      };
     };
     claude = {
       default_model = "default";
@@ -56,7 +60,7 @@
     mode = "eager";
   };
   icon_theme = "Catppuccin Mocha";
-  rounded_selection = true;
+  rounded_selection = false;
   restore_on_startup = "last_session";
   centered_layout = {
     left_padding = 0.3;
@@ -161,7 +165,6 @@
     metrics = false;
   };
   vim_mode = true;
-  ui_font_size = 16;
   buffer_font_size = 13.0;
   load_direnv = "direct";
   vertical_scroll_margin = 15;
