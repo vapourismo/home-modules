@@ -26,19 +26,6 @@
     };
   };
 
-  programs.bat = {
-    enable = true;
-    themes = {
-      CatppuccinMocha = {
-        src = specialArgs.inputs.catppuccin-bat;
-        file = "themes/Catppuccin Mocha.tmTheme";
-      };
-    };
-    config = {
-      theme = "Catppuccin Mocha";
-    };
-  };
-
   home.shell = {
     enableShellIntegration = true;
   };

@@ -1,21 +1,7 @@
-{ pkgs, specialArgs, ... }:
+{ pkgs, ... }:
 {
-  config.programs.delta = {
-    enable = true;
-    enableGitIntegration = true;
-    enableJujutsuIntegration = true;
-    options = {
-      features = "catppuccin-mocha";
-      side-by-side = true;
-    };
-  };
-
   config.programs.git = {
     enable = true;
-
-    includes = [
-      { path = "${specialArgs.inputs.catppuccin-delta}/catppuccin.gitconfig"; }
-    ];
 
     settings = {
       user.name = "Ole Krüger";
@@ -37,6 +23,7 @@
 
       diff = {
         algorithm = "patience";
+        external = "difft";
       };
 
       core = {
@@ -50,7 +37,7 @@
               .aider.*
             '';
           in
-          toString file;
+          builtins.toString file;
       };
     };
   };

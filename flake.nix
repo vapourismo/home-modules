@@ -17,14 +17,6 @@
     mergiraf.url = "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.16.1";
     flake-utils.url = "github:numtide/flake-utils";
     zed.url = "github:vapourismo/zed";
-    catppuccin-bat = {
-      url = "github:catppuccin/bat";
-      flake = false;
-    };
-    catppuccin-delta = {
-      url = "github:catppuccin/delta";
-      flake = false;
-    };
   };
 
   outputs =
