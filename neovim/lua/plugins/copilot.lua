@@ -22,6 +22,10 @@ return {
             "folke/snacks.nvim",
         },
         config = function()
+            local opencode = require("opencode")
+            local opencode_terminal = require("opencode.terminal")
+            local snacks_terminal = require("snacks.terminal")
+
             local opecode_terminal_opts = {
                 auto_close = true,
                 win = {
@@ -33,10 +37,11 @@ return {
                     w = {
                         close_on_leave = false
                     },
+                    on_win = function(win)
+                        opencode_terminal.setup(win.win)
+                    end,
                 },
             }
-
-            local snacks_terminal = require("snacks.terminal")
 
             vim.g.opencode_opts = {
                 server = {
@@ -54,45 +59,35 @@ return {
 
             vim.keymap.set(
                 "",
-                "<Space>cA",
-                function() require("opencode").ask("", { submit = true }) end
-            )
-            vim.keymap.set(
-                "",
-                "<Space>ca",
-                function() require("opencode").ask() end
-            )
-            vim.keymap.set(
-                "",
                 "<Space>cs",
-                function() require("opencode").select() end
+                function() opencode.select() end
             )
             vim.keymap.set(
-                "",
-                "<Space>cc",
-                function() require("opencode").toggle() end
+                { "n", "t", "i" },
+                "<D-r>",
+                function() opencode.toggle() end
             )
             vim.keymap.set(
-                "",
-                "<Space>cl",
-                function() return require("opencode").operator("@this ") end,
+                "n",
+                "<D->>",
+                function() return opencode.operator("@this") .. "_" end,
                 { expr = true }
             )
             vim.keymap.set(
-                "",
-                "<Space>cv",
-                function() return require("opencode").operator("@this ") .. "_" end,
+                "v",
+                "<D->>",
+                function() return opencode.operator("@this") end,
                 { expr = true }
             )
             vim.keymap.set(
                 { "n", "t" },
                 "<S-D-u>",
-                function() require("opencode").command("session.half.page.up") end
+                function() opencode.command("session.half.page.up") end
             )
             vim.keymap.set(
                 { "n", "t" },
                 "<S-D-d>",
-                function() require("opencode").command("session.half.page.down") end
+                function() opencode.command("session.half.page.down") end
             )
         end,
     }
