@@ -24,6 +24,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 })
 
+-- Automatically equalise window sizes when the terminal is resized
+vim.api.nvim_create_autocmd({ "VimResized", "WinNew", "WinResized" }, {
+    callback = function()
+        vim.cmd("horizontal wincmd =")
+    end,
+})
+
 -- Automatically close the buffer when it gets hidden for Git and Jujutsu message buffers
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = {
