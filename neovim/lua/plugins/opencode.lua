@@ -12,6 +12,7 @@ return {
             auto_close = true,
             win = {
                 position = "right",
+                max_width = 100,
                 wo = {
                     foldmethod = "manual",
                     foldtext = "foldtext()",
