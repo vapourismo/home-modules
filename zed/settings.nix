@@ -99,7 +99,7 @@
     env = {
       EDITOR = "/usr/local/bin/zed -w";
     };
-    default_height = 999.0;
+    default_height = 9999.0;
   };
   zoomed_padding = true;
   active_pane_modifiers = {
