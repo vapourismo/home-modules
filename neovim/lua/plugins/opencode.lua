@@ -10,6 +10,10 @@ return {
 
         local opencode_terminal_opts = {
             auto_close = true,
+            env = {
+                -- Make sure the LLM doesn't ingest noise
+                CARGO_TERM_QUIET = "true",
+            },
             win = {
                 position = "right",
                 max_width = 100,
