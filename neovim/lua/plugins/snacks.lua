@@ -73,6 +73,27 @@ return {
             mode = { "n", "t", "v", "i" }
         },
         {
+            "<D-S-R>",
+            function()
+                Snacks.input(
+                    {
+                        prompt = "Command"
+                    },
+                    function(cmd)
+                        Snacks.terminal(
+                            cmd,
+                            {
+                                win = {
+                                    position = "bottom",
+                                }
+                            }
+                        )
+                    end
+                )
+            end,
+            mode = { "n", "t", "v", "i" }
+        },
+        {
             "<D-§>",
             function()
                 if terminals.bottom
