@@ -27,6 +27,10 @@ return {
                 width = 140
             },
             terminal = {
+                wo = {
+                    foldmethod = "manual",
+                    foldtext = "foldtext()",
+                },
                 keys = {
                     term_normal = {
                         "<esc>",
@@ -59,10 +63,6 @@ return {
                         cwd = vim.fn.getcwd(-1, 0),
                         win = {
                             max_width = 220,
-                            wo = {
-                                foldmethod = "manual",
-                                foldtext = "foldtext()",
-                            },
                             w = {
                                 close_on_leave = true
                             },
@@ -88,10 +88,6 @@ return {
                         cwd = vim.fn.getcwd(-1, 0),
                         win = {
                             max_height = 30,
-                            wo = {
-                                foldmethod = "manual",
-                                foldtext = "foldtext()",
-                            }
                         },
                     }
                 )
