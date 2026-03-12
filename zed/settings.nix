@@ -75,7 +75,7 @@
     words_min_length = 2;
     words = "fallback";
   };
-  relative_line_numbers = "enabled";
+  relative_line_numbers = "disabled";
   hover_popover_enabled = false;
   diagnostics = {
     inline = {
