@@ -24,8 +24,12 @@
   agent_servers = {
     opencode = {
       type = "registry";
+      env = {
+        CARGO_TERM_QUIET = "true";
+      };
     };
-    codex = {
+    codex-acp = {
+      type = "registry";
       env = {
         RUSTC_WRAPPER = "";
         CARGO_TERM_QUIET = "true";
