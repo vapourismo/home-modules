@@ -26,10 +26,10 @@ return {
             },
             sections = {
                 lualine_a = { "mode" },
-                lualine_b = { "diagnostics" },
+                lualine_b = {},
                 lualine_c = {},
                 lualine_x = {},
-                lualine_y = { file_name },
+                lualine_y = { "diagnostics" },
                 lualine_z = { { "location", fmt = vim.trim } }
             },
             inactive_sections = {
@@ -37,7 +37,7 @@ return {
                 lualine_b = {},
                 lualine_c = {},
                 lualine_x = {},
-                lualine_y = { file_name },
+                lualine_y = {},
                 lualine_z = { { "location", fmt = vim.trim } }
             },
         }
