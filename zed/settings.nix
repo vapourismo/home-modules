@@ -44,7 +44,11 @@
     provider = "zed";
     mode = "eager";
   };
-  icon_theme = "Catppuccin Mocha";
+  icon_theme = {
+    mode = "system";
+    light = "Catppuccin Latte";
+    dark = "Catppuccin Mocha";
+  };
   rounded_selection = false;
   restore_on_startup = "last_session";
   centered_layout = {
