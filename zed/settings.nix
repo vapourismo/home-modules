@@ -23,34 +23,13 @@
   };
   agent_servers = {
     opencode = {
-      default_model = "openai/gpt-5.3-codex/high";
-      favorite_models = [
-        "openai/gpt-5.3-codex"
-        "openai/gpt-5.3-codex/high"
-        "openai/gpt-5.3-codex/xhigh"
-      ];
       type = "registry";
     };
     codex = {
-      default_config_options = {
-        model = "gpt-5.3-codex";
-        reasoning_effort = "high";
-        mode = "auto";
-      };
-      default_model = "gpt-5.3-codex/high";
-      favorite_models = [
-        "gpt-5.3-codex/high"
-        "gpt-5.3-codex/xhigh"
-      ];
-      default_mode = "auto";
       env = {
         RUSTC_WRAPPER = "";
         CARGO_TERM_QUIET = "true";
       };
-    };
-    claude = {
-      default_model = "default";
-      default_mode = "acceptEdits";
     };
   };
   agent = {
