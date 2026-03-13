@@ -24,7 +24,7 @@ return {
                     left = "",
                     right = ""
                 },
-                theme = "catppuccin",
+                theme = "catppuccin-nvim",
             },
             sections = {
                 lualine_a = { "mode" },
