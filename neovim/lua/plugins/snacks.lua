@@ -80,6 +80,10 @@ return {
                         prompt = "Command"
                     },
                     function(cmd)
+                        if cmd == "" or cmd == nil then
+                            return
+                        end
+
                         Snacks.terminal(
                             cmd,
                             {
