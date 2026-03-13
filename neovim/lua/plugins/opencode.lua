@@ -15,6 +15,7 @@ return {
                 CARGO_TERM_QUIET = "true",
             },
             win = {
+                enter = true,
                 position = "right",
                 max_width = 100,
                 wo = {
