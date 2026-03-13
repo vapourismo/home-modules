@@ -23,9 +23,11 @@
   };
   agent_servers = {
     opencode = {
-      default_model = "openai/gpt-5.3-codex";
+      default_model = "openai/gpt-5.3-codex/high";
       favorite_models = [
         "openai/gpt-5.3-codex"
+        "openai/gpt-5.3-codex/high"
+        "openai/gpt-5.3-codex/xhigh"
       ];
       type = "registry";
     };
