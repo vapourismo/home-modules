@@ -51,7 +51,7 @@ return {
             function() opencode.select() end
         )
         vim.keymap.set(
-            { "n", "t", "i" },
+            { "n", "t", "i", "v" },
             "<D-r>",
             function() opencode.toggle() end
         )
