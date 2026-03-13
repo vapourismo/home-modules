@@ -84,39 +84,12 @@ return {
     },
 
     {
-        "SmiteshP/nvim-navic",
-        dependencies = { "neovim/nvim-lspconfig" },
-        opts = {
-            lsp = { auto_attach = true },
-            separator = " ▶ ",
-            icons = {
-                File = " ",
-                Module = " ",
-                Namespace = " ",
-                Package = " ",
-                Class = " ",
-                Method = " ",
-                Property = " ",
-                Field = " ",
-                Constructor = " ",
-                Enum = " ",
-                Interface = " ",
-                Function = " ",
-                Variable = " ",
-                Constant = " ",
-                String = " ",
-                Number = " ",
-                Boolean = " ",
-                Array = " ",
-                Object = " ",
-                Key = " ",
-                Null = " ",
-                EnumMember = " ",
-                Struct = " ",
-                Event = " ",
-                Operator = " ",
-                TypeParameter = " "
-            },
-        },
+        "Bekaboo/dropbar.nvim",
+        config = function()
+            local dropbar_api = require("dropbar.api")
+            vim.keymap.set("n", "<Leader>;", dropbar_api.pick, { desc = "Pick symbols in winbar" })
+            vim.keymap.set("n", "[;", dropbar_api.goto_context_start, { desc = "Go to start of current context" })
+            vim.keymap.set("n", "];", dropbar_api.select_next_context, { desc = "Select next context" })
+        end
     }
 }

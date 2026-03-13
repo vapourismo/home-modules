@@ -18,6 +18,10 @@ return {
                 snacks = {
                     enabled = false,
                 },
+                dropbar = {
+                    enabled = true,
+                    color_mode = false,
+                }
             },
             no_italic = true,
             styles = {

@@ -10,9 +10,7 @@ end
 
 return {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "SmiteshP/nvim-navic" },
     opts = function()
-        local navic = require("nvim-navic")
         return {
             options = {
                 icons_enabled = false,
@@ -41,18 +39,6 @@ return {
                 lualine_x = {},
                 lualine_y = { file_name },
                 lualine_z = { { "location", fmt = vim.trim } }
-            },
-            winbar = {
-                lualine_c = {
-                    {
-                        function()
-                            return navic.get_location()
-                        end,
-                        cond = function()
-                            return navic.is_available()
-                        end,
-                    }
-                }
             },
         }
     end,
