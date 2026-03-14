@@ -30,6 +30,7 @@ return {
                 wo = {
                     foldmethod = "manual",
                     foldtext = "foldtext()",
+                    winbar = "",
                 },
                 keys = {
                     term_normal = {
