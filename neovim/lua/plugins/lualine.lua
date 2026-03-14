@@ -29,7 +29,7 @@ return {
                 lualine_b = {},
                 lualine_c = {},
                 lualine_x = {},
-                lualine_y = { "diagnostics" },
+                lualine_y = { { "diagnostics", sources = { "nvim_workspace_diagnostic" } } },
                 lualine_z = { { "location", fmt = vim.trim } }
             },
             inactive_sections = {
