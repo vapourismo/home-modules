@@ -16,6 +16,7 @@ vim.opt.autoread = true
 vim.opt.linespace = 2
 vim.opt.splitkeep = "screen"
 vim.opt.laststatus = 3
+vim.opt.showmode = false
 
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
