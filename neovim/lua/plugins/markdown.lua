@@ -3,9 +3,10 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter"
     },
-    ft = { "markdown", "codecompanion" },
+    ft = { "markdown", "opencode_output" },
     opts = {
-        file_types = { "markdown", "codecompanion" },
+        anti_conceal = { enabled = false },
+        file_types = { "markdown", "opencode_output" },
         heading = {
             sign = false,
             position = "overlay",
