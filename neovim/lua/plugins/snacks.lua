@@ -124,7 +124,7 @@ return {
             function() Snacks.picker.pickers() end
         },
         {
-            "<Space>e",
+            "<D-S-E>",
             function() Snacks.picker.explorer() end
         },
         {
