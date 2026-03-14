@@ -29,10 +29,19 @@ return {
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = {
-                    "lsp_status"
+                    {
+                        "lsp_status",
+                        symbols = {
+                            separator = " │ ",
+                        },
+                        ignore_lsp = { "copilot", "typos_lsp" },
+                    }
                 },
                 lualine_c = {
-                    { "diagnostics", sources = { "nvim_workspace_diagnostic" } },
+                    {
+                        "diagnostics",
+                        sources = { "nvim_workspace_diagnostic" }
+                    },
                 },
                 lualine_x = {
                     {
