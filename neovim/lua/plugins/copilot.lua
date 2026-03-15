@@ -20,6 +20,13 @@ return {
 
                 return true
             end,
+            server_opts_overrides = {
+                settings = {
+                    telemetry = {
+                        telemetryLevel = "off",
+                    },
+                },
+            }
         }
     },
 }
