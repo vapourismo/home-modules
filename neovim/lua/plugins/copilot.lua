@@ -12,6 +12,10 @@ return {
                     accept_line = "<M-S-J>",
                 },
             },
+            filetypes = {
+                opencode = false,
+                opencode_output = false,
+            },
             panel = { enabled = false },
             should_attach = function(_, bufname)
                 if string.match(bufname, "env") then
