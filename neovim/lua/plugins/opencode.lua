@@ -24,7 +24,11 @@ return {
                 ["<D-r>"] = { "toggle" },
                 ["<D->>"] = { "add_visual_selection", mode = { "v" } },
             },
+            output_window = {
+                ["<esc>"] = false,
+            },
             input_window = {
+                ["<esc>"] = false,
                 ["<D-cr>"] = { "submit_input_prompt", mode = { "n", "i" } },
             }
         },
