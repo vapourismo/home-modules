@@ -21,6 +21,15 @@ return {
             input_window = {
                 ["<D-cr>"] = { "submit_input_prompt", mode = { "n", "i" } },
             }
-        }
+        },
+        ui = {
+            window_width = 0.3,
+            output = {
+                tools = {
+                    show_output = true,
+                    show_reasoning_output = false
+                },
+            },
+        },
     },
 }
