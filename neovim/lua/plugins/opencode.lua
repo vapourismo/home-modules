@@ -26,7 +26,7 @@ return {
             window_width = 0.3,
             output = {
                 tools = {
-                    show_output = true,
+                    show_output = false,
                     show_reasoning_output = false
                 },
             },
