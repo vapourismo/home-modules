@@ -1,5 +1,8 @@
 return {
-    "sudo-tee/opencode.nvim",
+    -- Upstream:
+    -- "sudo-tee/opencode.nvim",
+    -- Patched:
+    "vapourismo/opencode.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
@@ -25,6 +28,7 @@ return {
         ui = {
             window_width = 0.3,
             output = {
+                filetype = "markdown",
                 tools = {
                     show_output = false,
                     show_reasoning_output = false
