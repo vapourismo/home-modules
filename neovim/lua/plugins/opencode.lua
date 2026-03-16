@@ -14,7 +14,10 @@ return {
         context = {
             current_file = {
                 enabled = false
-            }
+            },
+            diagnostics = {
+                enabled = false,
+            },
         },
         keymap = {
             editor = {
