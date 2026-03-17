@@ -1,8 +1,5 @@
 return {
-    -- Upstream:
-    -- "sudo-tee/opencode.nvim",
-    -- Patched:
-    "vapourismo/opencode.nvim",
+    "sudo-tee/opencode.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
