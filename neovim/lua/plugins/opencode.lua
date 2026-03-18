@@ -18,7 +18,7 @@ return {
         },
         keymap = {
             editor = {
-                ["<D-r>"] = { "toggle" },
+                ["<D-r>"] = { "toggle", mode = { "n", "i", "v", "t" } },
                 ["<D->>"] = { "add_visual_selection", mode = { "v" } },
             },
             output_window = {
@@ -26,7 +26,7 @@ return {
             },
             input_window = {
                 ["<esc>"] = false,
-                ["<D-cr>"] = { "submit_input_prompt", mode = { "n", "i" } },
+                ["<D-cr>"] = { "submit_input_prompt", mode = { "n", "i", "v" } },
             }
         },
         ui = {
