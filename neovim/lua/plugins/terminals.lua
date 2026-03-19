@@ -1,7 +1,6 @@
 AllSnackTerminals = {
     counter = 0,
     last_window_id = nil,
-    windows = {},
 }
 
 function AllSnackTerminals.next_id(id)
