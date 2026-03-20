@@ -1,8 +1,14 @@
+--- @class AllSnackTerminals
+--- @field counter number A counter to assign unique IDs to terminals.
+--- @field last_window_id number? The ID of the last terminal window that was shown.
 AllSnackTerminals = {
     counter = 0,
     last_window_id = nil,
 }
 
+--- Gets the ID of the terminal that comes after the given ID in the list.
+--- @param id number
+--- @return number?
 function AllSnackTerminals.next_id(id)
     local bigger_id = nil
 
@@ -15,6 +21,9 @@ function AllSnackTerminals.next_id(id)
     return bigger_id
 end
 
+--- Gets the ID of the terminal that comes before the given ID in the list.
+--- @param id number
+--- @return number?
 function AllSnackTerminals.prev_id(id)
     local smaller_id = nil
 
@@ -27,6 +36,8 @@ function AllSnackTerminals.prev_id(id)
     return smaller_id
 end
 
+--- Gets a terminal by its ID.
+--- @param id? number
 function AllSnackTerminals.get_by_id(id)
     for _, term in pairs(Snacks.terminal.list()) do
         if term.id == id then
@@ -37,22 +48,37 @@ function AllSnackTerminals.get_by_id(id)
     return nil
 end
 
-function AllSnackTerminals.new(cmd)
-    local count = AllSnackTerminals.counter
-    AllSnackTerminals.counter = AllSnackTerminals.counter + 1
+--- Creates a new terminal with the given command.
+--- @param cmd? string
+function AllSnackTerminals:new(cmd)
+    local count = self.counter
+    self.counter = self.counter + 1
 
-    Snacks.terminal(
+    local win = Snacks.terminal(
         cmd,
         {
             cwd = vim.fn.getcwd(-1, 0),
             count = count
         }
     )
+
+    vim.api.nvim_create_autocmd({ "TermClose" }, {
+        buffer = win.buf,
+        once = true,
+        callback = function()
+            local status = vim.v.event and vim.v.event.status or -1
+
+            if status == 0 then
+                win:close()
+            end
+        end,
+    })
 end
 
-function AllSnackTerminals.toggle()
+--- Toggles the visibility of the current terminal.
+function AllSnackTerminals:toggle()
     local current_id = vim.w.snacks_win and vim.w.snacks_win.id
-    local current_term = current_id and AllSnackTerminals.get_by_id(current_id)
+    local current_term = current_id and self.get_by_id(current_id)
 
     if current_term then
         current_term:hide()
@@ -60,11 +86,11 @@ function AllSnackTerminals.toggle()
     end
 
     local last_term =
-        AllSnackTerminals.last_window_id
+        self.last_window_id
         and (
-            AllSnackTerminals.get_by_id(AllSnackTerminals.last_window_id)
-            or AllSnackTerminals.get_by_id(AllSnackTerminals.prev_id(AllSnackTerminals.last_window_id))
-            or AllSnackTerminals.get_by_id(AllSnackTerminals.next_id(AllSnackTerminals.last_window_id))
+            self.get_by_id(self.last_window_id)
+            or self.get_by_id(self.prev_id(self.last_window_id))
+            or self.get_by_id(self.next_id(self.last_window_id))
         )
 
     if last_term then
@@ -72,13 +98,14 @@ function AllSnackTerminals.toggle()
         return
     end
 
-    AllSnackTerminals.new()
+    self:new()
 end
 
-function AllSnackTerminals.next()
+--- Shows the next terminal in the list, if any.
+function AllSnackTerminals:next()
     local current_id = vim.w.snacks_win and vim.w.snacks_win.id
-    local next_id = current_id and AllSnackTerminals.next_id(current_id)
-    local next_term = next_id and AllSnackTerminals.get_by_id(next_id)
+    local next_id = current_id and self.next_id(current_id)
+    local next_term = next_id and self.get_by_id(next_id)
 
     if next_term then
         next_term:show()
@@ -88,10 +115,11 @@ function AllSnackTerminals.next()
     return false
 end
 
-function AllSnackTerminals.prev()
+--- Shows the previous terminal in the list, if any.
+function AllSnackTerminals:prev()
     local current_id = vim.w.snacks_win and vim.w.snacks_win.id
-    local prev_id = current_id and AllSnackTerminals.prev_id(current_id)
-    local prev_term = prev_id and AllSnackTerminals.get_by_id(prev_id)
+    local prev_id = current_id and self.prev_id(current_id)
+    local prev_term = prev_id and self.get_by_id(prev_id)
 
     if prev_term then
         prev_term:show()
@@ -101,15 +129,16 @@ function AllSnackTerminals.prev()
     return false
 end
 
-function AllSnackTerminals.close()
+--- Closes the current terminal and shows the next or previous one, if any.
+function AllSnackTerminals:close()
     local current_id = vim.w.snacks_win and vim.w.snacks_win.id
-    local current_term = current_id and AllSnackTerminals.get_by_id(current_id)
+    local current_term = current_id and self.get_by_id(current_id)
 
     if not current_term then
         return
     end
 
-    if AllSnackTerminals.prev() or AllSnackTerminals.next() then
+    if self:prev() or self:next() then
         current_term:close()
     end
 end
@@ -163,27 +192,28 @@ return {
                     winbar = "%!v:lua.TerminalWinbarLine()",
                 },
                 keys = {
+                    q = false,
                     ["<D-n>"] = {
                         function()
-                            AllSnackTerminals.new()
+                            AllSnackTerminals:new()
                         end,
                         mode = { "n", "t", "v" }
                     },
                     ["<D-w>"] = {
                         function()
-                            AllSnackTerminals.close()
+                            AllSnackTerminals:close()
                         end,
                         mode = { "n", "t", "v" }
                     },
                     ["<D-h>"] = {
                         function()
-                            AllSnackTerminals.prev()
+                            AllSnackTerminals:prev()
                         end,
                         mode = { "n", "t", "v" }
                     },
                     ["<D-l>"] = {
                         function()
-                            AllSnackTerminals.next()
+                            AllSnackTerminals:next()
                         end,
                         mode = { "n", "t", "v" }
                     },
@@ -217,7 +247,7 @@ return {
                             return
                         end
 
-                        AllSnackTerminals.new(cmd)
+                        AllSnackTerminals:new(cmd)
                     end
                 )
             end,
@@ -226,7 +256,7 @@ return {
         {
             "<D-§>",
             function()
-                AllSnackTerminals.toggle()
+                AllSnackTerminals:toggle()
             end,
             mode = { "n", "t", "v", "i" }
         },
