@@ -14,7 +14,7 @@
       flake = false;
     };
     jujutsu.url = "github:jj-vcs/jj/v0.39.0";
-    mergiraf.url = "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.16.1";
+    mergiraf.url = "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.16.3";
     flake-utils.url = "github:numtide/flake-utils";
     zed.url = "github:vapourismo/zed";
   };

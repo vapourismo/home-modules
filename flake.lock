@@ -125,11 +125,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770654520,
-        "narHash": "sha256-mg5WZMIPGsFu9MxSrUcuJUPMbfMsF77el5yb/7rc10k=",
+        "lastModified": 1774007980,
+        "narHash": "sha256-FOnZjElEI8pqqCvB6K/1JRHTE8o4rer8driivTpq2uo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6c4fdbe1ad198fac36c320fd45c5957324a80b8e",
+        "rev": "9670de2921812bc4e0452f6e3efd8c859696c183",
         "type": "github"
       },
       "original": {
@@ -168,16 +168,16 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1762431763,
-        "narHash": "sha256-vKqvVpGyQ9ayebssupiySjJ7R7gn1W8HTlDuGM4d1Ns=",
-        "ref": "refs/tags/v0.16.1",
-        "rev": "0522ff6dc5d74fbf9302bb48e617948cda9d899a",
-        "revCount": 474,
+        "lastModified": 1769421794,
+        "narHash": "sha256-KlielG8XxOlS5Np8LZT+GMujWw/7EDOwsZHWVjneV3g=",
+        "ref": "refs/tags/v0.16.3",
+        "rev": "3f27f0a065b8d74c572218814dce89a91bc9ee9b",
+        "revCount": 503,
         "type": "git",
         "url": "https://codeberg.org/mergiraf/mergiraf.git"
       },
       "original": {
-        "ref": "refs/tags/v0.16.1",
+        "ref": "refs/tags/v0.16.3",
         "type": "git",
         "url": "https://codeberg.org/mergiraf/mergiraf.git"
       }
@@ -230,11 +230,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1770562336,
-        "narHash": "sha256-ub1gpAONMFsT/GU2hV6ZWJjur8rJ6kKxdm9IlCT0j84=",
+        "lastModified": 1773821835,
+        "narHash": "sha256-TJ3lSQtW0E2JrznGVm8hOQGVpXjJyXY2guAxku2O9A4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d6c71932130818840fc8fe9509cf50be8c64634f",
+        "rev": "b40629efe5d6ec48dd1efba650c797ddbd39ace0",
         "type": "github"
       },
       "original": {
