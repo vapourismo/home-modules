@@ -6,13 +6,28 @@ AllSnackTerminals = {
     last_window_id = nil,
 }
 
+--- Create an iterator over all terminals.
+function AllSnackTerminals.iter_terminals()
+    local terms = Snacks.terminal.list()
+    local dir = vim.fn.getcwd(-1, 0)
+
+    local local_terms = vim.tbl_filter(
+        function(term)
+            return term.dir == dir
+        end,
+        terms
+    )
+
+    return pairs(local_terms)
+end
+
 --- Gets the ID of the terminal that comes after the given ID in the list.
 --- @param id number
 --- @return number?
 function AllSnackTerminals.next_id(id)
     local bigger_id = nil
 
-    for _, term in pairs(Snacks.terminal.list()) do
+    for _, term in AllSnackTerminals.iter_terminals() do
         if term.id > id then
             bigger_id = math.min(term.id, bigger_id or term.id)
         end
@@ -27,7 +42,7 @@ end
 function AllSnackTerminals.prev_id(id)
     local smaller_id = nil
 
-    for _, term in pairs(Snacks.terminal.list()) do
+    for _, term in AllSnackTerminals.iter_terminals() do
         if term.id < id then
             smaller_id = math.max(term.id, smaller_id or term.id)
         end
@@ -39,7 +54,7 @@ end
 --- Gets a terminal by its ID.
 --- @param id? number
 function AllSnackTerminals.get_by_id(id)
-    for _, term in pairs(Snacks.terminal.list()) do
+    for _, term in AllSnackTerminals.iter_terminals() do
         if term.id == id then
             return term
         end
@@ -54,13 +69,16 @@ function AllSnackTerminals:new(cmd)
     local count = self.counter
     self.counter = self.counter + 1
 
+    local dir = vim.fn.getcwd(-1, 0)
+
     local win = Snacks.terminal(
         cmd,
         {
-            cwd = vim.fn.getcwd(-1, 0),
+            cwd = dir,
             count = count
         }
     )
+    win.dir = dir
 
     vim.api.nvim_create_autocmd({ "TermClose" }, {
         buffer = win.buf,
@@ -148,7 +166,7 @@ function TerminalWinbarLine()
 
     local items = {}
 
-    for _, term in pairs(Snacks.terminal.list()) do
+    for _, term in AllSnackTerminals.iter_terminals() do
         local hl = "TabLineName"
         local hl_num = "TabLineNum"
 
