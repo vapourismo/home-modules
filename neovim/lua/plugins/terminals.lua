@@ -116,6 +116,11 @@ function AllSnackTerminals:toggle()
         return
     end
 
+    for _, term in self.iter_terminals() do
+        term:show()
+        return
+    end
+
     self:new()
 end
 
