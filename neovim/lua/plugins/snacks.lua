@@ -1,5 +1,6 @@
 return {
-    "folke/snacks.nvim",
+    "vapourismo/snacks.nvim",
+    branch = "feature/workspace-symbols-all-clients",
     priority = 1000,
     lazy = false,
     opts = {
@@ -95,7 +96,9 @@ return {
         {
             "<Space>S",
             function()
-                Snacks.picker.lsp_workspace_symbols()
+                Snacks.picker.lsp_workspace_symbols({
+                    all_clients = true,
+                })
             end
         },
         {

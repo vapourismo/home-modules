@@ -197,7 +197,8 @@ function TerminalWinbarLine()
 end
 
 return {
-    "folke/snacks.nvim",
+    "vapourismo/snacks.nvim",
+    branch = "feature/workspace-symbols-all-clients",
     opts = {
         styles = {
             terminal = {
