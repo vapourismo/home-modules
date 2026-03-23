@@ -15,6 +15,7 @@
       "ctrl-j" = "vim::EndOfParagraph";
       "ctrl-k" = "vim::StartOfParagraph";
       "ctrl-s" = "workspace::Save";
+      "alt-tab" = "workspace::ActivateNextWindow";
     };
   }
   {
