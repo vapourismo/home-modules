@@ -39,5 +39,8 @@ return {
                 },
             },
         },
+        debug = {
+            show_ids = false
+        }
     },
 }
