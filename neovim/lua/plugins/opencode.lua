@@ -1,5 +1,6 @@
 return {
-    "sudo-tee/opencode.nvim",
+    "vapourismo/opencode.nvim",
+    branch = "feat/dedup-section-headers",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
