@@ -175,7 +175,7 @@
         pa = [
           "git"
           "push"
-          "--all"
+          "--tracked"
         ];
         pc = [
           "git"
