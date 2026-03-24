@@ -34,6 +34,9 @@
         RUSTC_WRAPPER = "";
         CARGO_TERM_QUIET = "true";
       };
+      default_config_options = {
+        mode = "auto";
+      };
     };
   };
   agent = {
