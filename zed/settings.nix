@@ -191,6 +191,14 @@
         cargo = {
           targetDir = true;
         };
+        workspace = {
+          symbol = {
+            search = {
+              kind = "all_symbols";
+              limit = 512;
+            };
+          };
+        };
       };
     };
   };
