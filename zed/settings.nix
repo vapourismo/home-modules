@@ -89,7 +89,7 @@
       breadcrumbs = false;
     };
     env = {
-      EDITOR = "/usr/local/bin/zed -w";
+      EDITOR = "zed -w";
     };
   };
   zoomed_padding = true;
