@@ -16,6 +16,7 @@
       "ctrl-k" = "vim::StartOfParagraph";
       "ctrl-s" = "workspace::Save";
       "alt-tab" = "workspace::ActivateNextWindow";
+      "cmd-shift-e" = "project_panel::Toggle";
     };
   }
   {
