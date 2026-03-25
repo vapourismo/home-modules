@@ -20,6 +20,14 @@ return {
                     check = { command = "clippy" },
                     imports = { granularity = { enforce = true } },
                     cargo = { targetDir = true },
+                    workspace = {
+                        symbol = {
+                            search = {
+                                kind = "all_symbols",
+                                limit = 512,
+                            }
+                        }
+                    }
                 }
             },
             before_init = function(params, config)
