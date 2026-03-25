@@ -63,4 +63,11 @@
       "b Q" = "workspace::CloseAllItemsAndPanes";
     };
   }
+
+  {
+    context = "Terminal";
+    bindings = {
+      "escape" = "terminal::ToggleViMode";
+    };
+  }
 ]
