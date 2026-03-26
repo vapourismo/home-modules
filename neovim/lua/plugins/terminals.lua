@@ -78,13 +78,17 @@ function AllSnackTerminals:new(cmd)
             count = count
         }
     )
+
     win.dir = dir
+    win.status = nil
 
     vim.api.nvim_create_autocmd({ "TermClose" }, {
         buffer = win.buf,
         once = true,
         callback = function()
             local status = vim.v.event and vim.v.event.status or -1
+
+            win.status = status
 
             if status == 0 then
                 win:close()
@@ -181,8 +185,14 @@ function TerminalWinbarLine()
         end
 
         local title = term.cmd or "terminal"
+        local item
 
-        local item = string.format("%%#%s# %i %%#%s# %s %%*", hl_num, term.id, hl, title)
+        if term.status == nil or term.status == 0 then
+            item = string.format("%%#%s# %s %%*", hl, title)
+        else
+            item = string.format("%%#%s# %s %%#%s# ☠ %%*", hl, title, hl_num)
+        end
+
         table.insert(items, { id = term.id, str = item })
     end
 
