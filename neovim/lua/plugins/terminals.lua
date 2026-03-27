@@ -239,13 +239,13 @@ return {
                         end,
                         mode = { "n", "t", "v" }
                     },
-                    ["<D-h>"] = {
+                    ["<D-{>"] = {
                         function()
                             AllSnackTerminals:prev()
                         end,
                         mode = { "n", "t", "v" }
                     },
-                    ["<D-l>"] = {
+                    ["<D-}>"] = {
                         function()
                             AllSnackTerminals:next()
                         end,
