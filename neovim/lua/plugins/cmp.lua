@@ -7,6 +7,7 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "zbirenbaum/copilot.lua",
+        "windwp/nvim-autopairs",
     },
     config = function()
         local cmp = require("cmp")
@@ -96,5 +97,11 @@ return {
             }),
             matching = { disallow_symbol_nonprefix_matching = false }
         })
+
+        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+        cmp.event:on(
+            "confirm_done",
+            cmp_autopairs.on_confirm_done()
+        )
     end,
 }
