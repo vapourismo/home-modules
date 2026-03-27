@@ -1,6 +1,6 @@
 return {
     "vapourismo/opencode.nvim",
-    branch = "feat/dedup-section-headers",
+    branch = "wip",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
