@@ -1,0 +1,12 @@
+[
+  {
+    "label": "switch: personal",
+    "command": "home-manager switch --flake .#personal",
+    "hide": "on_success",
+  },
+  {
+    "label": "switch: work",
+    "command": "home-manager switch --flake .#work",
+    "hide": "on_success",
+  },
+]
