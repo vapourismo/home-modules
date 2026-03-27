@@ -90,6 +90,10 @@ function AllSnackTerminals:new(cmd)
 
             win.status = status
 
+            if type(status) == "number" and status > 0 then
+                vim.notify("Command failed: " .. cmd, vim.log.levels.ERROR)
+            end
+
             if status == 0 then
                 win:close()
             end
