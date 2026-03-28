@@ -201,9 +201,7 @@
         ];
         mb = [
           "bookmark"
-          "move"
-          "-f"
-          "prev_branch(@)"
+          "advance"
           "-t"
           "heads(..@ ~ empty() ~ description(exact:''))"
         ];
