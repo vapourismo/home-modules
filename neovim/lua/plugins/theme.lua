@@ -37,6 +37,9 @@ return {
                     TabLineNameSel = { fg = colors.crust, bg = colors.rosewater, style = { "bold" } },
                     Include = { style = {} },
                     DiagnosticUnderlineHint = { style = { "undercurl" } },
+                    DiagnosticUnderlineWarn = { style = { "undercurl" } },
+                    DiagnosticUnderlineInfo = { style = { "undercurl" } },
+                    DiagnosticUnderlineError = { style = { "undercurl" } },
                 }
             end
         },
