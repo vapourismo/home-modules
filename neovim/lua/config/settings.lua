@@ -36,8 +36,10 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Configure diagnostics
 vim.diagnostic.config({
-    virtual_text = true,
+    virtual_text = false,
+    underline = true,
     severity_sort = true,
+    update_in_insert = true,
 })
 
 -- Neovide
