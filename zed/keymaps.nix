@@ -55,6 +55,7 @@
       "space F" = "projects::OpenRecent";
       "space /" = "pane::DeploySearch";
       "space r" = "editor::Rename";
+      "space b" = "tab_switcher::OpenInActivePane";
       "g l" = "vim::EndOfLineDownward";
       "g s" = "vim::StartOfLineDownward";
       "g j" = "editor::GoToDiagnostic";
