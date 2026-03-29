@@ -146,7 +146,6 @@
   autosave = "on_focus_change";
   base_keymap = "VSCode";
   buffer_font_family = "Iosevka Term SS02";
-  buffer_font_weight = 500.0;
   theme = {
     mode = "system";
     light = "Catppuccin Latte - No Italics";
