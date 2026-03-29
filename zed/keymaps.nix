@@ -62,6 +62,8 @@
       "g h" = "vim::StartOfLine";
       "b q" = "pane::CloseActiveItem";
       "b Q" = "workspace::CloseAllItemsAndPanes";
+      "g r j" = "vim::GoToNextReference";
+      "g r k" = "vim::GoToPreviousReference";
     };
   }
 
