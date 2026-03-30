@@ -92,7 +92,7 @@
       EDITOR = "zed -w";
     };
   };
-  zoomed_padding = true;
+  zoomed_padding = false;
   active_pane_modifiers = {
     border_size = 0.5;
     inactive_opacity = 1.0;
@@ -200,5 +200,17 @@
         };
       };
     };
+    nil = {
+      initialization_options = {
+        nix = {
+          flake = {
+            autoArchive = true;
+          };
+        };
+      };
+    };
+  };
+  notification_panel = {
+    button = false;
   };
 }
