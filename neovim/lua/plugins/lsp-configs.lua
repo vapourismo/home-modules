@@ -3,7 +3,6 @@ return {
     config = function()
         local default_ra_before_init = vim.lsp.config["rust_analyzer"].before_init
         vim.lsp.config("rust_analyzer", {
-            -- cmd = { "nix", "run", "github:NixOS/nixpkgs#rust-analyzer", "--" },
             cmd = { "rust-analyzer" },
             inlay_hints = { enabled = true },
             capabilities = {
@@ -27,6 +26,25 @@ return {
                                 limit = 512,
                             }
                         }
+                    },
+                    lens = {
+                        implementations = {
+                            enable = false
+                        },
+                        references = {
+                            adt = {
+                                enable = false
+                            },
+                            enumVariant = {
+                                enable = false
+                            },
+                            method = {
+                                enable = false
+                            },
+                            trait = {
+                                enable = false
+                            }
+                        },
                     }
                 }
             },

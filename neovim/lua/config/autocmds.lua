@@ -102,3 +102,10 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
     end,
     pattern = "*",
 })
+
+-- Refresh code lenses
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+    callback = function()
+        vim.lsp.codelens.refresh({ bufnr = 0 })
+    end
+})
