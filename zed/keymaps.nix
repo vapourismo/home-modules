@@ -17,6 +17,7 @@
       "ctrl-s" = "workspace::Save";
       "alt-tab" = "workspace::ActivateNextWindow";
       "cmd-shift-e" = "project_panel::Toggle";
+      "cmd-r" = "agent::Toggle";
     };
   }
   {
