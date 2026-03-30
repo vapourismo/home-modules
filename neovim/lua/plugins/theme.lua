@@ -36,6 +36,7 @@ return {
                     TabLineNumSel = { fg = colors.crust, bg = colors.maroon, style = { "bold" } },
                     TabLineNameSel = { fg = colors.crust, bg = colors.rosewater, style = { "bold" } },
                     Include = { style = {} },
+                    CopilotSuggestion = { link = "Comment" },
                 }
             end
         },
