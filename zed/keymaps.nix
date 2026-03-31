@@ -1,4 +1,5 @@
 [
+  # Window movements
   {
     bindings = {
       "cmd-§" = "terminal_panel::Toggle";
@@ -10,24 +11,28 @@
       "cmd-J" = "vim::ResizePaneDown";
       "cmd-K" = "vim::ResizePaneUp";
       "cmd-L" = "vim::ResizePaneLeft";
-      "ctrl-l" = "vim::NextWordEnd";
-      "ctrl-h" = "vim::PreviousWordStart";
-      "ctrl-j" = "vim::EndOfParagraph";
-      "ctrl-k" = "vim::StartOfParagraph";
       "ctrl-s" = "workspace::Save";
       "alt-tab" = "workspace::ActivateNextWindow";
       "cmd-shift-e" = "project_panel::Toggle";
       "cmd-r" = "agent::Toggle";
     };
   }
+
+  # Text editing movements
   {
     context = "Editor";
     bindings = {
       "alt-l" = "editor::AcceptEditPrediction";
       "alt-L" = "editor::AcceptNextWordEditPrediction";
       "alt-j" = "editor::AcceptNextLineEditPrediction";
+      "ctrl-l" = "vim::NextWordEnd";
+      "ctrl-h" = "vim::PreviousWordStart";
+      "ctrl-j" = "vim::EndOfParagraph";
+      "ctrl-k" = "vim::StartOfParagraph";
     };
   }
+
+  # Selection in menus
   {
     context = "Editor && (showing_code_actions || showing_completions)";
     bindings = {
@@ -42,6 +47,8 @@
       "ctrl-k" = "menu::SelectPrevious";
     };
   }
+
+  # Normal mode bindings
   {
     context = "(Workspace && !Editor && !Terminal) || (VimControl && vim_mode != insert)";
     bindings = {
@@ -69,10 +76,15 @@
     };
   }
 
+  # Terminal shortcuts
   {
     context = "Terminal";
     bindings = {
       "escape" = "terminal::ToggleViMode";
+      "cmd-escape" = [
+        "terminal::SendKeystroke"
+        "escape"
+      ];
     };
   }
 ]
