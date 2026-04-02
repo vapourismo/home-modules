@@ -26,6 +26,12 @@
   programs.neovide = lib.optionalAttrs pkgs.stdenv.isDarwin {
     enable = true;
     package =
-      specialArgs.inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system}.neovide;
+      let
+        neovidePackage =
+          specialArgs.inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system}.neovide;
+      in
+      neovidePackage.overrideAttrs (old: {
+        src = specialArgs.inputs.neovide;
+      });
   };
 }

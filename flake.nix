@@ -18,6 +18,10 @@
     mergiraf.url = "git+https://codeberg.org/mergiraf/mergiraf.git?ref=refs/tags/v0.16.3";
     flake-utils.url = "github:numtide/flake-utils";
     zed.url = "github:vapourismo/zed";
+    neovide = {
+      url = "github:vapourismo/neovide";
+      flake = false;
+    };
   };
 
   outputs =
