@@ -69,7 +69,7 @@
               {
                 home = {
                   username = "ole";
-                  stateVersion = "23.05";
+                  stateVersion = "25.05";
                 };
 
                 ole = {
@@ -137,7 +137,7 @@
               {
                 home = {
                   username = "ole";
-                  stateVersion = "23.05";
+                  stateVersion = "25.05";
                 };
 
                 ole = {
