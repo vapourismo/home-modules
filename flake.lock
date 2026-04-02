@@ -213,6 +213,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1775161695,
+        "narHash": "sha256-ongNAK47cS2WN7fg+8fttG/Ts36cbi+kZMfTcd+gutE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "8c17e9054ed6d08887859a1f5962e1746f1da2ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1756802601,
@@ -299,6 +314,7 @@
         "jujutsu": "jujutsu",
         "mergiraf": "mergiraf",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-master": "nixpkgs-master",
         "omz-autocomplete-plugin": "omz-autocomplete-plugin",
         "omz-nix-shell-plugin": "omz-nix-shell-plugin",
         "zed": "zed"

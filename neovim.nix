@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  specialArgs,
+  ...
+}:
 {
   programs.neovim = {
     enable = true;
@@ -20,5 +25,7 @@
 
   programs.neovide = lib.optionalAttrs pkgs.stdenv.isDarwin {
     enable = true;
+    package =
+      specialArgs.inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system}.neovide;
   };
 }
