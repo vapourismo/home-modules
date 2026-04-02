@@ -231,7 +231,7 @@ return {
                 },
                 keys = {
                     q = false,
-                    ["<D-n>"] = {
+                    ["<D-S-N>"] = {
                         function()
                             AllSnackTerminals:new()
                         end,
