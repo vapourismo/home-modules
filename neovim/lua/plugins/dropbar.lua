@@ -14,7 +14,7 @@ return {
 
                     buf = vim._resolve_bufnr(buf)
 
-                    if vim.bo[buf].ft == "snacks_terminal" then
+                    if vim.bo[buf].ft == "snacks_terminal" or vim.bo[buf].ft == "" then
                         return false
                     end
 
