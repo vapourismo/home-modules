@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  specialArgs,
   config,
   ...
 }:
@@ -12,13 +11,11 @@
 
   programs.direnv = {
     enable = true;
-    enableZshIntegration = config.programs.zsh.enable;
     enableFishIntegration = config.programs.fish.enable;
   };
 
   programs.atuin = {
     enable = true;
-    enableZshIntegration = config.programs.zsh.enable;
     enableFishIntegration = config.programs.fish.enable;
     settings = {
       enter_accept = true;
@@ -98,45 +95,5 @@
       move_path_to_back /sbin
       move_path_to_back /bin
     '';
-  };
-
-  programs.zsh = {
-    enable = true;
-
-    initContent = ''
-      # Make matcher fuzzy
-      zstyle ':completion:*' matcher-list "" \
-        'm:{a-z\-}={A-Z\_}' \
-        'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
-        'r:|?=** m:{a-z\-}={A-Z\_}'
-
-      # extend PATH
-      path+=($HOME/.local/bin)
-      path+=($HOME/.cargo/bin)
-      path+=($HOME/.claude/local)
-
-      # put /usr/bin last in PATH
-      path=(''${path[@]:#/usr/bin})
-      path+=(/usr/bin)
-    '';
-
-    oh-my-zsh = {
-      enable = true;
-
-      custom = toString (
-        pkgs.runCommand "omz-custom" { } ''
-          mkdir -p $out/plugins
-          cp -rv ${./omz-custom}/* $out
-          ln -sv ${specialArgs.inputs.omz-nix-shell-plugin} $out/plugins/nix-shell
-          ln -sv ${specialArgs.inputs.omz-autocomplete-plugin} $out/plugins/zsh-autocomplete
-        ''
-      );
-
-      theme = "ole";
-      plugins = [
-        "nix-shell"
-        "zsh-autocomplete"
-      ];
-    };
   };
 }

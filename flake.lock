@@ -204,38 +204,6 @@
         "type": "github"
       }
     },
-    "omz-autocomplete-plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1765295438,
-        "narHash": "sha256-998rYEyYD67XleSDbqvnQptRrGuG2N2AgFvTpFWvoV8=",
-        "owner": "marlonrichert",
-        "repo": "zsh-autocomplete",
-        "rev": "bbba73ebdc7c01323e09d4d518e51e2d6847ccc2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "marlonrichert",
-        "repo": "zsh-autocomplete",
-        "type": "github"
-      }
-    },
-    "omz-nix-shell-plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1704028593,
-        "narHash": "sha256-Rtg8kWVLhXRuD2/Ctbtgz9MQCtKZOLpAIdommZhXKdE=",
-        "owner": "chisui",
-        "repo": "zsh-nix-shell",
-        "rev": "82ca15e638cc208e6d8368e34a1625ed75e08f90",
-        "type": "github"
-      },
-      "original": {
-        "owner": "chisui",
-        "repo": "zsh-nix-shell",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -244,8 +212,6 @@
         "neovide": "neovide",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-master": "nixpkgs-master",
-        "omz-autocomplete-plugin": "omz-autocomplete-plugin",
-        "omz-nix-shell-plugin": "omz-nix-shell-plugin",
         "zed": "zed"
       }
     },

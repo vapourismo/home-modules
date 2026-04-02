@@ -6,14 +6,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    omz-nix-shell-plugin = {
-      url = "github:chisui/zsh-nix-shell";
-      flake = false;
-    };
-    omz-autocomplete-plugin = {
-      url = "github:marlonrichert/zsh-autocomplete";
-      flake = false;
-    };
     jujutsu.url = "github:jj-vcs/jj/v0.40.0";
     flake-utils.url = "github:numtide/flake-utils";
     zed.url = "github:vapourismo/zed";
