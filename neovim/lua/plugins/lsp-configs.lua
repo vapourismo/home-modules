@@ -80,15 +80,23 @@ return {
         })
         vim.lsp.enable("rust_analyzer")
 
-        vim.lsp.commands['rust-analyzer.runSingle'] = function(command)
-            local r = command.arguments[1]
-            local cmd = { 'cargo', unpack(r.args.cargoArgs) }
-            if r.args.executableArgs and #r.args.executableArgs > 0 then
-                vim.list_extend(cmd, { '--', unpack(r.args.executableArgs) })
-            end
+        vim.lsp.commands["rust-analyzer.runSingle"] = function(command)
+            for _, run_args in ipairs(command.arguments) do
+                local cmd_list = { "cargo", unpack(run_args.args.cargoArgs) }
 
-            local str_cmd = table.concat(cmd, " ")
-            AllSnackTerminals:new(str_cmd)
+                if run_args.args.executableArgs and #run_args.args.executableArgs > 0 then
+                    vim.list_extend(cmd_list, { "--", unpack(run_args.args.executableArgs) })
+                end
+
+                local cmd = table.concat(cmd_list, " ")
+                local opts = {
+                    env = run_args.args.environment,
+                    cwd = run_args.args.cwd,
+                    title = run_args.label,
+                }
+
+                AllSnackTerminals:new(cmd, opts)
+            end
         end
 
         -- vim.lsp.config("nil_ls", {

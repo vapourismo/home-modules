@@ -65,22 +65,35 @@ end
 
 --- Creates a new terminal with the given command.
 --- @param cmd? string
-function AllSnackTerminals:new(cmd)
+function AllSnackTerminals:new(cmd, opts)
+    opts = opts or {}
+
     local count = self.counter
     self.counter = self.counter + 1
 
     local dir = vim.fn.getcwd(-1, 0)
 
-    local win = Snacks.terminal(
-        cmd,
+    local title = opts.title
+    opts.title = nil
+
+    opts = vim.tbl_extend(
+        "force",
         {
             cwd = dir,
-            count = count
+        },
+        opts,
+        {
+            count = count,
         }
     )
 
-    win.dir = dir
+    local win = Snacks.terminal(cmd, opts)
     win.status = nil
+
+    -- We don't use `opts.cwd` because `win.dir` is for grouping in tabs, not for the actual
+    -- terminal directory
+    win.dir = dir
+    win.title = title
 
     vim.api.nvim_create_autocmd({ "TermClose" }, {
         buffer = win.buf,
@@ -188,7 +201,7 @@ function TerminalWinbarLine()
             hl_num = "TabLineNumSel"
         end
 
-        local title = term.cmd or "terminal"
+        local title = term.title or term.cmd or "terminal"
         local item
 
         if term.status == nil or term.status == 0 then
