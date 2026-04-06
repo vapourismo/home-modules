@@ -18,7 +18,7 @@ return {
 
                         local name = tab.name()
                         local name_section = { " ", tab.name(), " ", hl = "TabLineName" .. suffix }
-                        local name_section = name ~= "" and name_section or {}
+                        name_section = name ~= "" and name_section or {}
 
                         return { number_section, name_section }
                     end,
