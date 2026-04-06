@@ -104,3 +104,15 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
     end,
     pattern = "*",
 })
+
+-- Refresh code lenses
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+    callback = function()
+        local acceptable_fts = vim.g.codelens_filetypes or { "rust" }
+        local this_ft = vim.bo.filetype or ""
+
+        if vim.tbl_contains(acceptable_fts, this_ft) then
+            vim.lsp.codelens.refresh({ bufnr = 0 })
+        end
+    end
+})

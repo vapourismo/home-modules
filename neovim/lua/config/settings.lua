@@ -37,6 +37,9 @@ vim.opt.foldlevelstart   = 99
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Configure file types that trigger code lens refreshes
+vim.g.codelens_filetypes = { "rust" }
+
 -- Configure diagnostics
 vim.diagnostic.config({
     virtual_text = false,

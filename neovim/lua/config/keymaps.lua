@@ -103,3 +103,8 @@ vim.keymap.set("", "t9", "<cmd>9tabnext<cr>")
 -- Navigate quickfix list
 vim.keymap.set("", "<Space>.", "<cmd>cnext<cr>zz")
 vim.keymap.set("", "<Space>,", "<cmd>cprevious<cr>zz")
+
+-- Code lenses
+vim.keymap.set("", "<Space>A", function()
+    vim.lsp.codelens.run()
+end)
