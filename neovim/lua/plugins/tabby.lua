@@ -25,6 +25,7 @@ return {
                     { margin = " " }
                 )
                 return {
+                    -- Tabs
                     line.spacer(),
                     tabs,
                     line.spacer(),
