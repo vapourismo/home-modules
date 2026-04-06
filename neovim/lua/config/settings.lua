@@ -1,18 +1,13 @@
 -- Options
-vim.opt.number           = true
 vim.opt.compatible       = false
 vim.opt.guicursor        = "n-sm-v-ve:block,c-ci-i:ver25,cr-r-o:hor20"
 vim.opt.colorcolumn      = { 100, 120 }
 vim.opt.wrap             = false
-vim.opt.signcolumn       = "yes"
-vim.opt.statuscolumn     = " %l %s"
 vim.opt.cursorline       = true
 vim.opt.sessionoptions   = { "curdir", "folds", "blank", "winsize", "winpos" }
 vim.opt.ignorecase       = true
 vim.opt.showtabline      = 2
 vim.opt.termguicolors    = true
-vim.opt.numberwidth      = 1
-vim.opt.relativenumber   = false
 vim.opt.scrolloff        = 10
 vim.opt.autoread         = true
 vim.opt.linespace        = 3
@@ -20,6 +15,12 @@ vim.opt.splitkeep        = "screen"
 vim.opt.laststatus       = 3
 vim.opt.showmode         = false
 vim.opt.fillchars        = { eob = " " }
+
+vim.opt.number           = true
+vim.opt.signcolumn       = "yes"
+vim.opt.statuscolumn     = " %l %s"
+vim.opt.numberwidth      = 1
+vim.opt.relativenumber   = false
 
 vim.opt.shiftwidth       = 4
 vim.opt.tabstop          = 4
