@@ -17,7 +17,6 @@ return {
             settings = {
                 ["rust-analyzer"] = {
                     check = { command = "clippy" },
-                    imports = { granularity = { enforce = true } },
                     cargo = { targetDir = true },
                     workspace = {
                         symbol = {

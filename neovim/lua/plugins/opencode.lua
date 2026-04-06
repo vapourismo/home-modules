@@ -3,7 +3,7 @@ return {
     branch = "wip",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
+        "saghen/blink.cmp",
         "folke/snacks.nvim",
         "MeanderingProgrammer/render-markdown.nvim",
     },
