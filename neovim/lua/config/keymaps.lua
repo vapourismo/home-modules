@@ -46,12 +46,14 @@ vim.keymap.set("", "gj", function()
     vim.diagnostic.jump({
         count = 1,
         wrap = false,
+        float = true,
     })
 end)
 vim.keymap.set("", "gk", function()
     vim.diagnostic.jump({
         count = -1,
         wrap = false,
+        float = true,
     })
 end)
 
