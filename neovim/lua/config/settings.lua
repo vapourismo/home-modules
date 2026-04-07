@@ -40,9 +40,19 @@ vim.g.loaded_netrwPlugin = 1
 -- Configure diagnostics
 vim.diagnostic.config({
     virtual_text = false,
+    virtual_lines = false,
     underline = true,
     severity_sort = true,
     update_in_insert = true,
+    signs = {
+        active = true,
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = "LspDiagnosticsError",
+            [vim.diagnostic.severity.WARN] = "LspDiagnosticsWarning",
+            [vim.diagnostic.severity.HINT] = "LspDiagnosticsHint",
+            [vim.diagnostic.severity.INFO] = "LspDiagnosticsInformation",
+        },
+    },
 })
 
 -- Neovide
