@@ -113,11 +113,11 @@
     "neovide": {
       "flake": false,
       "locked": {
-        "lastModified": 1775168223,
-        "narHash": "sha256-Oafr/z1oun7VH8mDUDQWuu0sYy/te3NwsYEsuX/V2zE=",
+        "lastModified": 1775586731,
+        "narHash": "sha256-VJJMxnNWHH86lFWhVp2X8XnFU3ySDmw2U0RJQeqCbhY=",
         "owner": "vapourismo",
         "repo": "neovide",
-        "rev": "b9dfe3d8af0c554a49e0587037bf3e51133ead1d",
+        "rev": "394f65ad067b9270ff63a612ad6345a01fe6c086",
         "type": "github"
       },
       "original": {
@@ -159,11 +159,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1775161695,
-        "narHash": "sha256-ongNAK47cS2WN7fg+8fttG/Ts36cbi+kZMfTcd+gutE=",
+        "lastModified": 1775586204,
+        "narHash": "sha256-jwUnDXk0xFOe6d8Y2X8dp/vmWGJOgVbI21693U/RX14=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8c17e9054ed6d08887859a1f5962e1746f1da2ca",
+        "rev": "ab38ea60e302bed408de859b71b142ec3af46d22",
         "type": "github"
       },
       "original": {

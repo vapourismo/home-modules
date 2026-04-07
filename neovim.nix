@@ -28,12 +28,8 @@ in
 
   programs.neovide = lib.optionalAttrs pkgs.stdenv.isDarwin {
     enable = true;
-    package =
-      let
-        neovidePackage = masterPkgs.neovide;
-      in
-      neovidePackage.overrideAttrs (old: {
-        src = specialArgs.inputs.neovide;
-      });
+    package = masterPkgs.neovide.overrideAttrs (old: {
+      src = specialArgs.inputs.neovide;
+    });
   };
 }
