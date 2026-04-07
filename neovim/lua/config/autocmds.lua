@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         "*.tsx",
         "*.js",
         "*.jsx",
+        "*.svelte*",
     },
     callback = function()
         vim.lsp.buf.format()
@@ -45,6 +46,14 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     },
     callback = function()
         vim.cmd("set bufhidden=delete")
+    end,
+})
+
+-- Activate svelte syntax highlighting
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = "svelte",
+    callback = function()
+        vim.treesitter.start()
     end,
 })
 

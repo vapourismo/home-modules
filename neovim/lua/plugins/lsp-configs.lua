@@ -128,6 +128,7 @@ return {
         vim.lsp.enable("typos_lsp")
         vim.lsp.enable("ts_ls")
         vim.lsp.enable("vtsls")
+        vim.lsp.enable("svelte")
         vim.lsp.enable("jsonls")
     end,
 }
