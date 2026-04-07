@@ -42,8 +42,18 @@ vim.keymap.set("", "<Space>k", vim.lsp.buf.hover)
 vim.keymap.set("", "<Space>K", vim.diagnostic.open_float)
 vim.keymap.set("", "<Space>r", vim.lsp.buf.rename)
 vim.keymap.set("", "gD", vim.lsp.buf.declaration)
-vim.keymap.set("", "gj", vim.diagnostic.goto_next)
-vim.keymap.set("", "gk", vim.diagnostic.goto_prev)
+vim.keymap.set("", "gj", function()
+    vim.diagnostic.jump({
+        count = 1,
+        wrap = false,
+    })
+end)
+vim.keymap.set("", "gk", function()
+    vim.diagnostic.jump({
+        count = -1,
+        wrap = false,
+    })
+end)
 
 -- Clipboards
 vim.keymap.set("", "<Space>y", '"+y')
