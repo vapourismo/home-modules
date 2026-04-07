@@ -4,6 +4,9 @@
   specialArgs,
   ...
 }:
+let
+  masterPkgs = specialArgs.inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   programs.neovim = {
     enable = true;
@@ -27,8 +30,7 @@
     enable = true;
     package =
       let
-        neovidePackage =
-          specialArgs.inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system}.neovide;
+        neovidePackage = masterPkgs.neovide;
       in
       neovidePackage.overrideAttrs (old: {
         src = specialArgs.inputs.neovide;
