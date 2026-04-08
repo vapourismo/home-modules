@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         "*.js",
         "*.jsx",
         "*.svelte*",
+        "*.css",
     },
     callback = function()
         vim.lsp.buf.format()
