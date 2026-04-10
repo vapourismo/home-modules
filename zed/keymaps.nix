@@ -25,10 +25,18 @@
       "alt-l" = "editor::AcceptEditPrediction";
       "alt-L" = "editor::AcceptNextWordEditPrediction";
       "alt-j" = "editor::AcceptNextLineEditPrediction";
+      "alt-J" = "editor::AddSelectionBelow";
+      "alt-K" = "editor::AddSelectionAbove";
       "ctrl-l" = "vim::NextWordEnd";
       "ctrl-h" = "vim::PreviousWordStart";
       "ctrl-j" = "vim::EndOfParagraph";
       "ctrl-k" = "vim::StartOfParagraph";
+      "cmd-d" = "editor::SelectNext";
+      "cmd-shift-d" = [
+        "editor::SelectNext"
+        { "replace_newest" = true; }
+      ];
+
     };
   }
 
@@ -85,6 +93,48 @@
         "terminal::SendKeystroke"
         "escape"
       ];
+    };
+  }
+
+  # TabSwitcher
+  {
+    context = "TabSwitcher";
+    bindings = {
+      "ctrl-x" = "tab_switcher::CloseSelectedItem";
+    };
+  }
+
+  # Unbind "r" in Normal mode to avoid triggering Replace mode
+  {
+    context = "vim_mode == normal || vim_mode == helix_normal || vim_mode == visual";
+    unbind = {
+      "r" = "vim::PushReplace";
+    };
+  }
+  {
+    context = "VimControl && !menu";
+    unbind = {
+      "shift-r" = "vim::ToggleReplace";
+    };
+  }
+  {
+    context = "vim_mode == visual";
+    unbind = {
+      "shift-r" = "vim::SubstituteLine";
+    };
+  }
+  {
+    context = "vim_operator == gR";
+    unbind = {
+      "shift-r" = "vim::CurrentLine";
+    };
+  }
+
+  # Unbind "tab" in edit prediction mode to avoid accepting predictions when completing
+  {
+    context = "Editor && edit_prediction && edit_prediction_mode == eager && !showing_completions";
+    unbind = {
+      "tab" = "editor::AcceptEditPrediction";
     };
   }
 ]
