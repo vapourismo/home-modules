@@ -132,5 +132,6 @@ return {
         vim.lsp.enable("tailwindcss")
         vim.lsp.enable("jsonls")
         vim.lsp.enable("just")
+        vim.lsp.enable("eslint")
     end,
 }
