@@ -225,6 +225,7 @@
 
       revsets = {
         log = "..@";
+        bookmark-advance-to = ''heads(::@ ~ empty() ~ description("") ~ description(substring:"wip"))'';
       };
 
       revset-aliases = {
