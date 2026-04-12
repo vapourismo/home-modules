@@ -225,7 +225,6 @@ end
 
 return {
     "vapourismo/snacks.nvim",
-    branch = "feature/workspace-symbols-all-clients",
     opts = {
         styles = {
             terminal = {

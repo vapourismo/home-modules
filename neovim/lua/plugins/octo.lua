@@ -12,7 +12,7 @@ return {
         },
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "folke/snacks.nvim",
+            "vapourismo/snacks.nvim",
             "nvim-tree/nvim-web-devicons",
         },
     }

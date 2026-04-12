@@ -4,7 +4,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "saghen/blink.cmp",
-        "folke/snacks.nvim",
+        "vapourismo/snacks.nvim",
         "MeanderingProgrammer/render-markdown.nvim",
     },
     opts = {
