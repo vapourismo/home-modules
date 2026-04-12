@@ -73,6 +73,7 @@
                   slot2 = "${config.programs.zed-editor.package}/Applications/Zed Nightly.app";
                   slot3 = "/Applications/Brave Browser.app";
                   jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
+                  sccache = true;
                 };
               }
             )
