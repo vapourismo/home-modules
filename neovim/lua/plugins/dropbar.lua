@@ -5,6 +5,8 @@ return {
         local dropbar = require("dropbar")
         local dropbar_api = require("dropbar.api")
 
+        local ignore_fts = { "", "snacks_terminal", "noice" }
+
         dropbar.setup({
             bar = {
                 enable = function(buf, win, info)
@@ -14,7 +16,7 @@ return {
 
                     buf = vim._resolve_bufnr(buf)
 
-                    if vim.bo[buf].ft == "snacks_terminal" or vim.bo[buf].ft == "" then
+                    if vim.tbl_contains(ignore_fts, vim.bo[buf].ft) then
                         return false
                     end
 
