@@ -212,17 +212,6 @@
         ];
       };
 
-      merge-tools.zed = {
-        program = "zed";
-        diff-args = [
-          "--wait"
-          "--new"
-          "--diff"
-          "$left"
-          "$right"
-        ];
-      };
-
       revsets = {
         log = "..@";
         bookmark-advance-to = ''heads(::@ ~ empty() ~ description("") ~ description(substring:"wip"))'';

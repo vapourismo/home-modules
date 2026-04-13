@@ -8,7 +8,6 @@
     };
     jujutsu.url = "github:jj-vcs/jj/v0.40.0";
     flake-utils.url = "github:numtide/flake-utils";
-    zed.url = "github:vapourismo/zed";
     neovide = {
       url = "github:vapourismo/neovide";
       flake = false;
@@ -37,7 +36,6 @@
         terminal = import ./terminal.nix;
         mergiraf = import ./mergiraf.nix;
         jrnl = import ./jrnl.nix;
-        zed = import ./zed.nix;
         radicle = import ./radicle.nix;
       };
 
@@ -58,7 +56,6 @@
             self.homeModules.terminal
             self.homeModules.mergiraf
             self.homeModules.radicle
-            self.homeModules.zed
 
             (
               { config, ... }:
@@ -70,7 +67,6 @@
 
                 ole = {
                   slot1 = "${config.programs.neovide.package}/Applications/Neovide.app";
-                  slot2 = "${config.programs.zed-editor.package}/Applications/Zed Nightly.app";
                   slot3 = "/Applications/Brave Browser.app";
                   jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
                   sccache = true;
@@ -127,7 +123,6 @@
             self.homeModules.terminal
             self.homeModules.mergiraf
             self.homeModules.jrnl
-            self.homeModules.zed
 
             (
               { config, ... }:
@@ -139,7 +134,6 @@
 
                 ole = {
                   slot1 = "${config.programs.neovide.package}/Applications/Neovide.app";
-                  slot2 = "${config.programs.zed-editor.package}/Applications/Zed Nightly.app";
                   slot3 = "/Applications/Brave Browser.app";
                   slot4 = "/Applications/Slack.app";
                   slot5 = "/Applications/Linear.app";
