@@ -36,6 +36,7 @@
         terminal = import ./terminal.nix;
         mergiraf = import ./mergiraf.nix;
         radicle = import ./radicle.nix;
+        jobs = import ./jobs.nix;
       };
 
       homeConfigurations = {
@@ -55,6 +56,7 @@
             self.homeModules.terminal
             self.homeModules.mergiraf
             self.homeModules.radicle
+            self.homeModules.jobs
 
             (
               { config, ... }:
