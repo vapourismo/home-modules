@@ -20,7 +20,9 @@ return {
         vim.keymap.set({ "n", "x" }, "rj", function() mc.matchAddCursor(1) end)
         vim.keymap.set({ "n", "x" }, "<D-d>", function() mc.matchAddCursor(1) end)
         vim.keymap.set({ "n", "x" }, "rK", function() mc.matchSkipCursor(-1) end)
+        vim.keymap.set({ "n", "x" }, "RK", function() mc.matchSkipCursor(-1) end)
         vim.keymap.set({ "n", "x" }, "rJ", function() mc.matchSkipCursor(1) end)
+        vim.keymap.set({ "n", "x" }, "RJ", function() mc.matchSkipCursor(1) end)
         vim.keymap.set({ "n", "x" }, "<D-S-d>", function() mc.matchSkipCursor(1) end)
         vim.keymap.set({ "n", "x" }, "rA", mc.matchAllAddCursors)
 
