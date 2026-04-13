@@ -1,36 +1,41 @@
 { pkgs, ... }:
 with pkgs;
 {
+  imports = [ ./user-profile.nix ];
+
   home.packages = [
-    nixfmt
     bash
     calc
     coreutils
     curl
-    difftastic
     fd
     fzf
     gh
     glab
+    gnumake
     gnupg
     htop
     jq
-    lua-language-server
-    vscode-json-languageserver
-    nil
-    nixd
     ripgrep
+    stdenv.cc
     tree
     tree-sitter
-    typos
-    typos-lsp
-    vim
     wget
-    gnumake
-    fzf
-    stdenv.cc
   ]
   ++ lib.optionals stdenv.isDarwin [
     pinentry_mac
+  ];
+
+  ole.profile.packages = [
+    "difftastic"
+    "lua-language-server"
+    "nil"
+    "nixd"
+    "nixfmt"
+    "taplo"
+    "typos"
+    "typos-lsp"
+    "vscode-json-languageserver"
+    "podman"
   ];
 }
