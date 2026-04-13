@@ -35,7 +35,6 @@
         skhd = import ./skhd.nix;
         terminal = import ./terminal.nix;
         mergiraf = import ./mergiraf.nix;
-        jrnl = import ./jrnl.nix;
         radicle = import ./radicle.nix;
       };
 
