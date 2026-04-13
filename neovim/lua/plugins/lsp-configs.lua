@@ -126,7 +126,6 @@ return {
         vim.lsp.enable("gopls")
         vim.lsp.enable("openscad_lsp")
         vim.lsp.enable("typos_lsp")
-        vim.lsp.enable("ts_ls")
         vim.lsp.enable("vtsls")
         vim.lsp.enable("svelte")
         vim.lsp.enable("tailwindcss")
