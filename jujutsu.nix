@@ -199,12 +199,6 @@
             jj new "'$0'@origin"
           ''
         ];
-        mb = [
-          "bookmark"
-          "advance"
-          "-t"
-          "heads(..@ ~ empty() ~ description(exact:''))"
-        ];
         diffz = [
           "diff"
           "--tool"
