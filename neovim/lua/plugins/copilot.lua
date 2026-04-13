@@ -1,6 +1,9 @@
 return {
     {
         "zbirenbaum/copilot.lua",
+        dependencies = {
+            "copilotlsp-nvim/copilot-lsp",
+        },
         cmd = "Copilot",
         event = "InsertEnter",
         opts = {
@@ -10,6 +13,15 @@ return {
                 keymap = {
                     accept_word = "<M-S-L>",
                     accept_line = "<M-S-J>",
+                },
+            },
+            nes = {
+                enabled = true,
+                auto_trigger = true,
+                keymap = {
+                    accept_and_goto = "<M-l>",
+                    accept = "<M-l>",
+                    dismiss = false,
                 },
             },
             filetypes = {

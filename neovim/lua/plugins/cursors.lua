@@ -32,9 +32,7 @@ return {
         mc.addKeymapLayer(function(layerSet)
             -- Select a different cursor as the main one.
             layerSet({ "n", "x" }, "rh", mc.prevCursor)
-            layerSet({ "n", "x" }, "<M-h>", mc.prevCursor)
             layerSet({ "n", "x" }, "rl", mc.nextCursor)
-            layerSet({ "n", "x" }, "<M-l>", mc.nextCursor)
 
             -- Delete the main cursor.
             layerSet({ "n", "x" }, "rx", mc.deleteCursor)
