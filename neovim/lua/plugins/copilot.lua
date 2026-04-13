@@ -19,8 +19,8 @@ return {
                 enabled = true,
                 auto_trigger = true,
                 keymap = {
-                    accept_and_goto = "<M-l>",
-                    accept = "<M-l>",
+                    accept_and_goto = "<Space><M-l>",
+                    accept = false,
                     dismiss = false,
                 },
             },
