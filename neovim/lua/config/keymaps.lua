@@ -75,9 +75,6 @@ vim.keymap.set("", "<C-l>", "e")
 vim.keymap.set("", "<C-h>", "b")
 vim.keymap.set("", "<C-j>", "}")
 vim.keymap.set("", "<C-k>", "{")
-vim.keymap.set("", "gh", "0")
-vim.keymap.set("", "gl", "g_")
-vim.keymap.set("", "gs", "_")
 
 -- Indentation
 vim.keymap.set("v", "<Tab>", ">gv")
