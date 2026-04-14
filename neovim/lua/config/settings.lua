@@ -72,5 +72,5 @@ if vim.g.neovide then
     vim.g.neovide_input_macos_option_key_is_meta = "only_left"
     vim.g.neovide_floating_shadow = false
 
-    vim.env.EDITOR = "nvr -cc split --remote-wait"
+    vim.env.EDITOR = "nvr --remote-tab-wait"
 end
