@@ -38,7 +38,7 @@ return {
                     show_output = false,
                     show_reasoning_output = false
                 },
-                compact_assistant_headers = true,
+                compact_assistant_headers = "hidden",
             },
         },
         debug = {
