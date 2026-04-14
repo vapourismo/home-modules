@@ -45,7 +45,10 @@ return {
                                 enable = false
                             }
                         },
-                    }
+                    },
+                    procMacro = {
+                        processes = 2,
+                    },
                 }
             },
             before_init = function(params, config)
