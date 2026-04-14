@@ -80,11 +80,11 @@
     "neovide": {
       "flake": false,
       "locked": {
-        "lastModified": 1775586731,
-        "narHash": "sha256-VJJMxnNWHH86lFWhVp2X8XnFU3ySDmw2U0RJQeqCbhY=",
+        "lastModified": 1776181638,
+        "narHash": "sha256-LLYv4hoJNEDWqIYvoxBIqroIiCqIuUMMr0we2HQ1MAI=",
         "owner": "vapourismo",
         "repo": "neovide",
-        "rev": "394f65ad067b9270ff63a612ad6345a01fe6c086",
+        "rev": "ae1720d166ac607de5899eef79101817f17d052f",
         "type": "github"
       },
       "original": {
