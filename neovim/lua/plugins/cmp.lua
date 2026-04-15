@@ -29,6 +29,7 @@ return {
             accept = {
                 auto_brackets = {
                     enabled = true,
+                    force_allow_filetypes = { "rust" },
                 },
             },
         },
