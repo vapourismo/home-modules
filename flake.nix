@@ -1,17 +1,13 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     jujutsu.url = "github:jj-vcs/jj/v0.40.0";
     flake-utils.url = "github:numtide/flake-utils";
-    neovide = {
-      url = "github:vapourismo/neovide";
-      flake = false;
-    };
+    neovide.url = "github:vapourismo/neovide";
   };
 
   outputs =

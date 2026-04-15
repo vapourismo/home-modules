@@ -4,9 +4,6 @@
   specialArgs,
   ...
 }:
-let
-  masterPkgs = specialArgs.inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
 {
   programs.neovim = {
     enable = true;
@@ -28,8 +25,6 @@ in
 
   programs.neovide = lib.optionalAttrs pkgs.stdenv.isDarwin {
     enable = true;
-    package = masterPkgs.neovide.overrideAttrs (old: {
-      src = specialArgs.inputs.neovide;
-    });
+    package = specialArgs.inputs.neovide.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 }
