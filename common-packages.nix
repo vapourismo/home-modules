@@ -10,8 +10,6 @@ with pkgs;
     curl
     fd
     fzf
-    gh
-    glab
     gnumake
     gnupg
     htop
@@ -37,5 +35,6 @@ with pkgs;
     "typos-lsp"
     "vscode-json-languageserver"
     "podman"
+    "gh"
   ];
 }
