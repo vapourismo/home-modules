@@ -1,5 +1,6 @@
 return {
     "zbirenbaum/copilot.lua",
+    enabled = true,
     dependencies = {
         "copilotlsp-nvim/copilot-lsp",
         init = function()
@@ -19,7 +20,7 @@ return {
             },
         },
         nes = {
-            enabled = true,
+            enabled = false,
             auto_trigger = true,
             keymap = {
                 accept_and_goto = false,
