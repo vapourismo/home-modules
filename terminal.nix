@@ -75,6 +75,11 @@
         source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
       end
 
+      # load secrets
+      if test -e "$HOME/.config/fish/secrets.fish"
+        source "$HOME/.config/fish/secrets.fish"
+      end
+
       # extend PATH
       fish_add_path "$HOME/.local/bin"
       fish_add_path "$HOME/.cargo/bin"
