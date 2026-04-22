@@ -10,7 +10,10 @@ return {
         },
         code = {
             sign = false,
-            style = "full",
+            style = "normal",
+        },
+        link = {
+            enabled = false,
         },
     },
 }
