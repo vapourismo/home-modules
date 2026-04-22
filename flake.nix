@@ -32,6 +32,7 @@
         terminal = import ./terminal.nix;
         mergiraf = import ./mergiraf.nix;
         radicle = import ./radicle.nix;
+        telemetry-opt-out = import ./telemetry-opt-out.nix;
       };
 
       homeConfigurations = {
@@ -51,6 +52,7 @@
             self.homeModules.terminal
             self.homeModules.mergiraf
             self.homeModules.radicle
+            self.homeModules.telemetry-opt-out
 
             (
               { config, ... }:
