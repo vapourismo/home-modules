@@ -121,6 +121,15 @@ return {
         })
         vim.lsp.enable("buck2")
 
+        vim.lsp.config("copilot", {
+            settings = {
+                telemetry = {
+                    telemetryLevel = "off",
+                },
+            },
+        })
+        vim.lsp.enable("copilot")
+
         vim.lsp.enable("nixd")
         vim.lsp.enable("lua_ls")
         vim.lsp.enable("taplo")
