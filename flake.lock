@@ -102,11 +102,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1776277193,
-        "narHash": "sha256-CrrnIZtUwPezQO8gQ6n4vesX8XGT2r+8cCDCKiyHJoY=",
+        "lastModified": 1776882079,
+        "narHash": "sha256-AyugC90tMD5jeafaeIu6S2hn8eOfEhykKmH1BVyT3tA=",
         "owner": "vapourismo",
         "repo": "neovide",
-        "rev": "48539201fb33cf32423ababcc7cf50a0ef71f12d",
+        "rev": "d68d8564a0e6841aa7174f8bdb3e7947c1806d13",
         "type": "github"
       },
       "original": {
