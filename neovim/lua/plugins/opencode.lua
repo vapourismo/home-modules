@@ -1,6 +1,5 @@
 return {
-    "vapourismo/opencode.nvim",
-    branch = "wip",
+    "sudo-tee/opencode.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "saghen/blink.cmp",
