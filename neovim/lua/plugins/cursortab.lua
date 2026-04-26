@@ -1,5 +1,5 @@
 return {
-    "cursortab/cursortab.nvim",
+    "vapourismo/cursortab.nvim",
     lazy = false,
     build = "cd server && go build",
     opts = {
