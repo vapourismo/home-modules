@@ -6,15 +6,6 @@ return {
         vim.lsp.config("rust_analyzer", {
             cmd = { "rust-analyzer" },
             inlay_hints = { enabled = true },
-            capabilities = {
-                textDocument = {
-                    completion = {
-                        completionItem = {
-                            snippetSupport = false
-                        }
-                    }
-                }
-            },
             settings = {
                 ["rust-analyzer"] = {
                     check = { command = "clippy" },
