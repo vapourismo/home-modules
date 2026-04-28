@@ -28,7 +28,6 @@
         jujutsu = import ./jujutsu.nix;
         neovim = import ./neovim.nix;
         nixpkgs = import ./nixpkgs.nix;
-        skhd = import ./skhd.nix;
         terminal = import ./terminal.nix;
         mergiraf = import ./mergiraf.nix;
         radicle = import ./radicle.nix;
@@ -48,28 +47,22 @@
             self.homeModules.jujutsu
             self.homeModules.neovim
             self.homeModules.nixpkgs
-            self.homeModules.skhd
             self.homeModules.terminal
             self.homeModules.mergiraf
             self.homeModules.radicle
             self.homeModules.telemetry-opt-out
 
-            (
-              { config, ... }:
-              {
-                home = {
-                  username = "ole";
-                  stateVersion = "26.05";
-                };
+            {
+              home = {
+                username = "ole";
+                stateVersion = "26.05";
+              };
 
-                ole = {
-                  slot1 = "${config.programs.neovide.package}/Applications/Neovide.app";
-                  slot3 = "/Applications/Brave Browser.app";
-                  jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
-                  sccache = false;
-                };
-              }
-            )
+              ole = {
+                jj.sshSignKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7vlc902QXTseSF7NsFy3CouUnWFQWDFy1EvS0CRD5q";
+                sccache = false;
+              };
+            }
           ];
 
           extraSpecialArgs = { inherit inputs; };
