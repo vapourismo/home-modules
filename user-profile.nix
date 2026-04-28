@@ -36,7 +36,10 @@
           ];
           StandardErrorPath = "/tmp/upgrade-nix-profile.log.err";
           StandardOutPath = "/tmp/upgrade-nix-profile.log.out";
-          StartInterval = 86400;
+          StartCalendarInterval = {
+            Hour = 12;
+            Minute = 0;
+          };
         };
       };
     };
