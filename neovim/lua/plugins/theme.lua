@@ -1,6 +1,21 @@
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+    callback = function()
+        vim.fn.foreach(vim.api.nvim_get_hl(0, {}), function(hlname, def)
+            local is_italic = def.italic or def.cterm and def.cterm.italic
+            if not is_italic then
+                return
+            end
+
+            local disabled_def = vim.tbl_deep_extend("force", def, { italic = false, cterm = { italic = false } })
+            vim.api.nvim_set_hl(0, hlname, disabled_def)
+        end)
+    end,
+})
+
 return {
     {
         "catppuccin/nvim",
+        enabled = false,
         name = "catppuccin",
         priority = 1000,
         lazy = false,
@@ -43,9 +58,37 @@ return {
     },
 
     {
+        "felipefdl/warm-burnout",
+        priority = 1000,
+        config = function(plugin)
+            vim.opt.rtp:append(plugin.dir .. "/nvim")
+
+            vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+                pattern = { "warm-burnout-light", "warm-burnout-dark" },
+                callback = function(info)
+                    local palette = require("warm-burnout.palette")
+
+                    if info.match == "warm-burnout-light" then
+                        palette = palette.light
+                    elseif info.match == "warm-burnout-dark" then
+                        palette = palette.dark
+                    else
+                        return
+                    end
+
+                    vim.api.nvim_set_hl(0, "TabLineName", { bg = palette.bg_highlight })
+                    vim.api.nvim_set_hl(0, "TabLineNameSel", { fg = palette.bg_dim, bg = palette.decorator })
+                    vim.api.nvim_set_hl(0, "TabLineNum", { bg = palette.bg_search })
+                    vim.api.nvim_set_hl(0, "TabLineNumSel", { fg = palette.bg_dim, bg = palette.member })
+                end
+            })
+        end,
+    },
+
+    {
         "f-person/auto-dark-mode.nvim",
         dependencies = { "catppuccin/nvim" },
-        config = function(plugin, opts)
+        config = function(_, opts)
             opts.set_dark_mode()
             local this = require("auto-dark-mode")
             this.setup(opts)
@@ -53,44 +96,10 @@ return {
         opts = {
             update_interval = 10000,
             set_dark_mode = function()
-                vim.cmd.colorscheme("catppuccin-mocha")
-
-                vim.g.terminal_color_0 = "#000000"
-                vim.g.terminal_color_1 = "#ff3333"
-                vim.g.terminal_color_2 = "#b8cc52"
-                vim.g.terminal_color_3 = "#e7c547"
-                vim.g.terminal_color_4 = "#36a3d9"
-                vim.g.terminal_color_5 = "#f07178"
-                vim.g.terminal_color_6 = "#95e6cb"
-                vim.g.terminal_color_7 = "#ffffff"
-                vim.g.terminal_color_8 = "#323232"
-                vim.g.terminal_color_9 = "#ff6565"
-                vim.g.terminal_color_10 = "#eafe84"
-                vim.g.terminal_color_11 = "#fff779"
-                vim.g.terminal_color_12 = "#68d5ff"
-                vim.g.terminal_color_13 = "#ffa3aa"
-                vim.g.terminal_color_14 = "#c7fffd"
-                vim.g.terminal_color_15 = "#ffffff"
+                vim.cmd.colorscheme("warm-burnout-dark")
             end,
             set_light_mode = function()
-                vim.cmd.colorscheme("catppuccin-latte")
-
-                vim.g.terminal_color_0 = "#5C6A72"
-                vim.g.terminal_color_1 = "#F85552"
-                vim.g.terminal_color_2 = "#8DA101"
-                vim.g.terminal_color_3 = "#DFA000"
-                vim.g.terminal_color_4 = "#3A94C5"
-                vim.g.terminal_color_5 = "#DF69BA"
-                vim.g.terminal_color_6 = "#35A77C"
-                vim.g.terminal_color_7 = "#DFDDC8"
-                vim.g.terminal_color_8 = "#2E383C"
-                vim.g.terminal_color_9 = "#E67E80"
-                vim.g.terminal_color_10 = "#A7C080"
-                vim.g.terminal_color_11 = "#DBBC7F"
-                vim.g.terminal_color_12 = "#7FBBB3"
-                vim.g.terminal_color_13 = "#D699B6"
-                vim.g.terminal_color_14 = "#83C092"
-                vim.g.terminal_color_15 = "#D3C6AA"
+                vim.cmd.colorscheme("warm-burnout-light")
             end,
             fallback = "dark",
         },
