@@ -1,7 +1,11 @@
 return {
     "saghen/blink.cmp",
-    version = "1.*",
-    build = "nix run .#build-plugin",
+    dependencies = {
+        "saghen/blink.lib"
+    },
+    build = function()
+        require("blink.cmp").build():wait(60000)
+    end,
     ---@module "blink.cmp"
     ---@type blink.cmp.Config
     opts = {
@@ -11,7 +15,7 @@ return {
             ["<C-j>"] = { "select_next", "fallback" },
         },
         fuzzy = {
-            implementation = "prefer_rust",
+            implementation = "rust",
         },
         cmdline = {
             keymap = {
@@ -33,5 +37,4 @@ return {
             },
         },
     },
-    opts_extend = { "sources.default" }
 }
