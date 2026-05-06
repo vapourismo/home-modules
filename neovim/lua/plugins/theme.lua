@@ -83,26 +83,6 @@ return {
     },
 
     {
-        "f-person/auto-dark-mode.nvim",
-        dependencies = { "catppuccin/nvim" },
-        config = function(_, opts)
-            opts.set_dark_mode()
-            local this = require("auto-dark-mode")
-            this.setup(opts)
-        end,
-        opts = {
-            update_interval = 10000,
-            set_dark_mode = function()
-                vim.cmd.colorscheme("warm-burnout-dark")
-            end,
-            set_light_mode = function()
-                vim.cmd.colorscheme("warm-burnout-light")
-            end,
-            fallback = "dark",
-        },
-    },
-
-    {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {
