@@ -75,6 +75,8 @@ return {
 
                     vim.api.nvim_set_hl(0, "NormalFloat", { bg = palette.bg })
 
+                    vim.api.nvim_set_hl(0, "WinSeparator", { fg = palette.bg_search })
+
                     vim.fn.foreach(vim.api.nvim_get_hl(0, {}), function(hlname, def)
                         local is_italic = def.italic or def.cterm and def.cterm.italic
                         if not is_italic then
