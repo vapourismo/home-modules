@@ -8,7 +8,6 @@
     show_sign_in = true;
     show_project_items = true;
     show_branch_name = true;
-    show_branch_icon = true;
   };
   minimum_contrast_for_highlights = 45.0;
   go_to_definition_fallback = "none";
@@ -163,24 +162,6 @@
     100
     120
   ];
-  "experimental.theme_overrides" = {
-    "terminal.ansi.black" = "#000000";
-    "terminal.ansi.red" = "#ff3333";
-    "terminal.ansi.green" = "#b8cc52";
-    "terminal.ansi.yellow" = "#e7c547";
-    "terminal.ansi.blue" = "#36a3d9";
-    "terminal.ansi.magenta" = "#f07178";
-    "terminal.ansi.cyan" = "#95e6cb";
-    "terminal.ansi.white" = "#ffffff";
-    "terminal.ansi.bright_black" = "#323232";
-    "terminal.ansi.bright_red" = "#ff6565";
-    "terminal.ansi.bright_green" = "#eafe84";
-    "terminal.ansi.bright_yellow" = "#fff779";
-    "terminal.ansi.bright_blue" = "#68d5ff";
-    "terminal.ansi.bright_magenta" = "#ffa3aa";
-    "terminal.ansi.bright_cyan" = "#c7fffd";
-    "terminal.ansi.bright_white" = "#ffffff";
-  };
   lsp = {
     rust-analyzer = {
       initialization_options = {
@@ -209,8 +190,5 @@
         };
       };
     };
-  };
-  notification_panel = {
-    button = false;
   };
 }
