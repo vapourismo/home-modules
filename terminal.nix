@@ -50,19 +50,19 @@
       function fish_prompt
         set -l last_status $status
 
-        echo -ne "\n"(set_color -b 544c40 f5ede0) "id" (set_color -b 74501c f5ede0) (whoami)@(hostname -s) (set_color normal)
+        echo -ne "\n"(set_color -b brblack white) "id" (set_color -b blue black) (whoami)@(hostname -s) (set_color normal)
         echo -n " "
 
-        echo -n (set_color -b 544c40 f5ede0) "dir" (set_color -b 8e4632 f5ede0) (prompt_pwd) (set_color normal)
+        echo -n (set_color -b brblack white) "dir" (set_color -b green black) (prompt_pwd) (set_color normal)
         echo -n " "
 
         if test "$last_status" -ne 0
-          echo -n (set_color -b 544c40 f5ede0) "code" (set_color -b b03434 f5ede0) $last_status (set_color normal)
+          echo -n (set_color -b brblack white) "code" (set_color -b red brwhite) $last_status (set_color normal)
           echo -n " "
         end
 
         if test -n "$IN_NIX_SHELL"
-          echo -n (set_color -b 544c40 f5ede0) "nix" (set_color -b 855700 f5ede0) "$name" (set_color normal)
+          echo -n (set_color -b brblack white) "nix" (set_color -b yellow black) "$name" (set_color normal)
           echo -n " "
         end
 
