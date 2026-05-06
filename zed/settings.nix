@@ -1,0 +1,216 @@
+{
+  semantic_tokens = "combined";
+  title_bar = {
+    show = false;
+    show_menus = true;
+    show_user_menu = true;
+    show_onboarding_banner = true;
+    show_sign_in = true;
+    show_project_items = true;
+    show_branch_name = true;
+    show_branch_icon = true;
+  };
+  minimum_contrast_for_highlights = 45.0;
+  go_to_definition_fallback = "none";
+  calls = {
+    mute_on_join = true;
+  };
+  buffer_line_height = {
+    custom = 1.4;
+  };
+  git_panel = {
+    tree_view = true;
+  };
+  agent_servers = {
+    opencode = {
+      type = "registry";
+      env = {
+        CARGO_TERM_QUIET = "true";
+      };
+    };
+    codex-acp = {
+      type = "registry";
+      env = {
+        RUSTC_WRAPPER = "";
+        CARGO_TERM_QUIET = "true";
+      };
+      default_config_options = {
+        mode = "auto";
+      };
+    };
+  };
+  agent = {
+    use_modifier_to_send = true;
+    enable_feedback = false;
+  };
+  edit_predictions = {
+    provider = "zed";
+    mode = "eager";
+  };
+  icon_theme = {
+    mode = "system";
+    light = "Catppuccin Latte";
+    dark = "Catppuccin Mocha";
+  };
+  rounded_selection = false;
+  restore_on_startup = "last_session";
+  centered_layout = {
+    left_padding = 0.3;
+    right_padding = 0.3;
+  };
+  gutter = {
+    min_line_number_digits = 1;
+    line_numbers = true;
+  };
+  lsp_document_colors = "inlay";
+  completions = {
+    words_min_length = 2;
+    words = "fallback";
+  };
+  relative_line_numbers = "disabled";
+  hover_popover_enabled = false;
+  diagnostics = {
+    inline = {
+      enabled = false;
+    };
+  };
+  toolbar = {
+    agent_review = false;
+    code_actions = false;
+    quick_actions = false;
+    selections_menu = false;
+    breadcrumbs = true;
+    height = 20;
+  };
+  terminal = {
+    shell = "system";
+    dock = "bottom";
+    toolbar = {
+      breadcrumbs = false;
+    };
+    env = {
+      EDITOR = "zed -w";
+    };
+  };
+  zoomed_padding = false;
+  active_pane_modifiers = {
+    border_size = 0.5;
+    inactive_opacity = 1.0;
+  };
+  use_system_window_tabs = false;
+  bottom_dock_layout = "full";
+  tabs = {
+    activate_on_close = "left_neighbour";
+    show_diagnostics = "errors";
+    file_icons = false;
+    git_status = false;
+  };
+  search = {
+    center_on_match = true;
+  };
+  excerpt_context_lines = 15;
+  project_panel = {
+    git_status = true;
+    hide_gitignore = true;
+    button = true;
+    entry_spacing = "standard";
+  };
+  tab_bar = {
+    show_nav_history_buttons = false;
+    show_tab_bar_buttons = false;
+    show = false;
+  };
+  git = {
+    path_style = "file_name_first";
+    inline_blame = {
+      enabled = false;
+    };
+  };
+  inlay_hints = {
+    show_background = true;
+    enabled = false;
+  };
+  indent_guides = {
+    background_coloring = "disabled";
+    coloring = "fixed";
+    line_width = 1;
+  };
+  preferred_line_length = 100;
+  scrollbar = {
+    show = "never";
+  };
+  sticky_scroll = {
+    enabled = true;
+  };
+  auto_signature_help = false;
+  autosave = "on_focus_change";
+  base_keymap = "VSCode";
+  buffer_font_family = "Iosevka Term SS02";
+  theme = {
+    mode = "system";
+    light = "Catppuccin Latte - No Italics";
+    dark = "Catppuccin Mocha - No Italics";
+  };
+  telemetry = {
+    diagnostics = false;
+    metrics = false;
+  };
+  vim_mode = true;
+  buffer_font_size = 13.0;
+  load_direnv = "direct";
+  vertical_scroll_margin = 15;
+  wrap_guides = [
+    100
+    120
+  ];
+  "experimental.theme_overrides" = {
+    "terminal.ansi.black" = "#000000";
+    "terminal.ansi.red" = "#ff3333";
+    "terminal.ansi.green" = "#b8cc52";
+    "terminal.ansi.yellow" = "#e7c547";
+    "terminal.ansi.blue" = "#36a3d9";
+    "terminal.ansi.magenta" = "#f07178";
+    "terminal.ansi.cyan" = "#95e6cb";
+    "terminal.ansi.white" = "#ffffff";
+    "terminal.ansi.bright_black" = "#323232";
+    "terminal.ansi.bright_red" = "#ff6565";
+    "terminal.ansi.bright_green" = "#eafe84";
+    "terminal.ansi.bright_yellow" = "#fff779";
+    "terminal.ansi.bright_blue" = "#68d5ff";
+    "terminal.ansi.bright_magenta" = "#ffa3aa";
+    "terminal.ansi.bright_cyan" = "#c7fffd";
+    "terminal.ansi.bright_white" = "#ffffff";
+  };
+  lsp = {
+    rust-analyzer = {
+      initialization_options = {
+        check = {
+          command = "clippy";
+        };
+        cargo = {
+          targetDir = true;
+        };
+        workspace = {
+          symbol = {
+            search = {
+              kind = "all_symbols";
+              limit = 512;
+            };
+          };
+        };
+      };
+    };
+    nil = {
+      initialization_options = {
+        nix = {
+          flake = {
+            autoArchive = true;
+          };
+        };
+      };
+    };
+  };
+  notification_panel = {
+    button = false;
+  };
+}

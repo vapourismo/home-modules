@@ -32,6 +32,7 @@
         mergiraf = import ./mergiraf.nix;
         radicle = import ./radicle.nix;
         telemetry-opt-out = import ./telemetry-opt-out.nix;
+        zed = import ./zed.nix;
       };
 
       homeConfigurations = {
@@ -51,6 +52,7 @@
             self.homeModules.mergiraf
             self.homeModules.radicle
             self.homeModules.telemetry-opt-out
+            self.homeModules.zed
 
             {
               home = {
