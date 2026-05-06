@@ -69,6 +69,8 @@ return {
                     vim.api.nvim_set_hl(0, "TabLineNum", { bg = palette.bg_search })
                     vim.api.nvim_set_hl(0, "TabLineNumSel", { fg = palette.bg_dim, bg = palette.member })
 
+                    vim.api.nvim_set_hl(0, "NormalFloat", { bg = palette.bg })
+
                     vim.fn.foreach(vim.api.nvim_get_hl(0, {}), function(hlname, def)
                         local is_italic = def.italic or def.cterm and def.cterm.italic
                         if not is_italic then
