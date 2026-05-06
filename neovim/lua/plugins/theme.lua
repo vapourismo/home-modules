@@ -1,17 +1,3 @@
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-    callback = function()
-        vim.fn.foreach(vim.api.nvim_get_hl(0, {}), function(hlname, def)
-            local is_italic = def.italic or def.cterm and def.cterm.italic
-            if not is_italic then
-                return
-            end
-
-            local disabled_def = vim.tbl_deep_extend("force", def, { italic = false, cterm = { italic = false } })
-            vim.api.nvim_set_hl(0, hlname, disabled_def)
-        end)
-    end,
-})
-
 return {
     {
         "catppuccin/nvim",
@@ -80,6 +66,17 @@ return {
                     vim.api.nvim_set_hl(0, "TabLineNameSel", { fg = palette.bg_dim, bg = palette.decorator })
                     vim.api.nvim_set_hl(0, "TabLineNum", { bg = palette.bg_search })
                     vim.api.nvim_set_hl(0, "TabLineNumSel", { fg = palette.bg_dim, bg = palette.member })
+
+                    vim.fn.foreach(vim.api.nvim_get_hl(0, {}), function(hlname, def)
+                        local is_italic = def.italic or def.cterm and def.cterm.italic
+                        if not is_italic then
+                            return
+                        end
+
+                        local disabled_def = vim.tbl_deep_extend("force", def,
+                            { italic = false, cterm = { italic = false } })
+                        vim.api.nvim_set_hl(0, hlname, disabled_def)
+                    end)
                 end
             })
         end,
