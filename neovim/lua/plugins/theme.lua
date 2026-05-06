@@ -7,6 +7,7 @@ return {
         lazy = false,
         opts = {
             flavour = "mocha",
+            term_colors = true,
             integrations = {
                 native_lsp = {
                     enabled = true,
