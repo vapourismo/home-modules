@@ -42,6 +42,10 @@ return {
                 }
             end
         },
+        config = function(plugin, opts)
+            require(plugin.name).setup(opts)
+            vim.cmd("colorscheme catppuccin")
+        end,
     },
 
     {
