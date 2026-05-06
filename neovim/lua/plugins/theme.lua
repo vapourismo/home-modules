@@ -47,6 +47,7 @@ return {
     {
         "felipefdl/warm-burnout",
         priority = 1000,
+        lazy = false,
         config = function(plugin)
             vim.opt.rtp:append(plugin.dir .. "/nvim")
 
