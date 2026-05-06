@@ -81,6 +81,8 @@ return {
                     end)
                 end
             })
+
+            vim.cmd("colorscheme warm-burnout-dark")
         end,
     },
 
