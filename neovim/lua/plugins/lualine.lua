@@ -1,13 +1,3 @@
-local function file_name()
-    local name = vim.fn.expand("%:.")
-
-    if vim.startswith(name, "term://") then
-        name = "term"
-    end
-
-    return name
-end
-
 return {
     "nvim-lualine/lualine.nvim",
     opts = function()
