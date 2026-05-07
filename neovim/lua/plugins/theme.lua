@@ -77,6 +77,9 @@ return {
 
                     vim.api.nvim_set_hl(0, "WinSeparator", { fg = palette.bg_search })
 
+                    vim.api.nvim_set_hl(0, "TreesitterContext", { bg = palette.bg_float })
+                    vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = palette.bg_float })
+
                     vim.fn.foreach(vim.api.nvim_get_hl(0, {}), function(hlname, def)
                         local is_italic = def.italic or def.cterm and def.cterm.italic
                         if not is_italic then
