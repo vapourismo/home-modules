@@ -19,21 +19,15 @@ return {
                 lualine_a = { "mode" },
                 lualine_b = {
                     {
-                        "lsp_status",
-                        symbols = {
-                            separator = " │ ",
-                        },
-                        ignore_lsp = { "copilot", "typos_lsp" },
-                    }
-                },
-                lualine_c = {
-                    {
                         "diagnostics",
-                        sources = { "nvim_workspace_diagnostic" }
+                        sources = { "nvim_workspace_diagnostic" },
+                        icons_enabled = true,
                     },
                 },
+                lualine_c = {},
                 lualine_x = {
                     {
+
                         noice.api.status.mode.get,
                         cond = noice.api.status.mode.has,
                         color = { fg = "#ff9e64" },
@@ -47,7 +41,15 @@ return {
                     },
                 },
                 lualine_y = {
-                    "diff"
+                    {
+                        "lsp_status",
+                        symbols = {
+                            separator = " │ ",
+                            done = "",
+                        },
+                        ignore_lsp = { "copilot", "typos_lsp" },
+                    },
+                    "filetype"
                 },
                 lualine_z = { { "location", fmt = vim.trim } }
             },
@@ -57,7 +59,7 @@ return {
                 lualine_c = {},
                 lualine_x = {},
                 lualine_y = {},
-                lualine_z = { { "location", fmt = vim.trim } }
+                lualine_z = {}
             },
         }
     end,
