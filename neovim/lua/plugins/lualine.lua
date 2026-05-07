@@ -16,7 +16,7 @@ return {
                 },
             },
             disabled_filetypes = {
-                winbar = { "snacks_terminal", "snacks_input", "terminal" },
+                winbar = { "snacks_terminal", "snacks_input", "terminal", "opencode" },
             },
             sections = {
                 lualine_a = { "mode" },
