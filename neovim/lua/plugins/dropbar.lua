@@ -1,5 +1,6 @@
 return {
     "Bekaboo/dropbar.nvim",
+    enabled = false,
     config = function()
         local default_opts = require("dropbar.configs").opts
         local dropbar = require("dropbar")

@@ -15,6 +15,9 @@ return {
                     right = ""
                 },
             },
+            disabled_filetypes = {
+                winbar = { "snacks_terminal", "snacks_input", "terminal" },
+            },
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = {
@@ -27,7 +30,6 @@ return {
                 lualine_c = {},
                 lualine_x = {
                     {
-
                         noice.api.status.mode.get,
                         cond = noice.api.status.mode.has,
                         color = { fg = "#ff9e64" },
@@ -60,6 +62,39 @@ return {
                 lualine_x = {},
                 lualine_y = {},
                 lualine_z = {}
+            },
+            winbar = {
+                lualine_a = {
+                    {
+                        "filename",
+                        path = 1,
+                        color = "TabLineNameSel",
+                    },
+                },
+                lualine_b = {},
+                lualine_c = { "%=" },
+                lualine_x = {},
+                lualine_y = {
+                    {
+                        "diagnostics",
+                        icons_enabled = true,
+                    },
+                },
+                lualine_z = {},
+            },
+            inactive_winbar = {
+                lualine_a = {
+                    {
+                        "filename",
+                        path = 1,
+                        color = "TabLineName",
+                    },
+                },
+                lualine_b = {},
+                lualine_c = { "%=" },
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = {},
             },
         }
     end,
