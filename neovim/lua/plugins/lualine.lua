@@ -15,9 +15,6 @@ return {
                     right = ""
                 },
             },
-            disabled_filetypes = {
-                winbar = { "snacks_terminal", "snacks_input", "terminal", "opencode" },
-            },
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = {
@@ -62,39 +59,6 @@ return {
                 lualine_x = {},
                 lualine_y = {},
                 lualine_z = {}
-            },
-            winbar = {
-                lualine_a = {
-                    {
-                        "filename",
-                        path = 1,
-                        color = "TabLineNameSel",
-                    },
-                },
-                lualine_b = {},
-                lualine_c = { "%=" },
-                lualine_x = {},
-                lualine_y = {
-                    {
-                        "diagnostics",
-                        icons_enabled = true,
-                    },
-                },
-                lualine_z = {},
-            },
-            inactive_winbar = {
-                lualine_a = {
-                    {
-                        "filename",
-                        path = 1,
-                        color = "TabLineName",
-                    },
-                },
-                lualine_b = {},
-                lualine_c = { "%=" },
-                lualine_x = {},
-                lualine_y = {},
-                lualine_z = {},
             },
         }
     end,
