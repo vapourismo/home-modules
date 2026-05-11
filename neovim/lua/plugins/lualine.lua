@@ -18,11 +18,16 @@ return {
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = {
+                    function()
+                        local cwd = vim.fn.getcwd(-1, 0)
+                        return vim.fn.fnamemodify(cwd, ":~")
+                    end,
                     {
                         "diagnostics",
                         sources = { "nvim_workspace_diagnostic" },
                         icons_enabled = true,
                     },
+                    "diff",
                 },
                 lualine_c = {},
                 lualine_x = {
