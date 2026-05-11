@@ -1,13 +1,4 @@
-function OleWinbarLine()
-    local win = vim.g.statusline_winid
-    local buf = vim.api.nvim_win_get_buf(win)
-    local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
-
-    if buftype == "nofile" then
-        return string.format("  Window %d", win)
-    end
-
-    local active = vim.api.nvim_get_current_win() == win
+local function buffer_path(buf, active)
     local hl = active and "TabLineNameSel" or "TabLineName"
 
     local path = vim.api.nvim_buf_get_name(buf)
@@ -18,8 +9,10 @@ function OleWinbarLine()
         path = "[No Name]"
     end
 
-    local file_comp = string.format("%%#%s# %s %%*", hl, path)
+    return string.format("%%#%s# %s %%*", hl, path)
+end
 
+local function lsp_diagnostics(buf)
     local lsp_diags = vim.diagnostic.get(buf)
 
     local errors = 0
@@ -57,7 +50,22 @@ function OleWinbarLine()
         table.insert(diag_entries, string.format("%%#DiagnosticSignHint#󰌶 %d%%*", hints))
     end
 
-    local diag_comp = table.concat(diag_entries, " ")
+    return table.concat(diag_entries, " ")
+end
+
+function OleWinbarLine()
+    local win = vim.g.statusline_winid
+    local buf = vim.api.nvim_win_get_buf(win)
+    local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
+
+    if buftype == "nofile" then
+        return string.format("  Window %d", win)
+    end
+
+    local active = vim.api.nvim_get_current_win() == win
+
+    local file_comp = buffer_path(buf, active)
+    local diag_comp = lsp_diagnostics(buf)
 
     return file_comp .. "%=" .. diag_comp
 end
