@@ -1,5 +1,6 @@
 local function buffer_path(buf, active)
-    local hl = active and "TabLineNameSel" or "TabLineName"
+    local hl_body = active and "WinBarNameActive" or "WinBarName"
+    local hl_border = active and "WinBarNameBorderActive" or "WinBarNameBorder"
 
     local path = vim.api.nvim_buf_get_name(buf)
 
@@ -9,7 +10,12 @@ local function buffer_path(buf, active)
         path = "[No Name]"
     end
 
-    return string.format("%%#%s# %s %%*", hl, path)
+    return string.format(
+        "%%#%s# %s %%#%s#%%*",
+        hl_body,
+        path,
+        hl_border
+    )
 end
 
 local function lsp_diagnostics(buf)
