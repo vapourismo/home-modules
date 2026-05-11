@@ -26,6 +26,11 @@
       caf = ["check", "--all-features"]
       cataf = ["check", "--all-targets", "--all-features"]
       t = ["nextest", "run"]
+
+      [target.aarch64-apple-darwin]
+      rustflags = [
+        "-L", "native=${config.home.homeDirectory}/.nix-profile/lib",
+      ]
     ''
     + lib.optionalString config.ole.sccache ''
       [build]
