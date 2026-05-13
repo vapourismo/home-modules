@@ -9,6 +9,9 @@ return {
     ---@module "blink.cmp"
     ---@type blink.cmp.Config
     opts = {
+        enabled = function()
+            return vim.bo.buftype ~= "terminal"
+        end,
         keymap = {
             preset = "super-tab",
             ["<C-k>"] = { "select_prev", "fallback" },
