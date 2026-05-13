@@ -15,6 +15,7 @@ vim.opt.splitkeep        = "screen"
 vim.opt.laststatus       = 3
 vim.opt.showmode         = false
 vim.opt.fillchars        = { eob = " " }
+vim.opt.splitright       = true
 
 vim.opt.number           = true
 vim.opt.signcolumn       = "yes"
