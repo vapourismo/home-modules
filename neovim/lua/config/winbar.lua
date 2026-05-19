@@ -76,28 +76,37 @@ function OleWinbarLine()
     return file_comp .. "%=" .. diag_comp
 end
 
-local function fix_windows()
-    vim.schedule(function()
-        for _, win in ipairs(vim.api.nvim_list_wins()) do
-            local buf = vim.api.nvim_win_get_buf(win)
-            local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
+local function fix_window(win, buf)
+    local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
 
-            if buftype ~= "" then
-                vim.wo[win].winbar = ""
-                return
-            end
+    if buftype ~= "" then
+        vim.wo[win].winbar = ""
+        return
+    end
 
-            vim.wo[win].winbar = "%!v:lua.OleWinbarLine()"
-        end
-    end)
+    vim.wo[win].winbar = "%!v:lua.OleWinbarLine()"
 end
 
-vim.api.nvim_create_autocmd({ "WinNew", "WinClosed", "BufNew", "BufDelete", "TabNew", "TabClosed" }, {
-    callback = function()
-        fix_windows()
-    end
-})
+vim.api.nvim_create_autocmd(
+    {
+        "TermOpen",
+        "BufEnter",
+        "BufWinEnter",
+        "BufWritePost",
+        "FileType",
+        "LspAttach",
+    },
+    {
+        callback = function(args)
+            for _, win in ipairs(vim.fn.win_findbuf(args.buf)) do
+                fix_window(win, args.buf)
+            end
+        end
+    })
 
 vim.opt.winbar = ""
 
-fix_windows()
+for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    fix_window(win, buf)
+end
