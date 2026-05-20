@@ -80,7 +80,6 @@ local function fix_window(win, buf)
     local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
 
     if buftype ~= "" then
-        vim.wo[win].winbar = ""
         return
     end
 
