@@ -1,6 +1,5 @@
 local function buffer_path(buf, active)
     local hl_body = active and "WinBarNameActive" or "WinBarName"
-    local hl_border = active and "WinBarNameBorderActive" or "WinBarNameBorder"
 
     local path = vim.api.nvim_buf_get_name(buf)
 
@@ -11,10 +10,9 @@ local function buffer_path(buf, active)
     end
 
     return string.format(
-        "%%#%s# %s %%#%s#%%*",
+        "%%#%s# %s %%*",
         hl_body,
-        path,
-        hl_border
+        path
     )
 end
 

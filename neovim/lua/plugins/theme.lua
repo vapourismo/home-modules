@@ -74,9 +74,7 @@ return {
                     vim.api.nvim_set_hl(0, "TabLineNumSel", { fg = palette.bg_dim, bg = palette.member })
 
                     vim.api.nvim_set_hl(0, "WinBarName", { bg = palette.bg_highlight })
-                    vim.api.nvim_set_hl(0, "WinBarNameBorder", { fg = palette.bg_highlight })
                     vim.api.nvim_set_hl(0, "WinBarNameActive", { fg = palette.bg_dim, bg = palette.decorator })
-                    vim.api.nvim_set_hl(0, "WinBarNameBorderActive", { fg = palette.decorator })
 
                     vim.api.nvim_set_hl(0, "NormalFloat", { bg = palette.bg })
 
