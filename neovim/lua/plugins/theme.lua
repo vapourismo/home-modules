@@ -80,7 +80,7 @@ return {
 
                     vim.api.nvim_set_hl(0, "NormalFloat", { bg = palette.bg })
 
-                    vim.api.nvim_set_hl(0, "WinSeparator", { fg = palette.bg_search })
+                    vim.api.nvim_set_hl(0, "WinSeparator", { fg = palette.accent })
 
                     vim.api.nvim_set_hl(0, "TreesitterContext", { bg = palette.bg_float })
                     vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = palette.bg_float })
