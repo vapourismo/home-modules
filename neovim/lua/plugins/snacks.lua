@@ -1,3 +1,13 @@
+local function remove_layout_borders(layout)
+    layout.layout.border = "none"
+
+    for _, win in ipairs(layout.layout) do
+        win.border = "none"
+    end
+
+    return layout
+end
+
 return {
     "vapourismo/snacks.nvim",
     branch = "feature/workspace-symbols-all-clients",
@@ -9,6 +19,26 @@ return {
                 files = {
                     enabled = false
                 }
+            },
+            layouts = {
+                vscode = {
+                    config = remove_layout_borders,
+                },
+                vertical = {
+                    config = remove_layout_borders,
+                },
+                ivy = {
+                    config = remove_layout_borders,
+                },
+                bottom = {
+                    config = remove_layout_borders,
+                },
+                select = {
+                    config = remove_layout_borders,
+                },
+            },
+            layout = {
+                config = remove_layout_borders,
             },
         },
         zen = {
@@ -40,12 +70,17 @@ return {
         },
         {
             "<Space>f",
-            function() Snacks.picker.files({ layout = "vscode" }) end
+            function()
+                Snacks.picker.files({
+                    layout = "select",
+                })
+            end
         },
         {
             "<Space>F",
             function()
                 Snacks.picker.projects({
+                    layout = "select",
                     dev = { "~/Workspaces" },
                     patterns = { ".jj", ".git" },
                     confirm = {
@@ -103,7 +138,14 @@ return {
         },
         {
             "<Space>l",
-            function() Snacks.picker.lines() end
+            function()
+                Snacks.picker.lines({
+                    layout = {
+                        preset = "bottom",
+                        preview = false,
+                    },
+                })
+            end
         },
         {
             "gr",

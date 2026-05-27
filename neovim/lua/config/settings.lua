@@ -71,7 +71,11 @@ if vim.g.neovide then
     vim.g.neovide_hide_mouse_when_typing = true
     vim.g.neovide_fullscreen = true
     vim.g.neovide_input_macos_option_key_is_meta = "only_left"
-    vim.g.neovide_floating_shadow = false
+    vim.g.neovide_floating_shadow = true
+    vim.g.neovide_floating_z_height = 3
+    vim.g.neovide_floating_blur_amount_x = 0.0
+    vim.g.neovide_floating_blur_amount_y = 0.0
+    vim.g.neovide_floating_corner_radius = 0.0
 
     vim.env.EDITOR = "nvr --remote-tab-wait"
 end
