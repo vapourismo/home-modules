@@ -7,8 +7,8 @@ return {
             options = {
                 icons_enabled = false,
                 component_separators = {
-                    left = "",
-                    right = "",
+                    left = "│",
+                    right = "│",
                 },
                 section_separators = {
                     left = "",
