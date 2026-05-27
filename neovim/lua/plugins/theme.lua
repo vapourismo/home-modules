@@ -85,6 +85,11 @@ return {
                     vim.api.nvim_set_hl(0, "TreesitterContext", { bg = palette.bg_float })
                     vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = palette.bg_float })
 
+                    vim.api.nvim_set_hl(0, "SnacksPickerPrompt", { bg = palette.bg_highlight })
+                    vim.api.nvim_set_hl(0, "SnacksPickerTotals", { bg = palette.bg_highlight })
+                    vim.api.nvim_set_hl(0, "SnacksPickerSpinner", { bg = palette.bg_highlight })
+                    vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = palette.bg_highlight })
+
                     vim.fn.foreach(vim.api.nvim_get_hl(0, {}), function(hlname, def)
                         local is_italic = def.italic or def.cterm and def.cterm.italic
                         if not is_italic then
