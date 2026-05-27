@@ -37,6 +37,8 @@ return {
                     TabLineName = { fg = colors.base, bg = colors.surface0 },
                     TabLineNumSel = { fg = colors.crust, bg = colors.maroon, style = { "bold" } },
                     TabLineNameSel = { fg = colors.crust, bg = colors.rosewater, style = { "bold" } },
+                    WinBarName = { fg = colors.base, bg = colors.surface0 },
+                    WinBarNameActive = { fg = colors.crust, bg = colors.rosewater, style = { "bold" } },
                     Include = { style = {} },
                     CopilotSuggestion = { link = "Comment" },
                 }
