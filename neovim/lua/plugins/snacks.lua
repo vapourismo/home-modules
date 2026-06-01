@@ -73,6 +73,7 @@ return {
             function()
                 Snacks.picker.files({
                     layout = "select",
+                    hidden = true,
                 })
             end
         },
