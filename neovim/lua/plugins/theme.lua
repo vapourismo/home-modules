@@ -1,12 +1,16 @@
 return {
     {
         "catppuccin/nvim",
-        enabled = false,
+        enabled = true,
         name = "catppuccin",
         priority = 1000,
         lazy = false,
         opts = {
-            flavour = "mocha",
+            flavour = "auto",
+            background = {
+                light = "latte",
+                dark = "mocha",
+            },
             term_colors = true,
             integrations = {
                 native_lsp = {
@@ -18,12 +22,8 @@ return {
                 treesitter_context = false,
                 noice = true,
                 snacks = {
-                    enabled = false,
-                },
-                dropbar = {
                     enabled = true,
-                    color_mode = false,
-                }
+                },
             },
             no_italic = true,
             styles = {
@@ -38,13 +38,46 @@ return {
                     TabLineNumSel = { fg = colors.crust, bg = colors.maroon, style = { "bold" } },
                     TabLineNameSel = { fg = colors.crust, bg = colors.rosewater, style = { "bold" } },
                     WinBarName = { fg = colors.base, bg = colors.surface0 },
-                    WinBarNameActive = { fg = colors.crust, bg = colors.rosewater, style = { "bold" } },
+                    WinBarNameActive = { fg = colors.crust, bg = colors.lavender, style = { "bold" } },
                     Include = { style = {} },
                     CopilotSuggestion = { link = "Comment" },
+                    SnacksPickerPrompt = { bg = colors.surface0 },
+                    SnacksPickerTotals = { bg = colors.surface0 },
+                    SnacksPickerSpinner = { bg = colors.surface0 },
+                    SnacksPickerInput = { bg = colors.surface0 },
                 }
             end
         },
         config = function(plugin, opts)
+            local function update_term_colors()
+                local colors = {}
+
+                if vim.go.background == "dark" then
+                    colors = require("catppuccin.palettes").get_palette("mocha")
+                else
+                    colors = require("catppuccin.palettes").get_palette("latte")
+                end
+
+                -- The dark color is too light out of the box
+                vim.g.terminal_color_0 = colors.surface0
+                vim.g.terminal_color_8 = colors.surface1
+            end
+
+            vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+                pattern = { "catppuccin" },
+                callback = function()
+                    vim.g.neovide_floating_shadow = false
+                    update_term_colors()
+                end
+            })
+
+            vim.api.nvim_create_autocmd({ "OptionSet" }, {
+                pattern = { "background" },
+                callback = function()
+                    update_term_colors()
+                end
+            })
+
             require(plugin.name).setup(opts)
             vim.cmd("colorscheme catppuccin")
         end,
@@ -52,6 +85,7 @@ return {
 
     {
         "felipefdl/warm-burnout",
+        enabled = false,
         priority = 1000,
         lazy = false,
         config = function(plugin)
