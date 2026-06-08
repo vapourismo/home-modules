@@ -1,5 +1,6 @@
 return {
     "cursortab/cursortab.nvim",
+    enabled = false,
     lazy = false,
     build = "cd server && go build",
     opts = {
