@@ -193,11 +193,11 @@ function TerminalWinbarLine()
     local items = {}
 
     for _, term in AllSnackTerminals.iter_terminals() do
-        local hl = "TabLineName"
+        local hl = "WinBarName"
         local hl_num = "TabLineNum"
 
         if term.id == current_id then
-            hl = "TabLineNameSel"
+            hl = "WinBarNameActive"
             hl_num = "TabLineNumSel"
         end
 
