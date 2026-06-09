@@ -30,7 +30,7 @@ return {
             }
         },
         ui = {
-            window_width = 0.3,
+            window_width = 0.4,
             output = {
                 filetype = "markdown",
                 tools = {
