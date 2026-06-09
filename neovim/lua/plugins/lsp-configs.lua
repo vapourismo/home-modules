@@ -73,7 +73,7 @@ return {
                 return default_ra_before_init(params, config)
             end,
             on_attach = function(client, buffnr)
-                vim.lsp.codelens.enable(true, { client_id = client.id })
+                -- vim.lsp.codelens.enable(true, { client_id = client.id })
                 return default_ra_on_attach(client, buffnr)
             end
         })
