@@ -80,6 +80,11 @@ function AllSnackTerminals:new(cmd, opts)
         "force",
         {
             cwd = dir,
+            win = {
+                w = {
+                    close_on_leave = true,
+                },
+            },
         },
         opts,
         {
@@ -233,9 +238,6 @@ return {
                 on_buf = function(win)
                     AllSnackTerminals.last_window_id = win.id
                 end,
-                w = {
-                    close_on_leave = true,
-                },
                 wo = {
                     foldmethod = "manual",
                     foldtext = "foldtext()",
