@@ -27,7 +27,6 @@
     enable = true;
     package = specialArgs.inputs.neovide.packages.${pkgs.stdenv.hostPlatform.system}.default;
     settings = {
-      frame = "none";
       system-new-window-hotkey = "";
       system-hide-hotkey = "";
       system-hide-others-hotkey = "";
