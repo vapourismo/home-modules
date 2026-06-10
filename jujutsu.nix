@@ -177,6 +177,16 @@
           "push"
           "--tracked"
         ];
+        par = [
+          "util"
+          "exec"
+          "--"
+          "bash"
+          "-c"
+          ''
+            jj git remote list | awk '{print $1}' | xargs -L1 jj pa --remote
+          ''
+        ];
         pc = [
           "git"
           "push"
