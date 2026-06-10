@@ -1,0 +1,27 @@
+return {
+    "coder/claudecode.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    opts = {},
+    cmd = {
+        "ClaudeCode",
+        "ClaudeCodeFocus",
+        "ClaudeCodeSelectModel",
+        "ClaudeCodeAdd",
+        "ClaudeCodeSend",
+        "ClaudeCodeTreeAdd",
+        "ClaudeCodeStatus",
+        "ClaudeCodeStart",
+        "ClaudeCodeStop",
+        "ClaudeCodeOpen",
+        "ClaudeCodeClose",
+        "ClaudeCodeDiffAccept",
+        "ClaudeCodeDiffDeny",
+        "ClaudeCodeCloseAllDiffs",
+    },
+    keys = {
+        { "<D-r>", "<cmd>ClaudeCodeFocus<cr>",      mode = { "n", "i", "v", "t" }, },
+        { "<D->>", "<cmd>ClaudeCodeSend<cr>",       mode = { "v" }, },
+        { "<D-y>", "<cmd>ClaudeCodeDiffAccept<cr>", mode = { "n" }, },
+        { "<D-n>", "<cmd>ClaudeCodeDiffDeny<cr>",   mode = { "n" }, },
+    },
+}
