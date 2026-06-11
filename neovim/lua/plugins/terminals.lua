@@ -93,7 +93,6 @@ function AllSnackTerminals:new(cmd, opts)
                     winbar = "%!v:lua.TerminalWinbarLine()",
                 },
                 keys = {
-                    q = false,
                     ["<D-n>"] = {
                         function()
                             AllSnackTerminals:new()
@@ -118,21 +117,7 @@ function AllSnackTerminals:new(cmd, opts)
                         end,
                         mode = { "n", "t", "v" }
                     },
-                    term_normal = {
-                        "<esc>",
-                        function(this)
-                            local win_opts = this.opts and this.opts.w
-                            if win_opts and win_opts.ole_captive then
-                                return "<esc>"
-                            else
-                                vim.cmd("stopinsert")
-                            end
-                        end,
-                        mode = "t",
-                        expr = true,
-                    },
                 },
-
             },
         },
         opts,
@@ -287,6 +272,22 @@ return {
                 wo = {
                     foldmethod = "manual",
                     foldtext = "foldtext()",
+                },
+                keys = {
+                    q = false,
+                    term_normal = {
+                        "<esc>",
+                        function(this)
+                            local win_opts = this.opts and this.opts.w
+                            if win_opts and win_opts.ole_captive then
+                                return "<esc>"
+                            else
+                                vim.cmd("stopinsert")
+                            end
+                        end,
+                        mode = "t",
+                        expr = true,
+                    },
                 },
             }
         }
