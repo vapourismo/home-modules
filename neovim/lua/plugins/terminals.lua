@@ -13,7 +13,9 @@ function AllSnackTerminals.iter_terminals()
 
     local local_terms = vim.tbl_filter(
         function(term)
-            return term.dir == dir
+            local is_claude_code = vim.deep_equal(term.cmd, { "claude" })
+            local is_current_dir = term.dir == dir
+            return is_current_dir and not is_claude_code
         end,
         terms
     )
@@ -81,9 +83,56 @@ function AllSnackTerminals:new(cmd, opts)
         {
             cwd = dir,
             win = {
+                on_buf = function(win)
+                    AllSnackTerminals.last_window_id = win.id
+                end,
                 w = {
                     close_on_leave = true,
                 },
+                wo = {
+                    winbar = "%!v:lua.TerminalWinbarLine()",
+                },
+                keys = {
+                    q = false,
+                    ["<D-n>"] = {
+                        function()
+                            AllSnackTerminals:new()
+                        end,
+                        mode = { "n", "t", "v" }
+                    },
+                    ["<D-w>"] = {
+                        function()
+                            AllSnackTerminals:close()
+                        end,
+                        mode = { "n", "t", "v" }
+                    },
+                    ["<D-{>"] = {
+                        function()
+                            AllSnackTerminals:prev()
+                        end,
+                        mode = { "n", "t", "v" }
+                    },
+                    ["<D-}>"] = {
+                        function()
+                            AllSnackTerminals:next()
+                        end,
+                        mode = { "n", "t", "v" }
+                    },
+                    term_normal = {
+                        "<esc>",
+                        function(this)
+                            local win_opts = this.opts and this.opts.w
+                            if win_opts and win_opts.ole_captive then
+                                return "<esc>"
+                            else
+                                vim.cmd("stopinsert")
+                            end
+                        end,
+                        mode = "t",
+                        expr = true,
+                    },
+                },
+
             },
         },
         opts,
@@ -235,53 +284,9 @@ return {
             terminal = {
                 max_width = 220,
                 position = "float",
-                on_buf = function(win)
-                    AllSnackTerminals.last_window_id = win.id
-                end,
                 wo = {
                     foldmethod = "manual",
                     foldtext = "foldtext()",
-                    winbar = "%!v:lua.TerminalWinbarLine()",
-                },
-                keys = {
-                    q = false,
-                    ["<D-n>"] = {
-                        function()
-                            AllSnackTerminals:new()
-                        end,
-                        mode = { "n", "t", "v" }
-                    },
-                    ["<D-w>"] = {
-                        function()
-                            AllSnackTerminals:close()
-                        end,
-                        mode = { "n", "t", "v" }
-                    },
-                    ["<D-{>"] = {
-                        function()
-                            AllSnackTerminals:prev()
-                        end,
-                        mode = { "n", "t", "v" }
-                    },
-                    ["<D-}>"] = {
-                        function()
-                            AllSnackTerminals:next()
-                        end,
-                        mode = { "n", "t", "v" }
-                    },
-                    term_normal = {
-                        "<esc>",
-                        function(self)
-                            local opts = self.opts and self.opts.w
-                            if opts and opts.ole_captive then
-                                return "<esc>"
-                            else
-                                vim.cmd("stopinsert")
-                            end
-                        end,
-                        mode = "t",
-                        expr = true,
-                    },
                 },
             }
         }
