@@ -7,27 +7,6 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
     end,
 })
 
--- Format on save
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = {
-        "*.rs",
-        "*.nix",
-        "*.lua",
-        "*.toml",
-        "*.mli",
-        "*.ml",
-        "*.ts",
-        "*.tsx",
-        "*.js",
-        "*.jsx",
-        "*.svelte*",
-        "*.css",
-    },
-    callback = function()
-        vim.lsp.buf.format()
-    end,
-})
-
 -- Automatically equalise window sizes when the terminal is resized
 vim.api.nvim_create_autocmd({ "VimResized", "WinNew", "WinResized" }, {
     callback = function()
