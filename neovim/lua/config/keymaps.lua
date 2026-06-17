@@ -56,6 +56,9 @@ vim.keymap.set("", "gk", function()
         float = true,
     })
 end)
+vim.keymap.set("", "gh", "0")
+vim.keymap.set("", "gs", "_")
+vim.keymap.set("", "gl", "g_")
 
 -- Clipboards
 vim.keymap.set("", "<Space>y", '"+y')
