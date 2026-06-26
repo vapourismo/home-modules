@@ -72,6 +72,7 @@
       "space /" = "pane::DeploySearch";
       "space r" = "editor::Rename";
       "space b" = "tab_switcher::OpenInActivePane";
+      "space j" = "vim::HelixJumpToWord";
       "g l" = "vim::EndOfLineDownward";
       "g s" = "vim::StartOfLineDownward";
       "g j" = "editor::GoToDiagnostic";
