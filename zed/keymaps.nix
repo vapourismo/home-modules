@@ -89,7 +89,7 @@
     context = "Terminal";
     bindings = {
       "escape" = "terminal::ToggleViMode";
-      "shift-escape" = [
+      "ctrl-escape" = [
         "terminal::SendKeystroke"
         "escape"
       ];
