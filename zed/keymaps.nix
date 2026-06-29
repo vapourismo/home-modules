@@ -40,6 +40,15 @@
     };
   }
 
+  # Agent panel thread selection
+  {
+    context = "AgentPanel";
+    bindings = {
+      "cmd-{" = "multi_workspace::NextThread";
+      "cmd-}" = "multi_workspace::PreviousThread";
+    };
+  }
+
   # Selection in menus
   {
     context = "Editor && (showing_code_actions || showing_completions)";
