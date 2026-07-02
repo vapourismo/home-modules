@@ -20,27 +20,12 @@
   git_panel = {
     tree_view = true;
   };
-  agent_servers = {
-    opencode = {
-      type = "registry";
-      env = {
-        CARGO_TERM_QUIET = "true";
-      };
-    };
-    codex-acp = {
-      type = "registry";
-      env = {
-        RUSTC_WRAPPER = "";
-        CARGO_TERM_QUIET = "true";
-      };
-      default_config_options = {
-        mode = "auto";
-      };
-    };
-  };
   agent = {
     use_modifier_to_send = true;
     enable_feedback = false;
+    dock = "right";
+    terminal_init_command = "codex";
+    expand_terminal_card = true;
   };
   edit_predictions = {
     provider = "zed";
@@ -190,5 +175,11 @@
         };
       };
     };
+  };
+  which_key = {
+    enabled = true;
+  };
+  preview_tabs = {
+    enable_preview_from_file_finder = true;
   };
 }

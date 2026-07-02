@@ -78,7 +78,7 @@
       "space s" = "outline::Toggle";
       "space f" = "file_finder::Toggle";
       "space F" = "projects::OpenRecent";
-      "space /" = "pane::DeploySearch";
+      "space /" = "text_finder::Toggle";
       "space r" = "editor::Rename";
       "space b" = "tab_switcher::OpenInActivePane";
       "space j" = "vim::HelixJumpToWord";
