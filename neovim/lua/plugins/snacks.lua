@@ -149,7 +149,7 @@ return {
             end
         },
         {
-            "gr",
+            "grr",
             function() Snacks.picker.lsp_references() end
         },
         {
