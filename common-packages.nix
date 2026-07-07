@@ -34,7 +34,6 @@ with pkgs;
     "typos"
     "typos-lsp"
     "vscode-json-languageserver"
-    "podman"
     "gh"
   ];
 }
