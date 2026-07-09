@@ -1,6 +1,6 @@
 return {
     "sudo-tee/opencode.nvim",
-    enabled = true,
+    enabled = false,
     dependencies = {
         "nvim-lua/plenary.nvim",
         "saghen/blink.cmp",
