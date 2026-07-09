@@ -98,6 +98,7 @@ vim.keymap.set("", "bQ", function() Snacks.bufdelete.all() end)
 vim.keymap.set("", "bn", "<cmd>enew<cr>")
 
 -- Tab selection
+map_nvti("<M-Tab>", "<cmd>tabnext<cr>")
 map_nvti("<C-t>l", "<cmd>tabnext<cr>")
 map_nvti("<C-t>h", "<cmd>tabprevious<cr>")
 map_nvti("<C-t>n", "<cmd>tabnew<cr>")
