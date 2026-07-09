@@ -65,7 +65,7 @@ return {
             function() Snacks.picker.pickers() end
         },
         {
-            "<D-S-E>",
+            "<D-b>",
             function() Snacks.picker.explorer() end
         },
         {
