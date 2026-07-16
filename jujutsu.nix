@@ -191,13 +191,13 @@
           "git"
           "push"
           "-c"
-          "current_work() ~ empty() ~ conflicts() ~ description(regex:'^wip:')"
+          "current_work() ~ empty() ~ conflicts()"
         ];
         pca = [
           "git"
           "push"
           "-c"
-          "summary() ~ empty() ~ conflicts() ~ description(regex:'^wip:')"
+          "summary() ~ empty() ~ conflicts()"
         ];
         co = [
           "util"
