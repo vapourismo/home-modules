@@ -93,3 +93,10 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
     end,
     pattern = "*",
 })
+
+-- Clear attention flag when entering a tabpage
+vim.api.nvim_create_autocmd({ "TabEnter" }, {
+    callback = function()
+        vim.api.nvim_tabpage_set_var(0, "attention", false)
+    end,
+})

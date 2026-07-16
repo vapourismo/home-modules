@@ -3,6 +3,7 @@ return {
     config = function()
         local tabby = require("tabby")
         local api = require("tabby.module.api")
+
         tabby.setup({
             line = function(line)
                 local tabs = line.tabs().foreach(
@@ -16,9 +17,19 @@ return {
                             hl = "TabLineNum" .. suffix
                         }
 
+                        local ok, attention = pcall(vim.api.nvim_tabpage_get_var, tab.id, "attention")
+                        if not ok then
+                            attention = false
+                        end
+
                         local name = tab.name()
                         local name_section = { " ", tab.name(), " ", hl = "TabLineName" .. suffix }
                         name_section = name ~= "" and name_section or {}
+
+                        if attention then
+                            local attention_section = { " ! ", hl = "TabLineNum" .. suffix }
+                            return { number_section, name_section, attention_section }
+                        end
 
                         return { number_section, name_section }
                     end,
