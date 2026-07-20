@@ -33,6 +33,7 @@
         radicle = import ./radicle.nix;
         telemetry-opt-out = import ./telemetry-opt-out.nix;
         zed = import ./zed.nix;
+        codex = import ./codex.nix;
       };
 
       homeConfigurations = {
@@ -53,6 +54,7 @@
             self.homeModules.radicle
             self.homeModules.telemetry-opt-out
             self.homeModules.zed
+            self.homeModules.codex
 
             {
               home = {
