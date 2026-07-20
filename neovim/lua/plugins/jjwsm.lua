@@ -2,8 +2,8 @@ return {
     "vapourismo/jjwsm.nvim",
     config = false,
     keys = {
-        { "<Space>ws", "<cmd>Jjwsm switch<cr>" },
-        { "<Space>wn", "<cmd>Jjwsm new<cr>" },
-        { "<Space>wd", "<cmd>Jjwsm delete<cr>" },
+        { "<Space>ws", function() require("jjwsm").switch() end },
+        { "<Space>wn", function() require("jjwsm").new() end },
+        { "<Space>wd", function() require("jjwsm").delete() end },
     },
 }
