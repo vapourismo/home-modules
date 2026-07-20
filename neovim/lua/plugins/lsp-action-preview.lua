@@ -1,15 +1,21 @@
 return {
     "aznhe21/actions-preview.nvim",
-    config = function()
-        local actions_preview = require("actions-preview")
-
-        actions_preview.setup({
-            diff = {
-                ctxlen = 5,
+    opts = {
+        diff = {
+            ctxlen = 5,
+        },
+        backend = { "snacks" },
+        snacks = {
+            layout = {
+                preset = "dropdown",
             },
-            backend = { "snacks" }
-        })
-
-        vim.keymap.set("", "<Space>a", actions_preview.code_actions)
-    end,
+        },
+    },
+    keys = {
+        {
+            "<Space>a",
+            function() require("actions-preview").code_actions() end,
+            desc = "Code actions",
+        },
+    },
 }
