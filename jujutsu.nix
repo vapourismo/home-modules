@@ -166,6 +166,11 @@
           "git"
           "fetch"
         ];
+        far = [
+          "git"
+          "fetch"
+          "--all-remotes"
+        ];
         p = [
           "git"
           "push"
