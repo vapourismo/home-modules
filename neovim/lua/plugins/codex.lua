@@ -8,8 +8,13 @@ return {
                 { title = "Codex" }
             )
 
-
             local buf = data.buf
+            local current_buf = vim.api.nvim_get_current_buf()
+
+            if current_buf == buf then
+                return
+            end
+
             local current_tab = vim.api.nvim_get_current_tabpage()
 
             for _, tabpage in ipairs(vim.api.nvim_list_tabpages()) do
