@@ -35,11 +35,10 @@ return {
                     end,
                     { margin = " " }
                 )
+
                 return {
-                    -- Tabs
                     line.spacer(),
                     tabs,
-                    line.spacer(),
                 }
             end,
             option = {
