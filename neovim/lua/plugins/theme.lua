@@ -46,6 +46,7 @@ return {
                     SnacksPickerTotals = { bg = colors.surface0 },
                     SnacksPickerSpinner = { bg = colors.surface0 },
                     SnacksPickerInput = { bg = colors.surface0 },
+                    TreesitterContextLineNumber = { link = "NormalFloat" },
                 }
             end
         },
