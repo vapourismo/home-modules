@@ -259,7 +259,7 @@ function TerminalWinbarLine()
     end
 
     local items_str = table.concat(items, " ")
-    return string.format("%%=%s%%=", items_str)
+    return string.format("%s%%#NormalFloat#%%=", items_str)
 end
 
 return {
