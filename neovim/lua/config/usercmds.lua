@@ -1,10 +1,17 @@
+local DirenvState = {
+    counter = 0,
+}
+
 -- Direnv Support
 vim.api.nvim_create_user_command("DirenvLoad", function()
+    local id = DirenvState.counter + 1
+    DirenvState.counter = id
+
     local function notify(msg, level)
         vim.notify(msg, level, { title = "direnv" })
     end
 
-    notify("Loading direnv ...", vim.log.levels.INFO)
+    notify("Loading environment ...", vim.log.levels.INFO)
 
     vim.system(
         { "direnv", "exec", "/", "direnv", "export", "json" },
@@ -13,6 +20,10 @@ vim.api.nvim_create_user_command("DirenvLoad", function()
             text = true
         },
         vim.schedule_wrap(function(result)
+            if DirenvState.counter ~= id then
+                return
+            end
+
             if result.code ~= 0 then
                 notify("Failed to load direnv:\n" .. result.stderr, vim.log.levels.ERROR)
                 return
@@ -24,6 +35,7 @@ vim.api.nvim_create_user_command("DirenvLoad", function()
             end
 
             local env = vim.fn.json_decode(result.stdout)
+
             for key, value in pairs(env) do
                 vim.env[key] = value
             end
