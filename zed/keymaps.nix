@@ -36,7 +36,6 @@
         "editor::SelectNext"
         { "replace_newest" = true; }
       ];
-
     };
   }
 
@@ -145,6 +144,14 @@
     context = "Editor && edit_prediction && edit_prediction_mode == eager && !showing_completions";
     unbind = {
       "tab" = "editor::AcceptEditPrediction";
+    };
+  }
+
+  # Project panel
+  {
+    context = "ProjectPanel && not_editing";
+    bindings = {
+        "l" = "project_panel::Open";
     };
   }
 ]
