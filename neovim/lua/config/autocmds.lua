@@ -100,3 +100,10 @@ vim.api.nvim_create_autocmd({ "TabEnter" }, {
         vim.api.nvim_tabpage_set_var(0, "attention", false)
     end,
 })
+
+-- Go to the previous tab in case a tabpage is closed
+vim.api.nvim_create_autocmd({ "TabClosed" }, {
+    callback = function()
+        vim.cmd("tabprevious")
+    end,
+})
