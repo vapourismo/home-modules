@@ -1,20 +1,10 @@
 -- Direnv Support
 vim.api.nvim_create_user_command("DirenvLoad", function()
-    local notification_env = { keep = false }
-
-    local function notify(msg, level, keep)
-        notification_env.keep = keep or false
-        vim.notify(
-            msg,
-            level,
-            {
-                title = "direnv",
-                keep = function() return notification_env.keep end,
-            }
-        )
+    local function notify(msg, level)
+        vim.notify(msg, level, { title = "direnv" })
     end
 
-    notify("Loading direnv ...", vim.log.levels.INFO, true)
+    notify("Loading direnv ...", vim.log.levels.INFO)
 
     vim.system(
         { "direnv", "exec", "/", "direnv", "export", "json" },
