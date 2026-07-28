@@ -47,6 +47,8 @@ return {
                     SnacksPickerSpinner = { bg = colors.surface0 },
                     SnacksPickerInput = { bg = colors.surface0 },
                     TreesitterContextLineNumber = { link = "NormalFloat" },
+                    CursorLineNr = { bg = "#2a2b3d" },
+                    CursorLineSign = { bg = "#2a2b3d" },
                 }
             end
         },
