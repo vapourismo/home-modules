@@ -4,5 +4,12 @@ return {
     build = function()
         require("zedda").build()
     end,
-    opts = {},
+    config = function()
+        require("zedda").setup({})
+
+        -- Our themes don't like italics
+        vim.schedule(function()
+            vim.cmd("highlight ZeddaGhostText gui=italic")
+        end)
+    end,
 }

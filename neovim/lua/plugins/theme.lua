@@ -49,6 +49,7 @@ return {
                     TreesitterContextLineNumber = { link = "NormalFloat" },
                     CursorLineNr = { bg = "#2a2b3d" },
                     CursorLineSign = { bg = "#2a2b3d" },
+                    ZeddaGhostText = { fg = colors.overlay2, style = { "italic" } },
                 }
             end
         },
