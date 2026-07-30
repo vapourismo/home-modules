@@ -1,9 +1,24 @@
-local function remove_layout_borders(layout)
-    layout.layout.border = "none"
+local blank_border = { " ", " ", " ", " ", " ", " ", " ", " " }
 
-    for _, win in ipairs(layout.layout) do
+local function pad_layout(layout)
+    local root = layout.layout
+    local children = {
+        box = root.box,
+        border = "hpad",
+    }
+
+    for _, win in ipairs(root) do
         win.border = "none"
+        table.insert(children, win)
     end
+
+    for index = #root, 1, -1 do
+        root[index] = nil
+    end
+
+    root.title = nil
+    root.border = blank_border
+    root[1] = children
 
     return layout
 end
@@ -22,23 +37,23 @@ return {
             },
             layouts = {
                 vscode = {
-                    config = remove_layout_borders,
+                    config = pad_layout,
                 },
                 vertical = {
-                    config = remove_layout_borders,
+                    config = pad_layout,
                 },
                 ivy = {
-                    config = remove_layout_borders,
+                    config = pad_layout,
                 },
                 bottom = {
-                    config = remove_layout_borders,
+                    config = pad_layout,
                 },
                 select = {
-                    config = remove_layout_borders,
+                    config = pad_layout,
                 },
             },
             layout = {
-                config = remove_layout_borders,
+                config = pad_layout,
             },
         },
         zen = {
