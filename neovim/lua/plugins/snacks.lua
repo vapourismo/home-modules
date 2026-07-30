@@ -1,6 +1,10 @@
 local blank_border = { " ", " ", " ", " ", " ", " ", " ", " " }
 
 local function pad_layout(layout)
+    if layout.preset == "sidebar" then
+        return layout
+    end
+
     local root = layout.layout
     local children = {
         box = root.box,
