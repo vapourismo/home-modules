@@ -1,6 +1,9 @@
 -- Settings
 require("config.settings")
 
+-- Diagnostics
+require("config.diagnostics")
+
 -- Key bindings
 require("config.keymaps")
 
