@@ -10,11 +10,11 @@
   config = {
     home.activation =
       let
-        installables = lib.lists.map (pkg: "nixpkgs#" + pkg) config.ole.profile.packages;
+        installables = config.ole.profile.packages;
 
         additionCommand =
           if lib.length installables > 0 then
-            "nix profile add --quiet ${lib.concatStringsSep " " installables}"
+            "nix profile add --impure --quiet ${lib.strings.escapeShellArgs installables}"
           else
             "";
       in

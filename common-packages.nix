@@ -25,15 +25,15 @@ with pkgs;
   ];
 
   ole.profile.packages = [
-    "difftastic"
-    "lua-language-server"
-    "nil"
-    "nixd"
-    "nixfmt"
-    "taplo"
-    "typos"
-    "typos-lsp"
-    "vscode-json-languageserver"
-    "gh"
+    "nixpkgs#difftastic"
+    "nixpkgs#lua-language-server"
+    "nixpkgs#nil"
+    "nixpkgs#nixd"
+    "nixpkgs#nixfmt"
+    "nixpkgs#taplo"
+    "nixpkgs#typos"
+    "nixpkgs#typos-lsp"
+    "nixpkgs#vscode-json-languageserver"
+    "nixpkgs#gh"
   ];
 }
