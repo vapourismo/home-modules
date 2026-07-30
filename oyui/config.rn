@@ -1,0 +1,3 @@
+pub fn config() {
+    theme::set("catppuccin-mocha");
+}

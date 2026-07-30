@@ -34,6 +34,7 @@
         telemetry-opt-out = import ./telemetry-opt-out.nix;
         zed = import ./zed.nix;
         codex = import ./codex.nix;
+        oyui = import ./oyui.nix;
       };
 
       homeConfigurations = {
@@ -55,6 +56,7 @@
             self.homeModules.telemetry-opt-out
             self.homeModules.zed
             self.homeModules.codex
+            self.homeModules.oyui
 
             {
               home = {

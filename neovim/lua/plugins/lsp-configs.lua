@@ -121,6 +121,13 @@ return {
         -- })
         -- vim.lsp.enable("copilot")
 
+        vim.lsp.config("oyui_ls", {
+            cmd = { "oyui", "language-server" },
+            filetypes = { "rune" },
+            root_markers = { "config.rn" },
+        })
+        vim.lsp.enable("oyui_ls")
+
         vim.lsp.enable("nixd")
         vim.lsp.enable("lua_ls")
         vim.lsp.enable("taplo")

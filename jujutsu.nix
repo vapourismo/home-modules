@@ -50,7 +50,6 @@
         "$left"
         "$right"
       ];
-      ui.diff-editor = ":builtin";
       ui.graph.style = "curved";
 
       git.protect-local-branches = true;
