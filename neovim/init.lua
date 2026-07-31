@@ -1,8 +1,8 @@
 -- Settings
 require("config.settings")
 
--- Diagnostics
-require("config.diagnostics")
+-- LSP utilities
+require("config.lsp-utils")
 
 -- Key bindings
 require("config.keymaps")
