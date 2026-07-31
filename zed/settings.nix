@@ -1,6 +1,22 @@
 {
+  completion_menu_item_kind = "symbol";
+  document_symbols = "off";
+  document_folding_ranges = "on";
+  lsp_results_location = "picker";
+  cursor_shape = "bar";
+  cursor_blink = false;
+  ui_font_family = ".ZedSans";
+  outline_panel = {
+    dock = "right";
+  };
+  collaboration_panel = {
+    button = false;
+    dock = "right";
+  };
+  diff_view_style = "split";
   semantic_tokens = "combined";
   title_bar = {
+    show_branch_status_icon = false;
     show = false;
     show_menus = true;
     show_user_menu = true;
@@ -18,6 +34,8 @@
     custom = 1.4;
   };
   git_panel = {
+    button = false;
+    dock = "right";
     tree_view = true;
   };
   agent = {
@@ -28,6 +46,7 @@
     expand_terminal_card = true;
   };
   edit_predictions = {
+    allow_data_collection = "no";
     provider = "zed";
     mode = "eager";
   };
@@ -55,6 +74,8 @@
   hover_popover_enabled = false;
   diagnostics = {
     inline = {
+      min_column = 0;
+      padding = 4;
       enabled = false;
     };
   };
@@ -67,6 +88,7 @@
     height = 20;
   };
   terminal = {
+    option_as_meta = true;
     shell = "system";
     dock = "bottom";
     toolbar = {
@@ -75,6 +97,11 @@
     env = {
       EDITOR = "zed -w";
     };
+    font_features = {
+      liga = true;
+      calt = true;
+    };
+    working_directory = "current_project_directory";
   };
   zoomed_padding = false;
   active_pane_modifiers = {
@@ -94,6 +121,7 @@
   };
   excerpt_context_lines = 15;
   project_panel = {
+    dock = "left";
     git_status = true;
     hide_gitignore = true;
     button = true;
@@ -129,11 +157,45 @@
   auto_signature_help = false;
   autosave = "on_focus_change";
   base_keymap = "VSCode";
-  buffer_font_family = "Iosevka Term SS02";
+  buffer_font_family = "IosevkaTermSS02 Nerd Font";
   theme = {
     mode = "system";
     light = "Catppuccin Latte - No Italics";
     dark = "Catppuccin Mocha - No Italics";
+  };
+  "experimental.theme_overrides" = {
+    syntax = {
+      emphasis = {
+        font_style = "normal";
+      };
+      property = {
+        font_style = "normal";
+      };
+      attribute = {
+        font_style = "normal";
+      };
+      "variable.special" = {
+        font_style = "normal";
+      };
+      enum = {
+        font_style = "normal";
+      };
+      type = {
+        font_style = "normal";
+      };
+      "type.builtin" = {
+        font_style = "normal";
+      };
+      constructor = {
+        font_style = "normal";
+      };
+      comment = {
+        font_style = "normal";
+      };
+      "comment.doc" = {
+        font_style = "normal";
+      };
+    };
   };
   telemetry = {
     diagnostics = false;
