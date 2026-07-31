@@ -11,7 +11,6 @@
       "cmd-J" = "vim::ResizePaneDown";
       "cmd-K" = "vim::ResizePaneUp";
       "cmd-L" = "vim::ResizePaneLeft";
-      "ctrl-s" = "workspace::Save";
       "alt-tab" = "workspace::ActivateNextWindow";
       "cmd-shift-e" = "project_panel::Toggle";
       "cmd-r" = "agent::Toggle";
@@ -61,6 +60,23 @@
     bindings = {
       "ctrl-j" = "menu::SelectNext";
       "ctrl-k" = "menu::SelectPrevious";
+    };
+  }
+
+  # Picker splits
+  {
+    context = "FileFinder > Picker";
+    bindings = {
+      "ctrl-v" = "pane::SplitRight";
+      "ctrl-s" = "pane::SplitDown";
+    };
+  }
+
+  # When not in picker
+  {
+    context = "!Picker";
+    bindings = {
+      "ctrl-s" = "workspace::Save";
     };
   }
 
@@ -151,7 +167,7 @@
   {
     context = "ProjectPanel && not_editing";
     bindings = {
-        "l" = "project_panel::Open";
+      "l" = "project_panel::Open";
     };
   }
 ]
