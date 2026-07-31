@@ -1,4 +1,3 @@
 pub fn config() {
     keybind("c", || global::confirm());
-    theme::set("catppuccin-mocha");
 }
