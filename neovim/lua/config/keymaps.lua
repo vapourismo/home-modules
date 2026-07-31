@@ -17,10 +17,6 @@ map_nvti("<" .. neovide_leader_modified .. "-J>", "<cmd>resize +1<cr>")
 map_nvti("<" .. neovide_leader_modified .. "-K>", "<cmd>resize -1<cr>")
 map_nvti("<" .. neovide_leader_modified .. "-H>", "<cmd>vertical resize -1<cr>")
 
--- Escape in terminal mode
-vim.keymap.set("t", "<D-Esc>", "<Esc>", { remap = false })
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { remap = false })
-
 -- Prevent terminal from sending escape sequence for some combinations
 vim.keymap.set("t", "<S-Space>", "<Space>")
 vim.keymap.set("t", "<S-Enter>", "<Enter>")

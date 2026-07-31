@@ -318,5 +318,6 @@ return {
             end,
             mode = { "n", "t", "v", "i" }
         },
+        { "<Esc>", "<Esc>", "<C-\\><C-n>", mode = { "t" }, remap = false }
     },
 }
