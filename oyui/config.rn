@@ -1,3 +1,2 @@
 pub fn config() {
-    keybind("c", || global::confirm());
 }
