@@ -318,6 +318,18 @@ return {
             end,
             mode = { "n", "t", "v", "i" }
         },
-        { "<Esc>", "<Esc>", "<C-\\><C-n>", mode = { "t" }, remap = false }
+        { "<Esc>", "<C-\\><C-n>", mode = { "t" }, remap = false },
+        {
+            "<S-Esc>",
+            function()
+                local channel = vim.bo.channel
+                if channel > 0 then
+                    vim.api.nvim_chan_send(channel, "\x1b")
+                end
+            end,
+            mode = { "t" },
+            silent = true,
+            desc = "Send literal Escape to terminal",
+        }
     },
 }
