@@ -218,6 +218,13 @@
           "--tool"
           "zed"
         ];
+        "wrun" = [
+          "util"
+          "exec"
+          "--"
+          "fish"
+          "${./scripts/jj-workspace-run.fish}"
+        ];
       };
 
       merge-tools.zed = {
