@@ -85,7 +85,8 @@ return {
         },
         {
             "<D-b>",
-            function() Snacks.picker.explorer() end
+            function() Snacks.picker.explorer() end,
+            mode = { "n", "v", "t", "i" }
         },
         {
             "<Space>f",
