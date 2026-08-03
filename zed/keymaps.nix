@@ -17,6 +17,14 @@
     };
   }
 
+  # Window closer
+  {
+    context = "(VimControl && !menu) || (!Editor && !Terminal)";
+    bindings = {
+      "ctrl-w q" = "pane::CloseAllItems";
+    };
+  }
+
   # Text editing movements
   {
     context = "Editor";
@@ -102,7 +110,7 @@
       "g j" = "editor::GoToDiagnostic";
       "g k" = "editor::GoToPreviousDiagnostic";
       "g h" = "vim::StartOfLine";
-      "b q" = "pane::CloseActiveItem";
+      "b q" = "workspace::CloseItemInAllPanes";
       "b Q" = "workspace::CloseAllItemsAndPanes";
       "g r j" = "vim::GoToNextReference";
       "g r k" = "vim::GoToPreviousReference";
