@@ -42,7 +42,6 @@
     use_modifier_to_send = true;
     enable_feedback = false;
     dock = "right";
-    terminal_init_command = "codex";
     expand_terminal_card = true;
   };
   edit_predictions = {
