@@ -40,6 +40,8 @@ return {
                     WinSeparator = { fg = colors.overlay0 },
                     WinBarName = { fg = colors.base, bg = colors.surface0 },
                     WinBarNameActive = { fg = colors.crust, bg = colors.lavender, style = { "bold" } },
+                    TermBarStatus = { fg = colors.crust, bg = colors.maroon },
+                    TermBarAttention = { fg = colors.red, bg = colors.surface1 },
                     Include = { style = {} },
                     CopilotSuggestion = { link = "Comment" },
                     SnacksPickerPrompt = { bg = colors.surface0 },
