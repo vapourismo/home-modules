@@ -225,6 +225,13 @@
           "fish"
           "${./scripts/jj-workspace-run.fish}"
         ];
+        "wcodex" = [
+          "util"
+          "exec"
+          "--"
+          "fish"
+          "${./scripts/jj-workspace-codex.fish}"
+        ];
       };
 
       merge-tools.zed = {
