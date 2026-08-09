@@ -5,7 +5,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    jujutsu.url = "github:jj-vcs/jj/v0.43.0";
+    jujutsu.url = "github:jj-vcs/jj/v0.44.0";
     flake-utils.url = "github:numtide/flake-utils";
     neovide.url = "github:vapourismo/neovide";
   };
