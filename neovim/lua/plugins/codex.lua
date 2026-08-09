@@ -1,6 +1,8 @@
 return {
     "vapourismo/codex.nvim",
     opts = {
+        command = "fish",
+        args = {},
         on_notification = function(data)
             vim.notify(
                 data.message or "Codex needs attention",
@@ -33,10 +35,7 @@ return {
         {
             "<D-r>",
             function()
-                require("codex").toggle({
-                    command = "fish",
-                    args = {},
-                })
+                require("codex").toggle()
             end,
             mode = { "n", "v", "i", "t" }
         },
