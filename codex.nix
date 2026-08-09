@@ -1,6 +1,7 @@
 { ... }: {
-
-  home.file = {
-    ".codex/AGENTS.md".source = ./codex-agents.md;
+  programs.codex = {
+    enable = true;
+    package = null;
+    context = ./codex-agents.md;
   };
 }
