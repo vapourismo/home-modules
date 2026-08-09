@@ -35,6 +35,7 @@
         zed = import ./zed.nix;
         codex = import ./codex.nix;
         oyui = import ./oyui.nix;
+        opencode = import ./opencode.nix;
       };
 
       homeConfigurations = {
@@ -57,6 +58,7 @@
             self.homeModules.zed
             self.homeModules.codex
             self.homeModules.oyui
+            self.homeModules.opencode
 
             {
               home = {
