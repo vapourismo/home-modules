@@ -13,5 +13,6 @@ if ! jj log -r $rev 2>/dev/null >/dev/null
 end
 
 set last_message (mktemp)
+set name codex-(shuf -i 1-9999999 -n 1)
 
-jj wrun $rev codex $argv
+jj wrun -r $rev -n $name -- codex $argv
