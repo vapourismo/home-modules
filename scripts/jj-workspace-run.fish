@@ -14,9 +14,13 @@ if set -q _flag_n
 end
 
 function clean_workspace
-    jj --quiet workspace update-stale || true
-    jj --quiet workspace forget "$ws_id"
-    rm -rf "$ws_dir"
+    if test -d "$ws_dir"
+        cd "$ws_dir"
+        jj --quiet workspace update-stale || true
+        jj --quiet workspace forget "$ws_id"
+        cd -
+        rm -rf "$ws_dir"
+    end
 end
 
 mkdir -p $ws_dir
