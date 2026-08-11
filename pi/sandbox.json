@@ -29,6 +29,7 @@
       "~/.local",
       "~/.nix-profile",
       "~/.pi",
+      "~/.ssh",
       "~/Applications",
       "~/Library/Application Support",
       "~/Workspaces"
