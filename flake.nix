@@ -36,6 +36,7 @@
         codex = import ./codex.nix;
         oyui = import ./oyui.nix;
         opencode = import ./opencode.nix;
+        pi = import ./pi.nix;
       };
 
       homeConfigurations = {
@@ -59,6 +60,7 @@
             self.homeModules.codex
             self.homeModules.oyui
             self.homeModules.opencode
+            self.homeModules.pi
 
             {
               home = {

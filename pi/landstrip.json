@@ -1,0 +1,4 @@
+{
+    "maxSubagents": 10,
+    "toolFilesystemPolicy": "sandbox"
+}

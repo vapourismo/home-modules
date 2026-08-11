@@ -1,0 +1,56 @@
+{
+  "enabled": true,
+  "network": {
+    "allowNetwork": false,
+    "allowLocalBinding": false,
+    "allowAllUnixSockets": false,
+    "allowUnixSockets": [
+      "/private/var/run/nix-daemon.socket"
+    ],
+    "allowedDomains": [
+      "github.com",
+      "api.github.com",
+      "*.githubusercontent.com",
+      "chatgpt.com"
+    ],
+    "deniedDomains": []
+  },
+  "filesystem": {
+    "denyRead": [
+      "/Users"
+    ],
+    "allowRead": [
+      ".",
+      "~/.cache",
+      "~/.cargo",
+      "~/.config",
+      "~/.gitconfig",
+      "~/.local",
+      "~/.nix-profile",
+      "~/.pi",
+      "~/Applications",
+      "~/Library/Application Support",
+      "~/Workspaces"
+    ],
+    "allowWrite": [
+      ".",
+      "/dev/null",
+      "/private/var/folders/fg",
+      "/private/tmp",
+      "~/.cache/nix",
+      "~/.pi/agent/auth.json.lock",
+      "~/Workspaces"
+    ],
+    "denyWrite": [
+      "**/*.key",
+      "**/*.pem",
+      "**/.env",
+      "**/.env.*",
+      "**/.git/hooks",
+      "**/sandbox.json"
+    ]
+  },
+  "shell": {
+    "readAccess": "policy"
+  }
+}
