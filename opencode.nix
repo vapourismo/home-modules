@@ -5,7 +5,6 @@
     context = ./opencode-agents.md;
     tui = {
       mouse = false;
-      plugin = [ "opencode-landstrip" ];
       attention = {
         enabled = true;
         notifications = true;
@@ -20,7 +19,6 @@
       autoshare = false;
       autoupdate = true;
       snapshot = false;
-      plugin = [ "opencode-landstrip" ];
       experimental = {
         continue_loop_on_deny = true;
       };
