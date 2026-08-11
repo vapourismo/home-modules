@@ -1,4 +1,11 @@
 {
     "maxSubagents": 10,
-    "toolFilesystemPolicy": "sandbox"
+    "toolFilesystemPolicy": "sandbox",
+    "agent": {
+        "plan": {
+            "permission": {
+                "bash": "allow"
+            }
+        }
+    }
 }
