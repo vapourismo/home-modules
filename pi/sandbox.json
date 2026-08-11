@@ -37,7 +37,8 @@
       "/dev/null",
       "/private/var/folders/fg",
       "/private/tmp",
-      "~/.cache/nix",
+      "~/.cache",
+      "~/.local/state",
       "~/.pi/agent/auth.json.lock",
       "~/Workspaces"
     ],
