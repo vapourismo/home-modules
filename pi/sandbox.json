@@ -23,6 +23,7 @@
       ".",
       "~/.cache",
       "~/.cargo",
+      "~/.rustup",
       "~/.config",
       "~/.gitconfig",
       "~/.local",
