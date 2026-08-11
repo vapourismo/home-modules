@@ -14,6 +14,7 @@
         "npm:@narumitw/pi-usage"
         "npm:@juicesharp/rpiv-ask-user-question"
         "npm:pi-codex-fast-mode"
+        "npm:@narumitw/pi-plan-mode"
       ];
       quietStartup = true;
       enableInstallTelemetry = false;
