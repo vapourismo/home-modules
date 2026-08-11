@@ -22,6 +22,9 @@
       experimental = {
         continue_loop_on_deny = true;
       };
+      plugins = [
+        "opencode-osc9"
+      ];
     };
   };
 }
