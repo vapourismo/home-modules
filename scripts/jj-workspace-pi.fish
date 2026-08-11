@@ -12,6 +12,6 @@ if ! jj log -r $rev 2>/dev/null >/dev/null
     exit 1
 end
 
-set name codex-(shuf -i 1-9999999 -n 1)
+set name pi-(shuf -i 1-9999999 -n 1)
 
-jj wrun -r $rev -n $name -- codex $argv
+jj wrun -r $rev -n $name -- pi $argv
