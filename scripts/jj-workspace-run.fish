@@ -13,7 +13,10 @@ if set -q _flag_n
     set ws_id $_flag_n
 end
 
-function clean_workspace
+mkdir -p $ws_dir
+jj --quiet workspace add --name $ws_id $ws_dir --revision $rev
+
+function clean_workspace --on-event fish_exit
     if test -d "$ws_dir"
         cd "$ws_dir"
         jj --quiet workspace update-stale || true
@@ -22,10 +25,6 @@ function clean_workspace
         rm -rf "$ws_dir"
     end
 end
-
-mkdir -p $ws_dir
-jj --quiet workspace add --name $ws_id $ws_dir --revision $rev
-trap clean_workspace EXIT TERM KILL INT QUIT STOP
 
 cd $ws_dir
 $argv
