@@ -1,5 +1,4 @@
 # ~/.pi/agent/AGENTS.md
 
-## Jujutsu
-
-Use Jujutsu (`jj`) over Git whenever possible.
+- Use Jujutsu (`jj`) over Git whenever possible.
+- Commit the changes once a plan has been completely implemented.
