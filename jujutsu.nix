@@ -232,13 +232,6 @@
           "fish"
           "${./scripts/jj-workspace-codex.fish}"
         ];
-        "wopencode" = [
-          "util"
-          "exec"
-          "--"
-          "fish"
-          "${./scripts/jj-workspace-opencode.fish}"
-        ];
         "wpi" = [
           "util"
           "exec"
