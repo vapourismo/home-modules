@@ -2,10 +2,11 @@
     "maxSubagents": 0,
     "toolFilesystemPolicy": "sandbox",
     "agent": {
+        "build": {
+            "disable": true
+        },
         "plan": {
-            "permission": {
-                "bash": "allow"
-            }
+            "disable": true
         }
     }
 }
