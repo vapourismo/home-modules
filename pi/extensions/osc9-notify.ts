@@ -75,7 +75,7 @@ export default function osc9Notify(pi: ExtensionAPI): void {
       // attention. Notify only when an active agent blocks on human input.
       if (ctx.isIdle()) return;
       notify(
-        isApprovalPrompt(title) ? "Pi: approval needed" : "Pi: input needed",
+        isApprovalPrompt(title) ? "pi: approval needed" : "pi: input needed",
       );
     };
 
@@ -128,7 +128,7 @@ export default function osc9Notify(pi: ExtensionAPI): void {
   });
 
   pi.on("agent_settled", (_event, ctx) => {
-    if (ctx.mode === "tui") notify("Pi: task complete");
+    if (ctx.mode === "tui") notify("pi: task complete");
   });
 
   pi.on("session_shutdown", () => {
@@ -139,6 +139,6 @@ export default function osc9Notify(pi: ExtensionAPI): void {
   // The questionnaire uses custom TUI rather than the dialog methods wrapped
   // above, so consume its stable public event as well.
   pi.events.on(ASK_USER_PROMPT_EVENT, () => {
-    notify("Pi: question waiting");
+    notify("pi: question waiting");
   });
 }
