@@ -1,5 +1,5 @@
 {
-    "maxSubagents": 10,
+    "maxSubagents": 0,
     "toolFilesystemPolicy": "sandbox",
     "agent": {
         "plan": {
