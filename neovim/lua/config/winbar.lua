@@ -54,7 +54,11 @@ local function lsp_diagnostics(buf)
         table.insert(diag_entries, string.format("%%#DiagnosticSignHint#󰌶 %d%%*", hints))
     end
 
-    return table.concat(diag_entries, " ")
+    if #diag_entries == 0 then
+        return ""
+    end
+
+    return " " .. table.concat(diag_entries, " ") .. " "
 end
 
 function OleWinbarLine()
@@ -71,7 +75,9 @@ function OleWinbarLine()
     local file_comp = buffer_path(buf, active)
     local diag_comp = lsp_diagnostics(buf)
 
-    return file_comp .. "%=" .. diag_comp
+    local hl_gap = active and "%#WinBarGapActive#" or "%#WinBarGap#"
+
+    return hl_gap .. " " .. file_comp .. hl_gap .. "%=%*" .. diag_comp .. hl_gap .. " "
 end
 
 local function fix_window(win, buf)

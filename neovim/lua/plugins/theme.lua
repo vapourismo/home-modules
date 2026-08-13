@@ -40,6 +40,8 @@ return {
                     WinSeparator = { fg = colors.overlay0 },
                     WinBarName = { fg = colors.base, bg = colors.surface0 },
                     WinBarNameActive = { fg = colors.crust, bg = colors.lavender, style = { "bold" } },
+                    WinBarGap = { fg = colors.surface0, style = { "strikethrough" } },
+                    WinBarGapActive = { fg = colors.lavender, style = { "strikethrough" } },
                     TermBarStatus = { fg = colors.crust, bg = colors.maroon },
                     TermBarAttention = { fg = colors.red, bg = colors.surface1 },
                     Include = { style = {} },
