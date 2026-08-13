@@ -10,7 +10,10 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 -- Automatically equalise window sizes when the terminal is resized
 vim.api.nvim_create_autocmd({ "VimResized", "WinNew", "WinResized" }, {
     callback = function()
-        vim.cmd("horizontal wincmd =")
+        -- wincmd gives the current window priority, so always use the first window
+        vim.api.nvim_win_call(vim.fn.win_getid(1), function()
+            vim.cmd("horizontal wincmd =")
+        end)
     end,
 })
 
