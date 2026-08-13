@@ -11,7 +11,10 @@
       "github.com",
       "api.github.com",
       "*.githubusercontent.com",
-      "chatgpt.com"
+      "chatgpt.com",
+      "crates.io",
+      "index.crates.io",
+      "static.crates.io"
     ],
     "deniedDomains": []
   },
