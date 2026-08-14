@@ -1,3 +1,17 @@
+local function change_path_repr(path)
+    local components = {}
+    for comp in string.gmatch(path, "([^/]+)") do
+        table.insert(components, comp)
+    end
+
+    local prefix = ""
+    if string.match(path, "^/") then
+        prefix = " "
+    end
+
+    return prefix .. table.concat(components, "  ")
+end
+
 local function buffer_path(buf, active)
     local hl_body = active and "WinBarNameActive" or "WinBarName"
 
@@ -5,8 +19,9 @@ local function buffer_path(buf, active)
 
     if type(path) == "string" and path ~= "" then
         path = vim.fn.fnamemodify(path, ":~:.")
+        path = change_path_repr(path)
     else
-        path = "[No Name]"
+        path = "[no name]"
     end
 
     return string.format(
