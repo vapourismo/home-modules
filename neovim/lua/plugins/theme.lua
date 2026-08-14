@@ -51,7 +51,7 @@ return {
                     WinBarHint = { fg = colors.crust, bg = colors.surface1 },
                     WinBarHintActive = { fg = colors.crust, bg = colors.teal },
                     TermBarName = { fg = colors.base, bg = colors.surface0 },
-                    TermBarNameActive = { fg = colors.base, bg = colors.surface0 },
+                    TermBarNameActive = { fg = colors.subtext1, bg = colors.surface0 },
                     TermBarNameFocused = { fg = colors.crust, bg = colors.lavender, style = { "bold" } },
                     TermBarStatus = { fg = colors.crust, bg = colors.maroon },
                     TermBarAttention = { fg = colors.red, bg = colors.surface1 },
