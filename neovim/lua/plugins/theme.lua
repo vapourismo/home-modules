@@ -40,6 +40,8 @@ return {
                     WinSeparator = { fg = colors.overlay0 },
                     WinBarName = { fg = colors.crust, bg = colors.surface1 },
                     WinBarNameActive = { fg = colors.crust, bg = colors.lavender },
+                    WinBarContext = { link = "WinBarName" },
+                    WinBarContextActive = { link = "WinBarNameActive" },
                     WinBarGap = { fg = colors.surface1, style = { "strikethrough" } },
                     WinBarGapActive = { fg = colors.lavender, style = { "strikethrough" } },
                     WinBarError = { fg = colors.crust, bg = colors.surface1 },
