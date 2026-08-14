@@ -13,8 +13,5 @@ require("config.usercmds")
 -- Autocmds
 require("config.autocmds")
 
--- Winbar
-require("config.winbar")
-
 -- Lazy plugin manager
 require("config.lazy")
