@@ -16,7 +16,7 @@ local function buffer_path(buf, active)
     )
 end
 
-local function lsp_diagnostics(buf)
+local function lsp_diagnostics(buf, active)
     local lsp_diags = vim.diagnostic.get(buf)
 
     local errors = 0
@@ -38,27 +38,35 @@ local function lsp_diagnostics(buf)
 
     local diag_entries = {}
 
+    local mark_hl = function(hl, text, ...)
+        if active then
+            hl = hl .. "Active"
+        end
+        return "%#" .. hl .. "# " .. string.format(text, ...) .. " %*"
+    end
+
     if errors > 0 then
-        table.insert(diag_entries, string.format("%%#DiagnosticSignError#󰅚 %d%%*", errors))
+        table.insert(diag_entries, mark_hl("WinBarError", "󰅚 %d", errors))
     end
 
     if warnings > 0 then
-        table.insert(diag_entries, string.format("%%#DiagnosticSignWarn#󰀪 %d%%*", warnings))
+        table.insert(diag_entries, mark_hl("WinBarWarn", "󰀪 %d", warnings))
     end
 
     if infos > 0 then
-        table.insert(diag_entries, string.format("%%#DiagnosticSignInfo#󰋽 %d%%*", infos))
+        table.insert(diag_entries, mark_hl("WinBarInfo", "󰋽 %d", infos))
     end
 
     if hints > 0 then
-        table.insert(diag_entries, string.format("%%#DiagnosticSignHint#󰌶 %d%%*", hints))
+        table.insert(diag_entries, mark_hl("WinBarHint", "󰌶 %d", hints))
     end
 
     if #diag_entries == 0 then
         return ""
     end
 
-    return " " .. table.concat(diag_entries, " ") .. " "
+    local hl_gap = active and "%#WinBarGapActive#" or "%#WinBarGap#"
+    return table.concat(diag_entries, hl_gap .. " %*")
 end
 
 function OleWinbarLine()
@@ -73,7 +81,7 @@ function OleWinbarLine()
     local active = vim.api.nvim_get_current_win() == win
 
     local file_comp = buffer_path(buf, active)
-    local diag_comp = lsp_diagnostics(buf)
+    local diag_comp = lsp_diagnostics(buf, active)
 
     local hl_gap = active and "%#WinBarGapActive#" or "%#WinBarGap#"
 
