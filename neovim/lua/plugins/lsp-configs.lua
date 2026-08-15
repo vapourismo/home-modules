@@ -98,29 +98,6 @@ return {
             end
         end
 
-        -- vim.lsp.config("nil_ls", {
-        -- 	settings = {
-        -- 		["nil"] = {
-        -- 			formatting = { command = { "nixfmt" } }
-        -- 		}
-        -- 	}
-        -- })
-        -- vim.lsp.enable("nil_ls")
-
-        vim.lsp.config("buck2", {
-            cmd = { "buckle", "lsp" }
-        })
-        vim.lsp.enable("buck2")
-
-        -- vim.lsp.config("copilot", {
-        --     settings = {
-        --         telemetry = {
-        --             telemetryLevel = "off",
-        --         },
-        --     },
-        -- })
-        -- vim.lsp.enable("copilot")
-
         vim.lsp.config("oyui_ls", {
             cmd = { "oyui", "language-server" },
             filetypes = { "rune" },
