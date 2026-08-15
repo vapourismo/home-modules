@@ -89,12 +89,14 @@ return {
 
                 local cmd = table.concat(cmd_list, " ")
                 local opts = {
+                    group = true,
                     env = run_args.args.environment,
                     cwd = run_args.args.cwd,
+                    position = "right",
                     title = run_args.label,
                 }
 
-                AllSnackTerminals:new(cmd, opts)
+                require("terminals").new(cmd, opts)
             end
         end
 
