@@ -105,8 +105,24 @@ return {
         })
         vim.lsp.enable("oyui_ls")
 
-        vim.lsp.enable("nixd")
+        vim.lsp.config("lua_ls", {
+            settings = {
+                Lua = {
+                    runtime = {
+                        version = 'LuaJIT'
+                    },
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME
+                        }
+                    }
+                },
+            }
+        })
         vim.lsp.enable("lua_ls")
+
+        vim.lsp.enable("nixd")
         vim.lsp.enable("taplo")
         vim.lsp.enable("ocamllsp")
         vim.lsp.enable("pylsp")
