@@ -4,8 +4,9 @@ return {
     build = function()
         require("zedda").build()
     end,
-    config = function()
-        require("zedda").setup({})
+    opts = {},
+    config = function(_, opts)
+        require("zedda").setup(opts)
 
         -- Our themes don't like italics
         vim.schedule(function()
