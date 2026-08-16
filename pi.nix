@@ -11,9 +11,8 @@
       packages = [
         "npm:pi-web-access"
         "npm:pi-landstrip"
-        "npm:@narumitw/pi-usage"
         "npm:@juicesharp/rpiv-ask-user-question"
-        "npm:pi-codex-fast-mode"
+        "npm:@narumitw/pi-usage"
         "npm:@narumitw/pi-plan-mode"
         "npm:@narumitw/pi-codex-compact"
       ];
