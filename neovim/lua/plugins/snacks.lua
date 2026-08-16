@@ -1,7 +1,7 @@
 local blank_border = { " ", " ", " ", " ", " ", " ", " ", " " }
 
 local function pad_layout(layout)
-    if layout.preset == "sidebar" then
+    if layout.preset == "sidebar" or layout.preset == "bottom" then
         return layout
     end
 
@@ -47,9 +47,6 @@ return {
                     config = pad_layout,
                 },
                 ivy = {
-                    config = pad_layout,
-                },
-                bottom = {
                     config = pad_layout,
                 },
                 select = {
