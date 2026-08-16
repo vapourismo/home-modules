@@ -15,9 +15,12 @@
       "crates.io",
       "index.crates.io",
       "static.crates.io",
+      "cache.nixos.org",
       "127.0.0.1:4226"
     ],
-    "deniedDomains": []
+    "deniedDomains": [
+      "cache.flakehub.com"
+    ]
   },
   "filesystem": {
     "denyRead": [
