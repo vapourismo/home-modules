@@ -2,7 +2,6 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
         local default_ra_before_init = vim.lsp.config["rust_analyzer"].before_init
-        local default_ra_on_attach = vim.lsp.config["rust_analyzer"].on_attach
         vim.lsp.config("rust_analyzer", {
             cmd = { "rust-analyzer" },
             inlay_hints = { enabled = true },
@@ -72,10 +71,6 @@ return {
 
                 return default_ra_before_init(params, config)
             end,
-            on_attach = function(client, buffnr)
-                -- vim.lsp.codelens.enable(true, { client_id = client.id })
-                return default_ra_on_attach(client, buffnr)
-            end
         })
         vim.lsp.enable("rust_analyzer")
 
