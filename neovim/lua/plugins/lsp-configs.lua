@@ -39,6 +39,11 @@ return {
                     procMacro = {
                         processes = 2,
                     },
+                    completion = {
+                        callable = {
+                            snippets = "add_parentheses",
+                        },
+                    },
                 }
             },
             before_init = function(params, config)
