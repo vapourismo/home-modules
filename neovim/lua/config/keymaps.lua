@@ -24,6 +24,9 @@ vim.keymap.set("t", "<S-Enter>", "<Enter>")
 -- Clear highlights on Escape in normal mode
 vim.keymap.set("n", "<Esc>", function()
     vim.cmd.noh()
+    pcall(function()
+        require("zedda").reject()
+    end)
 end)
 
 -- Convenient file saving
