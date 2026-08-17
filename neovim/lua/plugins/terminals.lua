@@ -64,8 +64,11 @@ return {
         {
             "<D-S-R>",
             function()
-                Snacks.input(
-                    { prompt = "Command" },
+                vim.ui.input(
+                    {
+                        prompt = "Command",
+                        completion = "shellcmd",
+                    },
                     function(cmd)
                         if cmd == "" or cmd == nil then
                             return
