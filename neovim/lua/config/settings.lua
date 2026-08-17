@@ -11,7 +11,7 @@ vim.opt.termguicolors    = true
 vim.opt.scrolloff        = 10
 vim.opt.autoread         = true
 vim.opt.linespace        = 3
-vim.opt.splitkeep        = "screen"
+vim.opt.splitkeep        = "cursor"
 vim.opt.laststatus       = 3
 vim.opt.showmode         = false
 vim.opt.fillchars        = { eob = " " }
