@@ -69,6 +69,8 @@ return {
                     CursorLineNr = { bg = "#2a2b3d" },
                     CursorLineSign = { bg = "#2a2b3d" },
                     ZeddaGhostText = { fg = colors.overlay2, style = { "italic" } },
+                    ZeddaChangeSign = { fg = colors.red },
+                    ZeddaActiveChangeSign = { fg = colors.green },
                     ColorColumn = { fg = colors.red, bg = "NONE", style = { "bold" } },
                 }
             end
