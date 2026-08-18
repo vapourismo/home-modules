@@ -33,6 +33,17 @@
         };
 
     settings = {
+      "--scope" = [
+        {
+          "--when".environments = [
+            "AI_AGENT"
+            "PI_CODING_AGENT"
+            "CODEX_THREAD_ID"
+          ];
+          ui.diff-formatter = ":git";
+        }
+      ];
+
       fsmonitor.backend = "none";
       fsmonitor.watchman.register-snapshot-trigger = false;
 
