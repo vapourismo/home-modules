@@ -1,6 +1,5 @@
 return {
-    "vapourismo/terminals.lua",
-    dir = "/Users/ole/Workspaces/terminals.nvim",
+    "vapourismo/terminals.nvim",
     dependencies = {
         {
             "vapourismo/snacks.nvim",
