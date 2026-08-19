@@ -27,7 +27,6 @@ return {
                         sources = { "nvim_workspace_diagnostic" },
                         icons_enabled = true,
                     },
-                    "diff",
                 },
                 lualine_c = {},
                 lualine_x = {
