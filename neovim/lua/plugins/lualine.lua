@@ -1,5 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
+    enabled = false,
     opts = function()
         local noice = require("noice")
 
