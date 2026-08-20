@@ -122,7 +122,6 @@ return {
             vim.api.nvim_create_autocmd({ "ColorScheme" }, {
                 pattern = { "catppuccin*" },
                 callback = function()
-                    vim.g.neovide_floating_shadow = false
                     update_term_colors()
                 end
             })
