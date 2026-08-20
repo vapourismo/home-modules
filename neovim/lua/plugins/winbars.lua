@@ -1,4 +1,9 @@
 return {
     "vapourismo/winbars.lua",
-    opts = {},
+    dir = "/Users/ole/Workspaces/winbars.nvim",
+    opts = {
+        icons = {
+            modified = " ",
+        },
+    },
 }
