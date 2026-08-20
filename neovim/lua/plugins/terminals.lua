@@ -6,6 +6,7 @@ return {
             opts = {
                 styles = {
                     terminal = {
+                        max_width = 220,
                         wo = {
                             foldmethod = "manual",
                             foldtext = "foldtext()",
