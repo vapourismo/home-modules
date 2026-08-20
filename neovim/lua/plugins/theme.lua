@@ -150,35 +150,93 @@ return {
             vim.api.nvim_create_autocmd({ "ColorScheme" }, {
                 pattern = { "warm-burnout-light", "warm-burnout-dark" },
                 callback = function(info)
-                    local palette = require("warm-burnout.palette")
+                    local palettes = require("warm-burnout.palette")
+                    local palette
 
                     if info.match == "warm-burnout-light" then
-                        palette = palette.light
+                        palette = palettes.light
                     elseif info.match == "warm-burnout-dark" then
-                        palette = palette.dark
+                        palette = palettes.dark
                     else
                         return
                     end
 
-                    vim.api.nvim_set_hl(0, "TabLineName", { bg = palette.bg_highlight })
-                    vim.api.nvim_set_hl(0, "TabLineNameSel", { fg = palette.bg_dim, bg = palette.decorator })
-                    vim.api.nvim_set_hl(0, "TabLineNum", { bg = palette.bg_search })
-                    vim.api.nvim_set_hl(0, "TabLineNumSel", { fg = palette.bg_dim, bg = palette.member })
+                    palette = palettes.resolve(palette)
 
-                    vim.api.nvim_set_hl(0, "WinBarName", { bg = palette.bg_highlight })
-                    vim.api.nvim_set_hl(0, "WinBarNameActive", { fg = palette.bg_dim, bg = palette.decorator })
+                    local highlights = {
+                        TabLineNum = { fg = palette.bg, bg = palette.bg_search },
+                        TabLineName = { fg = palette.bg, bg = palette.bg_highlight },
+                        TabLineNumSel = { fg = palette.bg_dim, bg = palette.member },
+                        TabLineNameSel = { fg = palette.bg_dim, bg = palette.decorator },
+                        WinSeparator = { fg = palette.accent },
+                        WinBar = { fg = palette.decorator },
+                        WinBarNC = { fg = palette.fg_gutter },
+                        WinBarName = { fg = palette.bg_dim, bg = palette.bg_highlight },
+                        WinBarNameActive = { fg = palette.bg_dim, bg = palette.decorator },
+                        WinBarContext = { fg = palette.fg_gutter },
+                        WinBarContextActive = { fg = palette.decorator },
+                        WinBarError = { link = "WinBarName" },
+                        WinBarErrorActive = { fg = palette.bg_dim, bg = palette.error },
+                        WinBarWarn = { link = "WinBarName" },
+                        WinBarWarnActive = { fg = palette.bg_dim, bg = palette.warn },
+                        WinBarInfo = { link = "WinBarName" },
+                        WinBarInfoActive = { fg = palette.bg_dim, bg = palette.info },
+                        WinBarHint = { link = "WinBarName" },
+                        WinBarHintActive = { fg = palette.bg_dim, bg = palette.hint },
+                        TermBarName = { fg = palette.bg, bg = palette.bg_highlight },
+                        TermBarNameActive = { fg = palette.fg_dim, bg = palette.bg_highlight },
+                        TermBarNameFocused = { fg = palette.bg_dim, bg = palette.decorator },
+                        TermBarStatus = { fg = palette.bg_dim, bg = palette.member },
+                        TermBarAttention = { fg = palette.error, bg = palette.bg_highlight },
+                        TermBar = { fg = palette.decorator, bg = palette.bg_dim },
+                        TermBarNC = { fg = palette.fg_gutter, bg = palette.bg_dim },
+                        Include = { fg = palette.keyword },
+                        CopilotSuggestion = { link = "Comment" },
+                        SnacksPickerPrompt = { bg = palette.bg_highlight },
+                        SnacksPickerTotals = { bg = palette.bg_highlight },
+                        SnacksPickerSpinner = { bg = palette.bg_highlight },
+                        SnacksPickerInput = { bg = palette.bg_highlight },
+                        TreesitterContextLineNumber = { link = "NormalFloat" },
+                        CursorLineNr = { bg = palette.bg_highlight },
+                        CursorLineSign = { bg = palette.bg_highlight },
+                        ZeddaGhostText = { fg = palette.comment, italic = true },
+                        ZeddaChangeSign = { fg = palette.error },
+                        ZeddaActiveChangeSign = { fg = palette.added },
+                        ColorColumn = { fg = palette.error, bg = palette.none, bold = true },
+                        StatusDiagnosticError = { link = "WinBarErrorActive" },
+                        StatusDiagnosticWarn = { link = "WinBarWarnActive" },
+                        StatusDiagnosticInfo = { link = "WinBarInfoActive" },
+                        StatusDiagnosticHint = { link = "WinBarHintActive" },
+                        StatusCursorPos = { fg = palette.bg, bg = palette.modified },
+                        StatusCwd = { fg = palette.bg, bg = palette.decorator },
+                        StatusFiletype = { fg = palette.bg, bg = palette.tag },
+                        StatusLsp = { fg = palette.bg, bg = palette.func },
+                        StatusMacro = { fg = palette.bg, bg = palette.member },
+                        StatusModeCommand = { fg = palette.bg, bg = palette.func },
+                        StatusModeConfirm = { link = "StatusModeCommand" },
+                        StatusModeEx = { link = "StatusModeCommand" },
+                        StatusModeInsert = { fg = palette.bg, bg = palette.added },
+                        StatusModeMore = { link = "StatusModeCommand" },
+                        StatusModeNormal = { fg = palette.bg_dim, bg = palette.modified },
+                        StatusModeOperatorPending = { link = "StatusModeNormal" },
+                        StatusModePrompt = { link = "StatusModeCommand" },
+                        StatusModeReplace = { fg = palette.bg, bg = palette.error },
+                        StatusModeSelect = { link = "StatusModeVisual" },
+                        StatusModeSelectBlock = { link = "StatusModeVisual" },
+                        StatusModeSelectLine = { link = "StatusModeVisual" },
+                        StatusModeShell = { link = "StatusModeCommand" },
+                        StatusModeTerminal = { link = "StatusModeInsert" },
+                        StatusModeTerminalNormal = { link = "StatusModeNormal" },
+                        StatusModeUnknown = { link = "StatusModeNormal" },
+                        StatusModeVirtualReplace = { link = "StatusModeReplace" },
+                        StatusModeVisual = { fg = palette.bg, bg = palette.number },
+                        StatusModeVisualBlock = { link = "StatusModeVisual" },
+                        StatusModeVisualLine = { link = "StatusModeVisual" },
+                    }
 
-                    vim.api.nvim_set_hl(0, "NormalFloat", { bg = palette.bg })
-
-                    vim.api.nvim_set_hl(0, "WinSeparator", { fg = palette.accent })
-
-                    vim.api.nvim_set_hl(0, "TreesitterContext", { bg = palette.bg_float })
-                    vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = palette.bg_float })
-
-                    vim.api.nvim_set_hl(0, "SnacksPickerPrompt", { bg = palette.bg_highlight })
-                    vim.api.nvim_set_hl(0, "SnacksPickerTotals", { bg = palette.bg_highlight })
-                    vim.api.nvim_set_hl(0, "SnacksPickerSpinner", { bg = palette.bg_highlight })
-                    vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = palette.bg_highlight })
+                    for hlname, def in pairs(highlights) do
+                        vim.api.nvim_set_hl(0, hlname, def)
+                    end
 
                     vim.fn.foreach(vim.api.nvim_get_hl(0, {}), function(hlname, def)
                         local is_italic = def.italic or def.cterm and def.cterm.italic
