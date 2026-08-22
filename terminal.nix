@@ -36,6 +36,11 @@
     c = "cargo";
   };
 
+  programs.bash = {
+    enable = true;
+    shellAliases = config.home.shellAliases;
+  };
+
   home.sessionVariables = {
     LESS = "-FRX";
     MAKEFLAGS = "-j12";
