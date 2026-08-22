@@ -1,5 +1,6 @@
 return {
     "vapourismo/terminals.nvim",
+    dir = "~/Workspaces/terminals.nvim",
     dependencies = {
         {
             "vapourismo/snacks.nvim",
@@ -74,7 +75,9 @@ return {
                             return
                         end
 
-                        require("terminals").new(cmd, { position = "right" })
+                        local term = require("terminals")
+                        local info = term.current()
+                        term.new(cmd, { position = info and info.position or "right" })
                     end
                 )
             end,
