@@ -105,5 +105,14 @@
       move_path_to_back /sbin
       move_path_to_back /bin
     '';
+    functions = {
+      nvx = ''
+        if [ -z "$argv" ]
+         return
+        end
+
+        nvr -c "$argv"
+      '';
+    };
   };
 }
