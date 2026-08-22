@@ -68,6 +68,7 @@ return {
                     TreesitterContextLineNumber = { link = "NormalFloat" },
                     CursorLineNr = { link = "CursorLine" },
                     CursorLineSign = { link = "CursorLine" },
+                    Visual = { style = {} },
                     ZeddaGhostText = { fg = colors.overlay2, style = { "italic" } },
                     ZeddaChangeSign = { fg = colors.red },
                     ZeddaActiveChangeSign = { fg = colors.green },
