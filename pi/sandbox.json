@@ -3,7 +3,7 @@
   "network": {
     "allowNetwork": false,
     "allowLocalBinding": true,
-    "allowAllUnixSockets": false,
+    "allowAllUnixSockets": true,
     "allowUnixSockets": [
       "/private/var/run/nix-daemon.socket"
     ],
