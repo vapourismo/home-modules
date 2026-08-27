@@ -72,7 +72,7 @@ return {
                     ZeddaGhostText = { fg = colors.overlay2, style = { "italic" } },
                     ZeddaChangeSign = { fg = colors.red },
                     ZeddaActiveChangeSign = { fg = colors.green },
-                    ColorColumn = { fg = colors.red, bg = "NONE", style = { "bold" } },
+                    ColorColumn = { style = { "bold" } },
                     StatusDiagnosticError = { link = "WinBarErrorActive" },
                     StatusDiagnosticWarn = { link = "WinBarWarnActive" },
                     StatusDiagnosticInfo = { link = "WinBarInfoActive" },
