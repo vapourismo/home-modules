@@ -76,6 +76,10 @@ return {
 
                 return default_ra_before_init(params, config)
             end,
+            on_exit = function(code, _, client_id)
+                local message = ("client %d exited with code %d"):format(client_id, code)
+                vim.notify(message, vim.log.levels.INFO, { title = "rust-analyzer" })
+            end,
         })
         vim.lsp.enable("rust_analyzer")
 
