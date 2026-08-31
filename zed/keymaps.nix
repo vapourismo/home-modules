@@ -175,7 +175,7 @@
   {
     context = "ProjectPanel && not_editing";
     bindings = {
-      "l" = "project_panel::Open";
+      "l" = "project_panel::OpenPermanent";
     };
   }
 ]
