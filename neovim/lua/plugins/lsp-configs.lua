@@ -4,6 +4,9 @@ return {
         local default_ra_before_init = vim.lsp.config["rust_analyzer"].before_init
         vim.lsp.config("rust_analyzer", {
             cmd = { "rust-analyzer" },
+            cmd_env = {
+                RUSTC_WRAPPER = "",
+            },
             inlay_hints = { enabled = true },
             settings = {
                 ["rust-analyzer"] = {
