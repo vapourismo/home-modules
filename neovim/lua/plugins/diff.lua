@@ -7,7 +7,7 @@ return {
             cycle_next_file = false,
         },
         explorer = {
-            position = "bottom",
+            view_mode = "tree",
         }
     },
     cmd = "CodeDiff",
