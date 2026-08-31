@@ -88,11 +88,20 @@ vim.api.nvim_create_autocmd({ "DirChanged" }, {
     end
 })
 
--- Reload buffer if it has changed on disk
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+-- Reload buffers if they have changed on disk
+vim.api.nvim_create_autocmd({ "FocusGained" }, {
     callback = function()
         if vim.fn.mode() ~= "c" then
             vim.cmd("checktime")
+        end
+    end,
+    pattern = "*",
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    callback = function(event)
+        if vim.fn.mode() ~= "c" then
+            vim.cmd.checktime({ args = { tostring(event.buf) } })
         end
     end,
     pattern = "*",

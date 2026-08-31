@@ -58,6 +58,7 @@ if vim.g.neovide then
     vim.g.neovide_floating_blur_amount_x = 0.0
     vim.g.neovide_floating_blur_amount_y = 0.0
     vim.g.neovide_floating_corner_radius = 0.0
+    vim.g.neovide_progress_bar_enabled = false
     vim.g.neovide_progress_bar_height = 2.0
     vim.g.neovide_progress_bar_animation_speed = 99999
     vim.g.neovide_progress_bar_hide_delay = 0

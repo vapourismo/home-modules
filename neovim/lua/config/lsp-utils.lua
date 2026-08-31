@@ -24,7 +24,7 @@ vim.diagnostic.config({
     virtual_lines = false,
     underline = true,
     severity_sort = true,
-    update_in_insert = true,
+    update_in_insert = false,
     float = {
         border = blank_border,
     },
