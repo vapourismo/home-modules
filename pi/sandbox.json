@@ -1,58 +1,62 @@
 {
   "enabled": true,
   "network": {
-    "allowNetwork": false,
-    "allowLocalBinding": true,
-    "allowAllUnixSockets": true,
+    "strictAllowlist": true,
+    "allowLocalBinding": false,
+    "allowAllUnixSockets": false,
     "allowUnixSockets": [
       "/private/var/run/nix-daemon.socket"
+    ],
+    "allowMachLookup": [
+      "com.apple.SystemConfiguration.DNSConfiguration",
+      "com.apple.SystemConfiguration.configd"
     ],
     "allowedDomains": [
       "github.com",
       "api.github.com",
       "*.githubusercontent.com",
-      "chatgpt.com",
-      "crates.io",
-      "index.crates.io",
-      "static.crates.io",
       "cache.nixos.org",
       "127.0.0.1:4226"
     ],
     "deniedDomains": [
-      "cache.flakehub.com"
+      "*.flakehub.com"
     ]
   },
   "filesystem": {
     "denyRead": [
+      "/var/log",
       "/Users"
     ],
     "allowRead": [
       ".",
-      "~/.cache",
+      "~/.cache/nix",
       "~/.cargo",
       "~/.rustup",
-      "~/.config",
+      "~/.config/git",
+      "~/.config/jj",
       "~/.gitconfig",
-      "~/.local",
+      "~/.local/bin",
+      "~/.local/lib",
+      "~/.local/state",
+      "~/.ignore",
       "~/.nix-profile",
-      "~/.pi",
-      "~/.ssh",
-      "~/Applications",
-      "~/Library/Application Support",
-      "~/Library/Caches",
-      "~/Library/Keychains",
-      "~/Workspaces"
+      "~/Workspaces",
+      "~/Library/Caches/kache",
+      "~/Library/Caches/Mozilla.sccache",
+      "~/Library/Preferences/.GlobalPreferences.plist",
+      "~/Library/Preferences/.GlobalPreferences_m.plist",
+      "~/Library/Preferences/ByHost/.GlobalPreferences.*.plist"
     ],
     "allowWrite": [
       ".",
       "/dev/null",
       "/private/var/folders/fg",
       "/private/tmp",
-      "~/.cache",
+      "~/.cache/nix",
       "~/.local/state",
-      "~/.pi/agent/auth.json.lock",
-      "~/Library/Caches",
-      "~/Workspaces"
+      "~/Workspaces",
+      "~/Library/Caches/kache",
+      "~/Library/Caches/Mozilla.sccache"
     ],
     "denyWrite": [
       "**/*.key",
@@ -63,7 +67,10 @@
       "**/sandbox.json"
     ]
   },
-  "shell": {
-    "readAccess": "policy"
+  "ignoreViolations": {
+    "*": [
+      "deny(1) sysctl-read kern.iossupportversion",
+      "deny(1) sysctl-read hw.usermem"
+    ]
   }
 }

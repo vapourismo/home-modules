@@ -1,0 +1,92 @@
+diff --git a/src/sandbox/macos-sandbox-utils.ts b/src/sandbox/macos-sandbox-utils.ts
+index 2cc6e5f..47f8149 100644
+--- a/src/sandbox/macos-sandbox-utils.ts
++++ b/src/sandbox/macos-sandbox-utils.ts
+@@ -64,0 +65,6 @@ export interface MacOSSandboxParams {
++  /**
++   * Working directory of the child that will execute this profile.
++   * Mandatory root protections are generated relative to this directory.
++   * Defaults to the runtime process's current working directory.
++   */
++  effectiveCwd?: string
+@@ -79,2 +85,4 @@ export interface MacOSSandboxParams {
+-export function macGetMandatoryDenyPatterns(allowGitConfig = false): string[] {
+-  const cwd = process.cwd()
++export function macGetMandatoryDenyPatterns(
++  allowGitConfig = false,
++  effectiveCwd = process.cwd(),
++): string[] {
+@@ -83 +91,3 @@ export function macGetMandatoryDenyPatterns(allowGitConfig = false): string[] {
+-  // Dangerous files - static paths in CWD + glob patterns for subtree
++  // Protect exact paths at the child root plus every nested occurrence.
++  // Recursive patterns are absolute so their scope does not depend on the
++  // long-lived broker's cwd when normalizePathForSandbox() processes them.
+@@ -85,2 +95,2 @@ export function macGetMandatoryDenyPatterns(allowGitConfig = false): string[] {
+-    denyPaths.push(path.resolve(cwd, fileName))
+-    denyPaths.push(`**/${fileName}`)
++    denyPaths.push(path.resolve(effectiveCwd, fileName))
++    denyPaths.push(`/**/${fileName}`)
+@@ -89 +99,3 @@ export function macGetMandatoryDenyPatterns(allowGitConfig = false): string[] {
+-  // Dangerous directories
++  // Do not append /** to directory patterns. denyPathFilter() extends a deny
++  // glob over its subtree, which protects both the directory vnode and its
++  // contents and prevents rename/swap-in bypasses of the directory itself.
+@@ -91,2 +103,2 @@ export function macGetMandatoryDenyPatterns(allowGitConfig = false): string[] {
+-    denyPaths.push(path.resolve(cwd, dirName))
+-    denyPaths.push(`**/${dirName}/**`)
++    denyPaths.push(path.resolve(effectiveCwd, dirName))
++    denyPaths.push(`/**/${dirName}`)
+@@ -95,3 +107,3 @@ export function macGetMandatoryDenyPatterns(allowGitConfig = false): string[] {
+-  // Git hooks are always blocked for security
+-  denyPaths.push(path.resolve(cwd, '.git/hooks'))
+-  denyPaths.push('**/.git/hooks/**')
++  // Git hooks are always blocked for security.
++  denyPaths.push(path.resolve(effectiveCwd, '.git/hooks'))
++  denyPaths.push('/**/.git/hooks')
+@@ -99 +111 @@ export function macGetMandatoryDenyPatterns(allowGitConfig = false): string[] {
+-  // Git config - conditionally blocked based on allowGitConfig setting
++  // Git config - conditionally blocked based on allowGitConfig setting.
+@@ -101,2 +113,2 @@ export function macGetMandatoryDenyPatterns(allowGitConfig = false): string[] {
+-    denyPaths.push(path.resolve(cwd, '.git/config'))
+-    denyPaths.push('**/.git/config')
++    denyPaths.push(path.resolve(effectiveCwd, '.git/config'))
++    denyPaths.push('/**/.git/config')
+@@ -764,0 +777 @@ function generateWriteRules(
++  effectiveCwd = process.cwd(),
+@@ -782 +795 @@ function generateWriteRules(
+-    ...macGetMandatoryDenyPatterns(allowGitConfig),
++    ...macGetMandatoryDenyPatterns(allowGitConfig, effectiveCwd),
+@@ -837,0 +851 @@ function generateSandboxProfile({
++  effectiveCwd = process.cwd(),
+@@ -852,0 +867 @@ function generateSandboxProfile({
++  effectiveCwd?: string
+@@ -1135 +1150,3 @@ function generateSandboxProfile({
+-  profile.push(...generateWriteRules(writeConfig, logTag, allowGitConfig))
++  profile.push(
++    ...generateWriteRules(writeConfig, logTag, allowGitConfig, effectiveCwd),
++  )
+@@ -1202,0 +1220 @@ export function wrapCommandWithSandboxMacOS(
++    effectiveCwd = process.cwd(),
+@@ -1267,0 +1286 @@ export function wrapCommandWithSandboxMacOS(
++    effectiveCwd,
+diff --git a/src/sandbox/sandbox-manager.ts b/src/sandbox/sandbox-manager.ts
+index a7d5731..2158063 100644
+--- a/src/sandbox/sandbox-manager.ts
++++ b/src/sandbox/sandbox-manager.ts
+@@ -1524,0 +1525 @@ async function wrapWithSandbox(
++  effectiveCwd = process.cwd(),
+@@ -1683,0 +1685 @@ async function wrapWithSandbox(
++        effectiveCwd,
+@@ -1765,5 +1767,5 @@ async function wrapWithSandbox(
+- *   with. On Windows the child's cwd is whatever the caller passes
+- *   as the spawn `{cwd:}` option (there is no `--cwd` flag), and
+- *   the `safe.directory` git-config injection derives from this — so
+- *   pass the same value here as to `spawn({cwd})`. Defaults to
+- *   `process.cwd()`. Currently unused on macOS/Linux.
++ *   with. On macOS it determines the exact child-root mandatory deny paths.
++ *   On Windows the child's cwd is whatever the caller passes as the spawn
++ *   `{cwd:}` option (there is no `--cwd` flag), and the `safe.directory`
++ *   git-config injection derives from this. Pass the same value here as to
++ *   `spawn({cwd})`. Defaults to `process.cwd()`. Currently unused on Linux.
+@@ -1894,0 +1897 @@ async function wrapWithSandboxArgv(
++    cwd,

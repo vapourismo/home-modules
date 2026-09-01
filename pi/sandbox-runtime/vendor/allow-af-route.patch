@@ -1,0 +1,10 @@
+--- a/src/sandbox/macos-sandbox-utils.ts
++++ b/src/sandbox/macos-sandbox-utils.ts
+@@ -937,6 +937,7 @@
+     '',
+     "; Specific safe system-sockets, doesn't allow network access",
+     '(allow system-socket (require-all (socket-domain AF_SYSTEM) (socket-protocol 2)))',
++    '(allow system-socket (socket-domain AF_ROUTE))',
+     '',
+     '; sysctl - specific sysctls only',
+     '(allow sysctl-read',

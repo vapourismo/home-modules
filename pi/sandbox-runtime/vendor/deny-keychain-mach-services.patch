@@ -1,0 +1,22 @@
+diff --git a/src/sandbox/macos-sandbox-utils.ts b/src/sandbox/macos-sandbox-utils.ts
+index 2cc6e5f..7f94871 100644
+--- a/src/sandbox/macos-sandbox-utils.ts
++++ b/src/sandbox/macos-sandbox-utils.ts
+@@ -885,7 +885,6 @@ function generateSandboxProfile({
+     '  (global-name "com.apple.system.opendirectoryd.libinfo")',
+     '  (global-name "com.apple.system.opendirectoryd.membership")',
+     '  (global-name "com.apple.bsd.dirhelper")',
+-    '  (global-name "com.apple.securityd.xpc")',
+     '  (global-name "com.apple.coreservices.launchservicesd")',
+     ')',
+     '',
+@@ -1008,9 +1007,6 @@ function generateSandboxProfile({
+     '; Distributed notifications',
+     '(allow distributed-notification-post)',
+     '',
+-    '; Specific mach-lookup permissions for security operations',
+-    '(allow mach-lookup (global-name "com.apple.SecurityServer"))',
+-    '',
+     '; File I/O on device files',
+     '(allow file-ioctl (literal "/dev/null"))',
+     '(allow file-ioctl (literal "/dev/zero"))',
