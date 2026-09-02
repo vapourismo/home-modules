@@ -1,15 +1,8 @@
-import type {
-  ExtensionAPI,
-  ExtensionContext,
-  ExtensionUIContext,
-} from "@earendil-works/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 const OSC = "\x1b]";
 const STRING_TERMINATOR = "\x1b\\";
 const REPEAT_DEBOUNCE_MS = 500;
-
-// Public event emitted immediately before rpiv-ask-user-question shows its UI.
-const ASK_USER_PROMPT_EVENT = "rpiv:ask-user:prompt";
 
 /** Build an OSC 9 desktop-notification sequence. */
 export function formatOsc9Notification(message: string): string {
@@ -40,7 +33,6 @@ export default function osc9Notify(pi: ExtensionAPI): void {
   let enabled = false;
   let lastMessage: string | undefined;
   let lastNotificationAt = 0;
-  let restoreDialogHooks: (() => void) | undefined;
 
   const notify = (message: string): void => {
     if (!enabled) return;
@@ -61,70 +53,22 @@ export default function osc9Notify(pi: ExtensionAPI): void {
     }
   };
 
-  const hookAgentDialogs = (ctx: ExtensionContext): void => {
-    restoreDialogHooks?.();
-
-    const ui = ctx.ui;
-    const originalSelect = ui.select;
-    const originalConfirm = ui.confirm;
-    const originalInput = ui.input;
-    const originalEditor = ui.editor;
-
-    const maybeNotify = (title: string): void => {
-      // Dialogs opened from an idle slash command already have the user's
-      // attention. Notify only when an active agent blocks on human input.
-      if (ctx.isIdle()) return;
-      notify(
-        isApprovalPrompt(title) ? "pi: approval needed" : "pi: input needed",
-      );
-    };
-
-    const wrappedSelect: ExtensionUIContext["select"] = (
-      title,
-      options,
-      opts,
-    ) => {
-      maybeNotify(title);
-      return originalSelect.call(ui, title, options, opts);
-    };
-    const wrappedConfirm: ExtensionUIContext["confirm"] = (
-      title,
-      message,
-      opts,
-    ) => {
-      maybeNotify(title);
-      return originalConfirm.call(ui, title, message, opts);
-    };
-    const wrappedInput: ExtensionUIContext["input"] = (
-      title,
-      placeholder,
-      opts,
-    ) => {
-      maybeNotify(title);
-      return originalInput.call(ui, title, placeholder, opts);
-    };
-    const wrappedEditor: ExtensionUIContext["editor"] = (title, prefill) => {
-      maybeNotify(title);
-      return originalEditor.call(ui, title, prefill);
-    };
-
-    ui.select = wrappedSelect;
-    ui.confirm = wrappedConfirm;
-    ui.input = wrappedInput;
-    ui.editor = wrappedEditor;
-
-    restoreDialogHooks = () => {
-      ui.select = originalSelect;
-      ui.confirm = originalConfirm;
-      ui.input = originalInput;
-      ui.editor = originalEditor;
-      restoreDialogHooks = undefined;
-    };
-  };
-
   pi.on("session_start", (_event, ctx) => {
     enabled = ctx.mode === "tui";
-    if (enabled) hookAgentDialogs(ctx);
+  });
+
+  pi.on("ui_prompt_start", (event, ctx) => {
+    // Prompts opened from an idle slash command already have the user's
+    // attention. Notify only when an active TUI agent blocks on human input.
+    if (ctx.mode !== "tui" || ctx.isIdle()) return;
+
+    if (event.title && isApprovalPrompt(event.title)) {
+      notify("pi: approval needed");
+    } else if (event.kind === "custom" && !event.title) {
+      notify("pi: question waiting");
+    } else {
+      notify("pi: input needed");
+    }
   });
 
   pi.on("agent_settled", (_event, ctx) => {
@@ -132,13 +76,6 @@ export default function osc9Notify(pi: ExtensionAPI): void {
   });
 
   pi.on("session_shutdown", () => {
-    restoreDialogHooks?.();
     enabled = false;
-  });
-
-  // The questionnaire uses custom TUI rather than the dialog methods wrapped
-  // above, so consume its stable public event as well.
-  pi.events.on(ASK_USER_PROMPT_EVENT, () => {
-    notify("pi: question waiting");
   });
 }
