@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   config.programs.git = {
     enable = true;
@@ -37,8 +37,10 @@
               .aider.*
             '';
           in
-          builtins.toString file;
+          toString file;
       };
+
+      gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
     };
   };
 }
