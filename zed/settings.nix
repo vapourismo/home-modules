@@ -1,4 +1,42 @@
 {
+  global_lsp_settings = {
+    semantic_token_rules = [
+      {
+        token_type = "function";
+      }
+      {
+        token_type = "method";
+      }
+      {
+        token_type = "parameter";
+        style = [ "variable" ];
+      }
+      {
+        token_type = "typeParameter";
+        style = [ "variable.parameter" ];
+      }
+      {
+        token_type = "interface";
+        style = [ "constant" ];
+      }
+    ];
+  };
+  format_on_save = "on";
+  modeline_lines = 5;
+  code_lens = "menu";
+  vim = {
+    show_edit_predictions_in_normal_mode = true;
+    use_smartcase_find = true;
+  };
+  minimap = {
+    show = "never";
+  };
+  inline_code_actions = true;
+  buffer_font_weight = 400.0;
+  soft_wrap = "none";
+  disable_ai = false;
+  selection_highlight = true;
+  cli_default_open_behavior = "existing_window";
   completion_menu_item_kind = "symbol";
   document_symbols = "off";
   document_folding_ranges = "on";
@@ -62,6 +100,11 @@
   };
   gutter = {
     min_line_number_digits = 1;
+    git_gutter_width = "default";
+    runnables = false;
+    breakpoints = true;
+    bookmarks = true;
+    folds = true;
     line_numbers = true;
   };
   lsp_document_colors = "inlay";
@@ -69,7 +112,6 @@
     words_min_length = 2;
     words = "fallback";
   };
-  relative_line_numbers = "disabled";
   hover_popover_enabled = false;
   diagnostics = {
     inline = {
@@ -87,6 +129,9 @@
     height = 20;
   };
   terminal = {
+    font_weight = 400.0;
+    show_count_badge = false;
+    flexible = true;
     option_as_meta = true;
     shell = "system";
     dock = "bottom";
@@ -138,16 +183,27 @@
     };
   };
   inlay_hints = {
+    show_other_hints = true;
+    show_parameter_hints = true;
+    show_type_hints = false;
+    show_value_hints = true;
     show_background = true;
-    enabled = false;
+    enabled = true;
   };
   indent_guides = {
+    active_line_width = 1;
+    enabled = true;
     background_coloring = "disabled";
     coloring = "fixed";
     line_width = 1;
   };
   preferred_line_length = 100;
   scrollbar = {
+    axes = {
+      vertical = false;
+      horizontal = false;
+    };
+    cursors = true;
     show = "never";
   };
   sticky_scroll = {
@@ -203,7 +259,7 @@
   vim_mode = true;
   buffer_font_size = 13.0;
   load_direnv = "direct";
-  vertical_scroll_margin = 15;
+  vertical_scroll_margin = 10;
   wrap_guides = [
     100
     120
