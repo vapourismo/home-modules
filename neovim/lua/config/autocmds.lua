@@ -88,25 +88,6 @@ vim.api.nvim_create_autocmd({ "DirChanged" }, {
     end
 })
 
--- Reload buffers if they have changed on disk
-vim.api.nvim_create_autocmd({ "FocusGained" }, {
-    callback = function()
-        if vim.fn.mode() ~= "c" then
-            vim.cmd("checktime")
-        end
-    end,
-    pattern = "*",
-})
-
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    callback = function(event)
-        if vim.fn.mode() ~= "c" then
-            vim.cmd.checktime({ args = { tostring(event.buf) } })
-        end
-    end,
-    pattern = "*",
-})
-
 -- Go to the previous tab in case a tabpage is closed
 vim.api.nvim_create_autocmd({ "TabClosed" }, {
     callback = function(event)
