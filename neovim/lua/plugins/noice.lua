@@ -2,6 +2,7 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
+        throttle  = 1000 / 10,
         popupmenu = {
             backend = "cmp"
         },
