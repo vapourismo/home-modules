@@ -1,7 +1,8 @@
 {
-    "network": {
-        "allowedDomains": [
-            "registry.npmjs.org"
-        ]
-    }
+  "network": {
+    "allowedDomains": ["registry.npmjs.org"]
+  },
+  "filesystem": {
+    "allowRead": ["~/.config"]
+  }
 }
