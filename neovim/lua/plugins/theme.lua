@@ -102,6 +102,11 @@ return {
                     StatusModeVisual = { fg = colors.base, bg = colors.mauve },
                     StatusModeVisualBlock = { link = "StatusModeVisual" },
                     StatusModeVisualLine = { link = "StatusModeVisual" },
+                    ["@function.builtin"] = { link = "@lsp.type.function" },
+                    ["@lsp.type.parameter"] = { link = "@lsp.type.variable" },
+                    ["@lsp.type.typeAlias"] = { link = "@lsp.type.type" },
+                    ["@lsp.type.interface"] = { fg = colors.flamingo },
+                    ["@lsp.type.namespace"] = { fg = colors.rosewater },
                 }
             end
         },
