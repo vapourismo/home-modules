@@ -7,21 +7,26 @@
       {
         token_type = "method";
       }
-      {
-        token_type = "parameter";
-        style = [ "variable" ];
-      }
-      {
-        token_type = "typeParameter";
-        style = [ "variable.parameter" ];
-      }
-      {
-        token_type = "interface";
-        style = [ "constant" ];
-      }
     ];
   };
+  theme_overrides = {
+    "Catppuccin Mocha - No Italics" = {
+      syntax = {
+        "variable.parameter" = {
+          color = "#cdd6f4";
+        };
+        "type.interface" = {
+          color = "#fab387";
+        };
+      };
+    };
+  };
   format_on_save = "on";
+  languages = {
+    JSON = {
+      format_on_save = "off";
+    };
+  };
   modeline_lines = 5;
   code_lens = "menu";
   vim = {
@@ -77,6 +82,8 @@
     tree_view = true;
   };
   agent = {
+    sidebar_side = "right";
+    show_merge_conflict_indicator = false;
     use_modifier_to_send = true;
     enable_feedback = false;
     dock = "right";
