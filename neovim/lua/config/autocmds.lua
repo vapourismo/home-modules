@@ -84,7 +84,10 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 vim.api.nvim_create_autocmd({ "DirChanged" }, {
     pattern = { "global", "window", "tabpage" },
     callback = function()
-        vim.cmd("DirenvLoad")
+        -- If a previous an environment was already loaded, do nothing.
+        if vim.g.direnv_id == nil then
+            vim.cmd("DirenvLoad")
+        end
     end
 })
 

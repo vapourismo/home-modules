@@ -40,6 +40,7 @@ vim.api.nvim_create_user_command("DirenvLoad", function()
                 vim.env[key] = value
             end
 
+            vim.g.direnv_id = id
             notify("Loaded direnv variables", vim.log.levels.INFO)
         end)
     )
