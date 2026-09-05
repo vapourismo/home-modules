@@ -4,7 +4,9 @@
     "strictAllowlist": true,
     "allowLocalBinding": false,
     "allowAllUnixSockets": false,
-    "allowUnixSockets": ["/private/var/run/nix-daemon.socket"],
+    "allowUnixSockets": [
+      "/private/var/run/nix-daemon.socket"
+    ],
     "allowMachLookup": [
       "com.apple.SystemConfiguration.DNSConfiguration",
       "com.apple.SystemConfiguration.configd"
@@ -16,10 +18,15 @@
       "cache.nixos.org",
       "127.0.0.1:4226"
     ],
-    "deniedDomains": ["*.flakehub.com"]
+    "deniedDomains": [
+      "*.flakehub.com"
+    ]
   },
   "filesystem": {
-    "denyRead": ["/var/log", "/Users"],
+    "denyRead": [
+      "/var/log",
+      "/Users"
+    ],
     "allowRead": [
       ".",
       "~/.cache/nix",
@@ -33,6 +40,7 @@
       "~/.local/state",
       "~/.ignore",
       "~/.nix-profile",
+      "~/.nix-defexpr",
       "~/Workspaces",
       "~/Library/Caches/kache",
       "~/Library/Caches/Mozilla.sccache",
@@ -61,6 +69,9 @@
     ]
   },
   "ignoreViolations": {
-    "*": ["deny(1) sysctl-read kern.iossupportversion", "deny(1) sysctl-read hw.usermem"]
+    "*": [
+      "deny(1) sysctl-read kern.iossupportversion",
+      "deny(1) sysctl-read hw.usermem"
+    ]
   }
 }
