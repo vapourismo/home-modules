@@ -37,6 +37,9 @@ vim.opt.foldlevelstart   = 99
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Allow editing right in Neovim
+vim.env.EDITOR           = "nvr --remote-tab-wait"
+
 -- Neovide
 if vim.g.neovide then
     function set_font(scale)
@@ -61,6 +64,4 @@ if vim.g.neovide then
     vim.g.neovide_progress_bar_height = 2.0
     vim.g.neovide_progress_bar_animation_speed = 99999
     vim.g.neovide_progress_bar_hide_delay = 0
-
-    vim.env.EDITOR = "nvr --remote-tab-wait"
 end

@@ -25,6 +25,7 @@
 
   home.shell = {
     enableShellIntegration = true;
+    enableFishIntegration = config.programs.fish.enable;
   };
 
   home.shellAliases = {

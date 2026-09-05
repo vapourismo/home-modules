@@ -36,6 +36,7 @@
         codex = import ./codex.nix;
         oyui = import ./oyui.nix;
         pi = import ./pi.nix;
+        ghostty = import ./ghostty.nix;
       };
 
       homeConfigurations = {
@@ -59,6 +60,7 @@
             self.homeModules.codex
             self.homeModules.oyui
             self.homeModules.pi
+            self.homeModules.ghostty
 
             {
               home = {

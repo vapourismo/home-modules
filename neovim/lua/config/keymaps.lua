@@ -4,18 +4,15 @@ local function map_nvti(key, mapping)
     vim.keymap.set({ "t", "i" }, key, "<C-\\><C-N>" .. mapping, { remap = false })
 end
 
--- Are we in Neovide?
-local neovide_leader_modified = vim.g.neovide and "D" or "M"
-
 -- Window motions
-map_nvti("<" .. neovide_leader_modified .. "-l>", "<C-w>l")
-map_nvti("<" .. neovide_leader_modified .. "-j>", "<C-w>j")
-map_nvti("<" .. neovide_leader_modified .. "-k>", "<C-w>k")
-map_nvti("<" .. neovide_leader_modified .. "-h>", "<C-w>h")
-map_nvti("<" .. neovide_leader_modified .. "-L>", "<cmd>vertical resize +1<cr>")
-map_nvti("<" .. neovide_leader_modified .. "-J>", "<cmd>resize +1<cr>")
-map_nvti("<" .. neovide_leader_modified .. "-K>", "<cmd>resize -1<cr>")
-map_nvti("<" .. neovide_leader_modified .. "-H>", "<cmd>vertical resize -1<cr>")
+map_nvti("<D-l>", "<C-w>l")
+map_nvti("<D-j>", "<C-w>j")
+map_nvti("<D-k>", "<C-w>k")
+map_nvti("<D-h>", "<C-w>h")
+map_nvti("<D-L>", "<cmd>vertical resize +1<cr>")
+map_nvti("<D-J>", "<cmd>resize +1<cr>")
+map_nvti("<D-K>", "<cmd>resize -1<cr>")
+map_nvti("<D-H>", "<cmd>vertical resize -1<cr>")
 
 -- Prevent terminal from sending escape sequence for some combinations
 vim.keymap.set("t", "<S-Space>", "<Space>")
