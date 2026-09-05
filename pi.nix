@@ -45,8 +45,8 @@ in
     settings = {
       theme = "dark/dark";
       defaultProvider = "openai-codex";
-      defaultModel = "gpt-5.6-sol";
-      defaultThinkingLevel = "xhigh";
+      defaultModel = "gpt-6-astra";
+      defaultThinkingLevel = "high";
       packages = [
         "${sandboxRuntimeExtension}"
         "npm:pi-web-access"
