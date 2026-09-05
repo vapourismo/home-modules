@@ -1,0 +1,116 @@
+diff --git a/src/sandbox/mux-proxy.ts b/src/sandbox/mux-proxy.ts
+index ab1f328..2564ac6 100644
+--- a/src/sandbox/mux-proxy.ts
++++ b/src/sandbox/mux-proxy.ts
+@@ -2,7 +2,7 @@ import { createServer, connect, type Server, type Socket } from 'node:net'
+ import type { Server as HttpServer } from 'node:http'
+ import { join } from 'node:path'
+ import { tmpdir } from 'node:os'
+-import { unlink } from 'node:fs/promises'
++import { mkdtemp, rmdir, unlink } from 'node:fs/promises'
+ import { logForDebugging } from '../utils/debug.js'
+ import { getPlatform } from '../utils/platform.js'
+ import { listenInRange } from './listen-in-range.js'
+@@ -65,14 +65,36 @@ export interface MuxProxyServer {
+ }
+ 
+ const DEFAULT_FIRST_BYTE_TIMEOUT_MS = 10_000
++const MAX_UNIX_SOCKET_PATH_BYTES = 103
++const SHORT_TMPDIR = '/tmp'
++
++interface UnixSocketEndpoint {
++  path: string
++  directory?: string
++}
+ 
+ let backendSeq = 0
+-function unixSocketPath(): string {
+-  // Keep it short — macOS sun_path is 104 bytes.
+-  return join(
+-    tmpdir(),
+-    `srt-mux-${process.pid}-${(backendSeq++).toString(36)}.sock`,
+-  )
++async function unixSocketEndpoint(): Promise<UnixSocketEndpoint> {
++  const socketName =
++    `srt-mux-${process.pid}-${(backendSeq++).toString(36)}.sock`
++  const preferredPath = join(tmpdir(), socketName)
++  // macOS sockaddr_un.sun_path is 104 bytes including the trailing NUL. Nix
++  // shells can make TMPDIR too long even though the socket basename is short.
++  if (Buffer.byteLength(preferredPath) <= MAX_UNIX_SOCKET_PATH_BYTES) {
++    return { path: preferredPath }
++  }
++
++  // Use a private, unpredictable directory rather than placing a predictable
++  // socket directly in the shared /tmp directory.
++  const directory = await mkdtemp(join(SHORT_TMPDIR, 'srt-mux-'))
++  return { path: join(directory, 'http.sock'), directory }
++}
++
++async function removeUnixSocketEndpoint(
++  endpoint: UnixSocketEndpoint,
++): Promise<void> {
++  await unlink(endpoint.path).catch(() => {})
++  if (endpoint.directory) await rmdir(endpoint.directory).catch(() => {})
+ }
+ 
+ /**
+@@ -94,6 +116,7 @@ export function createMuxProxyServer(opts: MuxProxyOptions): MuxProxyServer {
+   // Where the HTTP backend listens. Exactly one of these is set after
+   // listenHttpBackend() resolves.
+   let backendSocketPath: string | undefined
++  let backendSocketDirectory: string | undefined
+   let backendTcpPort: number | undefined
+ 
+   // Track every accepted client socket so close() can tear them down
+@@ -176,19 +199,25 @@ export function createMuxProxyServer(opts: MuxProxyOptions): MuxProxyServer {
+     },
+     async listenHttpBackend(): Promise<number | undefined> {
+       if (!isWindows) {
+-        const path = unixSocketPath()
+-        // A prior process with the same PID may have crashed without
+-        // unlinking; clear any stale file so listen() doesn't EADDRINUSE.
+-        await unlink(path).catch(() => {})
+-        await new Promise<void>((resolve, reject) => {
+-          opts.httpServer.once('error', reject)
+-          opts.httpServer.listen(path, () => {
+-            opts.httpServer.removeListener('error', reject)
+-            resolve()
++        const endpoint = await unixSocketEndpoint()
++        try {
++          // A prior process with the same PID may have crashed without
++          // unlinking; clear any stale file so listen() doesn't EADDRINUSE.
++          await unlink(endpoint.path).catch(() => {})
++          await new Promise<void>((resolve, reject) => {
++            opts.httpServer.once('error', reject)
++            opts.httpServer.listen(endpoint.path, () => {
++              opts.httpServer.removeListener('error', reject)
++              resolve()
++            })
+           })
+-        })
+-        backendSocketPath = path
+-        logForDebugging(`mux: HTTP backend listening on ${path}`)
++        } catch (error) {
++          await removeUnixSocketEndpoint(endpoint)
++          throw error
++        }
++        backendSocketPath = endpoint.path
++        backendSocketDirectory = endpoint.directory
++        logForDebugging(`mux: HTTP backend listening on ${endpoint.path}`)
+         return undefined
+       }
+       // Windows: AF_UNIX support under Bun is unverified, so the backend
+@@ -218,8 +247,12 @@ export function createMuxProxyServer(opts: MuxProxyOptions): MuxProxyServer {
+       // for closeAllConnections() semantics; double-close is a no-op.
+       await new Promise<void>(resolve => opts.httpServer.close(() => resolve()))
+       if (backendSocketPath) {
+-        await unlink(backendSocketPath).catch(() => {})
++        await removeUnixSocketEndpoint({
++          path: backendSocketPath,
++          directory: backendSocketDirectory,
++        })
+         backendSocketPath = undefined
++        backendSocketDirectory = undefined
+       }
+       backendTcpPort = undefined
+     },

@@ -4,7 +4,7 @@ let
     pname = "pi-anthropic-sandbox-runtime";
     version = "0.0.0";
     src = pkgs.nix-gitignore.gitignoreSource [ ] ./pi/sandbox-runtime;
-    npmDepsHash = "sha256-PncsrB3FMLtVxfcsI+7XlTpIFZ0uER56e9RA6RjnLkY=";
+    npmDepsHash = "sha256-Sne3S8SKv+YRdl8JRenmp7WWniPNx3C/PvLzHM9Pqco=";
     makeCacheWritable = true;
     npmBuildScript = "build";
     doCheck = true;

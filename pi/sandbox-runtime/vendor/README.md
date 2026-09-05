@@ -3,7 +3,7 @@
 `anthropic-ai-sandbox-runtime-0.0.75.tgz` is based on
 `anthropic-experimental/sandbox-runtime` commit
 `40804af269e1616092e9971de12a1f358f58eba9` (package version `0.0.75`). It has
-four local source patches.
+five local source patches.
 
 `allow-af-route.patch` adds this Seatbelt rule to every generated macOS profile:
 
@@ -21,6 +21,12 @@ are paired with absolute recursive globs for dangerous files and directories.
 Directory globs omit a trailing `/**` so the existing deny-subtree filter covers
 both the directory vnode and its contents. `.git/hooks` remains unconditional;
 `.git/config` is omitted only when `filesystem.allowGitConfig` is true.
+
+`short-mux-socket-path.patch` keeps the private HTTP backend's Unix socket below
+macOS's 104-byte `sun_path` limit when a Nix shell gives the Pi process a deeply
+nested `TMPDIR`. It falls back to `http.sock` in a private, unpredictable
+`/tmp/srt-mux-*` directory and removes that directory when the proxy closes or
+fails to listen.
 
 `deny-global-posix-ipc.patch` removes the built-in `ipc-posix-shm` and
 `ipc-posix-sem` grants, the `distributed-notification-post` grant, and Mach
@@ -69,6 +75,8 @@ jj new 40804af269e1616092e9971de12a1f358f58eba9
 patch -p1 < "$repo_root/pi/sandbox-runtime/vendor/allow-af-route.patch"
 patch -p1 < \
   "$repo_root/pi/sandbox-runtime/vendor/dangerous-file-denials.patch"
+patch -p1 < \
+  "$repo_root/pi/sandbox-runtime/vendor/short-mux-socket-path.patch"
 patch -p1 < \
   "$repo_root/pi/sandbox-runtime/vendor/deny-global-posix-ipc.patch"
 patch -p1 < \
