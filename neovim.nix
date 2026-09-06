@@ -33,7 +33,7 @@
   };
 
   programs.neovide = lib.optionalAttrs pkgs.stdenv.isDarwin {
-    enable = true;
+    enable = false;
     package = specialArgs.inputs.neovide.packages.${pkgs.stdenv.hostPlatform.system}.default;
     settings = {
       system-new-window-hotkey = "";
