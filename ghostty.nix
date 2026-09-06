@@ -13,7 +13,6 @@
       macos-option-as-alt = "left";
       quit-after-last-window-closed = true;
       confirm-close-surface = false;
-      command = "~/.nix-profile/bin/fish -c nvim";
       auto-update = "check";
       keybind = [
         "cmd+q=close_surface"
