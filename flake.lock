@@ -115,6 +115,23 @@
         "type": "github"
       }
     },
+    "neovim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788629774,
+        "narHash": "sha256-tlG5NItgyRvtGnQuXRhEHyLdGEf1vbgaSxowUtEgoCc=",
+        "owner": "neovim",
+        "repo": "neovim",
+        "rev": "050fa30632e3eb540b0fc9be9343580bdecea2f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neovim",
+        "ref": "nightly",
+        "repo": "neovim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1786348146,
@@ -169,6 +186,7 @@
         "home-manager": "home-manager",
         "jujutsu": "jujutsu",
         "neovide": "neovide",
+        "neovim": "neovim",
         "nixpkgs": "nixpkgs_3"
       }
     },

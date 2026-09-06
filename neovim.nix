@@ -5,6 +5,15 @@
   ...
 }:
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs {
+        version = "0.13.0-dev";
+        src = specialArgs.inputs.neovim;
+      };
+    })
+  ];
+
   programs.neovim = {
     enable = true;
     viAlias = true;

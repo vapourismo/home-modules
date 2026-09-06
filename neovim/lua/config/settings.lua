@@ -1,7 +1,7 @@
 -- Options
 vim.opt.compatible       = false
 vim.opt.guicursor        = "n-sm-v-ve:block,c-ci-i:ver25,cr-r-o:hor20"
-vim.opt.colorcolumn      = { 100, 120 }
+vim.opt.textwidth        = 100
 vim.opt.wrap             = false
 vim.opt.cursorline       = true
 vim.opt.sessionoptions   = { "curdir", "folds", "blank", "winsize", "winpos" }

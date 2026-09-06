@@ -8,6 +8,10 @@
     jujutsu.url = "github:jj-vcs/jj/v0.45.1";
     flake-utils.url = "github:numtide/flake-utils";
     neovide.url = "github:vapourismo/neovide";
+    neovim = {
+      url = "github:neovim/neovim/nightly";
+      flake = false;
+    };
   };
 
   outputs =
