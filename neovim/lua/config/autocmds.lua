@@ -41,19 +41,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end,
 })
 
--- Remote control server
-vim.api.nvim_create_autocmd({ "UIEnter" }, {
-    callback = function()
-        vim.fn.serverstart("/tmp/nvimsocket")
-    end,
-})
-
-vim.api.nvim_create_autocmd({ "VimLeave" }, {
-    callback = function()
-        vim.fn.serverstop("/tmp/nvimsocket")
-    end,
-})
-
 -- Active window
 vim.api.nvim_create_autocmd({ "WinEnter" }, {
     callback = function()
