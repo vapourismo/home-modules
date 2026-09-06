@@ -91,7 +91,7 @@ return {
             mode = { "n", "v", "i", "t" }
         },
         {
-            "<D->>",
+            "<D-S-.>",
             function()
                 require("terminals").send({ position = "right" })
             end,
