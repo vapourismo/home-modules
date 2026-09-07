@@ -17,6 +17,10 @@
       keybind = [
         "cmd+q=close_surface"
         "cmd+shift+,=reload_config"
+        "cmd+shift+n=new_window"
+        "cmd+shift+w=close_window"
+        "alt+tab=goto_window:next"
+        "alt+shift+tab=goto_window:previous"
       ];
     };
   };
