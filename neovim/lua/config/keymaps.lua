@@ -90,6 +90,7 @@ vim.keymap.set("", "U", "<C-r>")
 vim.keymap.set("", "bj", "<cmd>bprev<cr>")
 vim.keymap.set("", "bk", "<cmd>bnext<cr>")
 vim.keymap.set("", "bq", function() Snacks.bufdelete() end)
+vim.keymap.set({ "n", "i", "v" }, "<D-w>", function() Snacks.bufdelete() end)
 vim.keymap.set("", "bQ", function() Snacks.bufdelete.all() end)
 vim.keymap.set("", "bn", "<cmd>enew<cr>")
 
