@@ -14,6 +14,7 @@
       quit-after-last-window-closed = true;
       confirm-close-surface = false;
       auto-update = "check";
+      mouse-hide-while-typing = true;
       keybind = [
         "cmd+q=close_surface"
         "cmd+shift+,=reload_config"
