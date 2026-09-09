@@ -12,6 +12,7 @@
       adjust-cursor-thickness = 2;
       macos-option-as-alt = "left";
       quit-after-last-window-closed = true;
+      window-inherit-working-directory = false;
       confirm-close-surface = false;
       auto-update = "check";
       mouse-hide-while-typing = true;
