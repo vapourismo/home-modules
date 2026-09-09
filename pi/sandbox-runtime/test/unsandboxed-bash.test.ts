@@ -468,7 +468,7 @@ test("approval details contain a full safe command identity and prefixed fields"
   assert.ok(!details.rpcTitle.includes(String.fromCharCode(0xd800)));
 });
 
-test("unsandboxed_bash has Bash-compatible parameters and fallback-only guidance", async () => {
+test("unsandboxed_bash has Bash-compatible parameters and reviewable fallback-only guidance", async () => {
   const ctx = createContext(
     process.cwd(),
     "tui",
@@ -492,6 +492,27 @@ test("unsandboxed_bash has Bash-compatible parameters and fallback-only guidance
   assert.match(guidance, /only after sandboxed bash fails/i);
   assert.match(guidance, /sandbox runtime|sandbox restrictions/i);
   assert.match(guidance, /explicit user confirmation/i);
+  assert.match(tool.description, /prefer one simple, easily reviewed command per invocation/i);
+  assert.match(tool.promptSnippet ?? "", /prefer simple individual commands/i);
+
+  const guidelines = tool.promptGuidelines ?? [];
+  const expectedGuidance = [
+    /only after sandboxed bash fails.*never use unsandboxed_bash as the first choice/i,
+    /one narrowly scoped operation per unsandboxed_bash call.*readability matters more than minimizing approval prompts/i,
+    /split independent operations into separate unsandboxed_bash calls.*inspect each result before requesting the next/i,
+    /avoid dense command chains, long pipelines, loops, heredocs, and large inline scripts.*when simpler individual commands suffice/i,
+    /escalate only the operation blocked by Sandbox Runtime to unsandboxed_bash.*keep preparation, inspection, and follow-up work sandboxed wherever possible/i,
+    /do not hide a dense unsandboxed_bash command.*generated script, encoded payload, or interpreter wrapper.*merely to make the approval request look short/i,
+  ];
+  for (const expected of expectedGuidance) {
+    assert.ok(
+      guidelines.some((guideline) => expected.test(guideline)),
+      `Missing unsandboxed_bash guideline matching ${expected}`,
+    );
+  }
+  for (const guideline of guidelines) {
+    assert.match(guideline, /\bunsandboxed_bash\b/);
+  }
 });
 
 test("TUI starts on Cancel; only navigating to Run unsandboxed executes", async (t) => {

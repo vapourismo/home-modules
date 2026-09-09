@@ -355,12 +355,17 @@ export default function sandboxRuntimeExtension(pi: ExtensionAPI) {
     name: "unsandboxed_bash",
     label: "bash (unsandboxed)",
     description:
-      "Execute a local Bash command without Sandbox Runtime protections. Use this fallback only after sandboxed bash fails because of sandbox restrictions. Every invocation requires explicit user confirmation.",
+      "Execute a local Bash command without Sandbox Runtime protections. Use this fallback only after sandboxed bash fails because of sandbox restrictions. Every invocation requires explicit user confirmation. Prefer one simple, easily reviewed command per invocation.",
     executionMode: "sequential",
     promptSnippet:
-      "Run Bash without Sandbox Runtime only after sandboxed bash fails because of sandbox restrictions",
+      "Run Bash without Sandbox Runtime only after sandboxed bash fails because of sandbox restrictions; prefer simple individual commands",
     promptGuidelines: [
       "Use unsandboxed_bash only after sandboxed bash fails because Sandbox Runtime restrictions blocked the command; never use unsandboxed_bash as the first choice.",
+      "Prefer one narrowly scoped operation per unsandboxed_bash call; readability matters more than minimizing approval prompts.",
+      "Split independent operations into separate unsandboxed_bash calls and inspect each result before requesting the next.",
+      "Avoid dense command chains, long pipelines, loops, heredocs, and large inline scripts in unsandboxed_bash when simpler individual commands suffice.",
+      "Escalate only the operation blocked by Sandbox Runtime to unsandboxed_bash; keep preparation, inspection, and follow-up work sandboxed wherever possible.",
+      "Do not hide a dense unsandboxed_bash command inside a generated script, encoded payload, or interpreter wrapper merely to make the approval request look short.",
     ],
     renderCall(args, theme, context) {
       const state = context.state;

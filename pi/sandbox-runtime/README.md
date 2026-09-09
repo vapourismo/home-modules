@@ -59,6 +59,25 @@ tool and remains available regardless of whether Sandbox Runtime is active,
 disabled, or unavailable. Pi's normal `--tools` and `--exclude-tools`
 filtering still applies.
 
+Prefer one simple, easily reviewed command and one narrowly scoped operation per
+`unsandboxed_bash` call. Readability matters more than minimizing approval prompts:
+split independent operations into separate calls and inspect each result before
+requesting the next. Avoid dense command chains, long pipelines, loops, heredocs,
+and large inline scripts when simpler individual commands suffice. Do not hide a
+dense command inside a generated script, encoded payload, or interpreter wrapper
+merely to make the approval request look short.
+
+Escalate only the operation blocked by Sandbox Runtime; keep preparation,
+inspection, and follow-up work sandboxed wherever possible. For example, if
+sandboxed dependency installation fails because network access is blocked, request
+only `npm ci` with `unsandboxed_bash`. Then attempt verification separately with
+sandboxed `bash` using `npm run check`, rather than escalating
+`npm ci && npm run check` together.
+
+This is guidance, not a command-syntax restriction: necessary working-directory
+setup and legitimate existing program or script entry points remain supported.
+Commands are not automatically split or rejected for complexity.
+
 Every `unsandboxed_bash` invocation requires a fresh explicit confirmation.
 The approval inspector warns that Sandbox Runtime protections will not apply and
 shows the command's exact UTF-8 byte length and SHA-256 digest. It also retains
