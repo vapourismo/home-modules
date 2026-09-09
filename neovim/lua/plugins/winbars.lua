@@ -5,8 +5,8 @@ return {
         separator = "  ",
         absolute_prefix = " ",
         context = {
-            path_separator = " 󰅂 ",
-            separator = " 󰅂 ",
+            path_separator = " › ",
+            separator = " › ",
         },
         icons = {
             modified = " ",
