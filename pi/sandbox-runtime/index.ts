@@ -21,6 +21,7 @@ import {
   createWriteToolDefinition,
   getAgentDir,
   SettingsManager,
+  truncateHead,
 } from "@earendil-works/pi-coding-agent";
 import { createSandboxBashOperations } from "./src/bash.ts";
 import {
@@ -366,6 +367,7 @@ export default function sandboxRuntimeExtension(pi: ExtensionAPI) {
       "Avoid dense command chains, long pipelines, loops, heredocs, and large inline scripts in unsandboxed_bash when simpler individual commands suffice.",
       "Escalate only the operation blocked by Sandbox Runtime to unsandboxed_bash; keep preparation, inspection, and follow-up work sandboxed wherever possible.",
       "Do not hide a dense unsandboxed_bash command inside a generated script, encoded payload, or interpreter wrapper merely to make the approval request look short.",
+      "When unsandboxed_bash is rejected, account for any user rejection message when choosing the next approach rather than blindly repeating the denied request. Every subsequent unsandboxed_bash invocation still requires fresh approval.",
     ],
     renderCall(args, theme, context) {
       const state = context.state;
@@ -400,16 +402,24 @@ export default function sandboxRuntimeExtension(pi: ExtensionAPI) {
         );
       }
 
-      const approved = await requestUnsandboxedApproval(
+      const approval = await requestUnsandboxedApproval(
         ctx,
         params.command,
         cwd,
         signal,
       );
-      if (!approved)
-        throw new Error(
-          "Unsandboxed Bash execution was not approved by the user.",
-        );
+      if (!approval.approved) {
+        let rejection = "Unsandboxed Bash execution was not approved by the user.";
+        // Also discard feedback if abort raced with the helper's return.
+        if (approval.message && !signal?.aborted) {
+          const feedback = truncateHead(approval.message);
+          rejection += `\n\nUser rejection message:\n${feedback.content}`;
+          if (feedback.truncated) {
+            rejection += "\n\n[User rejection message truncated to 2,000 lines or 50 KiB; omitted feedback was not saved.]";
+          }
+        }
+        throw new Error(rejection);
+      }
       if (signal?.aborted)
         throw new Error("Unsandboxed Bash execution was cancelled.");
 

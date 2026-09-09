@@ -95,10 +95,31 @@ unambiguous from actual control characters.
 
 Approval is never cached and is denial-first. The TUI initially selects
 `Cancel`; Escape, dialog cancellation, or signal abort denies execution. RPC
-clients receive options in the exact order `Cancel`, then `Run unsandboxed`, and
-only the exact `Run unsandboxed` response approves. Unknown responses, missing
-responses, cancellation, abort, JSON mode, print mode, and every other context
-without a supported dialog fail closed without starting the command.
+clients receive options in the exact order `Cancel`, `Run unsandboxed`, then
+`Cancel with message`, and only the exact `Run unsandboxed` selection approves.
+The TUI uses the same action order: arrows move to adjacent actions without
+wrapping, and Tab cycles. Unknown responses, missing responses, cancellation,
+abort, JSON mode, print mode, and every other context without a supported dialog
+fail closed without starting the command.
+
+`Cancel with message` closes the inspector and opens the standard text input,
+`Cancel unsandboxed Bash: message to agent`, in both TUI and RPC modes. RPC uses
+an existing `select` request followed by an `input` request; no protocol changes
+are required. Submitted feedback is trimmed at the edges, preserving internal
+whitespace and Unicode, and delivered under `User rejection message:` in the
+normal error tool result. Feedback is therefore persisted in the transcript and
+available to the next model request, without injecting an extra user message or
+stopping the agent. The agent should account for it when choosing another
+approach, rather than blindly repeating the denied request.
+
+Empty or whitespace-only input, Escape, missing or invalid responses, and input
+failures cancel without a message. The feedback path never reopens approval or
+runs the command, even if the feedback says `Run unsandboxed`. Abort before,
+during, or immediately after input discards feedback and denies execution.
+Feedback in the error is bounded by Pi's standard 2,000-line/50-KiB truncation,
+with an explicit notice when truncated; no additional feedback file is created.
+Approvals remain sequential, including feedback collection, so sibling calls
+wait for the current dialog flow to finish and each requires its own approval.
 
 Approving a command bypasses **all** Sandbox Runtime filesystem and network
 protections for that command. After approval, execution otherwise uses Pi's

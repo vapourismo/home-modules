@@ -15,6 +15,17 @@ import {
 
 export const UNSANDBOXED_CANCEL = "Cancel";
 export const UNSANDBOXED_RUN = "Run unsandboxed";
+export const UNSANDBOXED_CANCEL_WITH_MESSAGE = "Cancel with message";
+
+const APPROVAL_ACTIONS = [
+  UNSANDBOXED_CANCEL,
+  UNSANDBOXED_RUN,
+  UNSANDBOXED_CANCEL_WITH_MESSAGE,
+] as const;
+
+export type UnsandboxedApprovalResult =
+  | { approved: true }
+  | { approved: false; message?: string };
 
 const RPC_VALUE_CHUNK_WIDTH = 64;
 const COMMAND_LINE_PREFIX = "C> ";
@@ -34,10 +45,7 @@ type DetailLine =
   | { kind: "command"; text: string }
   | { kind: "cwd"; text: string };
 
-type ApprovalChoice =
-  | typeof UNSANDBOXED_CANCEL
-  | typeof UNSANDBOXED_RUN
-  | undefined;
+type ApprovalChoice = (typeof APPROVAL_ACTIONS)[number] | undefined;
 
 /**
  * Encode untrusted text into a reversible ASCII-only display form.
@@ -231,11 +239,7 @@ export class UnsandboxedApprovalComponent implements Component {
       return;
     }
     if (this.matches(data, "tui.select.confirm", Key.enter)) {
-      this.finish(
-        this.selectedAction === 1
-          ? UNSANDBOXED_RUN
-          : UNSANDBOXED_CANCEL,
-      );
+      this.finish(APPROVAL_ACTIONS[this.selectedAction]);
       return;
     }
     if (this.matches(data, "tui.select.pageUp", Key.pageUp)) {
@@ -254,7 +258,7 @@ export class UnsandboxedApprovalComponent implements Component {
       this.matches(data, "tui.select.up", Key.up) ||
       matchesKey(data, Key.left)
     ) {
-      this.selectedAction = 0;
+      this.selectedAction = Math.max(0, this.selectedAction - 1);
       this.tui.requestRender();
       return;
     }
@@ -262,12 +266,15 @@ export class UnsandboxedApprovalComponent implements Component {
       this.matches(data, "tui.select.down", Key.down) ||
       matchesKey(data, Key.right)
     ) {
-      this.selectedAction = 1;
+      this.selectedAction = Math.min(
+        APPROVAL_ACTIONS.length - 1,
+        this.selectedAction + 1,
+      );
       this.tui.requestRender();
       return;
     }
     if (matchesKey(data, Key.tab)) {
-      this.selectedAction = this.selectedAction === 0 ? 1 : 0;
+      this.selectedAction = (this.selectedAction + 1) % APPROVAL_ACTIONS.length;
       this.tui.requestRender();
     }
   }
@@ -358,13 +365,13 @@ export class UnsandboxedApprovalComponent implements Component {
         : this.theme.fg(index === 1 ? "warning" : "text", text);
     };
     const actionLines = wrapTrusted(
-      `Actions: ${action(0, UNSANDBOXED_CANCEL)}    ${action(1, UNSANDBOXED_RUN)}`,
+      `Actions: ${APPROVAL_ACTIONS.map((label, index) => action(index, label)).join("    ")}`,
       width,
     );
     const helpLines = wrapTrusted(
       this.theme.fg(
         "dim",
-        "Page Up/Down scroll | Up/Down choose | Enter select | Esc cancel",
+        "Page Up/Down scroll | Arrows/Tab choose | Enter select | Esc cancel",
       ),
       width,
     );
@@ -428,8 +435,8 @@ export async function requestUnsandboxedApproval(
   command: string,
   cwd: string,
   signal?: AbortSignal,
-): Promise<boolean> {
-  if (!ctx.hasUI || signal?.aborted) return false;
+): Promise<UnsandboxedApprovalResult> {
+  if (!ctx.hasUI || signal?.aborted) return { approved: false };
 
   const details = buildUnsandboxedApprovalDetails(command, cwd);
   let choice: string | undefined;
@@ -437,7 +444,7 @@ export async function requestUnsandboxedApproval(
     if (ctx.mode === "rpc") {
       choice = await ctx.ui.select(
         details.rpcTitle,
-        [UNSANDBOXED_CANCEL, UNSANDBOXED_RUN],
+        [...APPROVAL_ACTIONS],
         { signal },
       );
     } else if (ctx.mode === "tui") {
@@ -456,11 +463,28 @@ export async function requestUnsandboxedApproval(
         },
       );
     } else {
-      return false;
+      return { approved: false };
     }
   } catch {
-    return false;
+    return { approved: false };
   }
 
-  return choice === UNSANDBOXED_RUN && signal?.aborted !== true;
+  if (signal?.aborted) return { approved: false };
+  if (choice === UNSANDBOXED_RUN) return { approved: true };
+  if (choice !== UNSANDBOXED_CANCEL_WITH_MESSAGE) return { approved: false };
+
+  // The inspector has closed. This path can only reject, never approve or
+  // reopen approval, regardless of what the user types into the input dialog.
+  try {
+    const feedback = await ctx.ui.input(
+      "Cancel unsandboxed Bash: message to agent",
+      "Explain why or suggest a different approach",
+      { signal },
+    );
+    if (signal?.aborted || typeof feedback !== "string") return { approved: false };
+    const message = feedback.trim();
+    return message ? { approved: false, message } : { approved: false };
+  } catch {
+    return { approved: false };
+  }
 }

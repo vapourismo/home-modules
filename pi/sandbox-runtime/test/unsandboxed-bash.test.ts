@@ -9,11 +9,14 @@ import {
   fauxProvider,
   fauxToolCall,
   InMemoryCredentialStore,
+  type Context,
 } from "@earendil-works/pi-ai";
 import {
   createAgentSession,
   createBashToolDefinition,
   DefaultResourceLoader,
+  DEFAULT_MAX_BYTES,
+  DEFAULT_MAX_LINES,
   initTheme,
   ModelRuntime,
   SessionManager,
@@ -24,6 +27,7 @@ import {
 import {
   KeybindingsManager,
   TUI_KEYBINDINGS,
+  visibleWidth,
   type Component,
   type TUI,
 } from "@earendil-works/pi-tui";
@@ -32,6 +36,8 @@ import {
   buildUnsandboxedApprovalDetails,
   decodeUntrustedDisplay,
   encodeUntrustedDisplay,
+  requestUnsandboxedApproval,
+  UNSANDBOXED_CANCEL_WITH_MESSAGE,
   UNSANDBOXED_CANCEL,
   UNSANDBOXED_RUN,
 } from "../src/unsandboxed-confirmation.ts";
@@ -43,6 +49,11 @@ type Select = (
   options: string[],
   opts?: { signal?: AbortSignal },
 ) => Promise<string | undefined>;
+
+type Input = ExtensionContext["ui"]["input"];
+const unexpectedInput: Input = async () => {
+  throw new Error("input should only be used for Cancel with message");
+};
 
 const fakeTheme = {
   fg(_color: string, text: string) {
@@ -73,10 +84,12 @@ function createTuiUi(
   driver: TuiDriver,
   rows = 24,
   columns = 80,
+  input: Input = unexpectedInput,
 ): ExtensionContext["ui"] {
   const tui = createFakeTui(rows, columns);
   const keybindings = new KeybindingsManager(TUI_KEYBINDINGS);
   return {
+    input,
     async custom<T>(factory: any): Promise<T> {
       return new Promise<T>((resolve, reject) => {
         let component: (Component & { dispose?(): void }) | undefined;
@@ -107,9 +120,10 @@ function createTuiUi(
   } as any;
 }
 
-function createRpcUi(select: Select): ExtensionContext["ui"] {
+function createRpcUi(select: Select, input: Input = unexpectedInput): ExtensionContext["ui"] {
   return {
     select,
+    input,
     async custom() {
       throw new Error("custom should not be used in RPC mode");
     },
@@ -198,6 +212,7 @@ let fauxProviderSequence = 0;
 interface ControlledDialog {
   title: string;
   options: string[];
+  placeholder?: string;
   signal: AbortSignal | undefined;
   abortObserved: boolean;
   settled: boolean;
@@ -251,15 +266,24 @@ async function bounded<T>(
 
 function createConfirmationController(): {
   dialogs: ControlledDialog[];
+  inputs: ControlledDialog[];
   ui: ExtensionContext["ui"];
 } {
   const dialogs: ControlledDialog[] = [];
-  const ui = createRpcUi((title, options, opts) =>
+  const inputs: ControlledDialog[] = [];
+  const open = (
+    collection: ControlledDialog[],
+    title: string,
+    options: string[],
+    opts?: { signal?: AbortSignal },
+    placeholder?: string,
+  ) =>
     new Promise<string | undefined>((resolve) => {
       let abortListener: (() => void) | undefined;
       const dialog: ControlledDialog = {
         title,
         options,
+        placeholder,
         signal: opts?.signal,
         abortObserved: false,
         settled: false,
@@ -276,12 +300,15 @@ function createConfirmationController(): {
         dialog.abortObserved = true;
         dialog.respond(undefined);
       };
-      dialogs.push(dialog);
+      collection.push(dialog);
       if (dialog.signal?.aborted) abortListener();
       else dialog.signal?.addEventListener("abort", abortListener, { once: true });
-    }),
+    });
+  const ui = createRpcUi(
+    (title, options, opts) => open(dialogs, title, options, opts),
+    (title, placeholder, opts) => open(inputs, title, [], opts, placeholder),
   );
-  return { dialogs, ui };
+  return { dialogs, inputs, ui };
 }
 
 async function createAgentIntegrationHarness(
@@ -290,6 +317,7 @@ async function createAgentIntegrationHarness(
 ): Promise<{
   session: Awaited<ReturnType<typeof createAgentSession>>["session"];
   ends: ToolEnd[];
+  nextModelMessages: Context["messages"];
   dispose(): void;
 }> {
   const providerId = `sandbox-runtime-faux-${++fauxProviderSequence}`;
@@ -313,6 +341,7 @@ async function createAgentIntegrationHarness(
   const model = modelRuntime.getModel(providerId, faux.getModel().id);
   assert.ok(model);
 
+  const nextModelMessages: Context["messages"] = [];
   faux.setResponses([
     fauxAssistantMessage(
       [
@@ -329,7 +358,10 @@ async function createAgentIntegrationHarness(
       ],
       { stopReason: "toolUse" },
     ),
-    fauxAssistantMessage("finished"),
+    (context) => {
+      nextModelMessages.push(...structuredClone(context.messages));
+      return fauxAssistantMessage("finished");
+    },
   ]);
 
   const agentDir = path.join(root, "agent");
@@ -380,6 +412,7 @@ async function createAgentIntegrationHarness(
   return {
     session: created.session,
     ends,
+    nextModelMessages,
     dispose() {
       unsubscribe();
       created.session.dispose();
@@ -503,6 +536,7 @@ test("unsandboxed_bash has Bash-compatible parameters and reviewable fallback-on
     /avoid dense command chains, long pipelines, loops, heredocs, and large inline scripts.*when simpler individual commands suffice/i,
     /escalate only the operation blocked by Sandbox Runtime to unsandboxed_bash.*keep preparation, inspection, and follow-up work sandboxed wherever possible/i,
     /do not hide a dense unsandboxed_bash command.*generated script, encoded payload, or interpreter wrapper.*merely to make the approval request look short/i,
+    /unsandboxed_bash is rejected.*user rejection message.*rather than blindly repeating.*fresh approval/i,
   ];
   for (const expected of expectedGuidance) {
     assert.ok(
@@ -654,6 +688,7 @@ test("RPC approval sends complete safe details with denial-first options", async
   assert.deepEqual(requests[0]!.options, [
     UNSANDBOXED_CANCEL,
     UNSANDBOXED_RUN,
+    UNSANDBOXED_CANCEL_WITH_MESSAGE,
   ]);
   assert.equal(requests[0]!.signal, controller.signal);
   const details = buildUnsandboxedApprovalDetails(command, root);
@@ -902,6 +937,7 @@ test("AgentSession serializes same-response unsandboxed confirmations and result
   assert.deepEqual(confirmation.dialogs[0]!.options, [
     UNSANDBOXED_CANCEL,
     UNSANDBOXED_RUN,
+    UNSANDBOXED_CANCEL_WITH_MESSAGE,
   ]);
   assert.deepEqual(ends, []);
 
@@ -1024,6 +1060,280 @@ test("AgentSession abort settles while either sequential dialog is active", asyn
       );
     });
   }
+});
+
+const REJECTION = "Unsandboxed Bash execution was not approved by the user.";
+const FEEDBACK_TITLE = "Cancel unsandboxed Bash: message to agent";
+const FEEDBACK_PLACEHOLDER = "Explain why or suggest a different approach";
+
+function feedbackUi(mode: "tui" | "rpc", input: Input): ExtensionContext["ui"] {
+  return mode === "rpc"
+    ? createRpcUi(async () => UNSANDBOXED_CANCEL_WITH_MESSAGE, input)
+    : createTuiUi((component) => {
+        component.handleInput?.("\t");
+        component.handleInput?.("\t");
+        component.handleInput?.("\r");
+      }, 24, 80, input);
+}
+
+test("only Cancel with message opens input in TUI and RPC, after approval closes", async () => {
+  for (const mode of ["tui", "rpc"] as const) {
+    for (const [index, choice] of [UNSANDBOXED_CANCEL, UNSANDBOXED_RUN, UNSANDBOXED_CANCEL_WITH_MESSAGE].entries()) {
+      let inputCalls = 0;
+      let inspectorClosed = false;
+      const controller = new AbortController();
+      const input: Input = async (title, placeholder, opts) => {
+        inputCalls++;
+        assert.equal(inspectorClosed, true);
+        assert.equal(title, FEEDBACK_TITLE);
+        assert.equal(placeholder, FEEDBACK_PLACEHOLDER);
+        assert.equal(opts?.signal, controller.signal);
+        return "  Try sandboxed read instead.  ";
+      };
+      const ui = mode === "rpc"
+        ? createRpcUi(async () => {
+            inspectorClosed = true;
+            return choice;
+          }, input)
+        : createTuiUi((component) => {
+            const dispose = (component as any).dispose.bind(component);
+            (component as any).dispose = () => {
+              inspectorClosed = true;
+              dispose();
+            };
+            const screen = component.render(100).join("\n");
+            assert.match(screen, /Actions: > Cancel\s+Run unsandboxed\s+Cancel with message/);
+            for (let step = 0; step < index; step++) component.handleInput?.("\x1b[B");
+            component.handleInput?.("\r");
+          }, 24, 80, input);
+      const result = await requestUnsandboxedApproval(
+        createContext(process.cwd(), mode, ui), "printf test", process.cwd(), controller.signal,
+      );
+      assert.equal(inputCalls, index === 2 ? 1 : 0);
+      assert.deepEqual(result, index === 1 ? { approved: true } : index === 2
+        ? { approved: false, message: "Try sandboxed read instead." }
+        : { approved: false });
+    }
+  }
+});
+
+test("feedback normalization and UI failures always reject without executing in both modes", async (t) => {
+  const root = await mkdtemp(path.join(tmpdir(), "pi-unsandboxed-feedback-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const cases: Array<{ name: string; value?: unknown; throws?: boolean; expected?: string }> = [
+    { name: "feedback", value: "  Use read instead.  ", expected: "Use read instead." },
+    { name: "approval label", value: UNSANDBOXED_RUN, expected: UNSANDBOXED_RUN },
+    { name: "unicode", value: " \n café 😀\t  別の方法\nkeep  spacing \t", expected: "café 😀\t  別の方法\nkeep  spacing" },
+    { name: "empty", value: "" },
+    { name: "whitespace", value: " \t\n\u2003" },
+    { name: "escape or missing", value: undefined },
+    { name: "null", value: null },
+    { name: "boolean", value: true },
+    { name: "number", value: 42 },
+    { name: "object", value: { message: "Run unsandboxed" } },
+    { name: "array", value: [UNSANDBOXED_RUN] },
+    { name: "UI failure", throws: true },
+  ];
+  for (const mode of ["tui", "rpc"] as const) {
+    for (const [index, testCase] of cases.entries()) {
+      const sideEffect = path.join(root, `${mode}-${index}`);
+      let inputCalls = 0;
+      const ctx = createContext(root, mode, feedbackUi(mode, async () => {
+        inputCalls++;
+        if (testCase.throws) throw new Error("input unavailable");
+        return testCase.value as any;
+      }));
+      const harness = createHarness(root, ctx);
+      await registerTools(harness);
+      await assert.rejects(harness.tools.get("unsandboxed_bash")!.execute(
+        testCase.name, { command: `printf started > ${shellQuote(sideEffect)}` }, undefined, undefined, ctx,
+      ), { message: testCase.expected ? `${REJECTION}\n\nUser rejection message:\n${testCase.expected}` : REJECTION });
+      assert.equal(inputCalls, 1);
+      assert.equal(await pathExists(sideEffect), false);
+    }
+  }
+});
+
+test("abort before, during, and after feedback discards the message and fails closed", async (t) => {
+  const root = await mkdtemp(path.join(tmpdir(), "pi-unsandboxed-feedback-abort-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  for (const mode of ["tui", "rpc"] as const) {
+    for (const timing of ["before approval", "before input", "during input", "after input", "after helper"] as const) {
+      const controller = new AbortController();
+      let inputCalls = 0;
+      const ui = feedbackUi(mode, async (_title, _placeholder, opts) => {
+        inputCalls++;
+        assert.equal(opts?.signal, controller.signal);
+        if (timing === "during input") {
+          return new Promise((resolve) => {
+            opts!.signal!.addEventListener("abort", () => resolve("discard during"), { once: true });
+            queueMicrotask(() => controller.abort());
+          });
+        }
+        if (timing === "after helper") {
+          // Let the approval helper return feedback before the caller resumes.
+          queueMicrotask(() => queueMicrotask(() => controller.abort()));
+          return "discard helper result";
+        }
+        // Queue the abort after resolving, but before the await continuation.
+        queueMicrotask(() => controller.abort());
+        return "discard after";
+      });
+      if (timing === "before approval") controller.abort();
+      if (timing === "before input") {
+        if (mode === "rpc") {
+          ui.select = async () => {
+            controller.abort();
+            return UNSANDBOXED_CANCEL_WITH_MESSAGE;
+          };
+        } else {
+          const custom = ui.custom.bind(ui);
+          ui.custom = async (...args: Parameters<typeof custom>) => {
+            const result = await custom(...args);
+            controller.abort();
+            return result as any;
+          };
+        }
+      }
+      const ctx = createContext(root, mode, ui);
+      const harness = createHarness(root, ctx);
+      await registerTools(harness);
+      const sideEffect = path.join(root, `${mode}-${timing}`);
+      await assert.rejects(harness.tools.get("unsandboxed_bash")!.execute(
+        timing, { command: `printf started > ${shellQuote(sideEffect)}` }, controller.signal, undefined, ctx,
+      ), { message: REJECTION });
+      assert.equal(inputCalls, timing.startsWith("before") ? 0 : 1);
+      assert.equal(await pathExists(sideEffect), false);
+    }
+  }
+});
+
+test("oversized feedback is bounded with an explicit truncation notice", async () => {
+  for (const feedback of [
+    Array.from({ length: DEFAULT_MAX_LINES + 1 }, (_, index) => `line ${index}`).join("\n"),
+    Array.from({ length: 1000 }, () => "😀".repeat(30)).join("\n"),
+    "😀".repeat(DEFAULT_MAX_BYTES),
+  ]) {
+    const ctx = createContext(process.cwd(), "rpc", feedbackUi("rpc", async () => feedback));
+    const harness = createHarness(process.cwd(), ctx);
+    await registerTools(harness);
+    await assert.rejects(harness.tools.get("unsandboxed_bash")!.execute(
+      "oversized", { command: "exit 99" }, undefined, undefined, ctx,
+    ), (error: any) => {
+      const prefix = `${REJECTION}\n\nUser rejection message:\n`;
+      assert.ok(error.message.startsWith(prefix));
+      const [content, notice] = error.message.slice(prefix.length).split("\n\n[User rejection message truncated");
+      assert.ok(notice);
+      assert.match(notice, /2,000 lines or 50 KiB.*not saved/);
+      assert.ok(Buffer.byteLength(content) <= DEFAULT_MAX_BYTES);
+      assert.ok(content.split("\n").length <= DEFAULT_MAX_LINES);
+      assert.ok(!content.includes("\ufffd"));
+      return true;
+    });
+  }
+});
+
+test("three-action keyboard navigation clamps arrows, cycles Tab, and survives wrapping and resize", async () => {
+  let reviewed = false;
+  const ui = createTuiUi((component, tui) => {
+    const selected = (label: string, width = 100) => {
+      const lines = component.render(width);
+      assert.ok(lines.every((line) => visibleWidth(line) <= width));
+      assert.ok(lines.length <= tui.terminal.rows);
+      assert.ok(lines.join("\n").includes(`> ${label}`));
+    };
+    selected(UNSANDBOXED_CANCEL);
+    for (const key of ["\x1b[A", "\x1b[D"]) {
+      component.handleInput?.(key);
+      selected(UNSANDBOXED_CANCEL);
+    }
+    component.handleInput?.("\x1b[C");
+    selected(UNSANDBOXED_RUN);
+    component.handleInput?.("\x1b[B");
+    selected(UNSANDBOXED_CANCEL_WITH_MESSAGE);
+    for (const key of ["\x1b[B", "\x1b[C"]) {
+      component.handleInput?.(key);
+      selected(UNSANDBOXED_CANCEL_WITH_MESSAGE);
+    }
+    component.handleInput?.("\x1b[D");
+    selected(UNSANDBOXED_RUN);
+    component.handleInput?.("\x1b[A");
+    selected(UNSANDBOXED_CANCEL);
+    for (const label of [UNSANDBOXED_RUN, UNSANDBOXED_CANCEL_WITH_MESSAGE, UNSANDBOXED_CANCEL]) {
+      component.handleInput?.("\t");
+      selected(label);
+    }
+    component.handleInput?.("\t");
+    component.handleInput?.("\t");
+    (tui.terminal as any).rows = 18;
+    component.invalidate();
+    selected(UNSANDBOXED_CANCEL_WITH_MESSAGE, 40);
+    component.handleInput?.("\x1b[6~");
+    selected(UNSANDBOXED_CANCEL_WITH_MESSAGE, 40);
+    component.handleInput?.("\x1b[5~");
+    assert.match(component.render(40).join("\n"), /Details: lines 1-/);
+    selected(UNSANDBOXED_CANCEL_WITH_MESSAGE, 80);
+    reviewed = true;
+    component.handleInput?.("\r");
+  }, 24, 100, async () => "reviewed");
+  assert.deepEqual(await requestUnsandboxedApproval(
+    createContext(process.cwd(), "tui", ui), "x".repeat(1000), process.cwd(),
+  ), { approved: false, message: "reviewed" });
+  assert.equal(reviewed, true);
+});
+
+test("AgentSession persists rejection feedback for the next model request without leaking to siblings", async (t) => {
+  const { session, ends, confirmation, nextModelMessages } = await setupAgentIntegrationHarness(t);
+  const prompt = session.prompt("Run both unsandboxed commands.");
+  await waitUntil(() => confirmation.dialogs.length === 1, "approval");
+  confirmation.dialogs[0]!.respond(UNSANDBOXED_CANCEL_WITH_MESSAGE);
+  await waitUntil(() => confirmation.inputs.length === 1, "feedback input");
+  const input = confirmation.inputs[0]!;
+  assert.equal(input.title, FEEDBACK_TITLE);
+  assert.equal(input.placeholder, FEEDBACK_PLACEHOLDER);
+  assert.equal(input.signal, confirmation.dialogs[0]!.signal);
+  await delay(25);
+  assert.equal(confirmation.dialogs.length, 1);
+  assert.deepEqual(ends, []);
+  input.respond("  Use sandboxed read instead — please.  ");
+  await waitUntil(() => confirmation.dialogs.length === 2, "fresh sibling approval");
+  assert.equal(ends[0]!.isError, true);
+  assert.match(ends[0]!.text, /User rejection message:\nUse sandboxed read instead — please\.$/);
+  confirmation.dialogs[1]!.respond(UNSANDBOXED_CANCEL);
+  await bounded(prompt, "feedback prompt continuation");
+  assert.equal(confirmation.inputs.length, 1);
+  assert.equal(ends[1]!.text, REJECTION);
+  for (const messages of [
+    session.messages,
+    nextModelMessages,
+    session.sessionManager.getBranch().flatMap((entry) => entry.type === "message" ? [entry.message] : []),
+  ]) {
+    const results = messages.filter((message) => message.role === "toolResult");
+    assert.equal(results.length, 2);
+    assert.equal(results[0]!.isError, true);
+    assert.equal(results[0]!.toolCallId, FIRST_TOOL_CALL_ID);
+    assert.equal(textResult(results[0]), ends[0]!.text);
+    assert.equal(textResult(results[1]), REJECTION);
+    assert.equal(messages.filter((message) => message.role === "user").length, 1);
+  }
+  assert.equal(textResult(session.messages.at(-1)), "finished");
+});
+
+test("AgentSession abort during feedback settles without subsequent dialogs", async (t) => {
+  const { session, ends, confirmation, nextModelMessages } = await setupAgentIntegrationHarness(t);
+  const prompt = session.prompt("Run both unsandboxed commands.");
+  await waitUntil(() => confirmation.dialogs.length === 1, "approval before feedback abort");
+  confirmation.dialogs[0]!.respond(UNSANDBOXED_CANCEL_WITH_MESSAGE);
+  await waitUntil(() => confirmation.inputs.length === 1, "feedback before abort");
+  const settled = await bounded(Promise.allSettled([prompt, session.abort()]), "feedback abort settlement");
+  assert.deepEqual(settled.map((result) => result.status), ["fulfilled", "fulfilled"]);
+  assert.equal(confirmation.inputs[0]!.abortObserved, true);
+  confirmation.inputs[0]!.respond("late feedback must be ignored");
+  await delay(25);
+  assert.equal(confirmation.dialogs.length, 1);
+  assert.equal(confirmation.inputs.length, 1);
+  assert.deepEqual(ends, [{ id: FIRST_TOOL_CALL_ID, isError: true, text: REJECTION }]);
+  assert.deepEqual(nextModelMessages, []);
 });
 
 test("pending and settled call rendering is safely marked while Bash result rendering is preserved", async () => {
