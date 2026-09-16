@@ -166,7 +166,6 @@
         sq = [
           "squash"
           "--use-destination-message"
-          "--keep-emptied"
         ];
         si = [
           "sq"
