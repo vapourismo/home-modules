@@ -41,6 +41,7 @@
       "~/.ignore",
       "~/.nix-profile",
       "~/.nix-defexpr",
+      "~/.pi/**/SKILL.md",
       "~/Workspaces",
       "~/Library/Caches/kache",
       "~/Library/Caches/Mozilla.sccache",
