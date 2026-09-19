@@ -7,6 +7,12 @@
       {
         token_type = "method";
       }
+      {
+        token_type = "enum";
+      }
+      {
+        token_type = "macro";
+      }
     ];
   };
   theme_overrides = {
@@ -16,7 +22,16 @@
           color = "#cdd6f4";
         };
         "type.interface" = {
-          color = "#fab387";
+          color = "#f2cdcd";
+        };
+        namespace = {
+          color = "#f5e0dc";
+        };
+        variant = {
+          color = "#94e2d5";
+        };
+        enum = {
+          font_weight = 400;
         };
       };
     };
