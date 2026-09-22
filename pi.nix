@@ -54,7 +54,6 @@ in
         "npm:@narumitw/pi-usage"
         "npm:@narumitw/pi-plan-mode"
         "npm:@narumitw/pi-codex-compact"
-        "git:github.com/DietrichGebert/ponytail"
       ];
       quietStartup = true;
       enableInstallTelemetry = false;
