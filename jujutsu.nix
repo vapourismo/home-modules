@@ -41,6 +41,7 @@
             "CODEX_THREAD_ID"
           ];
           ui.diff-formatter = ":git";
+          signing.backend = "none";
         }
       ];
 
