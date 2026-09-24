@@ -45,6 +45,7 @@
   home.sessionVariables = {
     LESS = "-FRX";
     MAKEFLAGS = "-j12";
+    EDITOR = "nvim";
   };
 
   programs.fish = {
