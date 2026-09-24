@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   specialArgs,
   ...
@@ -29,20 +28,6 @@
     ".config/nvim" = {
       source = ./neovim;
       recursive = true;
-    };
-  };
-
-  programs.neovide = lib.optionalAttrs pkgs.stdenv.isDarwin {
-    enable = false;
-    package = specialArgs.inputs.neovide.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    settings = {
-      system-new-window-hotkey = "";
-      system-hide-hotkey = "";
-      system-hide-others-hotkey = "";
-      system-quit-hotkey = "";
-      system-minimize-hotkey = "";
-      system-fullscreen-hotkey = "";
-      system-show-all-tabs-hotkey = "";
     };
   };
 }

@@ -39,29 +39,3 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Allow editing right in Neovim
 vim.env.EDITOR           = "nvr --remote-tab-wait"
-
--- Neovide
-if vim.g.neovide then
-    function set_font(scale)
-        local size = math.ceil(13 * scale)
-        vim.opt.guifont = "IosevkaTermSS02 Nerd Font:h" .. size
-    end
-
-    set_font(1)
-
-    vim.g.neovide_scroll_animation_length = 0
-    vim.g.neovide_position_animation_length = 0
-    vim.g.neovide_cursor_animation_length = 0
-    vim.g.neovide_hide_mouse_when_typing = true
-    vim.g.neovide_fullscreen = true
-    vim.g.neovide_input_macos_option_key_is_meta = "only_left"
-    vim.g.neovide_floating_shadow = false
-    vim.g.neovide_floating_z_height = 3
-    vim.g.neovide_floating_blur_amount_x = 0.0
-    vim.g.neovide_floating_blur_amount_y = 0.0
-    vim.g.neovide_floating_corner_radius = 0.0
-    vim.g.neovide_progress_bar_enabled = false
-    vim.g.neovide_progress_bar_height = 2.0
-    vim.g.neovide_progress_bar_animation_speed = 99999
-    vim.g.neovide_progress_bar_hide_delay = 0
-end
