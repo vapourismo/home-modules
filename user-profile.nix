@@ -33,6 +33,7 @@
             "upgrade"
             "--all"
             "--impure"
+            "--keep-going"
           ];
           StandardErrorPath = "/tmp/upgrade-nix-profile.log.err";
           StandardOutPath = "/tmp/upgrade-nix-profile.log.out";
