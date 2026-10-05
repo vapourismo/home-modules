@@ -16,6 +16,14 @@ npm ci
 npm run check
 ```
 
+Keep the Pi AI, coding-agent, and TUI development dependencies pinned to the
+same release, and align TypeBox with that release. Update them together and
+regenerate `package-lock.json`; duplicate host modules can break TUI types and
+split the provider registries used by session tests.
+
+The macOS integration tests require an unsandboxed test runner and working
+Apple command-line tools (including acceptance of the Xcode license).
+
 Verify the production package through the Home Manager activation build from
 the repository root:
 
