@@ -243,13 +243,6 @@
           "fish"
           "${./scripts/jj-workspace-codex.fish}"
         ];
-        "wpi" = [
-          "util"
-          "exec"
-          "--"
-          "fish"
-          "${./scripts/jj-workspace-pi.fish}"
-        ];
       };
 
       merge-tools.zed = {
