@@ -5,7 +5,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    jujutsu.url = "github:jj-vcs/jj/v0.45.1";
+    jujutsu.url = "github:jj-vcs/jj/v0.46.0";
     flake-utils.url = "github:numtide/flake-utils";
     neovim = {
       url = "github:neovim/neovim/nightly";
