@@ -1,4 +1,4 @@
-{
+{ config, ... }: {
   programs.ghostty = {
     enable = true;
     package = null;
@@ -16,6 +16,7 @@
       confirm-close-surface = false;
       auto-update = "check";
       mouse-hide-while-typing = true;
+      command = "${config.programs.fish.package}/bin/fish -c nvim";
       keybind = [
         "cmd+q=close_surface"
         "cmd+shift+,=reload_config"
