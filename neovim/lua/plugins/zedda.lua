@@ -1,6 +1,7 @@
 return {
     "vapourismo/zedda.nvim",
-    url = "git@github.com:vapourismo/zedda.nvim.git",
+    -- url = "git@github.com:vapourismo/zedda.nvim.git",
+    dir = "~/Workspaces/zedda.nvim",
     build = function()
         require("zedda").build()
     end,

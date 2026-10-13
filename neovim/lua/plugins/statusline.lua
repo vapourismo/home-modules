@@ -1,6 +1,6 @@
 return {
     "vapourismo/statusline.nvim",
-    dir = "/Users/ole/Workspaces/statusline.nvim",
+    dir = "~/Workspaces/statusline.nvim",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
