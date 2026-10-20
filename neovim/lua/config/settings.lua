@@ -5,6 +5,7 @@ vim.opt.textwidth        = 100
 vim.opt.wrap             = false
 vim.opt.cursorline       = true
 vim.opt.sessionoptions   = { "curdir", "folds", "blank", "winsize", "winpos" }
+vim.opt.swapfile         = false
 vim.opt.ignorecase       = true
 vim.opt.showtabline      = 1
 vim.opt.termguicolors    = true
