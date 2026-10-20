@@ -56,6 +56,12 @@ return {
             layout = {
                 config = pad_layout,
             },
+            sources = {
+                explorer = {
+                    git_status = false,
+                    git_untracked = false,
+                },
+            },
         },
         zen = {
             toggles = {
@@ -82,7 +88,7 @@ return {
         },
         {
             "<D-b>",
-            function() Snacks.picker.explorer() end,
+            function() Snacks.explorer() end,
             mode = { "n", "v", "t", "i" }
         },
         {
