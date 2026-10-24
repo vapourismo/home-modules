@@ -56,13 +56,14 @@
         "-r"
         "current_work()"
       ];
-      ui.diff-formatter = [
-        "difft"
-        "--color=always"
-        "$left"
-        "$right"
-      ];
       ui.graph.style = "curved";
+
+      ui.pager = "delta";
+      ui.diff-formatter = ":git";
+      merge-tools.delta.diff-expected-exit-codes = [
+        0
+        1
+      ];
 
       git.protect-local-branches = true;
 
