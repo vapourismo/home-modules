@@ -97,7 +97,9 @@
     tree_view = true;
   };
   agent = {
-    sidebar_side = "right";
+    threads_sidebar = {
+      position = "right";
+    };
     show_merge_conflict_indicator = false;
     use_modifier_to_send = true;
     enable_feedback = false;
