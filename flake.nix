@@ -56,7 +56,6 @@
             self.homeModules.nixpkgs
             self.homeModules.terminal
             self.homeModules.mergiraf
-            self.homeModules.radicle
             self.homeModules.telemetry-opt-out
             self.homeModules.zed
             self.homeModules.codex
