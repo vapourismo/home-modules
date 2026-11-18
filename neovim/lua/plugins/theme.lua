@@ -31,6 +31,15 @@ return {
                 keywords = {},
                 types = {},
             },
+            lsp_styles = {
+                underlines = {
+                    errors = { "underdotted" },
+                    hints = { "underdotted" },
+                    warnings = { "underdotted" },
+                    information = { "underdotted" },
+                    ok = { "underdotted" },
+                },
+            },
             custom_highlights = function(colors)
                 return {
                     TabLineNum = { fg = colors.base, bg = colors.surface1 },
