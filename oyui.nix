@@ -7,7 +7,7 @@
   };
 
   ole.profile.packages = [
-    "nixpkgs#oyui"
+    "github:emilien-jegou/oyui"
   ];
 
   programs.jujutsu.settings = {
