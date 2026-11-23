@@ -39,6 +39,7 @@
         codex = import ./codex.nix;
         oyui = import ./oyui.nix;
         ghostty = import ./ghostty.nix;
+        agy = import ./agy.nix;
       };
 
       homeConfigurations = {
@@ -61,6 +62,7 @@
             self.homeModules.codex
             self.homeModules.oyui
             self.homeModules.ghostty
+            self.homeModules.agy
 
             {
               home = {
