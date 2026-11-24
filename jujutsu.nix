@@ -39,6 +39,7 @@
             "AI_AGENT"
             "PI_CODING_AGENT"
             "CODEX_THREAD_ID"
+            "ANTIGRAVITY_AGENT"
           ];
           ui.diff-formatter = ":git";
           signing.backend = "none";
