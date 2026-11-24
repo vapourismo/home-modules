@@ -1,0 +1,1 @@
+- Use the `home-manager` CLI to interact with Home Manager configurations.

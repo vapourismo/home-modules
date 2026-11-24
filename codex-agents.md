@@ -1,4 +1,3 @@
-# ~/.codex/AGENTS.md
-
-- Use Jujutsu (`jj`) over Git whenever possible.
-
+- Prefer Jujutsu (`jj`) over Git.
+- Before fixing a bug or adding a feature, run a test that fails for the expected reason. Rerun it after the change to confirm it passes.
+- Keep additions to agent instruction files high-signal and low-noise.
