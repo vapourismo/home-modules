@@ -1,1 +1,2 @@
 - Use the `home-manager` CLI to interact with Home Manager configurations.
+- After implementing a feature or fix, ask a fresh agent to review the changes against the original requirements. If the reviewer finds issues, give the requirements and findings to a second fresh agent to address them. Start both agents without prior conversation history.
