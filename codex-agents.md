@@ -1,3 +1,5 @@
 - Prefer Jujutsu (`jj`) over Git.
 - Before fixing a bug or adding a feature, run a test that fails for the expected reason. Rerun it after the change to confirm it passes.
 - Keep additions to agent instruction files high-signal and low-noise.
+- Prefer an existing library function, platform feature, or project command when it already does the job.
+- When a commit resolves a GitHub issue, include `Closes #<number>` in its message.
